@@ -1,0 +1,47 @@
+:root { color-scheme: light; --primary:#2563eb; --bg:#f4f7fb; --card:#fff; --text:#172033; --muted:#64748b; --green:#16a34a; --yellow:#ca8a04; --red:#dc2626; }
+* { box-sizing: border-box; }
+body { margin:0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background:var(--bg); color:var(--text); }
+.container { width:min(1120px, 92vw); margin:0 auto; padding:32px 0; }
+.dashboard-header, .unit-header { margin-bottom:24px; }
+.welcome-section { display:flex; flex-direction:column; align-items:flex-start; gap:12px; }
+h1, h2, h3, h4 { margin:0 0 8px; }
+.btn-primary, .btn-secondary, .btn-submit, .btn-back, .option, .word-block { border:0; border-radius:12px; padding:12px 18px; font-weight:700; cursor:pointer; text-decoration:none; display:inline-block; }
+.btn-primary, .btn-submit { background:var(--primary); color:white; }
+.btn-secondary, .btn-back { background:#e2e8f0; color:var(--text); }
+.btn-submit:disabled, .btn-secondary:disabled { opacity:.5; cursor:not-allowed; }
+.stats-container { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:18px; margin-bottom:24px; }
+.stat-card, .unit-card, .activity-card, .instruction-card, .phrase-card, .progress-card, .score-card { background:var(--card); border-radius:18px; box-shadow:0 12px 32px rgba(15,23,42,.08); padding:22px; }
+.stat-value { font-size:42px; font-weight:900; color:var(--primary); }
+.stat-label, .unit-subtitle, .activity-description, .hint { color:var(--muted); }
+.units-section, .unit-content, .activity-main { display:grid; gap:22px; }
+.reviews-unit { border-left:6px solid #f59e0b; }
+.activities-list { padding:0; margin:0; list-style:none; display:grid; gap:12px; }
+.activity-link, .review-item { display:flex; justify-content:space-between; align-items:center; gap:12px; background:#f8fafc; border-radius:14px; padding:14px 16px; color:var(--text); text-decoration:none; }
+.activity-status, .status-tag { border-radius:999px; padding:6px 10px; font-size:12px; font-weight:800; }
+.activity-status { background:#dbeafe; color:#1d4ed8; }
+.status-tag.needs { background:#fef3c7; color:var(--yellow); }
+.status-tag.urgent { background:#fee2e2; color:var(--red); }
+.empty-state { color:var(--muted); margin:0; }
+.activity-section { scroll-margin-top:24px; }
+.activity-header { margin:18px 0 12px; }
+.exercise { border-top:1px solid #e2e8f0; padding-top:18px; margin-top:18px; }
+.exercise-label { font-weight:800; }
+.question-set, .request-set, .match-section, .dialog-simulation { display:grid; gap:16px; }
+.question, .request-card, .scenario, .match-pair, .dialog-message, .dialog-response { background:#f8fafc; border-radius:14px; padding:16px; }
+.options { display:flex; flex-wrap:wrap; gap:10px; }
+.option { background:#e2e8f0; color:var(--text); }
+.option.selected { background:var(--primary); color:white; }
+input, textarea, select { width:100%; border:1px solid #cbd5e1; border-radius:10px; padding:12px; font:inherit; }
+.form-group { margin-bottom:12px; }
+.activity-footer, .submit-section { margin-top:18px; }
+.btn-microphone { width:150px; height:150px; border-radius:50%; border:0; background:#dbeafe; color:#1d4ed8; cursor:pointer; transition:.2s; }
+.btn-microphone.recording { background:#fee2e2; color:var(--red); animation:pulse 1s infinite; }
+.mic-icon { font-size:42px; display:block; }
+.mic-text { margin:6px 0 0; font-weight:800; }
+@keyframes pulse { 0% { transform:scale(1); box-shadow:0 0 0 0 rgba(220,38,38,.5); } 70% { transform:scale(1.04); box-shadow:0 0 0 18px rgba(220,38,38,0); } 100% { transform:scale(1); } }
+.word { display:inline-block; margin:4px; padding:6px 9px; border-radius:8px; }
+.word.correct { background:#dcfce7; color:var(--green); }
+.word.incorrect { background:#fee2e2; color:var(--red); }
+.progress-bar { height:12px; background:#e2e8f0; border-radius:999px; overflow:hidden; margin-top:8px; }
+.progress-fill { height:100%; background:var(--primary); }
+.error-analysis-section, .pronunciation-tips-section, .transcription-section, .score-section { background:white; border-radius:18px; padding:20px; box-shadow:0 12px 32px rgba(15,23,42,.08); }
