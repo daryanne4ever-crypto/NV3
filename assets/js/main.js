@@ -6,6 +6,76 @@ function calculateLevel(activities) {
   if (completed.length >= 12) return 'Advanced';
   if (completed.length >= 5) return 'Intermediate';
   return 'Beginner';
+const nextNewActivities = ['revision.html#activity-1', 'unit1.html'];
+
+
+
+const grammarTopics = [
+  ['simple-present', 'Simple Present'],
+  ['present-continuous', 'Present Continuous'],
+  ['present-perfect', 'Present Perfect'],
+  ['present-perfect-continuous', 'Present Perfect Continuous'],
+  ['simple-past', 'Simple Past'],
+  ['past-continuous', 'Past Continuous'],
+  ['past-perfect', 'Past Perfect'],
+  ['past-perfect-continuous', 'Past Perfect Continuous'],
+  ['simple-future', 'Simple Future'],
+  ['future-continuous', 'Future Continuous'],
+  ['future-perfect', 'Future Perfect'],
+  ['future-perfect-continuous', 'Future Perfect Continuous'],
+  ['active-voice', 'Active Voice'],
+  ['passive-voice', 'Passive Voice'],
+  ['comparatives-superlatives', 'Comparatives & Superlatives'],
+  ['affixes', 'Affixes, Prefixes & Suffixes'],
+];
+
+function initializeGrammarMenu() {
+  const grammarLink = document.querySelector('.nav-link[href="grammar.html"]');
+  if (!grammarLink || grammarLink.dataset.grammarReady === 'true') return;
+
+  grammarLink.dataset.grammarReady = 'true';
+  grammarLink.setAttribute('aria-expanded', currentPage === 'grammar.html' ? 'true' : 'false');
+  grammarLink.classList.add('grammar-nav-toggle');
+
+  const submenu = document.createElement('div');
+  submenu.className = 'grammar-submenu';
+  submenu.setAttribute('aria-label', 'Grammar topics');
+  submenu.hidden = currentPage !== 'grammar.html';
+  submenu.innerHTML = grammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
+  grammarLink.insertAdjacentElement('afterend', submenu);
+
+  grammarLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const isExpanded = grammarLink.getAttribute('aria-expanded') === 'true';
+    grammarLink.setAttribute('aria-expanded', String(!isExpanded));
+    submenu.hidden = isExpanded;
+    if (currentPage !== 'grammar.html' && !isExpanded) {
+      submenu.querySelector('a')?.focus();
+    }
+  });
+}
+
+document.querySelectorAll('.nav-link').forEach((link) => {
+  const href = link.getAttribute('href');
+  if (href === currentPage) link.classList.add('active');
+});
+
+function getStudentName() {
+  const storageKey = 'nv3-student-name';
+  let studentName = localStorage.getItem(storageKey);
+
+  if (!studentName) {
+    studentName = window.prompt("What's your name?") || 'B1 learner';
+    localStorage.setItem(storageKey, studentName.trim() || 'B1 learner');
+  }
+
+  return localStorage.getItem(storageKey) || 'B1 learner';
+}
+
+function personalizeDashboard() {
+  const studentNameElement = document.querySelector('#studentName');
+  if (!studentNameElement) return;
+  studentNameElement.textContent = getStudentName();
 }
 
 function setActiveNavigation() {
@@ -81,5 +151,3 @@ function initializeApp() {
   window.addEventListener('nv3:state-changed', renderDashboard);
 }
 
-initializeApp();
-window.NV3 = { calculateLevel, renderDashboard, setActiveNavigation, saveActivityResult, getStatusFromPercentage };
