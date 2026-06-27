@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Dashboard do aluno da plataforma NLE Level 3 para estudos de inglês nível B1." />
-  <title>NLE Level 3 | Dashboard</title>
+  <meta name="description" content="Unit 1 Hotel Communication with WH questions and hotel vocabulary." />
+  <title>NLE Level 3 | Unit 1: Hotel Communication</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -12,121 +12,284 @@
 </head>
 <body>
   <aside class="sidebar" aria-label="Menu principal">
-    <a class="brand" href="index.html" aria-label="NLE Level 3 Home">
+    <a class="brand" href="index.html">
       <span class="brand__mark">NV3</span>
-      <span>
-        <strong>NLE Level 3</strong>
-        <small>English B1 Platform</small>
-      </span>
+      <span><strong>NLE Level 3</strong><small>English B1 Platform</small></span>
     </a>
-
     <nav class="nav-list">
-      <a class="nav-link active" href="index.html" data-page="dashboard">Dashboard</a>
-      <a class="nav-link" href="grammar.html" data-page="grammar">Grammar</a>
-      <a class="nav-link" href="vocabulary.html" data-page="vocabulary">Vocabulary</a>
-      <a class="nav-link" href="listening.html" data-page="listening">Listening</a>
-      <a class="nav-link" href="speaking.html" data-page="speaking">Speaking</a>
-      <a class="nav-link" href="reading.html" data-page="reading">Reading</a>
-      <a class="nav-link" href="writing.html" data-page="writing">Writing</a>
-      <a class="nav-link" href="professor.html" data-page="professor">Professor</a>
+      <a class="nav-link" href="index.html" data-page="dashboard">Dashboard</a>
+      <a class="nav-link" href="revision.html" data-page="revision">Revision</a>
+      <a class="nav-link active" href="unit1.html" data-page="unit1">Unit 1</a>
     </nav>
-
-    <div class="sidebar-card">
-      <span class="eyebrow">Meta semanal</span>
-      <strong>420 / 600 XP</strong>
-      <div class="progress" aria-label="Progresso semanal de XP">
-        <span style="width: 70%"></span>
-      </div>
-      <small>Continue praticando para liberar a medalha Purple Streak.</small>
-    </div>
   </aside>
 
   <main class="app-shell">
-    <header class="hero dashboard-hero">
+    <header class="hero">
       <div>
-        <span class="eyebrow">Dashboard do aluno</span>
-        <h1>Welcome back, <span id="studentName">B1 learner</span>!</h1>
-        <p>Pratique inglês com trilhas curtas, feedback instantâneo, XP, medalhas e acompanhamento do professor.</p>
-        <a class="btn btn-secondary review-under-greeting" href="revision.html">Ir para Revisão</a>
+        <span class="eyebrow">Unit 1: Hotel Communication</span>
+        <h1>WH-Questions for real hotel situations</h1>
+        <p>Practice What, Where, When, Why, Who, Which, How, How much, How many, How long and How far with hotel vocabulary.</p>
       </div>
-      <div class="hero-actions">
-        <button class="btn btn-primary" id="startPracticeBtn">Começar prática</button>
-      </div>
+      <a class="btn btn-secondary" href="index.html">Voltar ao Dashboard</a>
     </header>
 
-    <section class="stats-grid" aria-label="Indicadores do aluno">
-      <article class="stat-card success">
-        <span>Activities Completed</span>
-        <strong id="activitiesCompleted">0</strong>
-        <small>Total de atividades finalizadas</small>
-      </article>
-      <article class="stat-card warning">
-        <span>Current Level</span>
-        <strong id="currentLevel">Beginner</strong>
-        <small>Calculado pela média de acertos</small>
-      </article>
-      <article class="stat-card danger">
-        <span>Revisões</span>
-        <strong id="reviewCount">0</strong>
-        <small>Needs Review e Urgent Review</small>
-      </article>
+    <section class="card unit-vocabulary">
+      <span class="eyebrow">Core vocabulary</span>
+      <h2>Hotel words</h2>
+      <p>
+        room <strong>/ruːm/</strong>, 
+        reservation <strong>/ˌrɛzərˈveɪʃən/</strong>, 
+        receptionist <strong>/rɪˈsɛpʃənɪst/</strong>, 
+        lobby <strong>/ˈlɒbi/</strong>, 
+        elevator <strong>/ˈɛlɪveɪtər/</strong>, 
+        key card <strong>/kiː kɑːrd/</strong>, 
+        breakfast <strong>/ˈbrɛkfəst/</strong>, 
+        gym <strong>/dʒɪm/</strong>, 
+        swimming pool <strong>/ˈswɪmɪŋ puːl/</strong>, 
+        restaurant <strong>/ˈrɛstərənt/</strong>, 
+        taxi <strong>/ˈtæksi/</strong>, 
+        bus <strong>/bʌs/</strong>, 
+        airport <strong>/ˈɛərpɔːrt/</strong>, 
+        luggage <strong>/ˈlʌɡɪdʒ/</strong>, 
+        passport <strong>/ˈpɑːspɔːrt/</strong>, 
+        ID <strong>/ˌaɪˈdiː/</strong>, 
+        phone number <strong>/foʊn ˈnʌmbər/</strong>, 
+        email address <strong>/ˈiːmeɪl əˈdrɛs/</strong>.
+      </p>
     </section>
 
-    <section class="content-grid">
-      <article class="card large-card">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Unidades B1</span>
-            <h2>Progresso por unidade</h2>
+    <!-- ACTIVITY 1: Information & Doubts -->
+    <section class="activity-block card" id="activity1">
+      <span class="eyebrow">Section A — Information & Doubts</span>
+      <h2>Activity 1: Information & Doubts</h2>
+      <p class="activity-description">Complete the sentences with the correct WH-Question words</p>
+        
+      <div class="exercise exercise-1">
+        <p class="exercise-label"><strong>Exercise 1: Fill in the blanks</strong></p>
+        <div class="exercise-content">
+          <div class="question-set">
+            <div class="question">
+              <p><strong>_____ time is breakfast?</strong></p>
+              <div class="options">
+                <button class="option btn btn-secondary" data-answer="What">What</button>
+                <button class="option btn btn-secondary" data-answer="Where">Where</button>
+                <button class="option btn btn-secondary" data-answer="When">When</button>
+                <button class="option btn btn-secondary" data-answer="Why">Why</button>
+              </div>
+              <p class="hint"><small>Hint: Asking about time</small></p>
+            </div>
+            
+            <div class="question">
+              <p><strong>_____ is the gym?</strong></p>
+              <div class="options">
+                <button class="option btn btn-secondary" data-answer="Where">Where</button>
+                <button class="option btn btn-secondary" data-answer="What">What</button>
+                <button class="option btn btn-secondary" data-answer="When">When</button>
+                <button class="option btn btn-secondary" data-answer="How">How</button>
+              </div>
+              <p class="hint"><small>Hint: Asking about location</small></p>
+            </div>
+            
+            <div class="question">
+              <p><strong>_____ does the restaurant close?</strong></p>
+              <div class="options">
+                <button class="option btn btn-secondary" data-answer="When">When</button>
+                <button class="option btn btn-secondary" data-answer="Where">Where</button>
+                <button class="option btn btn-secondary" data-answer="What">What</button>
+                <button class="option btn btn-secondary" data-answer="How long">How long</button>
+              </div>
+              <p class="hint"><small>Hint: Asking about time/schedule</small></p>
+            </div>
+            
+            <div class="question">
+              <p><strong>_____ much is the room?</strong></p>
+              <div class="options">
+                <button class="option btn btn-secondary" data-answer="How">How</button>
+                <button class="option btn btn-secondary" data-answer="What">What</button>
+                <button class="option btn btn-secondary" data-answer="How many">How many</button>
+                <button class="option btn btn-secondary" data-answer="Which">Which</button>
+              </div>
+              <p class="hint"><small>Hint: Asking about price/amount</small></p>
+            </div>
           </div>
-          <a href="grammar.html">Ver lições</a>
         </div>
+      </div>
 
-        <div class="unit-list">
-          <div class="unit-item reviews-unit">
-            <div>
-              <strong>Reviews</strong>
-              <small>Unit 0 — atividades que precisam de reforço</small>
-              <div class="review-list" id="dashboardReviews"></div>
-            </div>
-          </div>
-          <a class="unit-item" href="unit1.html" data-activity-url="unit1.html">
-            <div>
-              <strong>Unit 1: Hotel Communication</strong>
-              <small>WH-Questions, Vocabulary, Requests, Information and Doubts</small>
-            </div>
-            <div class="progress"><span style="width: 0%"></span></div>
-          </a>
-          <div class="unit-item">
-            <div>
-              <strong>Unit 02 — Travel Problems</strong>
-              <small>Listening e Vocabulary</small>
-            </div>
-            <div class="progress"><span style="width: 74%"></span></div>
-          </div>
-          <div class="unit-item">
-            <div>
-              <strong>Unit 03 — Opinions & Debate</strong>
-              <small>Reading, Speaking e IPA</small>
-            </div>
-            <div class="progress"><span style="width: 48%"></span></div>
-          </div>
-        </div>
-      </article>
+      <hr />
 
-      <aside class="card">
-        <span class="eyebrow">Medalhas</span>
-        <h2>Conquistas</h2>
-        <div class="badge-list">
-          <span class="badge success">Grammar Pro</span>
-          <span class="badge warning">7-day Streak</span>
-          <span class="badge accent">IPA Starter</span>
-          <span class="badge danger">Fix 10 Errors</span>
+      <div class="exercise exercise-2">
+        <p class="exercise-label"><strong>Exercise 2: Listening & Matching</strong></p>
+        <div class="exercise-content">
+          <p class="exercise-intro">Listen to the questions and match them with the correct answers.</p>
+          <div class="match-section">
+            <div class="match-pair">
+              <span class="question-text">"What is your room number?"</span>
+              <select class="match-select">
+                <option value="">Select an answer...</option>
+                <option value="answer1">It's 305</option>
+                <option value="answer2">At 7:00 AM</option>
+                <option value="answer3">On the third floor</option>
+                <option value="answer4">$150 per night</option>
+              </select>
+            </div>
+            <div class="match-pair">
+              <span class="question-text">"When does breakfast start?"</span>
+              <select class="match-select">
+                <option value="">Select an answer...</option>
+                <option value="answer1">It's 305</option>
+                <option value="answer2">At 7:00 AM</option>
+                <option value="answer3">On the third floor</option>
+                <option value="answer4">$150 per night</option>
+              </select>
+            </div>
+            <div class="match-pair">
+              <span class="question-text">"Where is the swimming pool?"</span>
+              <select class="match-select">
+                <option value="">Select an answer...</option>
+                <option value="answer1">It's 305</option>
+                <option value="answer2">At 7:00 AM</option>
+                <option value="answer3">On the third floor</option>
+                <option value="answer4">$150 per night</option>
+              </select>
+            </div>
+          </div>
         </div>
-      </aside>
+      </div>
+
+      <div class="activity-footer" style="margin-top: 1rem;">
+        <button class="btn btn-primary" data-activity="1">Submit Activity 1</button>
+      </div>
+    </section>
+
+    <!-- ACTIVITY 2: Polite Requests & Transport -->
+    <section class="activity-block card" id="activity2">
+      <span class="eyebrow">Section B — Polite Requests & Transport</span>
+      <h2>Activity 2: Speaking and Requests</h2>
+      <p class="activity-description">Practice making polite requests and asking for transportation.</p>
+        
+      <div class="exercise exercise-1">
+        <p class="exercise-label"><strong>Exercise 1: Complete the Polite Requests</strong></p>
+        <div class="exercise-content">
+          <div class="request-set">
+            <div class="request-card">
+              <p><strong>How can I call a taxi?</strong></p>
+              <input type="text" class="response-input email-input" placeholder="Type your response...">
+              <p class="hint"><small>Vocabulary: phone, reception, number, dial</small></p>
+            </div>
+
+            <div class="request-card">
+              <p><strong>Can I have another towel?</strong></p>
+              <input type="text" class="response-input email-input" placeholder="Type your response...">
+              <p class="hint"><small>Vocabulary: towel, pillow, blanket, extra</small></p>
+            </div>
+
+            <div class="request-card">
+              <p><strong>Could you help me with my luggage?</strong></p>
+              <input type="text" class="response-input email-input" placeholder="Type your response...">
+              <p class="hint"><small>Vocabulary: luggage, bag, suitcase, bellhop</small></p>
+            </div>
+
+            <div class="request-card">
+              <p><strong>How far is the bus station?</strong></p>
+              <input type="text" class="response-input email-input" placeholder="Type your response...">
+              <p class="hint"><small>Vocabulary: bus, station, far, distance, minutes</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="exercise exercise-2">
+        <p class="exercise-label"><strong>Exercise 2: Transportation Scenarios</strong></p>
+        <div class="exercise-content">
+          <div class="scenario">
+            <h4>Scenario: You need to go to the airport</h4>
+            <p>What would you ask the receptionist?</p>
+            <textarea class="scenario-input email-input" placeholder="Write your response..." rows="4" style="width: 100%;"></textarea>
+            <p class="hint"><small>Use: "Could you...", "Can I...", "How long...", "How far..."</small></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-footer" style="margin-top: 1rem;">
+        <button class="btn btn-primary" data-activity="2">Submit Activity 2</button>
+      </div>
+    </section>
+
+    <!-- ACTIVITY 3: Check-in & Reservations -->
+    <section class="activity-block card" id="activity3">
+      <span class="eyebrow">Section C — Check-in & Reservations</span>
+      <h2>Activity 3: Interactive simulation</h2>
+      <p class="activity-description">Interactive simulation of hotel check-in and reservation scenarios.</p>
+        
+      <div class="exercise exercise-1">
+        <p class="exercise-label"><strong>Exercise 1: Fill in the Reservation Form</strong></p>
+        <div class="exercise-content">
+          <form class="reservation-form">
+            <div class="form-group">
+              <label for="fullName">Full Name:</label>
+              <input type="text" id="fullName" class="form-input email-input" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address:</label>
+              <input type="email" id="email" class="form-input email-input" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" class="form-input email-input" placeholder="+55 (11) 99999-9999">
+            </div>
+            <div class="form-group">
+              <label for="id">ID Number (Passport/RG):</label>
+              <input type="text" id="id" class="form-input email-input" placeholder="Your ID">
+            </div>
+            <div class="form-group">
+              <label for="checkIn">Check-in Date:</label>
+              <input type="date" id="checkIn" class="form-input email-input">
+            </div>
+            <div class="form-group">
+              <label for="checkOut">Check-out Date:</label>
+              <input type="date" id="checkOut" class="form-input email-input">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="exercise exercise-2">
+        <p class="exercise-label"><strong>Exercise 2: Dialog Simulation</strong></p>
+        <div class="exercise-content">
+          <div class="dialog-simulation simulation-dialogue">
+            <div class="dialog-message guest">
+              <p><strong>Guest:</strong> "Good morning. I'd like to make a reservation."</p>
+            </div>
+            
+            <div class="dialog-message receptionist">
+              <p><strong>Receptionist:</strong> "Of course. May I have your ID, email address, and phone number, please?"</p>
+            </div>
+            <div class="dialog-response">
+              <input type="text" class="dialog-input email-input" placeholder="Provide your details (as the guest)...">
+            </div>
+
+            <div class="dialog-message receptionist" style="margin-top: 1rem;">
+              <p><strong>Receptionist:</strong> "Thank you. Here is your key card. Do you have any questions?"</p>
+            </div>
+            <div class="dialog-response">
+              <input type="text" class="dialog-input email-input" placeholder="Ask for the Wi-Fi password...">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-footer" style="margin-top: 1rem;">
+        <button class="btn btn-primary" id="completeUnit1Btn" data-activity="3" type="button">Finalizar Unit 1</button>
+        <p class="sentence-feedback" id="unit1Feedback"></p>
+      </div>
     </section>
   </main>
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/unit1.js"></script>
 </body>
 </html>

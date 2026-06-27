@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 4: Speaking Practice - NV3 Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <header class="unit-header">
+            <a href="index.html" class="btn-back">← Back to Dashboard</a>
+            <h1>Activity 4: Speaking Practice</h1>
+            <p class="activity-subtitle">Practice your pronunciation with real hotel scenarios</p>
+        </header>
+
+        <!-- CONTEÚDO DA ATIVIDADE -->
+        <main class="activity-main">
+            
+            <!-- SEÇÃO DE INSTRUÇÃO -->
+            <section class="instruction-section">
+                <div class="instruction-card">
+                    <h2>How to Practice</h2>
+                    <ol class="instruction-list">
+                        <li>Read the phrase in the box below</li>
+                        <li>Click the microphone button to start recording</li>
+                        <li>Speak clearly and naturally</li>
+                        <li>Click the microphone button again to stop recording</li>
+                        <li>Receive instant feedback on your pronunciation</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- SEÇÃO DE PRÁTICA -->
+            <section class="speaking-section">
+                
+                <!-- PHRASE CARD -->
+                <div class="phrase-card">
+                    <h3>Current Phrase:</h3>
+                    <div class="phrase-display">
+                        <p id="currentPhrase">Click Start to begin</p>
+                    </div>
+                    <div class="phrase-controls">
+                        <button id="startPracticeBtn" class="btn-primary">Start Practice</button>
+                        <button id="nextPhraseBtn" class="btn-secondary" disabled>Next Phrase</button>
+                    </div>
+                </div>
+
+                <!-- RECORDING SECTION -->
+                <div class="recording-section">
+                    <div class="microphone-container">
+                        <button id="microphoneBtn" class="btn-microphone" title="Click to record">
+                            <span class="mic-icon">🎤</span>
+                            <p class="mic-text">Click to Record</p>
+                        </button>
+                        <div class="recording-status" id="recordingStatus"></div>
+                    </div>
+                </div>
+
+                <!-- TRANSCRIPTION DISPLAY -->
+                <div class="transcription-section" id="transcriptionSection" style="display: none;">
+                    <h4>What I Heard:</h4>
+                    <div class="transcription-box" id="transcriptionBox">
+                        <!-- Transcrição será exibida aqui com palavras coloridas -->
+                    </div>
+                </div>
+
+                <!-- SCORE DISPLAY -->
+                <div class="score-section" id="scoreSection" style="display: none;">
+                    <div class="score-card">
+                        <h4>Your Score:</h4>
+                        <div class="score-display">
+                            <span class="score-number" id="scoreNumber">0</span>
+                            <span class="score-label">/100</span>
+                        </div>
+                        <p class="score-message" id="scoreMessage"></p>
+                    </div>
+                </div>
+
+                <!-- ERROR ANALYSIS SECTION -->
+                <div class="error-analysis-section" id="errorAnalysisSection" style="display: none;">
+                    <h4>Word Analysis</h4>
+                    <div class="errors-container" id="errorsContainer">
+                        <!-- Análise de palavras erradas será renderizada aqui -->
+                    </div>
+                </div>
+
+                <!-- PRONUNCIATION TIPS SECTION -->
+                <div class="pronunciation-tips-section" id="pronunciationTipsSection" style="display: none;">
+                    <h4>Pronunciation Tips</h4>
+                    <div class="tips-container" id="tipsContainer">
+                        <!-- Dicas de pronúncia serão renderizadas aqui -->
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- PROGRESS SECTION -->
+            <section class="progress-section">
+                <div class="progress-card">
+                    <h4>Progress:</h4>
+                    <div class="progress-info">
+                        <span id="phraseCounter">Phrase 1 of 8</span>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 12.5%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUBMIT SECTION -->
+            <section class="submit-section">
+                <button id="submitActivityBtn" class="btn-submit" disabled>Submit Activity</button>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="activity4.js"></script>
+</body>
+</html>
