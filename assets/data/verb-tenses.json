@@ -1,0 +1,630 @@
+{
+  "verbTenses": [
+    {
+      "id": "simple-present",
+      "title": "Simple Present",
+      "mainIdea": "Não significa necessariamente 'agora'. Significa que a ação faz parte da realidade do sujeito.",
+      "uses": [
+        {
+          "title": "Hábitos",
+          "examples": ["I drink coffee every morning.", "She goes to school daily."]
+        },
+        {
+          "title": "Rotina",
+          "examples": ["I wake up at 6.", "She goes to school."]
+        },
+        {
+          "title": "Fatos e verdades universais",
+          "examples": ["Water boils at 100°C.", "The Earth goes around the Sun."]
+        },
+        {
+          "title": "Estados",
+          "examples": ["I love music.", "She knows the answer."]
+        },
+        {
+          "title": "Opiniões",
+          "examples": ["I think he is wrong.", "She believes in hard work."]
+        }
+      ],
+      "structure": {
+        "affirmative": {
+          "description": "Subject + Verb",
+          "examples": [
+            "I work.",
+            "You study.",
+            "He works.",
+            "She studies.",
+            "It rains.",
+            "They play."
+          ],
+          "note": "Observe o famoso S da terceira pessoa singular."
+        },
+        "negative": {
+          "description": "Subject + do not/does not + Verb",
+          "examples": [
+            "I do not like coffee.",
+            "She does not like coffee.",
+            "He doesn't work here.",
+            "They don't play football."
+          ],
+          "note": "Depois do DOES, o verbo volta ao infinitivo. Errado: She doesn't likes. Certo: She doesn't like."
+        },
+        "question": {
+          "description": "Do/Does + Subject + Verb?",
+          "examples": [
+            "Do you work?",
+            "Does she work?",
+            "Do they like ice cream?",
+            "Does he study English?"
+          ]
+        }
+      },
+      "sFormation": {
+        "general": ["work → works", "play → plays", "eat → eats"],
+        "ch_sh_s_x_z_o": ["watch → watches", "go → goes", "wash → washes", "fix → fixes"],
+        "consonant_y": ["study → studies", "carry → carries", "cry → cries"]
+      },
+      "commonWords": ["always", "usually", "often", "sometimes", "never", "every day", "every week"],
+      "commonError": {
+        "portuguese": "Estou morando em Maceió.",
+        "wrong": "I am living in Maceió.",
+        "correct": "I live in Maceió.",
+        "explanation": "Porque 'morar' costuma representar estado, não ação em progresso."
+      },
+      "mentalImage": "Uma ação como um ponto ou fato (rotina, evento, verdade).",
+      "keyQuestion": "Isso faz parte da rotina ou da realidade?"
+    },
+    {
+      "id": "present-continuous",
+      "title": "Present Continuous",
+      "mainIdea": "Uma ação em andamento. A câmera está filmando exatamente esse momento.",
+      "uses": [
+        {
+          "title": "Agora",
+          "examples": ["I am eating.", "She is sleeping."]
+        },
+        {
+          "title": "Situação temporária",
+          "examples": ["I'm living with my parents.", "He's working in a cafe this summer."]
+        },
+        {
+          "title": "Mudanças e progressão",
+          "examples": ["The weather is getting colder.", "Your English is improving."]
+        },
+        {
+          "title": "Planos futuros (combinados)",
+          "examples": ["I'm meeting John tomorrow.", "We're traveling next week."]
+        }
+      ],
+      "structure": {
+        "affirmative": {
+          "description": "Subject + am/is/are + Verb + ing",
+          "examples": [
+            "I am studying.",
+            "She is sleeping.",
+            "They are playing.",
+            "He is working.",
+            "You are reading."
+          ]
+        },
+        "negative": {
+          "description": "Subject + am/is/are + not + Verb + ing",
+          "examples": [
+            "I am not studying.",
+            "She is not sleeping.",
+            "They are not playing."
+          ]
+        },
+        "question": {
+          "description": "Am/Is/Are + Subject + Verb + ing?",
+          "examples": [
+            "Are you studying?",
+            "Is she sleeping?",
+            "Are they playing?"
+          ]
+        }
+      },
+      "ingFormation": {
+        "general": ["work → working", "study → studying", "play → playing"],
+        "e_ending": ["make → making", "write → writing", "come → coming"],
+        "cvc_pattern": ["run → running", "sit → sitting", "stop → stopping"]
+      },
+      "commonWords": ["now", "right now", "at the moment", "currently", "today", "this week"],
+      "commonError": {
+        "wrong": "I am knowing.",
+        "correct": "I know.",
+        "explanation": "Know é verbo de estado (stative verb). Nunca use com present continuous."
+      },
+      "stativeVerbs": ["know", "love", "like", "hate", "want", "need", "prefer", "believe", "understand", "see", "hear"],
+      "mentalImage": "Uma ação vista 'por dentro', em andamento, como um vídeo.",
+      "keyQuestion": "Está acontecendo agora?"
+    },
+    {
+      "id": "present-perfect",
+      "title": "Present Perfect",
+      "mainIdea": "Existe uma ligação entre o passado e o presente. A ação aconteceu antes, mas o resultado ainda importa agora.",
+      "note": "Esse é o tempo que mais gera dúvidas porque ele não existe exatamente em português.",
+      "uses": [
+        {
+          "title": "Experiência (não importa quando)",
+          "examples": ["I have been to Japan.", "Have you ever traveled abroad?"]
+        },
+        {
+          "title": "Resultado que ainda importa",
+          "examples": ["I have lost my keys (ainda estou sem elas).", "She has finished the project."]
+        },
+        {
+          "title": "Ação que começou e continua",
+          "examples": ["I have lived here for ten years.", "She has worked here since 2018."]
+        }
+      ],
+      "structure": {
+        "affirmative": {
+          "description": "Subject + have/has + Past Participle",
+          "examples": [
+            "I have finished.",
+            "She has arrived.",
+            "They have visited.",
+            "We have lived here."
+          ]
+        },
+        "negative": {
+          "description": "Subject + have/has + not + Past Participle",
+          "examples": [
+            "I have not finished.",
+            "She has not arrived.",
+            "They haven't visited."
+          ]
+        },
+        "question": {
+          "description": "Have/Has + Subject + Past Participle?",
+          "examples": [
+            "Have you finished?",
+            "Has she arrived?",
+            "Have they visited?"
+          ]
+        }
+      },
+      "timeMarkers": {
+        "since": ["since 2018", "since Monday", "since morning", "since she arrived"],
+        "for": ["for three years", "for two hours", "for a while", "for ages"],
+        "other": ["already", "yet", "ever", "never", "just"]
+      },
+      "sinceVsFor": {
+        "since": "Ponto inicial (when did it start?)",
+        "for": "Duração (how long?)"
+      },
+      "commonWords": {
+        "already": "I have already eaten.",
+        "yet": "Have you finished yet?",
+        "ever": "Have you ever traveled abroad?",
+        "never": "I have never seen snow."
+      },
+      "commonError": {
+        "wrong": "I have gone to Japan yesterday.",
+        "correct": "I went to Japan yesterday.",
+        "explanation": "Nunca use present perfect com Yesterday, Last week, etc. Use simple past."
+      },
+      "difference": {
+        "haveRead": {
+          "example": "I have read the book.",
+          "meaning": "Resultado: o livro está lido."
+        },
+        "haveBeenReading": {
+          "example": "I have been reading the book.",
+          "meaning": "Ação que continua: ainda estou lendo."
+        }
+      },
+      "mentalImage": "Uma ação vista pelo seu resultado ou pela conexão entre dois momentos no tempo.",
+      "keyQuestion": "O passado ainda tem efeito no presente?"
+    },
+    {
+      "id": "present-perfect-continuous",
+      "title": "Present Perfect Continuous",
+      "mainIdea": "A ação começou antes, continua agora, e enfatiza a DURAÇÃO.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + have/has + been + Verb + ing",
+          "examples": [
+            "I have been studying.",
+            "She has been working.",
+            "They have been waiting."
+          ]
+        },
+        "negative": {
+          "description": "Subject + have/has + not + been + Verb + ing",
+          "examples": [
+            "I have not been studying.",
+            "She hasn't been working."
+          ]
+        },
+        "question": {
+          "description": "Have/Has + Subject + been + Verb + ing?",
+          "examples": [
+            "Have you been studying?",
+            "Has she been working?"
+          ]
+        }
+      },
+      "example": "I've been waiting for two hours. (Ainda estou esperando.)",
+      "emphasis": ["tempo", "duração", "continuidade"],
+      "comparison": {
+        "presentPerfect": {
+          "example": "I have read the book.",
+          "focus": "Resultado"
+        },
+        "presentPerfectContinuous": {
+          "example": "I have been reading the book.",
+          "focus": "Ação que continua"
+        }
+      },
+      "mentalImage": "Uma ação em andamento cuja duração é o foco.",
+      "keyQuestion": "Há quanto tempo isso vem acontecendo?"
+    },
+    {
+      "id": "simple-past",
+      "title": "Simple Past",
+      "mainIdea": "A ação começou, terminou e acabou. Não há conexão com o presente.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + Past Verb",
+          "examples": [
+            "I worked.",
+            "She traveled.",
+            "He watched.",
+            "They played."
+          ]
+        },
+        "negative": {
+          "description": "Subject + did not/didn't + Verb (infinitive)",
+          "examples": [
+            "I didn't go.",
+            "She didn't work.",
+            "He didn't watch."
+          ],
+          "note": "Errado: Did you went? Certo: Did you go?"
+        },
+        "question": {
+          "description": "Did + Subject + Verb?",
+          "examples": [
+            "Did you go?",
+            "Did she work?",
+            "Did they watch?"
+          ]
+        }
+      },
+      "regularVerbs": {
+        "general": ["work → worked", "play → played", "study → studied"],
+        "e_ending": ["live → lived", "love → loved"],
+        "consonant_y": ["study → studied", "carry → carried"],
+        "CVC_pattern": ["stop → stopped", "plan → planned"]
+      },
+      "irregularVerbs": [
+        "go → went",
+        "see → saw",
+        "eat → ate",
+        "take → took",
+        "come → came",
+        "have → had",
+        "do → did",
+        "be → was/were",
+        "give → gave",
+        "find → found"
+      ],
+      "timeMarkers": ["yesterday", "last week", "last month", "ago", "in 2020", "when I was young"],
+      "mentalImage": "Uma ação como um ponto ou fato (rotina, evento, verdade).",
+      "keyQuestion": "A ação aconteceu e terminou?"
+    },
+    {
+      "id": "past-continuous",
+      "title": "Past Continuous",
+      "mainIdea": "Uma ação estava acontecendo. Outra interrompeu.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + was/were + Verb + ing",
+          "examples": [
+            "I was sleeping.",
+            "She was cooking.",
+            "They were studying.",
+            "We were playing."
+          ]
+        },
+        "negative": {
+          "description": "Subject + was/were + not + Verb + ing",
+          "examples": [
+            "I was not sleeping.",
+            "She wasn't cooking."
+          ]
+        },
+        "question": {
+          "description": "Was/Were + Subject + Verb + ing?",
+          "examples": [
+            "Was she cooking?",
+            "Were they studying?"
+          ]
+        }
+      },
+      "classicExample": "I was studying when my mother arrived.",
+      "uses": [
+        {
+          "title": "Interrupção",
+          "example": "I was sleeping when you called."
+        },
+        {
+          "title": "Duas ações simultâneas",
+          "example": "I was cooking while she was cleaning."
+        }
+      ],
+      "mentalImage": "Uma ação vista 'por dentro', em andamento, como um vídeo.",
+      "keyQuestion": "O que estava acontecendo naquele momento?"
+    },
+    {
+      "id": "past-perfect",
+      "title": "Past Perfect",
+      "mainIdea": "O passado do passado. Mostra qual ação aconteceu PRIMEIRO no passado.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + had + Past Participle",
+          "examples": [
+            "I had finished.",
+            "She had left.",
+            "They had eaten."
+          ]
+        },
+        "negative": {
+          "description": "Subject + had + not + Past Participle",
+          "examples": [
+            "I had not finished.",
+            "She hadn't left."
+          ]
+        },
+        "question": {
+          "description": "Had + Subject + Past Participle?",
+          "examples": [
+            "Had you finished?",
+            "Had she left?"
+          ]
+        }
+      },
+      "example": "I had finished before he arrived.",
+      "timeline": {
+        "first": "finish",
+        "then": "arrive",
+        "now": "present"
+      },
+      "commonMarkers": ["before", "after", "already", "by the time"],
+      "mentalImage": "Uma ação vista pelo seu resultado ou pela conexão entre dois momentos no tempo.",
+      "keyQuestion": "O que aconteceu primeiro no passado?"
+    },
+    {
+      "id": "past-perfect-continuous",
+      "title": "Past Perfect Continuous",
+      "mainIdea": "Duração ANTES de outro momento passado.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + had + been + Verb + ing",
+          "examples": [
+            "I had been working.",
+            "She had been studying.",
+            "They had been living."
+          ]
+        }
+      },
+      "example": "I had been working for five hours before lunch.",
+      "emphasis": [
+        "tempo acumulado",
+        "continuidade antes de uma interrupção",
+        "quanto tempo aquilo vinha acontecendo"
+      ],
+      "mentalImage": "Uma ação em andamento cuja duração é o foco.",
+      "keyQuestion": "Há quanto tempo aquilo vinha acontecendo antes de outro evento?"
+    },
+    {
+      "id": "simple-future",
+      "title": "Simple Future",
+      "mainIdea": "O que vai acontecer.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + will + Verb",
+          "examples": [
+            "I will travel.",
+            "She will help.",
+            "They will arrive."
+          ]
+        },
+        "negative": {
+          "description": "Subject + will not/won't + Verb",
+          "examples": [
+            "I won't travel.",
+            "She won't help."
+          ]
+        },
+        "question": {
+          "description": "Will + Subject + Verb?",
+          "examples": [
+            "Will you travel?",
+            "Will she help?"
+          ]
+        }
+      },
+      "uses": [
+        {
+          "title": "Decisão imediata",
+          "example": "I'll help you right now."
+        },
+        {
+          "title": "Previsão",
+          "example": "It will rain tomorrow."
+        },
+        {
+          "title": "Promessa",
+          "example": "I'll call you tonight."
+        },
+        {
+          "title": "Oferecimento",
+          "example": "I'll open the door for you."
+        }
+      ],
+      "mentalImage": "Uma ação como um ponto ou fato no futuro.",
+      "keyQuestion": "O que vai acontecer?"
+    },
+    {
+      "id": "future-continuous",
+      "title": "Future Continuous",
+      "mainIdea": "A ação estará acontecendo em um momento futuro específico.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + will + be + Verb + ing",
+          "examples": [
+            "I will be studying.",
+            "She will be working.",
+            "They will be waiting."
+          ]
+        }
+      },
+      "example": "I will be studying at 8 PM.",
+      "tip": "Imagine uma câmera. Às oito. Você estará estudando.",
+      "mentalImage": "Uma ação vista 'por dentro', em andamento, em um momento futuro.",
+      "keyQuestion": "O que estará acontecendo em determinado momento?"
+    },
+    {
+      "id": "future-perfect",
+      "title": "Future Perfect",
+      "mainIdea": "Quando outro momento chegar, a ação já terá terminado.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + will + have + Past Participle",
+          "examples": [
+            "I will have finished.",
+            "She will have arrived.",
+            "They will have completed."
+          ]
+        }
+      },
+      "example": "By next Friday, I will have finished.",
+      "commonMarkers": ["by", "before", "by then"],
+      "mentalImage": "Uma ação vista pelo seu resultado em um momento futuro.",
+      "keyQuestion": "O que já terá sido concluído até determinado momento?"
+    },
+    {
+      "id": "future-perfect-continuous",
+      "title": "Future Perfect Continuous",
+      "mainIdea": "O mais avançado. Quando chegar determinado momento, a ação ainda estará acontecendo E já terá acumulado uma duração.",
+      "structure": {
+        "affirmative": {
+          "description": "Subject + will + have + been + Verb + ing",
+          "examples": [
+            "I will have been teaching.",
+            "She will have been working.",
+            "They will have been living."
+          ]
+        }
+      },
+      "example": "By next year, I will have been teaching for ten years.",
+      "observe": "Ainda estarei ensinando. Mas já fará dez anos.",
+      "emphasis": [
+        "duração acumulada",
+        "ação que continua",
+        "até um momento futuro"
+      ],
+      "mentalImage": "Uma ação em andamento cuja duração é o foco em um momento futuro.",
+      "keyQuestion": "Há quanto tempo algo estará acontecendo até um momento futuro?"
+    }
+  ],
+  "summary": {
+    "title": "Resumo das Ideias Centrais",
+    "tenses": [
+      {
+        "tense": "Simple Present",
+        "question": "Isso faz parte da rotina ou da realidade?"
+      },
+      {
+        "tense": "Present Continuous",
+        "question": "Está acontecendo agora?"
+      },
+      {
+        "tense": "Present Perfect",
+        "question": "O passado ainda tem efeito no presente?"
+      },
+      {
+        "tense": "Present Perfect Continuous",
+        "question": "Há quanto tempo isso vem acontecendo?"
+      },
+      {
+        "tense": "Simple Past",
+        "question": "A ação aconteceu e terminou?"
+      },
+      {
+        "tense": "Past Continuous",
+        "question": "O que estava acontecendo naquele momento?"
+      },
+      {
+        "tense": "Past Perfect",
+        "question": "O que aconteceu primeiro no passado?"
+      },
+      {
+        "tense": "Past Perfect Continuous",
+        "question": "Há quanto tempo aquilo vinha acontecendo antes de outro evento?"
+      },
+      {
+        "tense": "Simple Future",
+        "question": "O que vai acontecer?"
+      },
+      {
+        "tense": "Future Continuous",
+        "question": "O que estará acontecendo em determinado momento?"
+      },
+      {
+        "tense": "Future Perfect",
+        "question": "O que já terá sido concluído até determinado momento?"
+      },
+      {
+        "tense": "Future Perfect Continuous",
+        "question": "Há quanto tempo algo estará acontecendo até um momento futuro?"
+      }
+    ]
+  },
+  "mentalImages": {
+    "title": "Um Detalhe Importante que Facilita o Entendimento",
+    "description": "Em vez de decorar fórmulas, pense na imagem mental de cada aspecto:",
+    "aspects": [
+      {
+        "aspect": "Simple",
+        "image": "Uma ação como um ponto ou fato (rotina, evento, verdade)."
+      },
+      {
+        "aspect": "Continuous",
+        "image": "Uma ação vista 'por dentro', em andamento, como um vídeo."
+      },
+      {
+        "aspect": "Perfect",
+        "image": "Uma ação vista pelo seu resultado ou pela conexão entre dois momentos no tempo."
+      },
+      {
+        "aspect": "Perfect Continuous",
+        "image": "Uma ação em andamento cuja duração é o foco."
+      }
+    ],
+    "conclusion": "Essa forma de pensar torna muito mais fácil decidir qual tempo verbal usar do que tentar memorizar apenas regras."
+  },
+  "introduction": {
+    "title": "Antes de começar: entenda a lógica dos tempos verbais",
+    "content": "O inglês não pensa exatamente em tempo (time) como o português. Ele pensa em duas coisas:",
+    "dimensions": [
+      {
+        "question": "Quando a ação acontece?",
+        "options": ["Present", "Past", "Future"]
+      },
+      {
+        "question": "Como essa ação acontece? (Aspect)",
+        "options": ["Simple", "Continuous", "Perfect", "Perfect Continuous"]
+      }
+    ],
+    "formula": "Tempo + Aspecto = Tempo Verbal",
+    "example": {
+      "tense": "Present + Continuous",
+      "sentence": "I am studying.",
+      "meaning": "A ação acontece agora e está em progresso."
+    }
+  }
+}
