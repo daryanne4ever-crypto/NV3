@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NLE Level 3 | Grammar</title>
+  <title>NLE Level 3 | Grammar Hub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -14,6 +14,7 @@
     <a class="brand" href="index.html"><span class="brand__mark">NV3</span><span><strong>NLE Level 3</strong><small>English B1 Platform</small></span></a>
     <nav class="nav-list">
       <a class="nav-link" href="index.html">Dashboard</a>
+      <a class="nav-link" href="revision.html">Revision</a>
       <a class="nav-link" href="grammar.html">Grammar</a>
       <a class="nav-link" href="vocabulary.html">Vocabulary</a>
       <a class="nav-link" href="listening.html">Listening</a>
@@ -21,12 +22,24 @@
       <a class="nav-link" href="reading.html">Reading</a>
       <a class="nav-link" href="writing.html">Writing</a>
       <a class="nav-link" href="professor.html">Professor</a>
+      <a class="nav-link" href="unit1.html">Unit 1</a>
     </nav>
-    <div class="sidebar-card"><span class="eyebrow">NV3</span><strong>Modo estudo</strong><small>Aprenda, pratique e acompanhe seu progresso.</small></div>
+    <div class="sidebar-card"><span class="eyebrow">Grammar</span><strong>Building Blocks</strong><small>Escolha um bloco, escute frases e pratique pronúncia.</small></div>
   </aside>
+
   <main class="app-shell">
     <header class="hero">
       <div>
+        <span class="eyebrow">Grammar Hub</span>
+        <h1>English Grammar Building Blocks</h1>
+        <p>Um hub central organizado por tempos verbais, estruturas e morfologia. Clique em um bloco para carregar o módulo, escutar exemplos e gravar cinco frases.</p>
+      </div>
+      <a class="btn btn-primary" href="#grammarModulePanel">Open selected module</a>
+    </header>
+
+    <section class="card grammar-hub-section">
+      <div class="section-heading"><div><span class="eyebrow">A) Verb Tenses</span><h2>The 12 Foundations</h2></div></div>
+      <div class="grammar-block-grid" data-grammar-group="verb-tenses"></div>
         <span class="eyebrow">NLE Level 3</span>
         <h1>English Grammar Hub</h1>
         <p>Explore os 12 tempos verbais, Active Voice, Passive Voice, comparativos, superlativos, afixos, prefixos e sufixos.</p>
@@ -251,7 +264,16 @@
         </ul>
       </article>
     </section>
+
+    <section class="card grammar-hub-section">
+      <div class="section-heading"><div><span class="eyebrow">B) Structures & Morphology</span><h2>Advanced building blocks</h2></div></div>
+      <div class="grammar-block-grid" data-grammar-group="structures"></div>
+    </section>
+
+    <section id="grammarModulePanel" class="card grammar-module-panel" aria-live="polite"></section>
   </main>
+  <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/grammar.js"></script>
 </body>
 </html>
