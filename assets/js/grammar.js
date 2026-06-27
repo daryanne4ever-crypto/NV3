@@ -1,21 +1,21 @@
 // Grammar Hub modules: topic loading, listening and pronunciation practice.
 const grammarModules = [
-  ['verb-tenses', 'Simple Present', 'Subject + verb (+ s/es)', 'I study English every day.', ['I study English every morning.', 'She works at a hotel.', 'They play tennis on Sundays.', 'Water boils at one hundred degrees.', 'The train leaves at eight.']],
-  ['verb-tenses', 'Present Continuous', 'am/is/are + verb + ing', 'I am studying English now.', ['I am studying English now.', 'She is cooking dinner.', 'They are waiting in the lobby.', 'We are learning new grammar.', 'He is reading a book.']],
-  ['verb-tenses', 'Present Perfect', 'have/has + past participle', 'I have studied English before.', ['I have visited Paris.', 'She has finished the lesson.', 'We have lived here for years.', 'They have already eaten.', 'Have you ever traveled abroad?']],
-  ['verb-tenses', 'Present Perfect Continuous', 'have/has been + verb + ing', 'I have been studying for three hours.', ['I have been studying for three hours.', 'She has been working all day.', 'They have been waiting since noon.', 'We have been practicing pronunciation.', 'He has been learning English online.']],
-  ['verb-tenses', 'Simple Past', 'Subject + verb in the past', 'I studied English yesterday.', ['I visited London last year.', 'She played soccer yesterday.', 'They arrived late.', 'We watched a movie.', 'He took a taxi to the hotel.']],
-  ['verb-tenses', 'Past Continuous', 'was/were + verb + ing', 'I was studying when you called.', ['I was sleeping when you called.', 'She was cooking dinner.', 'They were studying together.', 'We were waiting for the bus.', 'He was reading at eight.']],
-  ['verb-tenses', 'Past Perfect', 'had + past participle', 'I had studied before the test.', ['I had finished before he arrived.', 'She had left the hotel.', 'They had eaten before the class.', 'We had practiced the dialogue.', 'He had booked the room online.']],
-  ['verb-tenses', 'Past Perfect Continuous', 'had been + verb + ing', 'I had been studying for two hours.', ['I had been working for five hours.', 'She had been studying before the exam.', 'They had been waiting for a taxi.', 'We had been practicing all morning.', 'He had been living in Maceió.']],
-  ['verb-tenses', 'Simple Future', 'will + verb', 'I will study English tomorrow.', ['I will travel tomorrow.', 'She will help you.', 'They will arrive soon.', 'We will practice later.', 'He will call the receptionist.']],
-  ['verb-tenses', 'Future Continuous', 'will be + verb + ing', 'I will be studying at eight.', ['I will be studying at eight.', 'She will be working tomorrow morning.', 'They will be waiting at the airport.', 'We will be practicing pronunciation.', 'He will be staying at the hotel.']],
-  ['verb-tenses', 'Future Perfect', 'will have + past participle', 'I will have studied by Friday.', ['I will have finished by Friday.', 'She will have arrived by six.', 'They will have completed the activity.', 'We will have studied all units.', 'He will have checked in by noon.']],
-  ['verb-tenses', 'Future Perfect Continuous', 'will have been + verb + ing', 'I will have been studying for three hours.', ['I will have been teaching for ten years.', 'She will have been working all day.', 'They will have been studying for hours.', 'We will have been practicing since morning.', 'He will have been staying here for a week.']],
-  ['structures', 'Active Voice', 'Subject + verb + object', 'The teacher explains the lesson.', ['The teacher explains the lesson.', 'The student writes an email.', 'The receptionist gives the key card.', 'The chef prepares breakfast.', 'The guest books a room.']],
-  ['structures', 'Passive Voice', 'Object + be + past participle', 'The lesson is explained by the teacher.', ['The lesson is explained by the teacher.', 'The email is written by the student.', 'The key card is given by the receptionist.', 'Breakfast is prepared by the chef.', 'A room is booked by the guest.']],
-  ['structures', 'Comparatives & Superlatives', 'more/most or -er/-est', 'This room is bigger than that room.', ['This room is bigger than that room.', 'English is more interesting now.', 'This is the best answer.', 'The hotel is cheaper than the resort.', 'She is the most confident student.']],
-  ['structures', 'Prefixes, Suffixes & Affixes', 'prefix + root + suffix', 'Happy can become unhappy and happiness.', ['Happy can become unhappy.', 'Care can become careful.', 'Quick can become quickly.', 'Teach can become teacher.', 'Possible can become impossible.']],
+  ['verb-tenses', 'Simple Present', 'Subject + verb (+ s/es)', 'I study English every day.', ['I study English every morning.', 'She works at a hotel.', 'They play tennis on Sundays.', 'Water boils at 100 degrees.', 'The sun rises in the east.']],
+  ['verb-tenses', 'Present Continuous', 'am/is/are + verb + ing', 'I am studying English now.', ['I am studying English now.', 'She is cooking dinner.', 'They are waiting in the lobby.', 'We are leaving tomorrow.', 'He is running in the park.']],
+  ['verb-tenses', 'Present Perfect', 'have/has + past participle', 'I have studied English before.', ['I have visited Paris.', 'She has finished the lesson.', 'We have lived here for years.', 'They have already eaten.', 'He has never been late.']],
+  ['verb-tenses', 'Present Perfect Continuous', 'have/has been + verb + ing', 'I have been studying for three hours.', ['I have been studying for three hours.', 'She has been working all day.', 'They have been living here since 2020.', 'We have been waiting for you.', 'He has been reading all morning.']],
+  ['verb-tenses', 'Simple Past', 'Subject + verb in the past', 'I studied English yesterday.', ['I visited London last year.', 'She played soccer yesterday.', 'They arrived late.', 'We watched a movie last night.', 'He worked here for five years.']],
+  ['verb-tenses', 'Past Continuous', 'was/were + verb + ing', 'I was studying when you called.', ['I was sleeping when you called.', 'She was cooking dinner.', 'They were studying together.', 'We were playing football.', 'He was reading a book.']],
+  ['verb-tenses', 'Past Perfect', 'had + past participle', 'I had studied before the test.', ['I had finished before he arrived.', 'She had left the hotel.', 'They had eaten before the class.', 'We had completed the project.', 'He had already gone home.']],
+  ['verb-tenses', 'Past Perfect Continuous', 'had been + verb + ing', 'I had been studying for two hours.', ['I had been working for five hours.', 'She had been studying before the exam.', 'They had been living here for ten years.', 'We had been waiting for hours.', 'He had been driving all night.']],
+  ['verb-tenses', 'Simple Future', 'will + verb', 'I will study English tomorrow.', ['I will travel tomorrow.', 'She will help you.', 'They will arrive soon.', 'We will practice later.', 'He will call you tonight.']],
+  ['verb-tenses', 'Future Continuous', 'will be + verb + ing', 'I will be studying at eight.', ['I will be studying at eight.', 'She will be working tomorrow morning.', 'They will be waiting at the station.', 'We will be playing tennis.', 'He will be sleeping when you arrive.']],
+  ['verb-tenses', 'Future Perfect', 'will have + past participle', 'I will have studied by Friday.', ['I will have finished by Friday.', 'She will have arrived by six.', 'They will have completed the project.', 'We will have learned everything.', 'He will have left by then.']],
+  ['verb-tenses', 'Future Perfect Continuous', 'will have been + verb + ing', 'I will have been studying for three hours.', ['I will have been teaching for ten years.', 'She will have been working here for five years.', 'They will have been living here for twenty years.', 'We will have been learning English.', 'He will have been driving all day.']],
+  ['structures', 'Active Voice', 'Subject + verb + object', 'The teacher explains the lesson.', ['The teacher explains the lesson.', 'The student writes an email.', 'The receptionist gives the key.', 'The manager makes decisions.', 'The chef prepares the meal.']],
+  ['structures', 'Passive Voice', 'Object + be + past participle', 'The lesson is explained by the teacher.', ['The lesson is explained by the teacher.', 'The email is written by the student.', 'The key is given by the receptionist.', 'Decisions are made by the manager.', 'The meal is prepared by the chef.']],
+  ['structures', 'Comparatives & Superlatives', 'more/most or -er/-est', 'This room is bigger than that room.', ['This room is bigger than that room.', 'English is more interesting now.', 'This is the largest building.', 'She is the smartest student.', 'That option is less expensive.']],
+  ['structures', 'Prefixes, Suffixes & Affixes', 'prefix + root + suffix', 'Happy can become unhappy and happiness.', ['Happy can become unhappy.', 'Care can become careful.', 'Quick can become quickly.', 'Possible becomes impossible.', 'Agree becomes disagreement.']],
 ].map(([group, title, structure, example, phrases]) => ({ id: title.toLowerCase().replaceAll(' & ', '-').replaceAll(', ', '-').replaceAll(' ', '-'), group, title, structure, example, phrases }));
 
 let activeModule = grammarModules[0];
@@ -101,9 +101,65 @@ function recordPhrase() {
   feedback.textContent = 'Recording... speak now.';
 }
 
+// Grammar Hub Router — Manages content visibility and navigation without page reloads
+
+/**
+ * showTopic(topicId)
+ * Shows a specific grammar topic by ID and hides all others
+ * Updates URL hash for browser history support
+ */
+function showTopic(topicId) {
+  // 1. Hide all grammar topics and remove active class
+  document.querySelectorAll('.grammar-topic').forEach(el => {
+    el.classList.remove('active');
+    el.style.display = 'none';
+  });
+  
+  // 2. Show the selected topic with active class
+  const selected = document.getElementById(topicId);
+  if (selected) {
+    selected.classList.add('active');
+    selected.style.display = 'block';
+    
+    // Smooth scroll to the selected topic
+    selected.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  
+  // 3. Update URL hash for browser history and bookmarking
+  window.location.hash = topicId;
+}
+
+/**
+ * initializeGrammarRouter()
+ * Initializes the router on page load
+ * Checks for hash in URL and shows corresponding topic
+ */
+function initializeGrammarRouter() {
+  const hash = window.location.hash.substring(1);
+  
+  // If there's a hash and it corresponds to a valid topic, show it
+  if (hash && document.getElementById(hash)) {
+    showTopic(hash);
+  }
+}
+
+/**
+ * Handle hash changes (browser back/forward buttons)
+ * Automatically update displayed topic when hash changes
+ */
+window.addEventListener('hashchange', () => {
+  const hash = window.location.hash.substring(1);
+  if (hash) {
+    showTopic(hash);
+  }
+});
+
 function bindGrammarHub() {
   renderGrammarButtons();
   renderModule(activeModule);
+
+  // Initialize router after DOM is ready
+  setTimeout(initializeGrammarRouter, 100);
 
   document.addEventListener('click', (event) => {
     const topicButton = event.target.closest('[data-topic-id]');
