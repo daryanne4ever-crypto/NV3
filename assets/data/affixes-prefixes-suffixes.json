@@ -1,0 +1,119 @@
+{
+  "title": "Prefixes, Suffixes and Affixes",
+  "subtitle": "Prefixos, Sufixos e Afixos",
+  "introduction": {
+    "definition": "Prefixos e sufixos são partes adicionadas às palavras raiz (root words) para criar novas palavras com novos significados.",
+    "structure": "Prefix + Root + Suffix = New Word",
+    "example": "un + happy + ness = unhappiness",
+    "note": "Morfologia é o estudo de como as palavras são formadas."
+  },
+  "basicConcepts": {
+    "rootWord": {"name": "Root Word (Palavra Raiz)", "definition": "A forma básica de uma palavra, sem modificações", "examples": ["happy", "teach", "possible", "write"]},
+    "prefix": {"name": "Prefix (Prefixo)", "definition": "Parte adicionada ANTES da palavra raiz", "structure": "Prefix + Root Word", "examples": ["unhappy", "retell", "impossible", "rewrite"]},
+    "suffix": {"name": "Suffix (Sufixo)", "definition": "Parte adicionada DEPOIS da palavra raiz", "structure": "Root Word + Suffix", "examples": ["happily", "teacher", "possible + ly = possibly", "writing"]},
+    "affix": {"name": "Affix (Afixo)", "definition": "Termo genérico para qualquer modificação (prefixo ou sufixo)", "note": "Prefix e suffix são tipos de affix"}
+  },
+  "derivation": {"name": "Derivação", "definition": "Processo de criar novas palavras adicionando afixos", "meaning": "Muda o significado ou a classe gramatical", "example": {"original": "teach (verbo)", "withSuffix": "teacher (substantivo)", "process": "teach + -er = alguém que ensina"}},
+  "negativePrefixes": {
+    "title": "Prefixos Negativos",
+    "note": "Tornam a palavra negativa ou oposta",
+    "prefixes": [
+      {"prefix": "un-", "meaning": "não, reverso", "examples": ["happy → unhappy", "lucky → unlucky", "kind → unkind", "helpful → unhelpful"]},
+      {"prefix": "im-", "meaning": "não (usado com palavras começadas em p, m, b)", "examples": ["possible → impossible", "patient → impatient", "perfect → imperfect", "mature → immature"]},
+      {"prefix": "in-", "meaning": "não (usado com outras letras)", "examples": ["correct → incorrect", "active → inactive", "complete → incomplete", "effective → ineffective"]},
+      {"prefix": "ir-", "meaning": "não (usado antes de r)", "examples": ["responsible → irresponsible", "regular → irregular", "relevant → irrelevant"]},
+      {"prefix": "il-", "meaning": "não (usado antes de l)", "examples": ["legal → illegal", "literate → illiterate", "logical → illogical"]},
+      {"prefix": "dis-", "meaning": "não, reverso", "examples": ["agree → disagree", "honest → dishonest", "appear → disappear", "like → dislike"]},
+      {"prefix": "mis-", "meaning": "errado, incorretamente", "examples": ["understand → misunderstand", "behave → misbehave", "spell → misspell", "interpret → misinterpret"]}
+    ]
+  },
+  "quantityPrefixes": {
+    "title": "Prefixos de Quantidade",
+    "prefixes": [
+      {"prefix": "pre-", "meaning": "antes", "examples": ["view → preview", "order → preorder", "school → preschool", "heat → preheat"]},
+      {"prefix": "post-", "meaning": "depois", "examples": ["modern → postmodern", "war → postwar", "graduate → postgraduate"]},
+      {"prefix": "semi-", "meaning": "meio, metade", "examples": ["circle → semicircle", "final → semifinal", "sweet → semisweet", "automatic → semiautomatic"]},
+      {"prefix": "multi-", "meaning": "muitos", "examples": ["cultural → multicultural", "media → multimedia", "national → multinational", "purpose → multipurpose"]},
+      {"prefix": "uni-", "meaning": "um", "examples": ["cycle → unicycle", "form → uniform", "verse → universe"]},
+      {"prefix": "bi-", "meaning": "dois", "examples": ["lingual → bilingual", "cycle → bicycle", "monthly → bimonthly"]},
+      {"prefix": "tri-", "meaning": "três", "examples": ["cycle → tricycle", "lingual → trilingual", "angle → triangle"]}
+    ]
+  },
+  "locationTimePrefixes": {
+    "title": "Prefixos de Localização e Tempo",
+    "location": [
+      {"prefix": "over-", "meaning": "sobre, demais", "examples": ["look → overlook", "weight → overweight", "flow → overflow", "do → overdo"]},
+      {"prefix": "under-", "meaning": "sob, debaixo de", "examples": ["ground → underground", "water → underwater", "stand → understand", "estimate → underestimate"]},
+      {"prefix": "inter-", "meaning": "entre", "examples": ["national → international", "active → interactive", "view → interview"]},
+      {"prefix": "ex-", "meaning": "para fora, antigo", "examples": ["port → export", "president → ex-president", "wife → ex-wife", "cite → excite"]}
+    ],
+    "time": [
+      {"prefix": "re-", "meaning": "novamente", "examples": ["write → rewrite", "do → redo", "make → remake", "build → rebuild"]},
+      {"prefix": "fore-", "meaning": "antes", "examples": ["see → foresee", "tell → foretell", "warn → forewarn"]}
+    ]
+  },
+  "suffixesNouns": {
+    "title": "Sufixos para Substantivos",
+    "suffixes": [
+      {"suffix": "-tion/-sion", "meaning": "Ato ou processo", "examples": ["create → creation", "educate → education", "include → inclusion", "decide → decision"]},
+      {"suffix": "-ment", "meaning": "Estado ou resultado", "examples": ["achieve → achievement", "manage → management", "develop → development", "govern → government"]},
+      {"suffix": "-ness", "meaning": "Qualidade ou estado", "examples": ["happy → happiness", "kind → kindness", "dark → darkness", "gentle → gentleness"]},
+      {"suffix": "-er/-or", "meaning": "Pessoa que faz algo", "examples": ["teach → teacher", "write → writer", "act → actor", "direct → director"]},
+      {"suffix": "-ism", "meaning": "Doutrina, sistema, prática", "examples": ["real → realism", "social → socialism", "capital → capitalism", "ideal → idealism"]},
+      {"suffix": "-ist", "meaning": "Pessoa que pratica algo", "examples": ["piano → pianist", "social → socialist", "art → artist", "science → scientist"]},
+      {"suffix": "-ity/-ty", "meaning": "Qualidade", "examples": ["popular → popularity", "real → reality", "active → activity", "possible → possibility"]},
+      {"suffix": "-ance/-ence", "meaning": "Estado ou qualidade", "examples": ["important → importance", "resist → resistance", "exist → existence", "differ → difference"]}
+    ]
+  },
+  "suffixesAdjectives": {
+    "title": "Sufixos para Adjetivos",
+    "suffixes": [
+      {"suffix": "-ful", "meaning": "Cheio de", "examples": ["care → careful", "help → helpful", "joy → joyful", "peace → peaceful"]},
+      {"suffix": "-less", "meaning": "Sem, falta de", "examples": ["care → careless", "help → helpless", "joy → joyless", "hope → hopeless"]},
+      {"suffix": "-able/-ible", "meaning": "Capaz de ser", "examples": ["read → readable", "comfort → comfortable", "possible → posible", "access → accessible"]},
+      {"suffix": "-ous", "meaning": "Cheio de, caracterizado por", "examples": ["danger → dangerous", "poison → poisonous", "nervous → nervous", "famous → famous"]},
+      {"suffix": "-ish", "meaning": "Que tem qualidade de", "examples": ["red → reddish", "child → childish", "fool → foolish", "selfish → selfish"]},
+      {"suffix": "-ive", "meaning": "Que tem a qualidade de", "examples": ["create → creative", "active → active", "productive → productive", "destructive → destructive"]},
+      {"suffix": "-al/-ial", "meaning": "Relacionado com", "examples": ["nation → national", "music → musical", "season → seasonal", "special → special"]}
+    ]
+  },
+  "suffixesAdverbs": {
+    "title": "Sufixos para Advérbios",
+    "suffixes": [
+      {"suffix": "-ly", "meaning": "De modo, maneira", "examples": ["quick → quickly", "careful → carefully", "slow → slowly", "beautiful → beautifully"], "note": "O sufixo mais comum para advérbios"},
+      {"suffix": "-wards", "meaning": "Direção", "examples": ["back → backwards", "for → forwards", "after → afterwards", "up → upwards"]}
+    ]
+  },
+  "suffixesVerbs": {
+    "title": "Sufixos para Verbos",
+    "suffixes": [
+      {"suffix": "-en", "meaning": "Tornar-se, tornar", "examples": ["dark → darken", "bright → brighten", "wide → widen", "short → shorten"]},
+      {"suffix": "-ify/-fy", "meaning": "Fazer, tornar", "examples": ["beauty → beautify", "quality → qualify", "clear → clarify", "simple → simplify"]},
+      {"suffix": "-ize/-ise", "meaning": "Tornar, fazer", "examples": ["modern → modernize", "real → realize", "stable → stabilize", "organ → organize"]}
+    ]
+  },
+  "wordFamilies": {
+    "title": "Famílias de Palavras",
+    "note": "Palavras com a mesma raiz formam famílias",
+    "examples": [
+      {"root": "teach", "family": ["teach (verbo)", "teacher (substantivo)", "teaching (substantivo/gerúndio)", "taught (passado)", "teachable (adjetivo)", "unteachable (adjetivo)"]},
+      {"root": "happy", "family": ["happy (adjetivo)", "happiness (substantivo)", "happily (advérbio)", "unhappy (adjetivo)", "unhappily (advérbio)", "unhappiness (substantivo)"]},
+      {"root": "possible", "family": ["possible (adjetivo)", "impossible (adjetivo)", "possibility (substantivo)", "impossibility (substantivo)", "possibly (advérbio)", "impossibly (advérbio)"]},
+      {"root": "create", "family": ["create (verbo)", "creative (adjetivo)", "creativity (substantivo)", "creation (substantivo)", "creator (substantivo)", "recreate (verbo)"]}
+    ]
+  },
+  "commonErrors": [
+    {"error": "unbelievable (falta um prefixo?)", "correct": "unbelievable é correto", "explanation": "Use 'un-' para fazer a negação"},
+    {"error": "disagree about", "correct": "disagree with", "explanation": "Depois de 'disagree', use 'with', não 'about'"},
+    {"error": "happilyness", "correct": "happiness", "explanation": "Não misture sufixos: -ly + -ness = errado. Use -ness para substantivo"},
+    {"error": "carefully gone", "correct": "went carefully", "explanation": "Advérbios vêm após o verbo principal"},
+    {"error": "miseducation", "correct": "mis-education (com hífen) ou efeito é misunderstanding (raiz diferente)", "explanation": "Alguns prefixos como 'mis-' são menos comum em alguns contextos"}
+  ],
+  "practicalExercises": [
+    {"task": "Identifique o prefixo, raiz e sufixo", "word": "unhappiness", "answer": "Prefixo: un- | Raiz: happy | Sufixo: -ness"},
+    {"task": "Crie uma palavra com o sufixo -ment", "example": "develop → development"},
+    {"task": "Forme o antônimo usando um prefixo negativo", "example": "agree → disagree"},
+    {"task": "Transforme para advérbio", "example": "careful → carefully"}
+  ],
+  "keyPoints": ["Prefixos vêm ANTES da raiz; sufixos vêm DEPOIS", "Prefixos negativos: un-, im-, in-, ir-, il-, dis-, mis-", "Sufixos para substantivos: -tion, -ment, -ness, -er, -ism", "Sufixos para adjetivos: -ful, -less, -able, -ous, -ive", "Sufixo para advérbio: -ly", "Famílias de palavras compartilham a mesma raiz", "Aprender raízes e afixos aumenta seu vocabulário dramaticamente"]
+}

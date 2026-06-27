@@ -1,0 +1,127 @@
+{
+  "title": "Comparatives and Superlatives",
+  "subtitle": "Comparativos e Superlativos",
+  "introduction": {
+    "definition": "Usamos comparativos para comparar duas coisas e superlativos para destacar uma coisa em um grupo.",
+    "comparativeStructure": "Adjective + -er/more + than (ou less + than)",
+    "superlativeStructure": "the + Adjective + -est/most (ou least)",
+    "example": {
+      "comparative": "This room is bigger than that room.",
+      "superlative": "This is the biggest room in the house."
+    }
+  },
+  "basicConcept": {
+    "title": "Conceito Básico",
+    "comparative": {
+      "definition": "Compara duas coisas",
+      "question": "Qual é mais...?",
+      "example": "John is taller than Michael. (Comparamos dois homens)"
+    },
+    "superlative": {
+      "definition": "Destaca uma coisa como a mais... em um grupo",
+      "question": "Qual é o/a mais... de todos?",
+      "example": "John is the tallest student in the class. (John é o mais alto de todos os alunos)"
+    }
+  },
+  "adjektivRules": {
+    "title": "Regras de Formação por Tipo de Adjetivo",
+    "oneSyllable": {
+      "name": "Adjetivos de 1 sílaba",
+      "rule": "Adicione -er (comparative) e -est (superlative)",
+      "examples": [
+        {"adjective": "big", "comparative": "bigger", "superlative": "the biggest"},
+        {"adjective": "small", "comparative": "smaller", "superlative": "the smallest"},
+        {"adjective": "tall", "comparative": "taller", "superlative": "the tallest"},
+        {"adjective": "fast", "comparative": "faster", "superlative": "the fastest"},
+        {"adjective": "cold", "comparative": "colder", "superlative": "the coldest"}
+      ],
+      "note": "Se termina em consoante simples precedido por vogal simples, duplique a consoante: big → bigger"
+    },
+    "twoSyllable": {
+      "name": "Adjetivos de 2 sílabas",
+      "rule": "Pode ser -er/-est OU more/most",
+      "examples": [
+        {"adjective": "happy", "comparative": "happier", "superlative": "the happiest"},
+        {"adjective": "busy", "comparative": "busier", "superlative": "the busiest"},
+        {"adjective": "simple", "comparative": "simpler/more simple", "superlative": "the simplest/the most simple"},
+        {"adjective": "clever", "comparative": "cleverer/more clever", "superlative": "the cleverest/the most clever"}
+      ],
+      "note": "Adjetivos terminados em -y: troque -y por -i, depois adicione -er/-est"
+    },
+    "threePlus": {
+      "name": "Adjetivos de 3+ sílabas",
+      "rule": "Use more/most",
+      "examples": [
+        {"adjective": "beautiful", "comparative": "more beautiful", "superlative": "the most beautiful"},
+        {"adjective": "interesting", "comparative": "more interesting", "superlative": "the most interesting"},
+        {"adjective": "expensive", "comparative": "more expensive", "superlative": "the most expensive"},
+        {"adjective": "important", "comparative": "more important", "superlative": "the most important"},
+        {"adjective": "intelligent", "comparative": "more intelligent", "superlative": "the most intelligent"}
+      ]
+    }
+  },
+  "irregularAdjectives": {
+    "title": "Adjetivos Irregulares",
+    "note": "Estes não seguem as regras normais!",
+    "table": [
+      {"adjective": "good", "comparative": "better", "superlative": "the best"},
+      {"adjective": "bad", "comparative": "worse", "superlative": "the worst"},
+      {"adjective": "far", "comparative": "farther/further", "superlative": "the farthest/the furthest"},
+      {"adjective": "little", "comparative": "less", "superlative": "the least"},
+      {"adjective": "much", "comparative": "more", "superlative": "the most"},
+      {"adjective": "many", "comparative": "more", "superlative": "the most"}
+    ]
+  },
+  "otherComparativeForms": {
+    "title": "Outras Formas de Comparação",
+    "equality": {
+      "form": "as + adjective + as",
+      "meaning": "Igualmente",
+      "examples": ["She is as tall as her mother.", "This coffee is as good as that one.", "They are as intelligent as us."]
+    },
+    "inequality": {
+      "form": "not as + adjective + as",
+      "meaning": "Não tão... quanto",
+      "examples": ["This house is not as big as that one.", "She is not as smart as her brother.", "This job is not as interesting as the other one."]
+    },
+    "inferiority": {
+      "form": "less + adjective + than",
+      "meaning": "Menos... que",
+      "examples": ["This room is less expensive than that room.", "He is less intelligent than his sister.", "This book is less interesting than the other one."]
+    },
+    "superiority": {
+      "form": "more + adjective + than",
+      "meaning": "Mais... que",
+      "examples": ["This car is more expensive than that one.", "She is more talented than her friend.", "This movie is more exciting than the last one."]
+    }
+  },
+  "superlativeUsage": {
+    "title": "Uso do Artigo 'The' nos Superlativos",
+    "rule": "Sempre use 'the' antes do superlativo",
+    "examples": [
+      {"correct": "She is the smartest student in the class.", "wrong": "She is smartest student in the class."},
+      {"correct": "This is the most beautiful painting.", "wrong": "This is most beautiful painting."},
+      {"correct": "He is the best player on the team.", "wrong": "He is best player on the team."}
+    ]
+  },
+  "comparativeStructures": [
+    {"type": "Simple Comparison", "structure": "Noun + verb + comparative adjective + than + Noun", "example": "John is taller than Michael."},
+    {"type": "Comparison of Quantity", "structure": "There are + more/fewer + noun + in A + than + in B", "example": "There are more students in this classroom than in that one."},
+    {"type": "Progressive Comparison", "structure": "The + comparative + ..., the + comparative + ...", "example": "The more you study, the better your grades will be.", "meaning": "Quanto mais estudas, melhores serão tuas notas."}
+  ],
+  "practicalExamples": [
+    {"situation": "Comparando tamanho", "comparative": "This apartment is bigger than my old apartment.", "superlative": "This is the biggest apartment I've ever lived in."},
+    {"situation": "Comparando qualidade", "comparative": "This phone is better than my previous one.", "superlative": "This is the best phone on the market."},
+    {"situation": "Comparando preço", "comparative": "These shoes are more expensive than those ones.", "superlative": "These are the most expensive shoes in the store."},
+    {"situation": "Comparando velocidade", "comparative": "A car is faster than a bicycle.", "superlative": "An airplane is the fastest way to travel."},
+    {"situation": "Comparando beleza", "comparative": "This view is as beautiful as that one.", "superlative": "This is the most beautiful view in the city."}
+  ],
+  "commonErrors": [
+    {"error": "She is more tall than her brother.", "correct": "She is taller than her brother.", "explanation": "Palavras de 1 sílaba usam -er, não 'more'"},
+    {"error": "He is the more intelligent student.", "correct": "He is the most intelligent student.", "explanation": "Superlativos usam -est ou 'most', não 'more'"},
+    {"error": "This is the best than the other.", "correct": "This is better than the other.", "explanation": "Superlativo é para um grupo, comparativo é para dois"},
+    {"error": "She is as smart as him.", "correct": "She is as smart as he is. (formal) ou She is as smart as him. (informal)", "explanation": "Formalmente use um pronome de sujeito, mas 'him' é aceitável informalmente"},
+    {"error": "This is more good than that.", "correct": "This is better than that.", "explanation": "'Good' é irregular: good → better"}
+  ],
+  "keyPoints": ["1 sílaba: -er (comparative), -est (superlative)", "2+ sílabas: more/most ou -er/-est (depende da terminação)", "Irregulares: good/better/best, bad/worse/worst, far/farther/farthest", "Sempre use 'the' antes do superlativo", "Comparativos comparam 2 coisas; superlativos destacam 1 em um grupo", "Other forms: as...as, less...than, not as...as"]
+}

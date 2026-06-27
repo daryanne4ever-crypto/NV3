@@ -1,0 +1,279 @@
+{
+  "title": "Passive Voice",
+  "subtitle": "Voz Passiva",
+  "introduction": {
+    "definition": "A voz passiva é quando o sujeito RECEBE a ação, não a pratica.",
+    "structure": "Subject + be + Past Participle (+ by + agent)",
+    "example": "The lesson is explained by the teacher.",
+    "note": "A voz passiva transfere o foco do agente (quem faz) para o objeto (quem recebe)."
+  },
+  "basicConcept": {
+    "title": "O Conceito Básico",
+    "whatIs": "Na voz passiva, o sujeito recebe a ação.",
+    "components": {
+      "subject": "Quem recebe a ação",
+      "be": "Verbo auxiliar (am/is/are/was/were/have been/etc)",
+      "pastParticiple": "Forma do verbo em past participle",
+      "byAgent": "(Opcional) Quem pratica a ação"
+    },
+    "example": {
+      "sentence": "An email is written by the student.",
+      "subject": "An email (quem recebe)",
+      "be": "is",
+      "pastParticiple": "written",
+      "byAgent": "by the student (quem faz)"
+    }
+  },
+  "whenToUse": [
+    {
+      "situation": "Quando o agente é desconhecido",
+      "example": "My phone was stolen. (Não sabemos quem roubou)"
+    },
+    {
+      "situation": "Quando o agente é óbvio",
+      "example": "The email was sent yesterday. (Óbvio: por alguém)"
+    },
+    {
+      "situation": "Quando o agente é menos importante que a ação",
+      "example": "The project was completed on time. (Importa que foi completado, não quem fez)"
+    },
+    {
+      "situation": "Em textos formais e científicos",
+      "example": "The experiment was conducted by researchers."
+    },
+    {
+      "situation": "Quando queremos ser discreto sobre quem faz",
+      "example": "Mistakes were made. (Não queremos dizer exatamente quem errou)"
+    }
+  ],
+  "activeToPassiveTransformation": {
+    "title": "Como Transformar Active → Passive",
+    "steps": [
+      {
+        "step": 1,
+        "title": "Identifique o objeto (o que recebe a ação)",
+        "example": "The teacher explains the lesson. → object: the lesson"
+      },
+      {
+        "step": 2,
+        "title": "Este objeto vira sujeito na passiva",
+        "example": "The lesson..."
+      },
+      {
+        "step": 3,
+        "title": "Use: be + past participle do verbo original",
+        "example": "The lesson + is + explained"
+      },
+      {
+        "step": 4,
+        "title": "(Opcional) Adicione by + agente original",
+        "example": "The lesson is explained by the teacher."
+      }
+    ],
+    "example": {
+      "active": "The chef prepares the meal.",
+      "step1": "Object: the meal",
+      "step2": "The meal...",
+      "step3": "The meal is prepared",
+      "passive": "The meal is prepared by the chef."
+    }
+  },
+  "allTenses": [
+    {
+      "tense": "Simple Present",
+      "activeStructure": "Subject + Verb + Object",
+      "passiveStructure": "Object + am/is/are + past participle + by + agent",
+      "activeExample": "The teacher teaches English.",
+      "passiveExample": "English is taught by the teacher.",
+      "note": "be = is (terceira pessoa singular)"
+    },
+    {
+      "tense": "Present Continuous",
+      "activeStructure": "Subject + am/is/are + Verb + ing + Object",
+      "passiveStructure": "Object + am/is/are + being + past participle + by + agent",
+      "activeExample": "The teacher is teaching English.",
+      "passiveExample": "English is being taught by the teacher.",
+      "note": "Adiciona 'being' entre be e past participle"
+    },
+    {
+      "tense": "Present Perfect",
+      "activeStructure": "Subject + have/has + past participle + Object",
+      "passiveStructure": "Object + have/has + been + past participle + by + agent",
+      "activeExample": "The chef has cooked the meal.",
+      "passiveExample": "The meal has been cooked by the chef.",
+      "note": "Muda para have/has + been"
+    },
+    {
+      "tense": "Simple Past",
+      "activeStructure": "Subject + past verb + Object",
+      "passiveStructure": "Object + was/were + past participle + by + agent",
+      "activeExample": "The police arrested the criminal.",
+      "passiveExample": "The criminal was arrested by the police.",
+      "note": "be = was/were (passado)"
+    },
+    {
+      "tense": "Past Continuous",
+      "activeStructure": "Subject + was/were + Verb + ing + Object",
+      "passiveStructure": "Object + was/were + being + past participle + by + agent",
+      "activeExample": "The teacher was teaching English.",
+      "passiveExample": "English was being taught by the teacher.",
+      "note": "Adiciona 'being'"
+    },
+    {
+      "tense": "Past Perfect",
+      "activeStructure": "Subject + had + past participle + Object",
+      "passiveStructure": "Object + had + been + past participle + by + agent",
+      "activeExample": "The chef had cooked the meal.",
+      "passiveExample": "The meal had been cooked by the chef.",
+      "note": "Muda para had + been"
+    },
+    {
+      "tense": "Simple Future",
+      "activeStructure": "Subject + will + Verb + Object",
+      "passiveStructure": "Object + will + be + past participle + by + agent",
+      "activeExample": "The teacher will teach English.",
+      "passiveExample": "English will be taught by the teacher.",
+      "note": "will + be"
+    },
+    {
+      "tense": "Future Perfect",
+      "activeStructure": "Subject + will + have + past participle + Object",
+      "passiveStructure": "Object + will + have + been + past participle + by + agent",
+      "activeExample": "The chef will have cooked the meal.",
+      "passiveExample": "The meal will have been cooked by the chef.",
+      "note": "will + have + been"
+    }
+  ],
+  "byAgentUsage": {
+    "title": "Uso de 'by + Agent'",
+    "whenToInclude": [
+      "Quando o agente é importante ou novo na informação",
+      "Em contextos formais",
+      "Quando queremos ser específico"
+    ],
+    "whenToOmit": [
+      "Quando o agente é desconhecido",
+      "Quando o agente é óbvio (people, someone)",
+      "Quando o agente é geral (society, tradition)"
+    ],
+    "examples": {
+      "include": "This painting was created by Picasso.",
+      "omit": "This painting was created in 1950."
+    }
+  },
+  "twoObjectsProblem": {
+    "title": "Verbos com Dois Objetos",
+    "explanation": "Alguns verbos têm dois objetos. Qual vira sujeito?",
+    "verbsWithTwoObjects": [
+      {
+        "verb": "give",
+        "active": "John gave Mary a present.",
+        "objects": ["Mary (indirect object)", "a present (direct object)"],
+        "passiveOption1": "Mary was given a present by John.",
+        "passiveOption2": "A present was given to Mary by John."
+      },
+      {
+        "verb": "send",
+        "active": "The company sent employees a letter.",
+        "objects": ["employees (indirect)", "a letter (direct)"],
+        "passiveOption1": "Employees were sent a letter by the company.",
+        "passiveOption2": "A letter was sent to the employees by the company."
+      },
+      {
+        "verb": "teach",
+        "active": "The professor taught students English.",
+        "objects": ["students (indirect)", "English (direct)"],
+        "passiveOption1": "Students were taught English by the professor.",
+        "passiveOption2": "English was taught to students by the professor."
+      }
+    ],
+    "note": "A opção 1 (indirect object) é mais comum e natural."
+  },
+  "verbsNotPassive": {
+    "title": "Verbos que NÃO Têm Voz Passiva",
+    "reason": "Verbos intransitivos (que não têm objeto) nunca podem ser passivos.",
+    "examples": [
+      {
+        "verb": "sleep",
+        "wrong": "The bed was slept.",
+        "correct": "She slept on the bed."
+      },
+      {
+        "verb": "run",
+        "wrong": "The park was run.",
+        "correct": "He ran in the park."
+      },
+      {
+        "verb": "laugh",
+        "wrong": "The movie was laughed.",
+        "correct": "They laughed at the movie."
+      },
+      {
+        "verb": "happen",
+        "wrong": "An accident was happened.",
+        "correct": "An accident happened yesterday."
+      },
+      {
+        "verb": "exist",
+        "wrong": "This problem is existed.",
+        "correct": "This problem exists."
+      }
+    ]
+  },
+  "commonErrors": [
+    {
+      "error": "The lesson was explained to the students by the teacher.",
+      "issue": "Ordem estranha",
+      "correct": "The lesson was explained by the teacher to the students.",
+      "explanation": "By + agent vem depois de be + past participle"
+    },
+    {
+      "error": "English is speak in many countries.",
+      "issue": "Falta 'been' no present continuous",
+      "correct": "English is being spoken in many countries.",
+      "explanation": "Present continuous passive: be + being + past participle"
+    },
+    {
+      "error": "The meal has prepared by the chef.",
+      "issue": "Verbo be está faltando",
+      "correct": "The meal has been prepared by the chef.",
+      "explanation": "Present perfect passive: have/has + been + past participle"
+    },
+    {
+      "error": "This car was make in Japan.",
+      "issue": "Past participle incorreto",
+      "correct": "This car was made in Japan.",
+      "explanation": "Make → made (irregular)"
+    }
+  ],
+  "passiveVsActiveComparison": [
+    {
+      "active": "The students completed the project.",
+      "passive": "The project was completed by the students.",
+      "difference": "Foco muda do agente para a ação/resultado"
+    },
+    {
+      "active": "Sarah wrote this article.",
+      "passive": "This article was written by Sarah.",
+      "difference": "Enfase: o artigo é mais importante que Sarah"
+    },
+    {
+      "active": "Someone stole my wallet.",
+      "passive": "My wallet was stolen.",
+      "difference": "Omitimos 'someone' porque é desconhecido"
+    },
+    {
+      "active": "The government approved the law.",
+      "passive": "The law was approved.",
+      "difference": "A lei é o foco, o governo é menos importante"
+    }
+  ],
+  "keyPoints": [
+    "Passive voice transfere o foco do agente para o objeto.",
+    "Estrutura: be + past participle",
+    "Use quando o agente é desconhecido, óbvio ou menos importante.",
+    "Apenas verbos transitivos podem ser passivos.",
+    "By + agent é opcional.",
+    "A ordem: sujeito + be + past participle + by + agent"
+  ]
+}
