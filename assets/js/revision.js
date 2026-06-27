@@ -25,19 +25,20 @@ const phoneNumbers = [
   '555-7744',
   '555-3322',
 ];
-const sentenceParts = [];
-const acceptableSentences = [
-  'I brought cake',
-  'I brought pie for the party',
-  'I bought coffee with sugar',
-  'I bought salad for the party',
-  'I prefer coffee hot',
-  'I prefer coffee cold',
-  'I like pizza cold',
-  'I like pizza hot',
-  'I like cake',
-  'I prefer salad',
+const sentenceBuilderPhrases = [
+  { target: 'Eu trouxe o bolo', blocks: ['I', 'brought', 'the', 'cake'] },
+  { target: 'Eu comprei torta', blocks: ['I', 'bought', 'pie'] },
+  { target: 'Eu prefiro café quente', blocks: ['I', 'prefer', 'coffee', 'hot'] },
+  { target: 'Eu gosto de salada fria', blocks: ['I', 'like', 'cold', 'salad'] },
+  { target: 'Ela quer bananas', blocks: ['She', 'wants', 'bananas'] },
+  { target: 'Nós precisamos de ovos', blocks: ['We', 'need', 'eggs'] },
+  { target: 'Eu como pizza', blocks: ['I', 'eat', 'pizza'] },
+  { target: 'Ele comprou tomates', blocks: ['He', 'bought', 'tomatoes'] },
+  { target: 'Eu prefiro água', blocks: ['I', 'prefer', 'water'] },
+  { target: 'Eles querem pão', blocks: ['They', 'want', 'bread'] },
 ];
+let currentSentenceIndex = 0;
+const selectedSentenceBlocks = [];
 const speakingPhrases = [
   'I have one apple.',
   'She wants two bananas.',
@@ -108,21 +109,24 @@ function speakEmailSlowly(email) {
 }
 
 
-function setupTabs() {
-  document.querySelectorAll('[data-tab-target]').forEach((tabButton) => {
-    tabButton.addEventListener('click', () => {
-      const targetId = tabButton.dataset.tabTarget;
 
-      document.querySelectorAll('[data-tab-target]').forEach((button) => button.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach((panel) => {
-        panel.hidden = panel.id !== targetId;
-        panel.classList.toggle('active', panel.id === targetId);
-      });
+function showActivity(activityNumber) {
+  document.querySelectorAll('.activity-section').forEach((section) => {
+    section.hidden = !section.classList.contains(`activity-${activityNumber}`);
+  });
 
-      tabButton.classList.add('active');
-    });
+  document.querySelectorAll('[data-activity]').forEach((button) => {
+    button.classList.toggle('active', button.dataset.activity === String(activityNumber));
   });
 }
+
+function setupTabs() {
+  document.querySelectorAll('[data-activity]').forEach((tabButton) => {
+    tabButton.addEventListener('click', () => showActivity(tabButton.dataset.activity));
+  });
+  showActivity(1);
+}
+
 
 function setupNumberReview() {
   document.querySelectorAll('.number-button').forEach((button) => {
@@ -271,16 +275,23 @@ function renderPhoneExercises() {
 }
 
 
+
 function renderSentenceWorkspace() {
   const workspace = document.querySelector('#sentenceWorkspace');
   if (!workspace) return;
+  workspace.innerHTML = '';
 
-  if (!sentenceParts.length) {
-    workspace.innerHTML = '<span class="sentence-placeholder">Your sentence will appear here...</span>';
+  if (!selectedSentenceBlocks.length) {
+    workspace.innerHTML = '<span class="sentence-placeholder">Click the blocks below to build your sentence...</span>';
     return;
   }
 
-  workspace.textContent = sentenceParts.join(' ');
+  selectedSentenceBlocks.forEach((block) => {
+    const token = document.createElement('span');
+    token.className = 'drop-token';
+    token.textContent = block;
+    workspace.appendChild(token);
+  });
 }
 
 function resetSentenceFeedback() {
@@ -292,37 +303,67 @@ function resetSentenceFeedback() {
   feedback.classList.remove('success', 'danger');
 }
 
+function renderSentencePuzzle() {
+  const phrase = sentenceBuilderPhrases[currentSentenceIndex];
+  const target = document.querySelector('#targetSentence');
+  const progress = document.querySelector('#sentenceProgress');
+  const wordBank = document.querySelector('#puzzleWordBank');
+  selectedSentenceBlocks.length = 0;
+  resetSentenceFeedback();
+
+  if (target) target.textContent = phrase.target;
+  if (progress) progress.textContent = `${currentSentenceIndex + 1} / ${sentenceBuilderPhrases.length}`;
+  if (wordBank) {
+    wordBank.innerHTML = '';
+    phrase.blocks.forEach((block) => {
+      const button = document.createElement('button');
+      button.className = 'word-button';
+      button.type = 'button';
+      button.textContent = block;
+      button.addEventListener('click', () => {
+        selectedSentenceBlocks.push(block);
+        button.classList.add('used');
+        resetSentenceFeedback();
+        renderSentenceWorkspace();
+      });
+      wordBank.appendChild(button);
+    });
+  }
+
+  renderSentenceWorkspace();
+}
+
 function setupSentenceBuilder() {
   const workspace = document.querySelector('#sentenceWorkspace');
   const feedback = document.querySelector('#sentenceFeedback');
 
-  document.querySelectorAll('.word-button').forEach((button) => {
-    button.addEventListener('click', () => {
-      sentenceParts.push(button.textContent.trim());
-      resetSentenceFeedback();
-      renderSentenceWorkspace();
-    });
-  });
-
   document.querySelector('#clearSentenceBtn')?.addEventListener('click', () => {
-    sentenceParts.length = 0;
+    selectedSentenceBlocks.length = 0;
+    document.querySelectorAll('#puzzleWordBank .word-button').forEach((button) => button.classList.remove('used'));
     resetSentenceFeedback();
     renderSentenceWorkspace();
   });
 
   document.querySelector('#checkSentenceBtn')?.addEventListener('click', () => {
     if (!workspace || !feedback) return;
-    const sentence = sentenceParts.join(' ');
-    const isAccepted = acceptableSentences.includes(sentence);
+    const phrase = sentenceBuilderPhrases[currentSentenceIndex];
+    const isCorrect = selectedSentenceBlocks.join(' ') === phrase.blocks.join(' ');
 
-    workspace.classList.toggle('correct', isAccepted);
-    workspace.classList.toggle('incorrect', !isAccepted);
-    feedback.classList.toggle('success', isAccepted);
-    feedback.classList.toggle('danger', !isAccepted);
-    feedback.textContent = isAccepted ? 'Great sentence! Well done.' : 'Try again! Try a different combination.';
+    workspace.classList.toggle('correct', isCorrect);
+    workspace.classList.toggle('incorrect', !isCorrect);
+    feedback.classList.toggle('success', isCorrect);
+    feedback.classList.toggle('danger', !isCorrect);
+    feedback.textContent = isCorrect
+      ? 'Great job! Your translation is correct.'
+      : `Try again! Correct translation: ${phrase.blocks.join(' ')}`;
   });
 
-  renderSentenceWorkspace();
+  document.querySelector('#nextSentenceBtn')?.addEventListener('click', () => {
+    currentSentenceIndex = (currentSentenceIndex + 1) % sentenceBuilderPhrases.length;
+    renderSentencePuzzle();
+  });
+
+  renderSentencePuzzle();
 }
 
 
@@ -432,5 +473,6 @@ renderEmailExercises();
 renderPhoneExercises();
 setupSentenceBuilder();
 setupSpeakingPractice();
+window.showActivity = showActivity;
 
 window.speechSynthesis?.addEventListener('voiceschanged', getEnglishVoice);

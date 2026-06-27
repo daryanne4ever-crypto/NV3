@@ -694,3 +694,43 @@ a:focus-visible {
 .spoken-word.incorrect {
   color: var(--color-danger);
 }
+
+.activity-section {
+  display: grid;
+  gap: 1rem;
+}
+
+.activity-section[hidden] {
+  display: none;
+}
+
+.target-sentence {
+  margin: 0.8rem 0 1rem;
+  color: var(--color-text);
+  font-size: clamp(1.5rem, 3vw, 2.35rem);
+  font-weight: 800;
+}
+
+.drop-zone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+}
+
+.puzzle-word-bank {
+  margin-top: 1rem;
+}
+
+.drop-token {
+  border-radius: 999px;
+  padding: 0.55rem 0.85rem;
+  background: rgba(199, 125, 255, 0.16);
+  color: var(--color-text);
+  font-weight: 800;
+}
+
+.puzzle-word-bank .word-button.used {
+  opacity: 0.45;
+  pointer-events: none;
+}
