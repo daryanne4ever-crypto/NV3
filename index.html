@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - NV3 Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER E SAUDAÇÃO -->
+        <header class="dashboard-header">
+            <div class="welcome-section">
+                <h1 id="welcomeMessage">Welcome back, <span id="studentName">Student</span></h1>
+                <button id="goToReviewBtn" class="btn-primary">Go to Review</button>
+            </div>
+        </header>
+
+        <!-- ESTATÍSTICAS (STATS CARDS) -->
+        <section class="stats-container">
+            <!-- Card: Activities Completed -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <h3>Activities Completed</h3>
+                </div>
+                <div class="stat-value" id="activitiesCompleted">0</div>
+                <p class="stat-label">Total activities finished</p>
+            </div>
+
+            <!-- Card: Current Level -->
+            <div class="stat-card">
+                <div class="stat-header">
+                    <h3>Current Level</h3>
+                </div>
+                <div class="stat-value" id="currentLevel">Beginner</div>
+                <p class="stat-label" id="currentLevelPercentage">0% average</p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO REVIEWS (UNIT 0) -->
+        <section class="units-section">
+            <div class="unit-card reviews-unit">
+                <div class="unit-header">
+                    <h2>Reviews</h2>
+                    <p class="unit-subtitle">Activities that need your attention</p>
+                </div>
+                <div class="unit-content">
+                    <div id="reviewsList" class="reviews-list">
+                        <!-- Atividades com status "Needs Review" ou "Urgent Review" serão renderizadas aqui -->
+                        <p class="empty-state">No activities requiring review at this moment</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIT 1: Hotel Communication -->
+            <div class="unit-card">
+                <div class="unit-header">
+                    <h2>Unit 1: Hotel Communication</h2>
+                    <p class="unit-subtitle">WH-Questions, Vocabulary, Requests, Information and Doubts</p>
+                </div>
+                <div class="unit-content">
+                    <ul class="activities-list">
+                        <li>
+                            <a href="unit1.html" class="activity-link">
+                                <span class="activity-name">Activity 1: Information & Doubts</span>
+                                <span class="activity-status">Start</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="unit1.html" class="activity-link">
+                                <span class="activity-name">Activity 2: Polite Requests & Transport</span>
+                                <span class="activity-status">Start</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="unit1.html" class="activity-link">
+                                <span class="activity-name">Activity 3: Check-in & Reservations</span>
+                                <span class="activity-status">Start</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="activity4.html" class="activity-link">
+                                <span class="activity-name">Activity 4: Speaking Practice</span>
+                                <span class="activity-status">Start</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
