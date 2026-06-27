@@ -889,9 +889,16 @@ a:focus-visible {
   transform: translateY(-2px);
 }
 
+/* Hide all grammar topics by default */
 .grammar-topic {
+  display: none;
   scroll-margin-top: 2rem;
   margin-top: 1rem;
+}
+
+/* Show only when explicitly activated */
+.grammar-topic.active {
+  display: block;
 }
 
 .grammar-topic h3 {
@@ -913,6 +920,11 @@ a:focus-visible {
 .grammar-module-panel {
   display: grid;
   gap: 1rem;
+}
+
+/* Ensure the module panel has minimum height */
+.grammar-module-panel {
+  min-height: 400px;
 }
 
 .dashboard-hero {
@@ -999,49 +1011,37 @@ a:focus-visible {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.85rem;
+  margin: 0.9rem 0;
 }
 
-.practice-card,
-.phrase-practice {
-  padding: 1rem;
-  border-radius: 1rem;
-  background: rgba(12, 10, 18, 0.42);
-}
-
-.phrase-practice ol {
-  display: grid;
-  gap: 0.55rem;
-  margin: 0.75rem 0 1rem 1.3rem;
-}
-
-.listen-link {
-  border: 0;
-  background: transparent;
-  color: var(--color-accent-soft);
-  cursor: pointer;
-  font: inherit;
-  font-weight: 800;
+.mini-activity-card {
+  min-height: 5.2rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(199, 125, 255, 0.14);
+  border-radius: 0.9rem;
+  background: rgba(12, 10, 18, 0.38);
   text-align: left;
+  cursor: pointer;
+  transition: 180ms ease;
 }
 
-.feedback-line {
-  margin-top: 0.85rem;
-  color: var(--color-warning);
+.mini-activity-card:hover,
+.mini-activity-card:focus-visible {
+  background: rgba(157, 78, 221, 0.16);
+  border-color: var(--color-accent-soft);
+  transform: translateY(-2px);
+}
+
+.mini-activity-card span {
+  display: block;
+  font-size: 0.9rem;
   font-weight: 800;
+  color: var(--color-text);
 }
 
-@media (max-width: 720px) {
-  .dashboard-stats,
-  .dashboard-actions {
-    grid-template-columns: 1fr;
-  }
-
-  .dashboard-actions,
-  .module-actions {
-    justify-content: flex-start;
-  }
-
-  .compact-input {
-    max-width: 100%;
-  }
+.mini-activity-card small {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--color-muted);
+  font-size: 0.78rem;
 }
