@@ -47,33 +47,28 @@
         <span class="eyebrow">Dashboard do aluno</span>
         <h1>Welcome back, <span id="studentName">B1 learner</span>!</h1>
         <p>Pratique inglês com trilhas curtas, feedback instantâneo, XP, medalhas e acompanhamento do professor.</p>
+        <a class="btn btn-secondary review-under-greeting" href="revision.html">Ir para Revisão</a>
       </div>
       <div class="hero-actions">
         <button class="btn btn-primary" id="startPracticeBtn">Começar prática</button>
-        <a class="btn btn-secondary" href="revision.html">Ir para Revisão</a>
       </div>
     </header>
 
     <section class="stats-grid" aria-label="Indicadores do aluno">
       <article class="stat-card success">
-        <span>XP total</span>
-        <strong id="xpTotal">2.480</strong>
-        <small>+120 XP hoje</small>
+        <span>Activities Completed</span>
+        <strong id="activitiesCompleted">0</strong>
+        <small>Total de atividades finalizadas</small>
       </article>
       <article class="stat-card warning">
-        <span>Nível atual</span>
-        <strong>B1.3</strong>
-        <small>68% até B1.4</small>
-      </article>
-      <article class="stat-card accent">
-        <span>Ranking</span>
-        <strong>#4</strong>
-        <small>Turma Level 3A</small>
+        <span>Current Level</span>
+        <strong id="currentLevel">Beginner</strong>
+        <small>Calculado pela média de acertos</small>
       </article>
       <article class="stat-card danger">
         <span>Revisões</span>
-        <strong>7</strong>
-        <small>Itens com erros recentes</small>
+        <strong id="reviewCount">0</strong>
+        <small>Needs Review e Urgent Review</small>
       </article>
     </section>
 
@@ -88,13 +83,20 @@
         </div>
 
         <div class="unit-list">
-          <div class="unit-item">
+          <div class="unit-item reviews-unit">
             <div>
-              <strong>Unit 01 — Experiences & Present Perfect</strong>
-              <small>Grammar, Speaking e Writing</small>
+              <strong>Reviews</strong>
+              <small>Unit 0 — atividades que precisam de reforço</small>
+              <div class="review-list" id="dashboardReviews"></div>
             </div>
-            <div class="progress"><span style="width: 92%"></span></div>
           </div>
+          <a class="unit-item" href="unit1.html" data-activity-url="unit1.html">
+            <div>
+              <strong>Unit 1: Hotel Communication</strong>
+              <small>WH-Questions, Vocabulary, Requests, Information and Doubts</small>
+            </div>
+            <div class="progress"><span style="width: 0%"></span></div>
+          </a>
           <div class="unit-item">
             <div>
               <strong>Unit 02 — Travel Problems</strong>

@@ -1,11 +1,13 @@
-// NLE Level 3 (NV3) — initial interaction layer for navigation, XP simulation and study feedback.
+// NLE Level 3 (NV3) — dashboard navigation, progress and review logic.
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const ACTIVITY_PREFIX = 'nv3-activity:';
+
+const nextNewActivities = ['revision.html#activity-1', 'unit1.html'];
 
 document.querySelectorAll('.nav-link').forEach((link) => {
   const href = link.getAttribute('href');
   if (href === currentPage) link.classList.add('active');
 });
-
 
 function getStudentName() {
   const storageKey = 'nv3-student-name';
@@ -25,26 +27,97 @@ function personalizeDashboard() {
   studentNameElement.textContent = getStudentName();
 }
 
-personalizeDashboard();
-
-let xp = Number(localStorage.getItem('nv3-xp') || 2480);
-const xpTotal = document.querySelector('#xpTotal');
-if (xpTotal) xpTotal.textContent = xp.toLocaleString('pt-BR');
-
-function addXp(amount = 10) {
-  xp += amount;
-  localStorage.setItem('nv3-xp', String(xp));
-  if (xpTotal) xpTotal.textContent = xp.toLocaleString('pt-BR');
-  return xp;
+function getActivityRecords() {
+  return Object.keys(localStorage)
+    .filter((key) => key.startsWith(ACTIVITY_PREFIX))
+    .map((key) => {
+      try {
+        return { key, ...JSON.parse(localStorage.getItem(key)) };
+      } catch {
+        return null;
+      }
+    })
+    .filter((record) => record && typeof record.percentage === 'number');
 }
 
-document.querySelectorAll('[data-xp], #startPracticeBtn').forEach((button) => {
-  button.addEventListener('click', () => {
-    const amount = Number(button.dataset.xp || 15);
-    const total = addXp(amount);
-    button.textContent = `+${amount} XP adicionados! Total: ${total.toLocaleString('pt-BR')}`;
+function getStatusFromPercentage(percentage) {
+  if (percentage >= 80) return 'Completed';
+  if (percentage >= 40) return 'Needs Review';
+  return 'Urgent Review';
+}
+
+function saveActivityResult(id, name, percentage, url = window.location.href) {
+  const safePercentage = Math.max(0, Math.min(100, Math.round(Number(percentage) || 0)));
+  const record = {
+    id,
+    name,
+    percentage: safePercentage,
+    status: getStatusFromPercentage(safePercentage),
+    url,
+    completedAt: new Date().toISOString(),
+  };
+  localStorage.setItem(`${ACTIVITY_PREFIX}${id}`, JSON.stringify(record));
+  return record;
+}
+
+function calculateCurrentLevel(records = getActivityRecords()) {
+  if (!records.length) return 'Beginner';
+  const average = records.reduce((sum, record) => sum + record.percentage, 0) / records.length;
+  if (average < 40) return 'Beginner';
+  if (average < 60) return 'Elementary';
+  if (average < 80) return 'Pre-Intermediate';
+  return 'Intermediate';
+}
+
+function renderDashboardReviews(records = getActivityRecords()) {
+  const reviewList = document.querySelector('#dashboardReviews');
+  const reviewCount = document.querySelector('#reviewCount');
+  const pending = records.filter(({ status }) => status === 'Needs Review' || status === 'Urgent Review');
+
+  if (reviewCount) reviewCount.textContent = String(pending.length);
+  if (!reviewList) return;
+
+  reviewList.innerHTML = '';
+  if (!pending.length) {
+    reviewList.innerHTML = '<p class="empty-review">No pending reviews. Great job!</p>';
+    return;
+  }
+
+  pending.forEach((activity) => {
+    const link = document.createElement('a');
+    link.className = 'review-item';
+    link.href = activity.url || 'revision.html';
+    link.innerHTML = `
+      <span>${activity.name || activity.id}</span>
+      <strong>${activity.percentage}%</strong>
+      <em class="status-tag ${activity.status === 'Urgent Review' ? 'danger' : 'warning'}">${activity.status}</em>
+    `;
+    reviewList.appendChild(link);
   });
-});
+}
+
+function getNextPracticeUrl(records = getActivityRecords()) {
+  const urgent = records.find(({ status }) => status === 'Urgent Review');
+  if (urgent) return urgent.url || 'revision.html';
+  const needsReview = records.find(({ status }) => status === 'Needs Review');
+  if (needsReview) return needsReview.url || 'revision.html';
+  const completedUrls = new Set(records.map((record) => record.url));
+  return nextNewActivities.find((url) => !completedUrls.has(url)) || 'unit1.html';
+}
+
+function initializeDashboard() {
+  personalizeDashboard();
+  const records = getActivityRecords();
+  const activitiesCompleted = document.querySelector('#activitiesCompleted');
+  const currentLevel = document.querySelector('#currentLevel');
+  if (activitiesCompleted) activitiesCompleted.textContent = String(records.length);
+  if (currentLevel) currentLevel.textContent = calculateCurrentLevel(records);
+  renderDashboardReviews(records);
+
+  document.querySelector('#startPracticeBtn')?.addEventListener('click', () => {
+    window.location.href = getNextPracticeUrl(records);
+  });
+}
 
 function validateAnswer(selected, expected) {
   if (selected === expected) return { status: 'success', message: 'Correct! Great job.' };
@@ -59,4 +132,5 @@ function controlAudio(audioElement, action = 'play') {
   return true;
 }
 
-window.NV3 = { addXp, validateAnswer, controlAudio, getStudentName, personalizeDashboard };
+initializeDashboard();
+window.NV3 = { validateAnswer, controlAudio, getStudentName, personalizeDashboard, getActivityRecords, getStatusFromPercentage, saveActivityResult, calculateCurrentLevel, renderDashboardReviews, getNextPracticeUrl };
