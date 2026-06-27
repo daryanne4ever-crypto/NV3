@@ -40,14 +40,14 @@ const sentenceBuilderPhrases = [
 let currentSentenceIndex = 0;
 const selectedSentenceBlocks = [];
 const speakingPhrases = [
-  'I have one apple.',
-  'She wants two bananas.',
-  'We need three eggs.',
+  { text: 'I have one apple.', tips: { apple: { ipa: '/ˈæp.əl/', tip: "Remember the short /æ/ sound in 'apple'." } } },
+  { text: 'She wants two bananas.', tips: { bananas: { ipa: '/bəˈnæn.əz/', tip: 'Keep the stress on the second syllable: NA.' } } },
+  { text: 'We need three eggs.', tips: { three: { ipa: '/θriː/', tip: 'Place your tongue lightly between your teeth for /θ/.' }, eggs: { ipa: '/eɡz/', tip: 'Finish with a clear /gz/ sound.' } } },
   'There are four oranges.',
   'He bought five tomatoes.',
-  'Please spell "bread".',
+  { text: 'Please spell "bread".', tips: { bread: { ipa: '/bred/', tip: "Use the short /e/ sound, not /æ/." } } },
   'B-R-E-A-D. Bread.',
-  'Can you spell "cheese"?',
+  { text: 'Can you spell "cheese"?', tips: { cheese: { ipa: '/tʃiːz/', tip: 'Start with /tʃ/ and hold the long /iː/ sound.' } } },
   'C-H-E-E-S-E. Cheese.',
   'I bought six bottles of milk.',
   'My phone number is 82-99914-8159, and I need seven apples.',
@@ -276,6 +276,23 @@ function renderPhoneExercises() {
 
 
 
+
+function getSpeakingText(phrase = speakingPhrases[currentSpeakingIndex]) {
+  return typeof phrase === 'string' ? phrase : phrase.text;
+}
+
+function getSpeakingTips(phrase = speakingPhrases[currentSpeakingIndex]) {
+  return typeof phrase === 'string' ? {} : phrase.tips || {};
+}
+
+function shuffleArray(items) {
+  for (let index = items.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [items[index], items[randomIndex]] = [items[randomIndex], items[index]];
+  }
+  return items;
+}
+
 function renderSentenceWorkspace() {
   const workspace = document.querySelector('#sentenceWorkspace');
   if (!workspace) return;
@@ -315,7 +332,7 @@ function renderSentencePuzzle() {
   if (progress) progress.textContent = `${currentSentenceIndex + 1} / ${sentenceBuilderPhrases.length}`;
   if (wordBank) {
     wordBank.innerHTML = '';
-    phrase.blocks.forEach((block) => {
+    shuffleArray([...phrase.blocks]).forEach((block) => {
       const button = document.createElement('button');
       button.className = 'word-button';
       button.type = 'button';
@@ -377,16 +394,20 @@ function renderSpeakingPhrase() {
   const feedback = document.querySelector('#speakingFeedback');
   const spokenWords = document.querySelector('#spokenWords');
   const score = document.querySelector('#speakingScore');
+  const micLabel = document.querySelector('.microphone-label');
+  let recognition = null;
+  let isRecording = false;
+  let finalTranscript = '';
 
   if (step) step.textContent = `Phrase ${currentSpeakingIndex + 1} of ${speakingPhrases.length}`;
-  if (model) model.textContent = speakingPhrases[currentSpeakingIndex];
+  if (model) model.textContent = getSpeakingText();
   if (feedback) feedback.hidden = true;
   if (spokenWords) spokenWords.innerHTML = '';
   if (score) score.textContent = '';
 }
 
 function scoreSpeakingResult(transcript) {
-  const expectedWords = speakingPhrases[currentSpeakingIndex].split(/\s+/);
+  const expectedWords = getSpeakingText().split(/\s+/);
   const spokenWords = transcript.split(/\s+/).filter(Boolean);
   let correctCount = 0;
 
@@ -394,11 +415,12 @@ function scoreSpeakingResult(transcript) {
     const spokenWord = spokenWords[index] || '';
     const isCorrect = normalizeSpeakingWord(spokenWord) === normalizeSpeakingWord(expectedWord);
     if (isCorrect) correctCount += 1;
-    return { expectedWord, isCorrect };
+    return { expectedWord, spokenWord, isCorrect };
   });
 
   return {
     comparedWords,
+    errors: comparedWords.filter((word) => !word.isCorrect),
     score: Math.round((correctCount / expectedWords.length) * 100),
   };
 }
@@ -406,7 +428,13 @@ function scoreSpeakingResult(transcript) {
 function showSpeakingFeedback(transcript) {
   const feedback = document.querySelector('#speakingFeedback');
   const score = document.querySelector('#speakingScore');
+  const micLabel = document.querySelector('.microphone-label');
+  let recognition = null;
+  let isRecording = false;
+  let finalTranscript = '';
   const spokenWords = document.querySelector('#spokenWords');
+  const errorAnalysis = document.querySelector('#wordErrorAnalysis');
+  const pronunciationTips = document.querySelector('#pronunciationTips');
   if (!feedback || !score || !spokenWords) return;
 
   const result = scoreSpeakingResult(transcript);
@@ -421,6 +449,27 @@ function showSpeakingFeedback(transcript) {
     spokenWords.appendChild(word);
   });
 
+  if (errorAnalysis) {
+    errorAnalysis.innerHTML = '<h3>Análise de Palavras</h3>';
+    result.errors.forEach(({ expectedWord, spokenWord }) => {
+      const item = document.createElement('p');
+      item.textContent = spokenWord ? `O sistema ouviu '${spokenWord}' em vez de '${expectedWord}'.` : `O sistema não identificou a palavra '${expectedWord}'.`;
+      errorAnalysis.appendChild(item);
+    });
+  }
+  if (pronunciationTips) {
+    const tips = getSpeakingTips();
+    pronunciationTips.innerHTML = '<h3>Pronunciation Tips</h3>';
+    result.errors.forEach(({ expectedWord }) => {
+      const key = normalizeSpeakingWord(expectedWord);
+      const tip = tips[key];
+      if (!tip) return;
+      const item = document.createElement('p');
+      item.textContent = `Dica para '${key}': ${tip.tip} Transcrição fonética: ${tip.ipa}`;
+      pronunciationTips.appendChild(item);
+    });
+  }
+  window.NV3?.saveActivityResult('revision-speaking-practice', 'Activity 4: Speaking Practice', result.score, 'revision.html#activity-4');
   feedback.hidden = false;
 }
 
@@ -430,8 +479,12 @@ function setupSpeakingPractice() {
   const playButton = document.querySelector('#playSpeakingPhraseBtn');
   const nextButton = document.querySelector('#nextSpeakingBtn');
   const score = document.querySelector('#speakingScore');
+  const micLabel = document.querySelector('.microphone-label');
+  let recognition = null;
+  let isRecording = false;
+  let finalTranscript = '';
 
-  playButton?.addEventListener('click', () => speakText(speakingPhrases[currentSpeakingIndex], { rate: 0.72 }));
+  playButton?.addEventListener('click', () => speakText(getSpeakingText(), { rate: 0.72 }));
 
   micButton?.addEventListener('click', () => {
     if (!SpeechRecognition) {
@@ -440,19 +493,29 @@ function setupSpeakingPractice() {
       return;
     }
 
-    const recognition = new SpeechRecognition();
+    if (isRecording && recognition) {
+      recognition.stop();
+      return;
+    }
+
+    recognition = new SpeechRecognition();
     recognition.lang = 'en-US';
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
+    finalTranscript = '';
+    isRecording = true;
     micButton.classList.add('listening');
+    if (micLabel) micLabel.textContent = 'Gravando... Clique para pausar';
 
     recognition.addEventListener('result', (event) => {
-      const transcript = event.results[0][0].transcript;
-      showSpeakingFeedback(transcript);
+      finalTranscript = event.results[0][0].transcript;
     });
 
     recognition.addEventListener('end', () => {
+      isRecording = false;
       micButton.classList.remove('listening');
+      if (micLabel) micLabel.textContent = 'Toque para falar';
+      if (finalTranscript) showSpeakingFeedback(finalTranscript);
     });
 
     recognition.start();

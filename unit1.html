@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Unit 1 Hotel Communication with WH questions and hotel vocabulary." />
+  <title>NLE Level 3 | Unit 1: Hotel Communication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <aside class="sidebar" aria-label="Menu principal">
+    <a class="brand" href="index.html"><span class="brand__mark">NV3</span><span><strong>NLE Level 3</strong><small>English B1 Platform</small></span></a>
+    <nav class="nav-list">
+      <a class="nav-link" href="index.html" data-page="dashboard">Dashboard</a>
+      <a class="nav-link" href="revision.html" data-page="revision">Revision</a>
+      <a class="nav-link active" href="unit1.html" data-page="unit1">Unit 1</a>
+    </nav>
+  </aside>
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">Unit 1: Hotel Communication</span>
+        <h1>WH-Questions for real hotel situations</h1>
+        <p>Practice What, Where, When, Why, Who, Which, How, How much, How many, How long and How far with hotel vocabulary.</p>
+      </div>
+      <a class="btn btn-secondary" href="index.html">Voltar ao Dashboard</a>
+    </header>
+
+    <section class="card unit-vocabulary">
+      <span class="eyebrow">Core vocabulary</span>
+      <h2>Hotel words</h2>
+      <p>room, reservation, receptionist, lobby, elevator, key card, breakfast, gym, swimming pool, restaurant, taxi, bus, airport, luggage, passport, ID, phone number, email address.</p>
+    </section>
+
+    <section class="activity-block card">
+      <span class="eyebrow">Section A — Information & Doubts</span>
+      <h2>Listening, Reading and Writing</h2>
+      <p>Complete or build these WH-questions in sequence:</p>
+      <ul class="activity-prompts">
+        <li>What time is breakfast?</li>
+        <li>Where is the gym?</li>
+        <li>When does the restaurant close?</li>
+        <li>How much is the room?</li>
+      </ul>
+      <label>Write one question about the hotel lobby:<input class="email-input" data-unit1-answer="Where is the lobby?" /></label>
+    </section>
+
+    <section class="activity-block card">
+      <span class="eyebrow">Section B — Polite Requests & Transport</span>
+      <h2>Speaking and Requests</h2>
+      <p>Practice polite requests with transport and room needs.</p>
+      <ul class="activity-prompts">
+        <li>How can I call a taxi?</li>
+        <li>Can I have another towel?</li>
+        <li>Could you help me?</li>
+      </ul>
+      <label>Write a polite question about the airport:<input class="email-input" data-unit1-answer="How far is the airport?" /></label>
+    </section>
+
+    <section class="activity-block card">
+      <span class="eyebrow">Section C — Check-in & Reservations</span>
+      <h2>Interactive simulation</h2>
+      <p>Use: “I'd like to make a reservation”, ID, phone number, email address and “What is the Wi-Fi password?”.</p>
+      <div class="simulation-dialogue">
+        <p><strong>Guest:</strong> I'd like to make a reservation.</p>
+        <p><strong>Receptionist:</strong> Can I have your ID, phone number and email address?</p>
+        <p><strong>Guest:</strong> What is the Wi-Fi password?</p>
+      </div>
+      <button class="btn btn-primary" id="completeUnit1Btn" type="button">Finalizar Unit 1</button>
+      <p class="sentence-feedback" id="unit1Feedback"></p>
+    </section>
+  </main>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/unit1.js"></script>
+</body>
+</html>
