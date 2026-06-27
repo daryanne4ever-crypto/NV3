@@ -13,6 +13,18 @@ const emails = [
   'laura.mendes@hotmail.com',
   'daniel.pereira@gmail.com',
 ];
+const phoneNumbers = [
+  '555-1234',
+  '555-9876',
+  '555-4567',
+  '555-3210',
+  '555-8765',
+  '555-2468',
+  '555-1357',
+  '555-9988',
+  '555-7744',
+  '555-3322',
+];
 
 function getEnglishVoice() {
   const voices = window.speechSynthesis?.getVoices() || [];
@@ -59,6 +71,29 @@ function speakEmailSlowly(email) {
   });
 }
 
+
+function setupTabs() {
+  document.querySelectorAll('[data-tab-target]').forEach((tabButton) => {
+    tabButton.addEventListener('click', () => {
+      const targetId = tabButton.dataset.tabTarget;
+
+      document.querySelectorAll('[data-tab-target]').forEach((button) => button.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach((panel) => {
+        panel.hidden = panel.id !== targetId;
+        panel.classList.toggle('active', panel.id === targetId);
+      });
+
+      tabButton.classList.add('active');
+    });
+  });
+}
+
+function setupNumberReview() {
+  document.querySelectorAll('.number-button').forEach((button) => {
+    button.addEventListener('click', () => speakText(button.dataset.text, { rate: 0.68 }));
+  });
+}
+
 function renderAlphabet() {
   const alphabetGrid = document.querySelector('#alphabetGrid');
   if (!alphabetGrid) return;
@@ -101,16 +136,73 @@ function renderEmailExercises() {
   });
 }
 
+
+function speakPhoneSlowly(phoneNumber) {
+  if (!('speechSynthesis' in window)) return;
+  clearEmailSpeechQueue();
+
+  const digits = phoneNumber.replace(/\D/g, '').split('');
+  let delay = 0;
+
+  digits.forEach((digit, index) => {
+    if (index === 3) delay += 750;
+    const timerId = window.setTimeout(() => speakText(digit, { rate: 0.58 }), delay);
+    emailSpeechTimers.push(timerId);
+    delay += 520;
+  });
+}
+
+function renderPhoneExercises() {
+  const exerciseList = document.querySelector('#phoneExercises');
+  if (!exerciseList) return;
+
+  phoneNumbers.forEach((phoneNumber, index) => {
+    const exercise = document.createElement('div');
+    exercise.className = 'email-exercise';
+
+    const listenButton = document.createElement('button');
+    listenButton.className = 'btn btn-secondary';
+    listenButton.type = 'button';
+    listenButton.textContent = `☎ Ouvir Telefone ${index + 1}`;
+    listenButton.addEventListener('click', () => speakPhoneSlowly(phoneNumber));
+
+    const input = document.createElement('input');
+    input.className = 'email-input phone-input';
+    input.type = 'text';
+    input.inputMode = 'numeric';
+    input.autocomplete = 'off';
+    input.placeholder = `Type phone ${index + 1}`;
+    input.dataset.answer = phoneNumber.replace(/\D/g, '');
+    input.setAttribute('aria-label', `Resposta do telefone ${index + 1}`);
+
+    exercise.append(listenButton, input);
+    exerciseList.appendChild(exercise);
+  });
+}
+
 function checkAnswers() {
-  document.querySelectorAll('.email-input').forEach((input) => {
+  document.querySelectorAll('#emailExercises .email-input').forEach((input) => {
     const isCorrect = input.value.trim() === input.dataset.answer;
     input.classList.toggle('correct', isCorrect);
     input.classList.toggle('incorrect', !isCorrect);
   });
 }
 
+function checkPhoneAnswers() {
+  document.querySelectorAll('.phone-input').forEach((input) => {
+    const normalizedAnswer = input.value.replace(/[\s-]/g, '');
+    const isCorrect = normalizedAnswer === input.dataset.answer;
+    input.classList.toggle('correct', isCorrect);
+    input.classList.toggle('incorrect', !isCorrect);
+  });
+}
+
+setupTabs();
+setupNumberReview();
 renderAlphabet();
 renderEmailExercises();
+renderPhoneExercises();
 
 document.querySelector('#checkAnswersBtn')?.addEventListener('click', checkAnswers);
+document.querySelector('#checkPhoneAnswersBtn')?.addEventListener('click', checkPhoneAnswers);
 window.speechSynthesis?.addEventListener('voiceschanged', getEnglishVoice);
