@@ -4,6 +4,53 @@ const ACTIVITY_PREFIX = 'nv3-activity:';
 
 const nextNewActivities = ['revision.html#activity-1', 'unit1.html'];
 
+
+
+const grammarTopics = [
+  ['simple-present', 'Simple Present'],
+  ['present-continuous', 'Present Continuous'],
+  ['present-perfect', 'Present Perfect'],
+  ['present-perfect-continuous', 'Present Perfect Continuous'],
+  ['simple-past', 'Simple Past'],
+  ['past-continuous', 'Past Continuous'],
+  ['past-perfect', 'Past Perfect'],
+  ['past-perfect-continuous', 'Past Perfect Continuous'],
+  ['simple-future', 'Simple Future'],
+  ['future-continuous', 'Future Continuous'],
+  ['future-perfect', 'Future Perfect'],
+  ['future-perfect-continuous', 'Future Perfect Continuous'],
+  ['active-voice', 'Active Voice'],
+  ['passive-voice', 'Passive Voice'],
+  ['comparatives-superlatives', 'Comparatives & Superlatives'],
+  ['affixes', 'Affixes, Prefixes & Suffixes'],
+];
+
+function initializeGrammarMenu() {
+  const grammarLink = document.querySelector('.nav-link[href="grammar.html"]');
+  if (!grammarLink || grammarLink.dataset.grammarReady === 'true') return;
+
+  grammarLink.dataset.grammarReady = 'true';
+  grammarLink.setAttribute('aria-expanded', currentPage === 'grammar.html' ? 'true' : 'false');
+  grammarLink.classList.add('grammar-nav-toggle');
+
+  const submenu = document.createElement('div');
+  submenu.className = 'grammar-submenu';
+  submenu.setAttribute('aria-label', 'Grammar topics');
+  submenu.hidden = currentPage !== 'grammar.html';
+  submenu.innerHTML = grammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
+  grammarLink.insertAdjacentElement('afterend', submenu);
+
+  grammarLink.addEventListener('click', (event) => {
+    event.preventDefault();
+    const isExpanded = grammarLink.getAttribute('aria-expanded') === 'true';
+    grammarLink.setAttribute('aria-expanded', String(!isExpanded));
+    submenu.hidden = isExpanded;
+    if (currentPage !== 'grammar.html' && !isExpanded) {
+      submenu.querySelector('a')?.focus();
+    }
+  });
+}
+
 document.querySelectorAll('.nav-link').forEach((link) => {
   const href = link.getAttribute('href');
   if (href === currentPage) link.classList.add('active');
@@ -132,5 +179,6 @@ function controlAudio(audioElement, action = 'play') {
   return true;
 }
 
+initializeGrammarMenu();
 initializeDashboard();
 window.NV3 = { validateAnswer, controlAudio, getStudentName, personalizeDashboard, getActivityRecords, getStatusFromPercentage, saveActivityResult, calculateCurrentLevel, renderDashboardReviews, getNextPracticeUrl };
