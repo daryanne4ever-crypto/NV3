@@ -1,0 +1,290 @@
+{
+  "title": "Active Voice",
+  "subtitle": "Voz Ativa",
+  "introduction": {
+    "definition": "A voz ativa é quando o sujeito pratica a ação. O sujeito é o agente da ação.",
+    "structure": "Subject + Verb + Object",
+    "example": "The teacher explains the lesson.",
+    "note": "A voz ativa é a mais natural, comum e direta em inglês."
+  },
+  "basicConcept": {
+    "title": "O Conceito Básico",
+    "whatIs": "Na voz ativa, o sujeito está em ação.",
+    "components": {
+      "subject": "Quem pratica a ação (agente)",
+      "verb": "A ação realizada",
+      "object": "Quem/o que recebe a ação"
+    },
+    "example": {
+      "sentence": "The student writes an email.",
+      "subject": "The student (quem faz)",
+      "verb": "writes (a ação)",
+      "object": "an email (o que recebe a ação)"
+    }
+  },
+  "whenToUse": [
+    {
+      "situation": "Quando o sujeito é conhecido ou importante",
+      "example": "Maria cooked the dinner. (Maria é importante na história)"
+    },
+    {
+      "situation": "Quando queremos ênfase na ação da pessoa",
+      "example": "The company developed a new product."
+    },
+    {
+      "situation": "Na maioria das situações naturais de fala",
+      "example": "I cleaned my room yesterday."
+    },
+    {
+      "situation": "Quando queremos ser direto e claro",
+      "example": "The police arrested the criminal."
+    }
+  ],
+  "transitiveVsIntransitive": {
+    "title": "Verbos Transitivos vs Intransitivos",
+    "transitive": {
+      "name": "Verbos Transitivos",
+      "definition": "Precisam de um objeto para completar a ação.",
+      "structure": "Subject + Transitive Verb + Object",
+      "examples": [
+        "She drinks coffee.",
+        "They watch movies.",
+        "He reads books."
+      ]
+    },
+    "intransitive": {
+      "name": "Verbos Intransitivos",
+      "definition": "NÃO precisam de um objeto. A ação é completa só com o verbo.",
+      "structure": "Subject + Intransitive Verb",
+      "examples": [
+        "She sleeps.",
+        "They laugh.",
+        "He runs."
+      ]
+    },
+    "note": "Apenas verbos transitivos podem ser passivos!"
+  },
+  "allTenses": [
+    {
+      "tense": "Simple Present",
+      "structure": "Subject + Verb + Object",
+      "example": "I write emails.",
+      "negative": "I don't write emails.",
+      "question": "Do you write emails?"
+    },
+    {
+      "tense": "Present Continuous",
+      "structure": "Subject + am/is/are + Verb + ing + Object",
+      "example": "I am writing an email.",
+      "negative": "I am not writing an email.",
+      "question": "Are you writing an email?"
+    },
+    {
+      "tense": "Present Perfect",
+      "structure": "Subject + have/has + past participle + Object",
+      "example": "I have written an email.",
+      "negative": "I have not written an email.",
+      "question": "Have you written an email?"
+    },
+    {
+      "tense": "Present Perfect Continuous",
+      "structure": "Subject + have/has + been + Verb + ing + Object",
+      "example": "I have been writing emails.",
+      "negative": "I have not been writing emails.",
+      "question": "Have you been writing emails?"
+    },
+    {
+      "tense": "Simple Past",
+      "structure": "Subject + Past Verb + Object",
+      "example": "I wrote an email.",
+      "negative": "I didn't write an email.",
+      "question": "Did you write an email?"
+    },
+    {
+      "tense": "Past Continuous",
+      "structure": "Subject + was/were + Verb + ing + Object",
+      "example": "I was writing an email.",
+      "negative": "I was not writing an email.",
+      "question": "Were you writing an email?"
+    },
+    {
+      "tense": "Past Perfect",
+      "structure": "Subject + had + past participle + Object",
+      "example": "I had written an email.",
+      "negative": "I had not written an email.",
+      "question": "Had you written an email?"
+    },
+    {
+      "tense": "Past Perfect Continuous",
+      "structure": "Subject + had + been + Verb + ing + Object",
+      "example": "I had been writing emails.",
+      "negative": "I had not been writing emails.",
+      "question": "Had you been writing emails?"
+    },
+    {
+      "tense": "Simple Future",
+      "structure": "Subject + will + Verb + Object",
+      "example": "I will write an email.",
+      "negative": "I will not write an email.",
+      "question": "Will you write an email?"
+    },
+    {
+      "tense": "Future Continuous",
+      "structure": "Subject + will + be + Verb + ing + Object",
+      "example": "I will be writing an email.",
+      "negative": "I will not be writing an email.",
+      "question": "Will you be writing an email?"
+    },
+    {
+      "tense": "Future Perfect",
+      "structure": "Subject + will + have + past participle + Object",
+      "example": "I will have written an email.",
+      "negative": "I will not have written an email.",
+      "question": "Will you have written an email?"
+    },
+    {
+      "tense": "Future Perfect Continuous",
+      "structure": "Subject + will + have + been + Verb + ing + Object",
+      "example": "I will have been writing emails.",
+      "negative": "I will not have been writing emails.",
+      "question": "Will you have been writing emails?"
+    }
+  ],
+  "commonActiveVerbsTable": [
+    {
+      "verb": "write",
+      "meaning": "escrever",
+      "example": "She writes a letter.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "read",
+      "meaning": "ler",
+      "example": "He reads a book.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "eat",
+      "meaning": "comer",
+      "example": "They eat pizza.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "make",
+      "meaning": "fazer/criar",
+      "example": "We make cakes.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "give",
+      "meaning": "dar",
+      "example": "She gives a gift.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "take",
+      "meaning": "pegar/levar",
+      "example": "He takes photos.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "buy",
+      "meaning": "comprar",
+      "example": "I buy groceries.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "teach",
+      "meaning": "ensinar",
+      "example": "She teaches English.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "help",
+      "meaning": "ajudar",
+      "example": "They help students.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "love",
+      "meaning": "amar",
+      "example": "We love our family.",
+      "type": "Transitivo"
+    },
+    {
+      "verb": "run",
+      "meaning": "correr",
+      "example": "He runs in the park.",
+      "type": "Intransitivo"
+    },
+    {
+      "verb": "sleep",
+      "meaning": "dormir",
+      "example": "She sleeps at night.",
+      "type": "Intransitivo"
+    },
+    {
+      "verb": "laugh",
+      "meaning": "rir",
+      "example": "They laugh loudly.",
+      "type": "Intransitivo"
+    },
+    {
+      "verb": "cry",
+      "meaning": "chorar",
+      "example": "The baby cries.",
+      "type": "Intransitivo"
+    }
+  ],
+  "commonErrors": [
+    {
+      "error": "She make a cake.",
+      "correct": "She makes a cake.",
+      "explanation": "Terceira pessoa singular precisa de -s no simple present."
+    },
+    {
+      "error": "I am write a letter.",
+      "correct": "I am writing a letter.",
+      "explanation": "Present continuous usa o verbo + ing."
+    },
+    {
+      "error": "He will write an email yesterday.",
+      "correct": "He wrote an email yesterday.",
+      "explanation": "Yesterday usa simple past, não future."
+    },
+    {
+      "error": "They doesn't like pizza.",
+      "correct": "They don't like pizza.",
+      "explanation": "'They' é terceira pessoa plural, usa 'do', não 'does'."
+    }
+  ],
+  "practiceExamples": [
+    {
+      "situation": "Na escola",
+      "example": "The teacher explains the grammar rules to the students."
+    },
+    {
+      "situation": "Em um restaurante",
+      "example": "The chef prepares delicious meals for our guests."
+    },
+    {
+      "situation": "No trabalho",
+      "example": "The manager sends important emails to the team."
+    },
+    {
+      "situation": "Em casa",
+      "example": "My family watches movies on weekends."
+    },
+    {
+      "situation": "Estudando",
+      "example": "The students solve math problems in the classroom."
+    }
+  ],
+  "keyPoints": [
+    "Active voice é a forma mais natural e comum em inglês.",
+    "O sujeito é o agente (quem faz a ação).",
+    "Usamos quando o sujeito é importante ou conhecido.",
+    "Apenas verbos transitivos podem ser passivos.",
+    "A maioria das conversas usa active voice."
+  ]
+}
