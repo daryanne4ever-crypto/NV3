@@ -46,6 +46,7 @@
       <button class="tab-button active" type="button" data-tab-target="activity1Panel">Activity 1: Email Dictation</button>
       <button class="tab-button" type="button" data-tab-target="activity2Panel">Activity 2: Phone Dictation</button>
       <button class="tab-button" type="button" data-tab-target="activity3Panel">Activity 3: Sentence Builder</button>
+      <button class="tab-button" type="button" data-tab-target="activity4Panel">Activity 4: Speaking Practice</button>
     </section>
 
     <header class="hero">
@@ -187,6 +188,30 @@
       <div class="builder-actions">
         <button class="btn btn-secondary" id="clearSentenceBtn" type="button">Clear</button>
         <button class="btn btn-primary" id="checkSentenceBtn" type="button">Check Sentence</button>
+      </div>
+    </section>
+
+    <section class="card tab-panel" id="activity4Panel" aria-labelledby="speakingPracticeTitle" hidden>
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Activity 4</span>
+          <h2 id="speakingPracticeTitle">Speaking Practice</h2>
+        </div>
+      </div>
+
+      <div class="speaking-card">
+        <button class="sound-button" id="playSpeakingPhraseBtn" type="button" aria-label="Ouvir frase modelo">🔊</button>
+        <p class="speaking-step" id="speakingStep">Phrase 1 of 20</p>
+        <p class="speaking-model" id="speakingModel">I have one apple.</p>
+
+        <button class="microphone-button" id="startSpeakingBtn" type="button" aria-label="Toque para falar">🎙️</button>
+        <p class="microphone-label">Toque para falar</p>
+
+        <div class="speaking-feedback" id="speakingFeedback" hidden>
+          <strong id="speakingScore">Excelente! 100</strong>
+          <div class="spoken-words" id="spokenWords"></div>
+          <button class="btn btn-primary" id="nextSpeakingBtn" type="button">Continuar</button>
+        </div>
       </div>
     </section>
   </main>

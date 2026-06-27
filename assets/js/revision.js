@@ -38,6 +38,29 @@ const acceptableSentences = [
   'I like cake',
   'I prefer salad',
 ];
+const speakingPhrases = [
+  'I have one apple.',
+  'She wants two bananas.',
+  'We need three eggs.',
+  'There are four oranges.',
+  'He bought five tomatoes.',
+  'Please spell "bread".',
+  'B-R-E-A-D. Bread.',
+  'Can you spell "cheese"?',
+  'C-H-E-E-S-E. Cheese.',
+  'I bought six bottles of milk.',
+  'My phone number is 82-99914-8159, and I need seven apples.',
+  'Please write this word: P-O-T-A-T-O. I need eight potatoes.',
+  'She ordered nine sandwiches and ten bottles of water.',
+  'Could you spell "strawberry", please? S-T-R-A-W-B-E-R-R-Y.',
+  'I need twelve bananas, five oranges, and one watermelon for the party.',
+  'My shopping list has thirteen eggs, four tomatoes, two onions, and six carrots.',
+  'Please send fourteen pizzas to 25 Green Street and spell the name "Lucas": L-U-C-A-S.',
+  'There are fifteen cookies, eleven chocolates, and twenty bottles of juice in the supermarket today.',
+  'My name is Emma. Please spell my last name: S-M-I-T-H. I need sixteen apples and four bottles of milk.',
+  'Hello! I would like twenty eggs, eight bananas, three loaves of bread, and two cartons of milk. Please spell "orange": O-R-A-N-G-E.',
+];
+let currentSpeakingIndex = 0;
 
 function getEnglishVoice() {
   const voices = window.speechSynthesis?.getVoices() || [];
@@ -302,11 +325,112 @@ function setupSentenceBuilder() {
   renderSentenceWorkspace();
 }
 
+
+function normalizeSpeakingWord(word) {
+  return word.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function renderSpeakingPhrase() {
+  const step = document.querySelector('#speakingStep');
+  const model = document.querySelector('#speakingModel');
+  const feedback = document.querySelector('#speakingFeedback');
+  const spokenWords = document.querySelector('#spokenWords');
+  const score = document.querySelector('#speakingScore');
+
+  if (step) step.textContent = `Phrase ${currentSpeakingIndex + 1} of ${speakingPhrases.length}`;
+  if (model) model.textContent = speakingPhrases[currentSpeakingIndex];
+  if (feedback) feedback.hidden = true;
+  if (spokenWords) spokenWords.innerHTML = '';
+  if (score) score.textContent = '';
+}
+
+function scoreSpeakingResult(transcript) {
+  const expectedWords = speakingPhrases[currentSpeakingIndex].split(/\s+/);
+  const spokenWords = transcript.split(/\s+/).filter(Boolean);
+  let correctCount = 0;
+
+  const comparedWords = expectedWords.map((expectedWord, index) => {
+    const spokenWord = spokenWords[index] || '';
+    const isCorrect = normalizeSpeakingWord(spokenWord) === normalizeSpeakingWord(expectedWord);
+    if (isCorrect) correctCount += 1;
+    return { expectedWord, isCorrect };
+  });
+
+  return {
+    comparedWords,
+    score: Math.round((correctCount / expectedWords.length) * 100),
+  };
+}
+
+function showSpeakingFeedback(transcript) {
+  const feedback = document.querySelector('#speakingFeedback');
+  const score = document.querySelector('#speakingScore');
+  const spokenWords = document.querySelector('#spokenWords');
+  if (!feedback || !score || !spokenWords) return;
+
+  const result = scoreSpeakingResult(transcript);
+  const label = result.score >= 90 ? 'Excelente!' : result.score >= 70 ? 'Good job!' : 'Keep practicing!';
+  score.textContent = `${label} ${result.score}`;
+  spokenWords.innerHTML = '';
+
+  result.comparedWords.forEach(({ expectedWord, isCorrect }) => {
+    const word = document.createElement('span');
+    word.className = `spoken-word ${isCorrect ? 'correct' : 'incorrect'}`;
+    word.textContent = expectedWord;
+    spokenWords.appendChild(word);
+  });
+
+  feedback.hidden = false;
+}
+
+function setupSpeakingPractice() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const micButton = document.querySelector('#startSpeakingBtn');
+  const playButton = document.querySelector('#playSpeakingPhraseBtn');
+  const nextButton = document.querySelector('#nextSpeakingBtn');
+  const score = document.querySelector('#speakingScore');
+
+  playButton?.addEventListener('click', () => speakText(speakingPhrases[currentSpeakingIndex], { rate: 0.72 }));
+
+  micButton?.addEventListener('click', () => {
+    if (!SpeechRecognition) {
+      if (score) score.textContent = 'SpeechRecognition is not available in this browser.';
+      document.querySelector('#speakingFeedback')?.removeAttribute('hidden');
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    micButton.classList.add('listening');
+
+    recognition.addEventListener('result', (event) => {
+      const transcript = event.results[0][0].transcript;
+      showSpeakingFeedback(transcript);
+    });
+
+    recognition.addEventListener('end', () => {
+      micButton.classList.remove('listening');
+    });
+
+    recognition.start();
+  });
+
+  nextButton?.addEventListener('click', () => {
+    currentSpeakingIndex = (currentSpeakingIndex + 1) % speakingPhrases.length;
+    renderSpeakingPhrase();
+  });
+
+  renderSpeakingPhrase();
+}
+
 setupTabs();
 setupNumberReview();
 renderAlphabet();
 renderEmailExercises();
 renderPhoneExercises();
 setupSentenceBuilder();
+setupSpeakingPractice();
 
 window.speechSynthesis?.addEventListener('voiceschanged', getEnglishVoice);
