@@ -485,3 +485,28 @@ a:focus-visible {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+.answer-row {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto;
+  gap: 0.7rem;
+  align-items: center;
+}
+
+.correct-answer-display {
+  display: none;
+  grid-column: 1 / -1;
+  color: var(--color-warning);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.correct-answer-display.visible {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .answer-row {
+    grid-template-columns: 1fr;
+  }
+}

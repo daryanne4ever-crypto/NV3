@@ -94,6 +94,23 @@ function setupNumberReview() {
   });
 }
 
+
+function setInputFeedback(input, answerDisplay, isCorrect, displayAnswer) {
+  input.classList.toggle('correct', isCorrect);
+  input.classList.toggle('incorrect', !isCorrect);
+  answerDisplay.textContent = `Correct answer: ${displayAnswer}`;
+  answerDisplay.classList.toggle('visible', !isCorrect);
+}
+
+function formatEmailForDisplay(email) {
+  const [localPart, domain] = email.split('@');
+  const formattedLocal = localPart
+    .split('.')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('.');
+  return `${formattedLocal}@${domain}`;
+}
+
 function renderAlphabet() {
   const alphabetGrid = document.querySelector('#alphabetGrid');
   if (!alphabetGrid) return;
@@ -123,19 +140,37 @@ function renderEmailExercises() {
     listenButton.textContent = `Ouvir Email ${index + 1}`;
     listenButton.addEventListener('click', () => speakEmailSlowly(email));
 
+    const answerRow = document.createElement('div');
+    answerRow.className = 'answer-row';
+
     const input = document.createElement('input');
     input.className = 'email-input';
     input.type = 'text';
     input.autocomplete = 'off';
     input.placeholder = `Type email ${index + 1}`;
     input.dataset.answer = email;
+    input.dataset.displayAnswer = formatEmailForDisplay(email);
     input.setAttribute('aria-label', `Resposta do email ${index + 1}`);
 
-    exercise.append(listenButton, input);
+    const checkButton = document.createElement('button');
+    checkButton.className = 'btn btn-secondary';
+    checkButton.type = 'button';
+    checkButton.textContent = 'Check';
+
+    const answerDisplay = document.createElement('span');
+    answerDisplay.className = 'correct-answer-display';
+
+    checkButton.addEventListener('click', () => {
+      const alunoResposta = input.value.trim().toLowerCase();
+      const respostaCorreta = input.dataset.answer.toLowerCase();
+      setInputFeedback(input, answerDisplay, alunoResposta === respostaCorreta, input.dataset.displayAnswer);
+    });
+
+    answerRow.append(input, checkButton, answerDisplay);
+    exercise.append(listenButton, answerRow);
     exerciseList.appendChild(exercise);
   });
 }
-
 
 function speakPhoneSlowly(phoneNumber) {
   if (!('speechSynthesis' in window)) return;
@@ -166,6 +201,9 @@ function renderPhoneExercises() {
     listenButton.textContent = `☎ Ouvir Telefone ${index + 1}`;
     listenButton.addEventListener('click', () => speakPhoneSlowly(phoneNumber));
 
+    const answerRow = document.createElement('div');
+    answerRow.className = 'answer-row';
+
     const input = document.createElement('input');
     input.className = 'email-input phone-input';
     input.type = 'text';
@@ -173,27 +211,26 @@ function renderPhoneExercises() {
     input.autocomplete = 'off';
     input.placeholder = `Type phone ${index + 1}`;
     input.dataset.answer = phoneNumber.replace(/\D/g, '');
+    input.dataset.displayAnswer = phoneNumber;
     input.setAttribute('aria-label', `Resposta do telefone ${index + 1}`);
 
-    exercise.append(listenButton, input);
+    const checkButton = document.createElement('button');
+    checkButton.className = 'btn btn-secondary';
+    checkButton.type = 'button';
+    checkButton.textContent = 'Check';
+
+    const answerDisplay = document.createElement('span');
+    answerDisplay.className = 'correct-answer-display';
+
+    checkButton.addEventListener('click', () => {
+      const alunoResposta = input.value.trim().toLowerCase().replace(/[-\s]/g, '');
+      const respostaCorreta = input.dataset.answer.toLowerCase();
+      setInputFeedback(input, answerDisplay, alunoResposta === respostaCorreta, input.dataset.displayAnswer);
+    });
+
+    answerRow.append(input, checkButton, answerDisplay);
+    exercise.append(listenButton, answerRow);
     exerciseList.appendChild(exercise);
-  });
-}
-
-function checkAnswers() {
-  document.querySelectorAll('#emailExercises .email-input').forEach((input) => {
-    const isCorrect = input.value.trim() === input.dataset.answer;
-    input.classList.toggle('correct', isCorrect);
-    input.classList.toggle('incorrect', !isCorrect);
-  });
-}
-
-function checkPhoneAnswers() {
-  document.querySelectorAll('.phone-input').forEach((input) => {
-    const normalizedAnswer = input.value.replace(/[\s-]/g, '');
-    const isCorrect = normalizedAnswer === input.dataset.answer;
-    input.classList.toggle('correct', isCorrect);
-    input.classList.toggle('incorrect', !isCorrect);
   });
 }
 
@@ -203,6 +240,4 @@ renderAlphabet();
 renderEmailExercises();
 renderPhoneExercises();
 
-document.querySelector('#checkAnswersBtn')?.addEventListener('click', checkAnswers);
-document.querySelector('#checkPhoneAnswersBtn')?.addEventListener('click', checkPhoneAnswers);
 window.speechSynthesis?.addEventListener('voiceschanged', getEnglishVoice);
