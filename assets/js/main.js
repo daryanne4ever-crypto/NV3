@@ -2,10 +2,12 @@
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
 function calculateLevel(activities) {
-  const completed = activities.filter((activity) => activity.status === 'Completed');
-  if (completed.length >= 12) return 'Advanced';
-  if (completed.length >= 5) return 'Intermediate';
-  return 'Beginner';
+   const completed = activities.filter((activity) => activity.status === 'Completed');
+   if (completed.length >= 12) return 'Advanced';
+   if (completed.length >= 5) return 'Intermediate';
+   return 'Beginner';
+}
+
 const nextNewActivities = ['revision.html#activity-1', 'unit1.html'];
 
 
@@ -116,6 +118,19 @@ function renderDashboard() {
   }
 }
 
+function saveStudentName() {
+  const input = document.querySelector('#studentNameInput');
+  const name = input?.value.trim();
+  if (name) {
+    window.NV3Storage?.setStudentName(name);
+    localStorage.setItem('nv3-student-name', name);
+    alert('Nome salvo com sucesso!');
+    renderDashboard();
+  } else {
+    alert('Por favor, insira um nome válido.');
+  }
+}
+
 function bindGlobalActions() {
   document.querySelectorAll('[data-xp]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -124,11 +139,7 @@ function bindGlobalActions() {
     });
   });
 
-  document.querySelector('#saveStudentNameBtn')?.addEventListener('click', () => {
-    const input = document.querySelector('#studentNameInput');
-    window.NV3Storage?.setStudentName(input?.value || 'Student');
-    renderDashboard();
-  });
+  document.querySelector('#saveStudentNameBtn')?.addEventListener('click', saveStudentName);
 
   document.querySelector('#startPracticeBtn')?.addEventListener('click', () => {
     window.location.href = 'revision.html#activity-1';
