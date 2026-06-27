@@ -1,278 +1,289 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unit 1: Hotel Communication - NV3 Platform</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Unit 1 Hotel Communication with WH questions and hotel vocabulary." />
+  <title>NLE Level 3 | Unit 1: Hotel Communication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-    <div class="container">
-        <!-- HEADER -->
-        <header class="unit-header">
-            <a href="index.html" class="btn-back">← Back to Dashboard</a>
-            <h1>Unit 1: Hotel Communication</h1>
-            <p class="unit-subtitle">WH-Questions, Vocabulary, Requests, Information and Doubts</p>
-        </header>
+  <aside class="sidebar" aria-label="Menu principal">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">NV3</span>
+      <span><strong>NLE Level 3</strong><small>English B1 Platform</small></span>
+    </a>
+    <nav class="nav-list">
+      <a class="nav-link" href="index.html" data-page="dashboard">Dashboard</a>
+      <a class="nav-link" href="revision.html" data-page="revision">Revision</a>
+      <a class="nav-link active" href="unit1.html" data-page="unit1">Unit 1</a>
+    </nav>
+  </aside>
 
-        <!-- CONTEÚDO DAS ATIVIDADES -->
-        <main class="unit-content">
-            <section class="activity-section vocabulary-overview">
-                <div class="activity-card">
-                    <h2>Hotel Communication Focus</h2>
-                    <p><strong>WH Question Words:</strong> What, Where, When, Why, Who, Which, How, How much, How many, How long, How far.</p>
-                    <p><strong>Core Vocabulary:</strong> room, reservation, receptionist, lobby, elevator, key card, breakfast, gym, swimming pool, restaurant, taxi, bus, airport, luggage, passport, ID, phone number, email address.</p>
-                </div>
-            </section>
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">Unit 1: Hotel Communication</span>
+        <h1>WH-Questions for real hotel situations</h1>
+        <p>Practice What, Where, When, Why, Who, Which, How, How much, How many, How long and How far with hotel vocabulary.</p>
+      </div>
+      <a class="btn btn-secondary" href="index.html">Voltar ao Dashboard</a>
+    </header>
+
+    <section class="card unit-vocabulary">
+      <span class="eyebrow">Core vocabulary</span>
+      <h2>Hotel words</h2>
+      <p>room, reservation, receptionist, lobby, elevator, key card, breakfast, gym, swimming pool, restaurant, taxi, bus, airport, luggage, passport, ID, phone number, email address.</p>
+    </section>
+
+    <!-- ACTIVITY 1: Information & Doubts -->
+    <section class="activity-block card" id="activity1">
+      <span class="eyebrow">Section A — Information & Doubts</span>
+      <h2>Activity 1: Information & Doubts</h2>
+      <p class="activity-description">Complete the sentences with the correct WH-Question words</p>
+        
+      <div class="exercise exercise-1">
+        <p class="exercise-label"><strong>Exercise 1: Fill in the blanks</strong></p>
+        <div class="exercise-content">
+          <div class="question-set">
+            <div class="question">
+              <p><strong>_____ time is breakfast?</strong></p>
+              <div class="options">
+                <button class="option btn btn-secondary" data-answer="What">What</button>
+                <button class="option btn btn-secondary" data-answer="Where">Where</button>
+                <button class="option btn btn-secondary" data-answer="When">When</button>
+                <button class="option btn btn-secondary" data-answer="Why">Why</button>
+              </div>
+              <p class="hint"><small>Hint: Asking about time</small></p>
+            </div>
             
-            <!-- ACTIVITY 1: Information & Doubts -->
-            <section class="activity-section" id="activity1">
-                <div class="activity-header">
-                    <h2>Activity 1: Information & Doubts</h2>
-                    <p class="activity-description">Complete the sentences with the correct WH-Question words</p>
-                </div>
-                
-                <div class="activity-card">
-                    <div class="exercise exercise-1">
-                        <p class="exercise-label">Exercise 1: Fill in the blanks</p>
-                        <div class="exercise-content">
-                            <div class="question-set">
-                                <div class="question">
-                                    <p><strong>_____ time is breakfast?</strong></p>
-                                    <div class="options">
-                                        <button class="option" data-answer="What">What</button>
-                                        <button class="option" data-answer="Where">Where</button>
-                                        <button class="option" data-answer="When">When</button>
-                                        <button class="option" data-answer="Why">Why</button>
-                                    </div>
-                                    <p class="hint">Hint: Asking about time</p>
-                                </div>
-                                
-                                <div class="question">
-                                    <p><strong>_____ is the gym?</strong></p>
-                                    <div class="options">
-                                        <button class="option" data-answer="Where">Where</button>
-                                        <button class="option" data-answer="What">What</button>
-                                        <button class="option" data-answer="When">When</button>
-                                        <button class="option" data-answer="How">How</button>
-                                    </div>
-                                    <p class="hint">Hint: Asking about location</p>
-                                </div>
-                                
-                                <div class="question">
-                                    <p><strong>_____ does the restaurant close?</strong></p>
-                                    <div class="options">
-                                        <button class="option" data-answer="When">When</button>
-                                        <button class="option" data-answer="Where">Where</button>
-                                        <button class="option" data-answer="What">What</button>
-                                        <button class="option" data-answer="How long">How long</button>
-                                    </div>
-                                    <p class="hint">Hint: Asking about time/schedule</p>
-                                </div>
-                                
-                                <div class="question">
-                                    <p><strong>_____ much is the room?</strong></p>
-                                    <div class="options">
-                                        <button class="option" data-answer="How">How</button>
-                                        <button class="option" data-answer="What">What</button>
-                                        <button class="option" data-answer="How many">How many</button>
-                                        <button class="option" data-answer="Which">Which</button>
-                                    </div>
-                                    <p class="hint">Hint: Asking about price/amount</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="question">
+              <p><strong>_____ is the gym?</strong></p>
+              <div class="options">
+                <button class="option btn btn-secondary" data-answer="Where">Where</button>
+                <button class="option btn btn-secondary" data-answer="What">What</button>
+                <button class="option btn btn-secondary" data-answer="When">When</button>
+                <button class="option btn btn-secondary" data-answer="How">How</button>
+              </div>
+              <p class="hint"><small>Hint: Asking about location</small></p>
+            </div>
+            
+            <div class="question">
+              <p><strong>_____ does the restaurant close?</strong></p>
+              <div class="options">
+                <button class="option btn btn-secondary" data-answer="When">When</button>
+                <button class="option btn btn-secondary" data-answer="Where">Where</button>
+                <button class="option btn btn-secondary" data-answer="What">What</button>
+                <button class="option btn btn-secondary" data-answer="How long">How long</button>
+              </div>
+              <p class="hint"><small>Hint: Asking about time/schedule</small></p>
+            </div>
+            
+            <div class="question">
+              <p><strong>_____ much is the room?</strong></p>
+              <div class="options">
+                <button class="option btn btn-secondary" data-answer="How">How</button>
+                <button class="option btn btn-secondary" data-answer="What">What</button>
+                <button class="option btn btn-secondary" data-answer="How many">How many</button>
+                <button class="option btn btn-secondary" data-answer="Which">Which</button>
+              </div>
+              <p class="hint"><small>Hint: Asking about price/amount</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                    <div class="exercise exercise-2">
-                        <p class="exercise-label">Exercise 2: Listening & Matching</p>
-                        <div class="exercise-content">
-                            <p class="exercise-intro">Listen to the questions and match them with the correct answers.</p>
-                            <div class="match-section">
-                                <div class="match-pair">
-                                    <span class="question-text">"What is your room number?"</span>
-                                    <select class="match-select">
-                                        <option value="">Select an answer...</option>
-                                        <option value="answer1">It's 305</option>
-                                        <option value="answer2">At 7:00 AM</option>
-                                        <option value="answer3">On the third floor</option>
-                                        <option value="answer4">$150 per night</option>
-                                    </select>
-                                </div>
-                                <div class="match-pair">
-                                    <span class="question-text">"When does breakfast start?"</span>
-                                    <select class="match-select">
-                                        <option value="">Select an answer...</option>
-                                        <option value="answer1">It's 305</option>
-                                        <option value="answer2">At 7:00 AM</option>
-                                        <option value="answer3">On the third floor</option>
-                                        <option value="answer4">$150 per night</option>
-                                    </select>
-                                </div>
-                                <div class="match-pair">
-                                    <span class="question-text">"Where is the swimming pool?"</span>
-                                    <select class="match-select">
-                                        <option value="">Select an answer...</option>
-                                        <option value="answer1">It's 305</option>
-                                        <option value="answer2">At 7:00 AM</option>
-                                        <option value="answer3">On the third floor</option>
-                                        <option value="answer4">$150 per night</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <hr />
 
-                <div class="activity-footer">
-                    <button class="btn-submit" data-activity="1">Submit Activity 1</button>
-                </div>
-            </section>
+      <div class="exercise exercise-2">
+        <p class="exercise-label"><strong>Exercise 2: Listening & Matching</strong></p>
+        <div class="exercise-content">
+          <p class="exercise-intro">Listen to the questions and match them with the correct answers.</p>
+          <div class="match-section">
+            <div class="match-pair">
+              <span class="question-text">"What is your room number?"</span>
+              <select class="match-select">
+                <option value="">Select an answer...</option>
+                <option value="answer1">It's 305</option>
+                <option value="answer2">At 7:00 AM</option>
+                <option value="answer3">On the third floor</option>
+                <option value="answer4">$150 per night</option>
+              </select>
+            </div>
+            <div class="match-pair">
+              <span class="question-text">"When does breakfast start?"</span>
+              <select class="match-select">
+                <option value="">Select an answer...</option>
+                <option value="answer1">It's 305</option>
+                <option value="answer2">At 7:00 AM</option>
+                <option value="answer3">On the third floor</option>
+                <option value="answer4">$150 per night</option>
+              </select>
+            </div>
+            <div class="match-pair">
+              <span class="question-text">"Where is the swimming pool?"</span>
+              <select class="match-select">
+                <option value="">Select an answer...</option>
+                <option value="answer1">It's 305</option>
+                <option value="answer2">At 7:00 AM</option>
+                <option value="answer3">On the third floor</option>
+                <option value="answer4">$150 per night</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <!-- ACTIVITY 2: Polite Requests & Transport -->
-            <section class="activity-section" id="activity2">
-                <div class="activity-header">
-                    <h2>Activity 2: Polite Requests & Transport</h2>
-                    <p class="activity-description">Practice making polite requests and asking for transportation</p>
-                </div>
-                
-                <div class="activity-card">
-                    <div class="exercise exercise-1">
-                        <p class="exercise-label">Exercise 1: Complete the Polite Requests</p>
-                        <div class="exercise-content">
-                            <div class="request-set">
-                                <div class="request-card">
-                                    <p><strong>How can I call a taxi?</strong></p>
-                                    <input type="text" class="response-input" placeholder="Type your response...">
-                                    <p class="hint">Vocabulary: phone, reception, number, dial</p>
-                                </div>
+      <div class="activity-footer" style="margin-top: 1rem;">
+        <button class="btn btn-primary" data-activity="1">Submit Activity 1</button>
+      </div>
+    </section>
 
-                                <div class="request-card">
-                                    <p><strong>Can I have another towel?</strong></p>
-                                    <input type="text" class="response-input" placeholder="Type your response...">
-                                    <p class="hint">Vocabulary: towel, pillow, blanket, extra</p>
-                                </div>
+    <!-- ACTIVITY 2: Polite Requests & Transport -->
+    <section class="activity-block card" id="activity2">
+      <span class="eyebrow">Section B — Polite Requests & Transport</span>
+      <h2>Activity 2: Speaking and Requests</h2>
+      <p class="activity-description">Practice making polite requests and asking for transportation.</p>
+        
+      <div class="exercise exercise-1">
+        <p class="exercise-label"><strong>Exercise 1: Complete the Polite Requests</strong></p>
+        <div class="exercise-content">
+          <div class="request-set">
+            <div class="request-card">
+              <p><strong>How can I call a taxi?</strong></p>
+              <input type="text" class="response-input email-input" placeholder="Type your response...">
+              <p class="hint"><small>Vocabulary: phone, reception, number, dial</small></p>
+            </div>
 
-                                <div class="request-card">
-                                    <p><strong>Could you help me with my luggage?</strong></p>
-                                    <input type="text" class="response-input" placeholder="Type your response...">
-                                    <p class="hint">Vocabulary: luggage, bag, suitcase, bellhop</p>
-                                </div>
+            <div class="request-card">
+              <p><strong>Can I have another towel?</strong></p>
+              <input type="text" class="response-input email-input" placeholder="Type your response...">
+              <p class="hint"><small>Vocabulary: towel, pillow, blanket, extra</small></p>
+            </div>
 
-                                <div class="request-card">
-                                    <p><strong>How far is the bus station?</strong></p>
-                                    <input type="text" class="response-input" placeholder="Type your response...">
-                                    <p class="hint">Vocabulary: bus, station, far, distance, minutes</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="request-card">
+              <p><strong>Could you help me with my luggage?</strong></p>
+              <input type="text" class="response-input email-input" placeholder="Type your response...">
+              <p class="hint"><small>Vocabulary: luggage, bag, suitcase, bellhop</small></p>
+            </div>
 
-                    <div class="exercise exercise-2">
-                        <p class="exercise-label">Exercise 2: Transportation Scenarios</p>
-                        <div class="exercise-content">
-                            <div class="scenario">
-                                <h4>Scenario: You need to go to the airport</h4>
-                                <p>What would you ask the receptionist?</p>
-                                <textarea class="scenario-input" placeholder="Write your response..." rows="4"></textarea>
-                                <p class="hint">Use: "Could you...", "Can I...", "How long...", "How far..."</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="request-card">
+              <p><strong>How far is the bus station?</strong></p>
+              <input type="text" class="response-input email-input" placeholder="Type your response...">
+              <p class="hint"><small>Vocabulary: bus, station, far, distance, minutes</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-                <div class="activity-footer">
-                    <button class="btn-submit" data-activity="2">Submit Activity 2</button>
-                </div>
-            </section>
+      <hr />
 
-            <!-- ACTIVITY 3: Check-in & Reservations -->
-            <section class="activity-section" id="activity3">
-                <div class="activity-header">
-                    <h2>Activity 3: Check-in & Reservations</h2>
-                    <p class="activity-description">Interactive simulation of hotel check-in and reservation scenarios</p>
-                </div>
-                
-                <div class="activity-card">
-                    <div class="exercise exercise-1">
-                        <p class="exercise-label">Exercise 1: Fill in the Reservation Form</p>
-                        <div class="exercise-content">
-                            <form class="reservation-form">
-                                <div class="form-group">
-                                    <label for="fullName">Full Name:</label>
-                                    <input type="text" id="fullName" class="form-input" placeholder="Your name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email Address:</label>
-                                    <input type="email" id="email" class="form-input" placeholder="your@email.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone Number:</label>
-                                    <input type="tel" id="phone" class="form-input" placeholder="+55 (11) 99999-9999">
-                                </div>
-                                <div class="form-group">
-                                    <label for="id">ID Number (Passport/RG):</label>
-                                    <input type="text" id="id" class="form-input" placeholder="Your ID">
-                                </div>
-                                <div class="form-group">
-                                    <label for="checkIn">Check-in Date:</label>
-                                    <input type="date" id="checkIn" class="form-input">
-                                </div>
-                                <div class="form-group">
-                                    <label for="checkOut">Check-out Date:</label>
-                                    <input type="date" id="checkOut" class="form-input">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+      <div class="exercise exercise-2">
+        <p class="exercise-label"><strong>Exercise 2: Transportation Scenarios</strong></p>
+        <div class="exercise-content">
+          <div class="scenario">
+            <h4>Scenario: You need to go to the airport</h4>
+            <p>What would you ask the receptionist?</p>
+            <textarea class="scenario-input email-input" placeholder="Write your response..." rows="4" style="width: 100%;"></textarea>
+            <p class="hint"><small>Use: "Could you...", "Can I...", "How long...", "How far..."</small></p>
+          </div>
+        </div>
+      </div>
 
-                    <div class="exercise exercise-2">
-                        <p class="exercise-label">Exercise 2: Dialog Simulation</p>
-                        <div class="exercise-content">
-                            <div class="dialog-simulation">
-                                <div class="dialog-message guest">
-                                    <p><strong>Guest:</strong> "Good morning. I'd like to make a reservation."</p>
-                                </div>
-                                <div class="dialog-message receptionist">
-                                    <p><strong>Receptionist:</strong> "Of course. What is your name?"</p>
-                                </div>
-                                <div class="dialog-response">
-                                    <input type="text" class="dialog-input" placeholder="Your response...">
-                                </div>
+      <div class="activity-footer" style="margin-top: 1rem;">
+        <button class="btn btn-primary" data-activity="2">Submit Activity 2</button>
+      </div>
+    </section>
 
-                                <div class="dialog-message receptionist">
-                                    <p><strong>Receptionist:</strong> "Thank you. What is your email address and phone number?"</p>
-                                </div>
-                                <div class="dialog-response">
-                                    <input type="text" class="dialog-input" placeholder="Your response...">
-                                </div>
+    <!-- ACTIVITY 3: Check-in & Reservations -->
+    <section class="activity-block card" id="activity3">
+      <span class="eyebrow">Section C — Check-in & Reservations</span>
+      <h2>Activity 3: Interactive simulation</h2>
+      <p class="activity-description">Interactive simulation of hotel check-in and reservation scenarios.</p>
+        
+      <div class="exercise exercise-1">
+        <p class="exercise-label"><strong>Exercise 1: Fill in the Reservation Form</strong></p>
+        <div class="exercise-content">
+          <form class="reservation-form">
+            <div class="form-group">
+              <label for="fullName">Full Name:</label>
+              <input type="text" id="fullName" class="form-input email-input" placeholder="Your name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address:</label>
+              <input type="email" id="email" class="form-input email-input" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number:</label>
+              <input type="tel" id="phone" class="form-input email-input" placeholder="+55 (11) 99999-9999">
+            </div>
+            <div class="form-group">
+              <label for="id">ID Number (Passport/RG):</label>
+              <input type="text" id="id" class="form-input email-input" placeholder="Your ID">
+            </div>
+            <div class="form-group">
+              <label for="checkIn">Check-in Date:</label>
+              <input type="date" id="checkIn" class="form-input email-input">
+            </div>
+            <div class="form-group">
+              <label for="checkOut">Check-out Date:</label>
+              <input type="date" id="checkOut" class="form-input email-input">
+            </div>
+          </form>
+        </div>
+      </div>
 
-                                <div class="dialog-message receptionist">
-                                    <p><strong>Receptionist:</strong> "May I see your ID, please?"</p>
-                                </div>
-                                <div class="dialog-response">
-                                    <input type="text" class="dialog-input" placeholder="Your response...">
-                                </div>
+      <hr />
 
-                                <div class="dialog-message receptionist">
-                                    <p><strong>Receptionist:</strong> "What is the Wi-Fi password?"</p>
-                                </div>
-                                <div class="dialog-response">
-                                    <input type="text" class="dialog-input" placeholder="Your response...">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="exercise exercise-2">
+        <p class="exercise-label"><strong>Exercise 2: Dialog Simulation</strong></p>
+        <div class="exercise-content">
+          <div class="dialog-simulation simulation-dialogue">
+            <div class="dialog-message guest">
+              <p><strong>Guest:</strong> "Good morning. I'd like to make a reservation."</p>
+            </div>
+            <div class="dialog-message receptionist">
+              <p><strong>Receptionist:</strong> "Of course. What is your name?"</p>
+            </div>
+            <div class="dialog-response">
+              <input type="text" class="dialog-input email-input" placeholder="Your response...">
+            </div>
 
-                <div class="activity-footer">
-                    <button class="btn-submit" data-activity="3">Submit Activity 3</button>
-                </div>
-            </section>
+            <div class="dialog-message receptionist" style="margin-top: 1rem;">
+              <p><strong>Receptionist:</strong> "Thank you. What is your email address and phone number?"</p>
+            </div>
+            <div class="dialog-response">
+              <input type="text" class="dialog-input email-input" placeholder="Your response...">
+            </div>
 
-        </main>
-    </div>
+            <div class="dialog-message receptionist" style="margin-top: 1rem;">
+              <p><strong>Receptionist:</strong> "May I see your ID, please?"</p>
+            </div>
+            <div class="dialog-response">
+              <input type="text" class="dialog-input email-input" placeholder="Your response...">
+            </div>
 
-    <script src="unit1.js"></script>
+            <div class="dialog-message receptionist" style="margin-top: 1rem;">
+              <p><strong>Receptionist:</strong> "What is the Wi-Fi password?"</p>
+            </div>
+            <div class="dialog-response">
+              <input type="text" class="dialog-input email-input" placeholder="Your response...">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activity-footer" style="margin-top: 1rem;">
+        <button class="btn btn-primary" id="completeUnit1Btn" data-activity="3" type="button">Finalizar Unit 1</button>
+        <p class="sentence-feedback" id="unit1Feedback"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/unit1.js"></script>
 </body>
 </html>

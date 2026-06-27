@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Página de revisão do NLE Level 3 com alfabeto e ditado de emails." />
+  <title>NLE Level 3 | Revision</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <aside class="sidebar" aria-label="Menu principal">
+    <a class="brand" href="index.html" aria-label="NLE Level 3 Home">
+      <span class="brand__mark">NV3</span>
+      <span>
+        <strong>NLE Level 3</strong>
+        <small>English B1 Platform</small>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      <a class="nav-link" href="index.html" data-page="dashboard">Dashboard</a>
+      <a class="nav-link" href="grammar.html" data-page="grammar">Grammar</a>
+      <a class="nav-link" href="vocabulary.html" data-page="vocabulary">Vocabulary</a>
+      <a class="nav-link" href="listening.html" data-page="listening">Listening</a>
+      <a class="nav-link" href="speaking.html" data-page="speaking">Speaking</a>
+      <a class="nav-link" href="reading.html" data-page="reading">Reading</a>
+      <a class="nav-link" href="writing.html" data-page="writing">Writing</a>
+      <a class="nav-link" href="professor.html" data-page="professor">Professor</a>
+    </nav>
+
+    <div class="sidebar-card">
+      <span class="eyebrow">Meta semanal</span>
+      <strong>420 / 600 XP</strong>
+      <div class="progress" aria-label="Progresso semanal de XP">
+        <span style="width: 70%"></span>
+      </div>
+      <small>Continue praticando para liberar a medalha Purple Streak.</small>
+    </div>
+  </aside>
+
+  <main class="app-shell">
+    <section class="tabs" aria-label="Atividades de revisão">
+      <button class="tab-button active" type="button" data-activity="1">Activity 1: Email Dictation</button>
+      <button class="tab-button" type="button" data-activity="2">Activity 2: Phone Dictation</button>
+      <button class="tab-button" type="button" data-activity="3">Activity 3: Sentence Builder</button>
+      <button class="tab-button" type="button" data-activity="4">Activity 4: Speaking Practice</button>
+    </section>
+
+    <section class="activity-section activity-1">
+      <header class="hero">
+        <div>
+          <span class="eyebrow">Activity 1</span>
+          <h1>Alphabet & Email Dictation</h1>
+          <p>Clique nas letras para ouvir a pronúncia em inglês americano e pratique ditado de emails.</p>
+        </div>
+        <a class="btn btn-secondary" href="index.html">Voltar ao Dashboard</a>
+      </header>
+
+      <section class="card" aria-labelledby="alphabetTitle">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Pronunciation</span>
+            <h2 id="alphabetTitle">Review: Alphabet</h2>
+          </div>
+        </div>
+        <div class="alphabet-grid" id="alphabetGrid" aria-label="Botões do alfabeto em inglês"></div>
+      </section>
+
+      <section class="card" aria-labelledby="activityTitle">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Activity 1</span>
+            <h2 id="activityTitle">Email Dictation</h2>
+          </div>
+        </div>
+        <p><strong>Instructions:</strong> Listen to each email address and type exactly what you hear.</p>
+        <p><strong>Situation:</strong> There was a problem with the computer system. Anne needs to type the customers' email addresses into the spreadsheet again.</p>
+        <div class="exercise-list" id="emailExercises" aria-label="Exercícios de ditado de email"></div>
+      </section>
+    </section>
+
+    <section class="activity-section activity-2" hidden>
+      <header class="hero">
+        <div>
+          <span class="eyebrow">Activity 2</span>
+          <h1>Numbers & Phone Dictation</h1>
+          <p>Revise números em inglês e pratique o ditado de telefones com feedback individual.</p>
+        </div>
+        <a class="btn btn-secondary" href="index.html">Voltar ao Dashboard</a>
+      </header>
+
+      <section class="card" aria-labelledby="numbersTitle">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Pronunciation</span>
+            <h2 id="numbersTitle">Review: Numbers</h2>
+          </div>
+        </div>
+        <div class="number-grid" aria-label="Botões de números em inglês">
+          <button class="number-button" type="button" data-text="one"><strong>1</strong><small>One</small></button>
+          <button class="number-button" type="button" data-text="two"><strong>2</strong><small>Two</small></button>
+          <button class="number-button" type="button" data-text="three"><strong>3</strong><small>Three</small></button>
+          <button class="number-button" type="button" data-text="four"><strong>4</strong><small>Four</small></button>
+          <button class="number-button" type="button" data-text="five"><strong>5</strong><small>Five</small></button>
+          <button class="number-button" type="button" data-text="six"><strong>6</strong><small>Six</small></button>
+          <button class="number-button" type="button" data-text="seven"><strong>7</strong><small>Seven</small></button>
+          <button class="number-button" type="button" data-text="eight"><strong>8</strong><small>Eight</small></button>
+          <button class="number-button" type="button" data-text="nine"><strong>9</strong><small>Nine</small></button>
+          <button class="number-button" type="button" data-text="ten"><strong>10</strong><small>Ten</small></button>
+          <button class="number-button" type="button" data-text="eleven"><strong>11</strong><small>Eleven</small></button>
+          <button class="number-button" type="button" data-text="twelve"><strong>12</strong><small>Twelve</small></button>
+          <button class="number-button" type="button" data-text="thirteen"><strong>13</strong><small>Thirteen</small></button>
+          <button class="number-button" type="button" data-text="fourteen"><strong>14</strong><small>Fourteen</small></button>
+          <button class="number-button" type="button" data-text="fifteen"><strong>15</strong><small>Fifteen</small></button>
+          <button class="number-button" type="button" data-text="sixteen"><strong>16</strong><small>Sixteen</small></button>
+          <button class="number-button" type="button" data-text="seventeen"><strong>17</strong><small>Seventeen</small></button>
+          <button class="number-button" type="button" data-text="eighteen"><strong>18</strong><small>Eighteen</small></button>
+          <button class="number-button" type="button" data-text="nineteen"><strong>19</strong><small>Nineteen</small></button>
+          <button class="number-button" type="button" data-text="twenty"><strong>20</strong><small>Twenty</small></button>
+          <button class="number-button" type="button" data-text="twenty-one"><strong>21</strong><small>Twenty-One</small></button>
+          <button class="number-button" type="button" data-text="thirty"><strong>30</strong><small>Thirty</small></button>
+          <button class="number-button" type="button" data-text="thirty-two"><strong>32</strong><small>Thirty-Two</small></button>
+          <button class="number-button" type="button" data-text="forty"><strong>40</strong><small>Forty</small></button>
+          <button class="number-button" type="button" data-text="fifty"><strong>50</strong><small>Fifty</small></button>
+          <button class="number-button" type="button" data-text="sixty"><strong>60</strong><small>Sixty</small></button>
+          <button class="number-button" type="button" data-text="seventy"><strong>70</strong><small>Seventy</small></button>
+          <button class="number-button" type="button" data-text="eighty"><strong>80</strong><small>Eighty</small></button>
+          <button class="number-button" type="button" data-text="ninety"><strong>90</strong><small>Ninety</small></button>
+          <button class="number-button" type="button" data-text="one hundred"><strong>100</strong><small>One Hundred</small></button>
+          <button class="number-button" type="button" data-text="one hundred and five"><strong>105</strong><small>One Hundred And Five</small></button>
+          <button class="number-button" type="button" data-text="one thousand"><strong>1000</strong><small>One Thousand</small></button>
+          <button class="number-button" type="button" data-text="two thousand and twenty-six"><strong>2026</strong><small>Two Thousand And Twenty-Six</small></button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="phoneActivityTitle">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Activity 2</span>
+            <h2 id="phoneActivityTitle">Phone Dictation</h2>
+          </div>
+        </div>
+        <p><strong>Instructions:</strong> Listen to each phone number and type exactly what you hear.</p>
+        <p><strong>Situation:</strong> Anne received several voice messages with phone numbers. Listen to the audio and type the correct phone number. Use numbers only (e.g., 5551234).</p>
+        <div class="exercise-list" id="phoneExercises" aria-label="Exercícios de ditado de telefone"></div>
+      </section>
+    </section>
+
+    <section class="activity-section activity-3" hidden>
+      <header class="hero">
+        <div>
+          <span class="eyebrow">Activity 3</span>
+          <h1>Sentence Builder</h1>
+          <p>Monte a tradução em inglês para a frase alvo em português usando os blocos de vocabulário.</p>
+        </div>
+        <a class="btn btn-secondary" href="index.html">Voltar ao Dashboard</a>
+      </header>
+
+      <section class="card" aria-labelledby="sentenceBuilderTitle">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Puzzle</span>
+            <h2 id="sentenceBuilderTitle">Frase Alvo</h2>
+          </div>
+          <span class="badge accent" id="sentenceProgress">1 / 10</span>
+        </div>
+        <p class="target-sentence" id="targetSentence">Eu trouxe o bolo</p>
+        <div class="sentence-workspace drop-zone" id="sentenceWorkspace" aria-live="polite"></div>
+        <p class="sentence-feedback" id="sentenceFeedback" aria-live="polite"></p>
+        <div class="word-bank puzzle-word-bank" id="puzzleWordBank" aria-label="Blocos de vocabulário"></div>
+        <div class="builder-actions">
+          <button class="btn btn-secondary" id="clearSentenceBtn" type="button">Clear</button>
+          <button class="btn btn-primary" id="checkSentenceBtn" type="button">Check</button>
+          <button class="btn btn-secondary" id="nextSentenceBtn" type="button">Next phrase</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="activity-section activity-4" hidden>
+      <header class="hero">
+        <div>
+          <span class="eyebrow">Activity 4</span>
+          <h1>Speaking Practice</h1>
+          <p>Ouça a frase modelo, grave sua fala e receba pontuação palavra por palavra.</p>
+        </div>
+        <a class="btn btn-secondary" href="index.html">Voltar ao Dashboard</a>
+      </header>
+
+      <section class="card" aria-labelledby="speakingPracticeTitle">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Activity 4</span>
+            <h2 id="speakingPracticeTitle">Speaking Practice</h2>
+          </div>
+        </div>
+        <div class="speaking-card">
+          <button class="sound-button" id="playSpeakingPhraseBtn" type="button" aria-label="Ouvir frase modelo">🔊</button>
+          <p class="speaking-step" id="speakingStep">Phrase 1 of 20</p>
+          <p class="speaking-model" id="speakingModel">I have one apple.</p>
+          <button class="microphone-button" id="startSpeakingBtn" type="button" aria-label="Toque para falar">🎙️</button>
+          <p class="microphone-label">Toque para falar</p>
+          <div class="speaking-feedback" id="speakingFeedback" hidden>
+            <strong id="speakingScore">Excelente! 100</strong>
+            <div class="spoken-words" id="spokenWords"></div>
+            <div class="word-error-analysis" id="wordErrorAnalysis"></div>
+            <div class="pronunciation-tips" id="pronunciationTips"></div>
+            <button class="btn btn-primary" id="nextSpeakingBtn" type="button">Continuar</button>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/revision.js"></script>
+</body>
+</html>
