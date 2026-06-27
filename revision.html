@@ -45,7 +45,7 @@
     <section class="tabs" aria-label="Atividades de revisão">
       <button class="tab-button active" type="button" data-tab-target="activity1Panel">Activity 1: Email Dictation</button>
       <button class="tab-button" type="button" data-tab-target="activity2Panel">Activity 2: Phone Dictation</button>
-      <button class="tab-button locked" type="button" disabled>Activity 3: Locked</button>
+      <button class="tab-button" type="button" data-tab-target="activity3Panel">Activity 3: Sentence Builder</button>
     </section>
 
     <header class="hero">
@@ -137,6 +137,57 @@
       <p><strong>Situation:</strong> Anne received several voice messages with phone numbers. Listen to the audio and type the correct phone number. Use numbers only (e.g., 5551234).</p>
 
       <div class="exercise-list" id="phoneExercises" aria-label="Exercícios de ditado de telefone"></div>
+    </section>
+
+    <section class="card tab-panel" id="activity3Panel" aria-labelledby="sentenceBuilderTitle" hidden>
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Activity 3</span>
+          <h2 id="sentenceBuilderTitle">Sentence Builder</h2>
+        </div>
+      </div>
+      <p><strong>Instructions:</strong> Click the words to build a sentence. Then check if your sentence is accepted.</p>
+
+      <div class="sentence-workspace" id="sentenceWorkspace" aria-live="polite">
+        <span class="sentence-placeholder">Your sentence will appear here...</span>
+      </div>
+      <p class="sentence-feedback" id="sentenceFeedback" aria-live="polite"></p>
+
+      <div class="word-category">
+        <h3>Categoria 1: Sujeito/Verbo</h3>
+        <div class="word-bank">
+          <button class="word-button" type="button">I brought</button>
+          <button class="word-button" type="button">I bought</button>
+          <button class="word-button" type="button">I prefer</button>
+          <button class="word-button" type="button">I like</button>
+        </div>
+      </div>
+
+      <div class="word-category">
+        <h3>Categoria 2: Comida/Vocabulário</h3>
+        <div class="word-bank">
+          <button class="word-button" type="button">cake</button>
+          <button class="word-button" type="button">pie</button>
+          <button class="word-button" type="button">pizza</button>
+          <button class="word-button" type="button">coffee</button>
+          <button class="word-button" type="button">salad</button>
+        </div>
+      </div>
+
+      <div class="word-category">
+        <h3>Categoria 3: Complemento/Adjetivo</h3>
+        <div class="word-bank">
+          <button class="word-button" type="button">hot</button>
+          <button class="word-button" type="button">cold</button>
+          <button class="word-button" type="button">with sugar</button>
+          <button class="word-button" type="button">for the party</button>
+        </div>
+      </div>
+
+      <div class="builder-actions">
+        <button class="btn btn-secondary" id="clearSentenceBtn" type="button">Clear</button>
+        <button class="btn btn-primary" id="checkSentenceBtn" type="button">Check Sentence</button>
+      </div>
     </section>
   </main>
 

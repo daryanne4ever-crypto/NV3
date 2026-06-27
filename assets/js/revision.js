@@ -25,6 +25,19 @@ const phoneNumbers = [
   '555-7744',
   '555-3322',
 ];
+const sentenceParts = [];
+const acceptableSentences = [
+  'I brought cake',
+  'I brought pie for the party',
+  'I bought coffee with sugar',
+  'I bought salad for the party',
+  'I prefer coffee hot',
+  'I prefer coffee cold',
+  'I like pizza cold',
+  'I like pizza hot',
+  'I like cake',
+  'I prefer salad',
+];
 
 function getEnglishVoice() {
   const voices = window.speechSynthesis?.getVoices() || [];
@@ -234,10 +247,66 @@ function renderPhoneExercises() {
   });
 }
 
+
+function renderSentenceWorkspace() {
+  const workspace = document.querySelector('#sentenceWorkspace');
+  if (!workspace) return;
+
+  if (!sentenceParts.length) {
+    workspace.innerHTML = '<span class="sentence-placeholder">Your sentence will appear here...</span>';
+    return;
+  }
+
+  workspace.textContent = sentenceParts.join(' ');
+}
+
+function resetSentenceFeedback() {
+  const workspace = document.querySelector('#sentenceWorkspace');
+  const feedback = document.querySelector('#sentenceFeedback');
+  workspace?.classList.remove('correct', 'incorrect');
+  if (!feedback) return;
+  feedback.textContent = '';
+  feedback.classList.remove('success', 'danger');
+}
+
+function setupSentenceBuilder() {
+  const workspace = document.querySelector('#sentenceWorkspace');
+  const feedback = document.querySelector('#sentenceFeedback');
+
+  document.querySelectorAll('.word-button').forEach((button) => {
+    button.addEventListener('click', () => {
+      sentenceParts.push(button.textContent.trim());
+      resetSentenceFeedback();
+      renderSentenceWorkspace();
+    });
+  });
+
+  document.querySelector('#clearSentenceBtn')?.addEventListener('click', () => {
+    sentenceParts.length = 0;
+    resetSentenceFeedback();
+    renderSentenceWorkspace();
+  });
+
+  document.querySelector('#checkSentenceBtn')?.addEventListener('click', () => {
+    if (!workspace || !feedback) return;
+    const sentence = sentenceParts.join(' ');
+    const isAccepted = acceptableSentences.includes(sentence);
+
+    workspace.classList.toggle('correct', isAccepted);
+    workspace.classList.toggle('incorrect', !isAccepted);
+    feedback.classList.toggle('success', isAccepted);
+    feedback.classList.toggle('danger', !isAccepted);
+    feedback.textContent = isAccepted ? 'Great sentence! Well done.' : 'Try again! Try a different combination.';
+  });
+
+  renderSentenceWorkspace();
+}
+
 setupTabs();
 setupNumberReview();
 renderAlphabet();
 renderEmailExercises();
 renderPhoneExercises();
+setupSentenceBuilder();
 
 window.speechSynthesis?.addEventListener('voiceschanged', getEnglishVoice);
