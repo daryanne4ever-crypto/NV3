@@ -4,7 +4,8 @@ NLE Level 3 (NV3) é a estrutura inicial de uma plataforma web de estudo de ingl
 
 ## Escopo inicial
 
-- **Dashboard do aluno (`index.html`)**: XP, nível, ranking, medalhas e progresso por unidades.
+- **Dashboard do aluno (`index.html`)**: XP, nível, ranking, medalhas, personalização do nome e progresso por unidades.
+- **Revision (`revision.html`)**: revisão do alfabeto e ditado de emails com Web Speech API.
 - **Grammar**: lições e exercícios com correção automática.
 - **Vocabulary**: treino de vocabulário, flashcards e revisão espaçada.
 - **Listening**: player de áudio, atividades de múltipla escolha e feedback imediato.
@@ -19,6 +20,7 @@ NLE Level 3 (NV3) é a estrutura inicial de uma plataforma web de estudo de ingl
 - **Medalhas/badges** por sequência de estudos, acertos, revisão de erros e participação.
 - Módulo de **IPA** para trabalhar pronúncia e símbolos fonéticos.
 - **Reconhecimento de voz** via Web Speech API para prática de speaking.
+- **Síntese de voz** via Web Speech API para atividades de listening, alfabeto e ditado.
 - **Games educacionais** para reforçar vocabulário, gramática e listening.
 - **Painel do professor** com métricas de desempenho, tarefas e progresso individual.
 
@@ -27,6 +29,7 @@ NLE Level 3 (NV3) é a estrutura inicial de uma plataforma web de estudo de ingl
 ```text
 nle-level3/
 ├── index.html
+├── revision.html
 ├── grammar.html
 ├── vocabulary.html
 ├── listening.html

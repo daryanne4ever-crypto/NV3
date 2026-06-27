@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Página de revisão do NLE Level 3 com alfabeto e ditado de emails." />
+  <title>NLE Level 3 | Revision</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <aside class="sidebar" aria-label="Menu principal">
+    <a class="brand" href="index.html" aria-label="NLE Level 3 Home">
+      <span class="brand__mark">NV3</span>
+      <span>
+        <strong>NLE Level 3</strong>
+        <small>English B1 Platform</small>
+      </span>
+    </a>
+
+    <nav class="nav-list">
+      <a class="nav-link" href="index.html" data-page="dashboard">Dashboard</a>
+      <a class="nav-link" href="grammar.html" data-page="grammar">Grammar</a>
+      <a class="nav-link" href="vocabulary.html" data-page="vocabulary">Vocabulary</a>
+      <a class="nav-link" href="listening.html" data-page="listening">Listening</a>
+      <a class="nav-link" href="speaking.html" data-page="speaking">Speaking</a>
+      <a class="nav-link" href="reading.html" data-page="reading">Reading</a>
+      <a class="nav-link" href="writing.html" data-page="writing">Writing</a>
+      <a class="nav-link" href="professor.html" data-page="professor">Professor</a>
+    </nav>
+
+    <div class="sidebar-card">
+      <span class="eyebrow">Meta semanal</span>
+      <strong>420 / 600 XP</strong>
+      <div class="progress" aria-label="Progresso semanal de XP">
+        <span style="width: 70%"></span>
+      </div>
+      <small>Continue praticando para liberar a medalha Purple Streak.</small>
+    </div>
+  </aside>
+
+  <main class="app-shell">
+    <section class="tabs" aria-label="Atividades de revisão">
+      <button class="tab-button active" type="button">Activity 1: Email Dictation</button>
+      <button class="tab-button locked" type="button" disabled>Activity 2: Locked</button>
+      <button class="tab-button locked" type="button" disabled>Activity 3: Locked</button>
+    </section>
+
+    <header class="hero">
+      <div>
+        <span class="eyebrow">Revision</span>
+        <h1>Review: Alphabet</h1>
+        <p>Clique nas letras para ouvir a pronúncia em inglês americano e depois pratique ditado de emails.</p>
+      </div>
+      <a class="btn btn-secondary" href="index.html">Voltar ao Dashboard</a>
+    </header>
+
+    <section class="card" aria-labelledby="alphabetTitle">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Pronunciation</span>
+          <h2 id="alphabetTitle">Alphabet A-Z</h2>
+        </div>
+      </div>
+      <div class="alphabet-grid" id="alphabetGrid" aria-label="Botões do alfabeto em inglês"></div>
+    </section>
+
+    <section class="card" aria-labelledby="activityTitle">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Activity 1</span>
+          <h2 id="activityTitle">Email Dictation</h2>
+        </div>
+      </div>
+      <p><strong>Instructions:</strong> Listen to each email address and type exactly what you hear.</p>
+      <p><strong>Situation:</strong> There was a problem with the computer system. Anne needs to type the customers' email addresses into the spreadsheet again.</p>
+
+      <div class="exercise-list" id="emailExercises" aria-label="Exercícios de ditado de email"></div>
+      <button class="btn btn-primary" id="checkAnswersBtn" type="button">Check Answers</button>
+    </section>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/revision.js"></script>
+</body>
+</html>

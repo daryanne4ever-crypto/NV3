@@ -6,6 +6,27 @@ document.querySelectorAll('.nav-link').forEach((link) => {
   if (href === currentPage) link.classList.add('active');
 });
 
+
+function getStudentName() {
+  const storageKey = 'nv3-student-name';
+  let studentName = localStorage.getItem(storageKey);
+
+  if (!studentName) {
+    studentName = window.prompt("What's your name?") || 'B1 learner';
+    localStorage.setItem(storageKey, studentName.trim() || 'B1 learner');
+  }
+
+  return localStorage.getItem(storageKey) || 'B1 learner';
+}
+
+function personalizeDashboard() {
+  const studentNameElement = document.querySelector('#studentName');
+  if (!studentNameElement) return;
+  studentNameElement.textContent = getStudentName();
+}
+
+personalizeDashboard();
+
 let xp = Number(localStorage.getItem('nv3-xp') || 2480);
 const xpTotal = document.querySelector('#xpTotal');
 if (xpTotal) xpTotal.textContent = xp.toLocaleString('pt-BR');
@@ -38,4 +59,4 @@ function controlAudio(audioElement, action = 'play') {
   return true;
 }
 
-window.NV3 = { addXp, validateAnswer, controlAudio };
+window.NV3 = { addXp, validateAnswer, controlAudio, getStudentName, personalizeDashboard };
