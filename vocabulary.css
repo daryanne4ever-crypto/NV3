@@ -1,0 +1,151 @@
+.vocabulary-hub {
+    padding: 20px;
+}
+
+.vocab-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.vocab-controls button {
+    padding: 8px 16px;
+    background: #2a2a3e;
+    color: #fff;
+    border: 2px solid #c77dff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.vocab-controls button:hover {
+    background: #c77dff;
+    transform: scale(1.05);
+}
+
+.vocab-controls button.active-btn {
+    background: #c77dff !important;
+    box-shadow: 0 0 10px #c77dff;
+}
+
+.vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.vocab-card {
+    padding: 15px;
+    background: #1a1a2e;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #2a2a3e;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.vocab-card:hover {
+    background: #2a2a3e;
+    border-color: #c77dff;
+    transform: translateY(-5px);
+}
+
+.vocab-card b {
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.vocab-card small {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.speaker-icon {
+    cursor: pointer;
+    color: #c77dff;
+    margin-left: 5px;
+    transition: all 0.2s ease;
+    font-size: 1.2rem;
+}
+
+.speaker-icon:hover {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+.vocab-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-quiz,
+.btn-teacher {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn-quiz {
+    background: #c77dff;
+    color: #000;
+}
+
+.btn-quiz:hover {
+    background: #e0b3ff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(199, 125, 255, 0.4);
+}
+
+.btn-teacher {
+    background: #06d6d0;
+    color: #000;
+}
+
+.btn-teacher:hover {
+    background: #4df3ee;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(6, 214, 208, 0.4);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .vocab-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    
+    .vocab-controls {
+        justify-content: center;
+    }
+    
+    .vocab-card {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vocab-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 8px;
+    }
+    
+    .vocab-card {
+        padding: 10px;
+    }
+    
+    .vocab-card b {
+        font-size: 1rem;
+    }
+}
