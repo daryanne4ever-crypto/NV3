@@ -32,16 +32,17 @@
       <div>
         <span class="eyebrow">NLE Level 3</span>
         <h1>Vocabulary Master</h1>
-        <p>Área de aprendizado de vocabulário com múltiplos níveis (A1-C1), pronúncia com Web Speech API e quiz interativo para ganhar XP.</p>
+        <p>Aprenda vocabulário em 5 níveis CEFR (A1-C1), pratique com áudio nativo e teste seus conhecimentos com quizzes interativos.</p>
       </div>
       <button class="btn btn-primary" data-xp="25">Ganhar 25 XP</button>
     </header>
     <section class="content-grid">
       <!-- Vocabulary Hub Module -->
       <article class="card vocabulary-hub">
-        <h2>Vocabulary Master</h2>
-        <!-- Botões de Nível -->
-        <div class="vocab-controls">
+        <h2>📚 Vocabulary Master</h2>
+        
+        <!-- Botões de Nível CEFR -->
+        <div class="vocab-controls" id="vocab-controls">
           <button onclick="renderVocab('A1')">A1</button>
           <button onclick="renderVocab('A2')">A2</button>
           <button onclick="renderVocab('B1')">B1</button>
@@ -49,19 +50,26 @@
           <button onclick="renderVocab('C1')">C1</button>
         </div>
         
-        <!-- Onde o conteúdo será renderizado -->
+        <!-- Tela 1: Grade de Vocabulário -->
         <div id="vocab-display" class="vocab-grid"></div>
         
-        <!-- Área de Gamificação -->
+        <!-- Barra de Ações: Quiz e Professor -->
         <div id="vocab-footer" class="vocab-actions" style="display:none;">
-          <button class="btn-quiz" onclick="startQuiz()">Iniciar Quiz (+XP)</button>
-          <button class="btn-teacher" onclick="window.open('https://wa.me/seu-numero')">Ask Teacher</button>
+          <button class="btn-quiz" onclick="startQuiz()">🎯 Iniciar Quiz (+XP)</button>
+          <button class="btn-teacher" onclick="window.open('https://wa.me/seu-numero')">💬 Ask Teacher</button>
         </div>
+
+        <!-- Tela 2: Quiz (Inicia escondido) -->
+        <div id="quiz-display" style="display: none;"></div>
       </article>
     </section>
   </main>
+  
+  <!-- Scripts Globais da Plataforma -->
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
+  
+  <!-- Script do Módulo Vocabulary -->
   <script src="vocabulary.js"></script>
 </body>
 </html>
