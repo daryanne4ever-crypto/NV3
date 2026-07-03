@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="vocabulary.css" />
 </head>
 <body>
   <aside class="sidebar" aria-label="Menu principal">
@@ -30,20 +31,37 @@
     <header class="hero">
       <div>
         <span class="eyebrow">NLE Level 3</span>
-        <h1>Vocabulary</h1>
-        <p>Área inicial para atividades B1 com feedback visual, XP e integração futura com games, áudio e professor.</p>
+        <h1>Vocabulary Master</h1>
+        <p>Área de aprendizado de vocabulário com múltiplos níveis (A1-C1), pronúncia com Web Speech API e quiz interativo para ganhar XP.</p>
       </div>
       <button class="btn btn-primary" data-xp="25">Ganhar 25 XP</button>
     </header>
     <section class="content-grid">
-      <article class="card large-card">
-        <div class="section-heading"><div><span class="eyebrow">Atividades</span><h2>Primeira trilha</h2></div><a href="index.html">Dashboard</a></div>
-        <p>Conteúdo base preparado para expansão com lições, exercícios automáticos, materiais multimídia e relatórios.</p>
-      </article>
-      <aside class="card"><span class="eyebrow">Feedback</span><h2>Status</h2><div class="badge-list"><span class="badge success">Certo</span><span class="badge warning">Progresso</span><span class="badge danger">Revisar</span></div></aside>
+      <!-- Vocabulary Hub Module -->
+      <section class="card vocabulary-hub">
+        <h2>Vocabulary Master</h2>
+        <!-- Botões de Nível -->
+        <div class="vocab-controls">
+          <button onclick="renderVocab('A1')">A1</button>
+          <button onclick="renderVocab('A2')">A2</button>
+          <button onclick="renderVocab('B1')">B1</button>
+          <button onclick="renderVocab('B2')">B2</button>
+          <button onclick="renderVocab('C1')">C1</button>
+        </div>
+        
+        <!-- Onde o conteúdo será renderizado -->
+        <div id="vocab-display" class="vocab-grid"></div>
+        
+        <!-- Área de Gamificação -->
+        <div id="vocab-footer" class="vocab-actions" style="display:none;">
+          <button class="btn-quiz" onclick="startQuiz()">Iniciar Quiz (+XP)</button>
+          <button class="btn-teacher" onclick="window.open('https://wa.me/seu-numero')">Ask Teacher</button>
+        </div>
+      </section>
     </section>
   </main>
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="vocabulary.js"></script>
 </body>
 </html>
