@@ -191,7 +191,7 @@ function startQuiz() {
     if (userAnswer.toLowerCase() === randomWord.trans.toLowerCase()) {
         alert(`✅ Correto! "${randomWord.word}" = "${randomWord.trans}"\n\n+10 XP`);
     } else {
-        alert(`❌ Incorrect. "${randomWord.word}" = "${randomWord.trans}"\n\nTente novamente!`);
+        alert(`❌ Incorreto. "${randomWord.word}" = "${randomWord.trans}"\n\nTente novamente!`);
     }
 }
 
