@@ -1,28 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listening Mastery - NV3</title>
-    <link rel="stylesheet" href="listening-styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NLE Level 3 | Listening Mastery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="listening-styles.css" />
 </head>
 <body>
-    <section class="card listening-hub">
-        <h2>Listening Mastery: Structural Practice</h2>
+  <aside class="sidebar" aria-label="Menu principal">
+    <a class="brand" href="index.html"><span class="brand__mark">NV3</span><span><strong>NLE Level 3</strong><small>English B1 Platform</small></span></a>
+    <nav class="nav-list">
+      <a class="nav-link" href="index.html">Dashboard</a>
+      <a class="nav-link" href="revision.html">Revision</a>
+      <a class="nav-link" href="grammar.html">Grammar</a>
+      <a class="nav-link" href="vocabulary.html">Vocabulary</a>
+      <a class="nav-link" href="listening.html">Listening</a>
+      <a class="nav-link" href="speaking.html">Speaking</a>
+      <a class="nav-link" href="reading.html">Reading</a>
+      <a class="nav-link" href="writing.html">Writing</a>
+      <a class="nav-link" href="professor.html">Professor</a>
+      <a class="nav-link" href="unit1.html">Unit 1</a>
+    </nav>
+    <div class="sidebar-card"><span class="eyebrow">NV3</span><strong>Modo estudo</strong><small>Aprenda, pratique e acompanhe seu progresso.</small></div>
+  </aside>
+  <main class="app-shell">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">NLE Level 3</span>
+        <h1>🎧 Listening Mastery</h1>
+        <p>Pratique com 200+ frases estruturais em 5 níveis CEFR (A1-C1), com pronuncia nativa e tradução em português.</p>
+      </div>
+      <button class="btn btn-primary" data-xp="30">Ganhar 30 XP</button>
+    </header>
+    <section class="content-grid">
+      <!-- Listening Hub Module -->
+      <article class="card listening-hub">
+        <h2>🎧 Listening Mastery: Structural Practice</h2>
         
-        <!-- Botões de Nível -->
+        <!-- Botões de Nível CEFR -->
         <div class="listen-controls" id="listen-controls">
-            <button onclick="renderListening('A1')">A1</button>
-            <button onclick="renderListening('A2')">A2</button>
-            <button onclick="renderListening('B1')">B1</button>
-            <button onclick="renderListening('B2')">B2</button>
-            <button onclick="renderListening('C1')">C1</button>
+          <button onclick="renderListening('A1')">A1</button>
+          <button onclick="renderListening('A2')">A2</button>
+          <button onclick="renderListening('B1')">B1</button>
+          <button onclick="renderListening('B2')">B2</button>
+          <button onclick="renderListening('C1')">C1</button>
         </div>
         
         <!-- Onde as frases serão renderizadas -->
         <div id="listen-display" class="listen-list"></div>
+      </article>
     </section>
-
-    <script src="listening.js"></script>
+  </main>
+  
+  <!-- Scripts Globais da Plataforma -->
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/main.js"></script>
+  
+  <!-- Script do Módulo Listening -->
+  <script src="listening.js"></script>
 </body>
 </html>
