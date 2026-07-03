@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
   <link rel="stylesheet" href="listening-styles.css" />
+  <link rel="stylesheet" href="listening-quiz.css" />
 </head>
 <body>
   <aside class="sidebar" aria-label="Menu principal">
@@ -53,6 +54,44 @@
         <!-- Onde as frases serão renderizadas -->
         <div id="listen-display" class="listen-list"></div>
       </article>
+
+      <!-- Listening Quiz Module -->
+      <article class="card quiz-hub">
+        <h2>🎯 Listening Quiz: Structural Recognition</h2>
+        
+        <!-- Seleção de Nível do Quiz -->
+        <div class="listen-controls" id="quiz-level-controls">
+          <button onclick="startListeningQuiz('A1')">Start A1 Quiz</button>
+          <button onclick="startListeningQuiz('A2')">Start A2 Quiz</button>
+        </div>
+
+        <!-- Container do Quiz (Oculto inicialmente) -->
+        <div id="listening-quiz-container" style="display: none;">
+          <div class="quiz-header">
+            <span id="l-quiz-progress">Question 1/20</span>
+            <span id="l-quiz-score">Score: 0</span>
+          </div>
+
+          <div class="audio-player-area">
+            <button class="big-play-btn" onclick="playQuizAudio()" title="Ouvir a frase">
+              🔊 LISTEN
+            </button>
+            <p class="audio-instruction">Click to listen, then choose the correct sentence.</p>
+          </div>
+
+          <div class="quiz-options" id="l-quiz-options">
+            <!-- Os botões das opções serão injetados aqui via JS -->
+          </div>
+
+          <button id="l-next-btn" class="next-btn" style="display: none;" onclick="nextListeningQuestion()">Next Question ➔</button>
+        </div>
+
+        <!-- Tela de Resultado -->
+        <div id="l-quiz-result" style="display: none; text-align: center;">
+          <h3 id="l-final-score-text"></h3>
+          <button class="next-btn" onclick="document.getElementById('quiz-level-controls').style.display='flex'; document.getElementById('l-quiz-result').style.display='none';">Choose Another Level</button>
+        </div>
+      </article>
     </section>
   </main>
   
@@ -60,7 +99,8 @@
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
   
-  <!-- Script do Módulo Listening -->
+  <!-- Scripts do Módulo Listening -->
   <script src="listening.js"></script>
+  <script src="listening-quiz.js"></script>
 </body>
 </html>
