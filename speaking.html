@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="speaking.css" />
 </head>
 <body>
   <aside class="sidebar" aria-label="Menu principal">
@@ -36,14 +37,50 @@
       <button class="btn btn-primary" data-xp="25">Ganhar 25 XP</button>
     </header>
     <section class="content-grid">
-      <article class="card large-card">
-        <div class="section-heading"><div><span class="eyebrow">Atividades</span><h2>Primeira trilha</h2></div><a href="index.html">Dashboard</a></div>
-        <p>Conteúdo base preparado para expansão com exercícios de pronúncia, prática de diálogo e análise de sotaque.</p>
+      <article class="card speaking-hub">
+        <h2>Speaking Mastery: Echo Challenge</h2>
+
+        <div class="speak-controls" id="speak-level-controls">
+          <button onclick="loadSpeakingLevel('A1')" data-level="A1" class="active-btn">A1</button>
+          <button onclick="loadSpeakingLevel('A2')" data-level="A2">A2</button>
+          <button onclick="loadSpeakingLevel('B1')" data-level="B1">B1</button>
+          <button onclick="loadSpeakingLevel('B2')" data-level="B2">B2</button>
+          <button onclick="loadSpeakingLevel('C1')" data-level="C1">C1</button>
+        </div>
+
+        <div id="speaking-practice-container" class="speaking-practice-area">
+          <div class="speak-phrase-card">
+            <span class="progress-badge" id="s-progress">Frase 1</span>
+            <h3 id="s-english-text">I live in a big house.</h3>
+            <p id="s-portuguese-text" class="structural-translation">Eu moro em uma casa grande.</p>
+
+            <div class="audio-playback-controls">
+              <button class="btn-play-normal" onclick="playBaseAudio(1)" title="Ouvir em velocidade natural">🔊 Normal</button>
+              <button class="btn-play-slow" onclick="playBaseAudio(0.7)" title="Ouvir devagar para entender os fonemas">🐢 Lento</button>
+            </div>
+          </div>
+
+          <div class="recording-area">
+            <button id="btn-record-toggle" class="btn-record" onclick="toggleRecording()">
+              🎙️ Gravar
+            </button>
+            <p id="recording-status" class="status-text">Clique para falar</p>
+          </div>
+
+          <div id="feedback-area" class="feedback-container" style="display: none;">
+            <h4>Análise da sua pronúncia:</h4>
+            <p id="s-user-speech" class="user-speech-result"></p>
+            <div id="s-pedagogical-tip" class="tip-box"></div>
+            <button class="btn-next-phrase" onclick="nextSpeakingPhrase()">Próxima Frase ➔</button>
+          </div>
+        </div>
       </article>
+
       <aside class="card"><span class="eyebrow">Feedback</span><h2>Status</h2><div class="badge-list"><span class="badge success">Certo</span><span class="badge warning">Progresso</span></div></aside>
     </section>
   </main>
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="speaking.js"></script>
 </body>
 </html>
