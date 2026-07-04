@@ -1,56 +1,342 @@
 // ==========================================
-// BANCO DE DADOS DE LEITURA & DICIONÁRIO
+// EMILY'S READING LIBRARY - A1 → C1
+// Imported from assets/data/emilyStories.js
 // ==========================================
-const readingData = {
-  A1: {
-    title: "The Big House",
-    text: "Tom walked slowly through the town.",
-    summary: "Tom caminha lentamente pela cidade, permitindo que o aluno observe uma frase simples no passado.",
-    vocabularyList: [
-      { word: "Walked", def: "Verbo no Simple Past: caminhou / andou." },
-      { word: "Slowly", def: "Advérbio que descreve como a ação aconteceu." },
-      { word: "Through", def: "Preposição usada para indicar movimento através de um lugar." }
-    ],
-    grammarAnalysis: "O texto usa Simple Past com 'walked' e um advérbio de modo ('slowly') para mostrar como a ação aconteceu.",
-    quiz: {
-      question: "Como Tom caminhou pela cidade?",
-      options: ["Quickly", "Slowly", "Warmly"]
+
+// Dicionário avançado com dados semânticos ricos
+// Usado para B1+ com colocações, registro, frequência
+const advancedDictionary = {
+  B1: {
+    confidence: {
+      ipa: "/kənˈfɪdəns/",
+      type: "noun",
+      pt: "confiança",
+      definition: "A feeling or belief that you can do something well or that something will be successful.",
+      register: "neutral",
+      frequency: "high",
+      collocations: [
+        { phrase: "gain confidence", meaning: "desenvolver confiança" },
+        { phrase: "lack confidence", meaning: "carecer de confiança" },
+        { phrase: "build confidence", meaning: "construir confiança" },
+        { phrase: "with confidence", meaning: "com confiança" }
+      ],
+      synonyms: [
+        { word: "assurance", intensity: "strong" },
+        { word: "self-belief", intensity: "medium" },
+        { word: "certainty", intensity: "strong" }
+      ],
+      antonyms: ["doubt", "uncertainty", "hesitation"],
+      examples: [
+        {
+          en: "Emily spoke with confidence during the interview.",
+          pt: "Emily falou com confiança durante a entrevista.",
+          context: "professional"
+        },
+        {
+          en: "Building confidence takes time and practice.",
+          pt: "Construir confiança leva tempo e prática.",
+          context: "academic"
+        }
+      ],
+      etymology: "From Latin confidentia (trust, reliance)"
     },
-    dictionary: {
-      tom: { ipa: "/tɒm/", type: "noun", pt: "Tom (nome)", ex: "Tom is my friend.", ex_pt: "Tom é meu amigo." },
-      walked: { ipa: "/wɔːkt/", type: "verb", pt: "caminhou / andou", ex: "He walked very fast.", ex_pt: "Ele andou muito rápido." },
-      slowly: { ipa: "/ˈsləʊli/", type: "adv", pt: "lentamente", ex: "She spoke slowly.", ex_pt: "Ela falou lentamente." },
-      through: { ipa: "/θruː/", type: "prep", pt: "através / pela", ex: "We drove through the city.", ex_pt: "Nós dirigimos pela cidade." },
-      the: { ipa: "/ðə/", type: "default", pt: "o / a / os / as", ex: "The book is here.", ex_pt: "O livro está aqui." },
-      town: { ipa: "/taʊn/", type: "noun", pt: "cidade", ex: "It is a small town.", ex_pt: "É uma cidade pequena." }
+    adventure: {
+      ipa: "/ədˈventʃər/",
+      type: "noun",
+      pt: "aventura",
+      definition: "An exciting or unusual experience; a daring or risky undertaking.",
+      register: "neutral",
+      frequency: "high",
+      collocations: [
+        { phrase: "embark on an adventure", meaning: "começar uma aventura" },
+        { phrase: "seek adventure", meaning: "buscar aventura" },
+        { phrase: "spirit of adventure", meaning: "espírito de aventura" }
+      ],
+      synonyms: [
+        { word: "expedition", intensity: "medium" },
+        { word: "journey", intensity: "medium" },
+        { word: "quest", intensity: "strong" }
+      ],
+      antonyms: ["routine", "monotony"],
+      examples: [
+        {
+          en: "Her solo trip to Edinburgh was an unforgettable adventure.",
+          pt: "Sua viagem solo para Edimburgo foi uma aventura inesquecível.",
+          context: "narrative"
+        }
+      ]
+    },
+    challenge: {
+      ipa: "/ˈtʃælɪndʒ/",
+      type: "noun",
+      pt: "desafio",
+      definition: "A difficult task or problem; to invite someone to try something difficult.",
+      register: "neutral",
+      frequency: "very-high",
+      collocations: [
+        { phrase: "face a challenge", meaning: "enfrentar um desafio" },
+        { phrase: "overcome a challenge", meaning: "superar um desafio" },
+        { phrase: "rise to the challenge", meaning: "estar à altura do desafio" },
+        { phrase: "take on a challenge", meaning: "aceitar um desafio" }
+      ],
+      synonyms: [
+        { word: "difficulty", intensity: "medium" },
+        { word: "obstacle", intensity: "medium" },
+        { word: "problem", intensity: "low" }
+      ],
+      antonyms: ["advantage", "ease"],
+      examples: [
+        {
+          en: "Every difficulty she faced became another step toward success.",
+          pt: "Cada dificuldade que ela enfrentou tornou-se outro passo rumo ao sucesso.",
+          context: "motivational"
+        }
+      ]
+    },
+    discover: {
+      ipa: "/dɪˈskʌvər/",
+      type: "verb",
+      pt: "descobrir",
+      definition: "To find, learn, or become aware of something for the first time.",
+      register: "neutral",
+      frequency: "very-high",
+      collocations: [
+        { phrase: "discover a place", meaning: "descobrir um lugar" },
+        { phrase: "discover oneself", meaning: "se descobrir" },
+        { phrase: "discover that", meaning: "descobrir que" }
+      ],
+      synonyms: [
+        { word: "find", intensity: "low" },
+        { word: "uncover", intensity: "medium" },
+        { word: "explore", intensity: "medium" }
+      ],
+      antonyms: ["hide", "conceal"],
+      examples: [
+        {
+          en: "She discovered that talking to local people often taught her more.",
+          pt: "Ela descobriu que conversar com pessoas locais geralmente a ensinava mais.",
+          context: "narrative"
+        }
+      ]
+    },
+    hesitate: {
+      ipa: "/ˈhezɪteɪt/",
+      type: "verb",
+      pt: "hesitar",
+      definition: "To pause or be slow in acting or speaking, typically from uncertainty or shyness.",
+      register: "neutral",
+      frequency: "high",
+      collocations: [
+        { phrase: "hesitate to do something", meaning: "hesitar em fazer algo" },
+        { phrase: "without hesitation", meaning: "sem hesitação" }
+      ],
+      synonyms: [
+        { word: "pause", intensity: "low" },
+        { word: "waver", intensity: "medium" },
+        { word: "doubt", intensity: "medium" }
+      ],
+      antonyms: ["commit", "decide", "proceed"],
+      examples: [
+        {
+          en: "She hesitated less and smiled more while speaking.",
+          pt: "Ela hesitava menos e sorria mais enquanto falava.",
+          context: "narrative"
+        }
+      ]
     }
   },
-  B1: {
-    title: "Linda at the Reception",
-    text: "Linda welcomed the guests warmly at the front desk.",
-    summary: "Neste texto, acompanhamos Linda, recepcionista do hotel, recebendo hóspedes com hospitalidade.",
-    vocabularyList: [
-      { word: "Welcomed", def: "Acolheu / recebeu calorosamente." },
-      { word: "Guests", def: "Hóspedes ou convidados." },
-      { word: "Front desk", def: "Recepção do hotel." }
-    ],
-    grammarAnalysis: "O texto utiliza o Simple Past ('welcomed') para narrar uma ação concluída no cotidiano profissional de hotelaria.",
-    quiz: {
-      question: "Como Linda recebeu os hóspedes?",
-      options: ["Coldly", "Warmly", "Quickly"]
+  C1: {
+    infrastructure: {
+      ipa: "/ˈɪnfrəstrʌktʃər/",
+      type: "noun",
+      pt: "infraestrutura",
+      definition: "The basic systems, services, and facilities needed for an area or organization to operate.",
+      register: "formal",
+      frequency: "very-high",
+      collocations: [
+        { phrase: "digital infrastructure", meaning: "infraestrutura digital" },
+        { phrase: "infrastructure failure", meaning: "falha de infraestrutura" },
+        { phrase: "critical infrastructure", meaning: "infraestrutura crítica" }
+      ],
+      synonyms: [
+        { word: "framework", intensity: "medium" },
+        { word: "foundation", intensity: "medium" },
+        { word: "system", intensity: "low" }
+      ],
+      antonyms: ["superficiality"],
+      examples: [
+        {
+          en: "A massive failure had disrupted much of the world's digital infrastructure.",
+          pt: "Uma falha massiva havia interrompido grande parte da infraestrutura digital mundial.",
+          context: "academic"
+        }
+      ],
+      etymology: "From Latin infra (below) + structure"
     },
-    dictionary: {
-      linda: { ipa: "/ˈlɪndə/", type: "noun", pt: "Linda (nome)", ex: "Linda is working.", ex_pt: "Linda está trabalhando." },
-      welcomed: { ipa: "/ˈwɛlkəmd/", type: "verb", pt: "recebeu / deu boas-vindas", ex: "They welcomed us.", ex_pt: "Eles nos deram boas-vindas." },
-      the: { ipa: "/ðə/", type: "default", pt: "o / a / os / as", ex: "The guests arrived.", ex_pt: "Os hóspedes chegaram." },
-      guests: { ipa: "/ɡɛsts/", type: "noun", pt: "hóspedes / convidados", ex: "The guests arrived early.", ex_pt: "Os hóspedes chegaram cedo." },
-      warmly: { ipa: "/ˈwɔːrmli/", type: "adv", pt: "calorosamente", ex: "She smiled warmly.", ex_pt: "Ela sorriu calorosamente." },
-      at: { ipa: "/æt/", type: "prep", pt: "em / no / na", ex: "Meet me at the desk.", ex_pt: "Encontre-me no balcão." },
-      front: { ipa: "/frʌnt/", type: "adj", pt: "frontal / da frente", ex: "Use the front door.", ex_pt: "Use a porta da frente." },
-      desk: { ipa: "/dɛsk/", type: "noun", pt: "balcão / mesa", ex: "Leave the key at the desk.", ex_pt: "Deixe a chave no balcão." }
+    disrupt: {
+      ipa: "/dɪsˈrʌpt/",
+      type: "verb",
+      pt: "interromper, perturbar",
+      definition: "To break apart or cause to cease being continuous; to interrupt.",
+      register: "formal",
+      frequency: "high",
+      collocations: [
+        { phrase: "disrupt services", meaning: "interromper serviços" },
+        { phrase: "disrupt the market", meaning: "perturbar o mercado" },
+        { phrase: "severely disrupted", meaning: "severamente perturbado" }
+      ],
+      synonyms: [
+        { word: "interrupt", intensity: "medium" },
+        { word: "disturb", intensity: "low" },
+        { word: "undermine", intensity: "strong" }
+      ],
+      antonyms: ["maintain", "continue"],
+      examples: [
+        {
+          en: "The internet outage had disrupted much of daily life.",
+          pt: "A falha de internet havia perturbado grande parte da vida diária.",
+          context: "narrative"
+        }
+      ]
+    },
+    reclaim: {
+      ipa: "/rɪˈkleɪm/",
+      type: "verb",
+      pt: "retomar, recuperar",
+      definition: "To take back or recover something; to claim or assert ownership of something again.",
+      register: "formal",
+      frequency: "medium-high",
+      collocations: [
+        { phrase: "reclaim attention", meaning: "recuperar atenção" },
+        { phrase: "reclaim time", meaning: "recuperar tempo" },
+        { phrase: "reclaim identity", meaning: "retomar identidade" }
+      ],
+      synonyms: [
+        { word: "recover", intensity: "medium" },
+        { word: "retrieve", intensity: "medium" },
+        { word: "regain", intensity: "medium" }
+      ],
+      antonyms: ["lose", "surrender"],
+      examples: [
+        {
+          en: "She was reclaiming her attention from digital overload.",
+          pt: "Ela estava recuperando sua atenção do excesso digital.",
+          context: "reflective"
+        }
+      ]
+    },
+    simultaneously: {
+      ipa: "/ˌsɪməlˈteɪniəsli/",
+      type: "adverb",
+      pt: "simultaneamente",
+      definition: "Occurring, done, or existing at the same time.",
+      register: "formal",
+      frequency: "high",
+      collocations: [
+        { phrase: "simultaneously uncomfortable and relieved", meaning: "simultaneamente desconfortável e aliviado" }
+      ],
+      synonyms: [
+        { word: "concurrently", intensity: "formal" },
+        { word: "at the same time", intensity: "informal" },
+        { word: "together", intensity: "low" }
+      ],
+      antonyms: ["consecutively", "separately"],
+      examples: [
+        {
+          en: "People reported feeling simultaneously uncomfortable and relieved.",
+          pt: "As pessoas relataram sentir-se simultaneamente desconfortáveis e aliviadas.",
+          context: "academic"
+        }
+      ]
+    },
+    resilience: {
+      ipa: "/rɪˈzɪliəns/",
+      type: "noun",
+      pt: "resiliência",
+      definition: "The capacity to recover quickly from difficulties; toughness.",
+      register: "formal",
+      frequency: "very-high",
+      collocations: [
+        { phrase: "show resilience", meaning: "demonstrar resiliência" },
+        { phrase: "build resilience", meaning: "construir resiliência" },
+        { phrase: "emotional resilience", meaning: "resiliência emocional" }
+      ],
+      synonyms: [
+        { word: "toughness", intensity: "low" },
+        { word: "endurance", intensity: "medium" },
+        { word: "adaptability", intensity: "medium" }
+      ],
+      antonyms: ["fragility", "vulnerability"],
+      examples: [
+        {
+          en: "The event demonstrated society's resilience in times of crisis.",
+          pt: "O evento demonstrou a resiliência da sociedade em tempos de crise.",
+          context: "academic"
+        }
+      ]
     }
   }
 };
+
+// ==========================================
+// BANCO DE DADOS DE LEITURA (A1 → C1)
+// Integrado com emilyStories.js
+// ==========================================
+
+let readingData = {};
+
+// Função para carregar dados das histórias da Emily
+function loadEmilyStories() {
+  if (typeof emilyStories !== 'undefined') {
+    Object.keys(emilyStories).forEach(level => {
+      const story = emilyStories[level];
+      readingData[level] = {
+        title: story.title,
+        text: story.text,
+        summary: `${story.title} (${level}) - ${story.keyThemes.join(", ")}`,
+        vocabularyList: story.coreVocabulary.slice(0, 5).map(v => ({
+          word: v.word,
+          def: `${v.type}: ${v.pt}`
+        })),
+        grammarAnalysis: `Neste texto ${level}, o aluno pratica: ${story.grammarFocus.slice(0, 3).join(", ")}.`,
+        quiz: {
+          question: `Qual é o tema principal de "${story.title}"?`,
+          options: story.keyThemes
+        },
+        dictionary: buildDictionary(story.coreVocabulary, level),
+        level: level,
+        estimatedWords: story.estimatedWords
+      };
+    });
+  }
+}
+
+// Constrói dicionário com dados contextuais
+function buildDictionary(vocabArray, level) {
+  const dict = {};
+  vocabArray.forEach(v => {
+    const key = v.word.toLowerCase();
+    const advanced = advancedDictionary[level]?.[key];
+    
+    dict[key] = {
+      ipa: advanced?.ipa || `/${v.word}/`,
+      type: v.type,
+      pt: v.pt,
+      ex: advanced?.examples?.[0]?.en || "Exemplo não disponível.",
+      ex_pt: advanced?.examples?.[0]?.pt || "Exemplo não disponível.",
+      ...(advanced && {
+        definition: advanced.definition,
+        register: advanced.register,
+        frequency: advanced.frequency,
+        collocations: advanced.collocations,
+        synonyms: advanced.synonyms,
+        antonyms: advanced.antonyms,
+        etymology: advanced.etymology
+      })
+    };
+  });
+  return dict;
+}
 
 let currentRLevel = "A1";
 let lastClickedWord = "";
@@ -59,6 +345,7 @@ let textContentArray = [];
 // ==========================================
 // FUNÇÕES PRINCIPAIS
 // ==========================================
+
 function loadReadingLevel(level) {
   if (!readingData[level]) {
     currentRLevel = "";
@@ -74,7 +361,7 @@ function loadReadingLevel(level) {
     document.getElementById("r-level-badge").innerText = `⭐ ${level}`;
     document.getElementById("btn-teacher-mode").style.display = "none";
     closeTeacherMode();
-    renderInteractiveText(data.text, data.dictionary);
+    renderInteractiveText(data.text, data.dictionary, level);
   }
 
   document.querySelectorAll(".read-controls button").forEach((button) => {
@@ -82,7 +369,7 @@ function loadReadingLevel(level) {
   });
 }
 
-function renderInteractiveText(rawText, dictionary) {
+function renderInteractiveText(rawText, dictionary, level) {
   const textArea = document.getElementById("r-text-area");
   textArea.innerHTML = "";
   textContentArray = [];
@@ -101,7 +388,8 @@ function renderInteractiveText(rawText, dictionary) {
       span.dataset.word = cleanWord;
       span.dataset.start = tokenIndex;
       span.dataset.end = tokenIndex + item.length;
-      span.onclick = () => openWordCard(cleanWord, dictEntry, item);
+      span.dataset.level = level;
+      span.onclick = () => openWordCard(cleanWord, dictEntry, item, level);
       textArea.appendChild(span);
       textContentArray.push({ start: tokenIndex, end: tokenIndex + item.length, element: span });
     } else {
@@ -113,8 +401,9 @@ function renderInteractiveText(rawText, dictionary) {
   });
 }
 
-function openWordCard(cleanWord, dictEntry, originalText) {
+function openWordCard(cleanWord, dictEntry, originalText, level) {
   const card = document.getElementById("smart-word-card");
+  const isAdvanced = level && ["B1", "B2", "C1"].includes(level);
 
   if (!dictEntry) {
     document.getElementById("card-word").innerText = originalText;
@@ -130,10 +419,64 @@ function openWordCard(cleanWord, dictEntry, originalText) {
     document.getElementById("card-pt").innerText = dictEntry.pt;
     document.getElementById("card-ex-en").innerText = dictEntry.ex;
     document.getElementById("card-ex-pt").innerText = dictEntry.ex_pt;
+
+    // Advanced content for B1+
+    if (isAdvanced && dictEntry.definition) {
+      updateAdvancedWordCard(dictEntry, card);
+    }
   }
 
   lastClickedWord = originalText;
   card.style.display = "flex";
+}
+
+function updateAdvancedWordCard(dictEntry, card) {
+  // Criar seção adicional para dados avançados
+  let advancedSection = card.querySelector(".advanced-word-data");
+  if (!advancedSection) {
+    advancedSection = document.createElement("div");
+    advancedSection.className = "advanced-word-data";
+    card.querySelector(".word-card-content").appendChild(advancedSection);
+  }
+
+  let html = '';
+
+  // Definition
+  if (dictEntry.definition) {
+    html += `<div class="card-definition"><strong>Definição:</strong><p>${dictEntry.definition}</p></div>`;
+  }
+
+  // Collocations
+  if (dictEntry.collocations && dictEntry.collocations.length > 0) {
+    html += `<div class="card-collocations"><strong>Colocações:</strong><ul>`;
+    dictEntry.collocations.forEach(c => {
+      html += `<li><em>${c.phrase}</em> - ${c.meaning}</li>`;
+    });
+    html += `</ul></div>`;
+  }
+
+  // Synonyms & Antonyms
+  if (dictEntry.synonyms && dictEntry.synonyms.length > 0) {
+    html += `<div class="card-synonyms"><strong>Sinônimos:</strong> ${dictEntry.synonyms.map(s => s.word).join(", ")}</div>`;
+  }
+  if (dictEntry.antonyms && dictEntry.antonyms.length > 0) {
+    html += `<div class="card-antonyms"><strong>Antônimos:</strong> ${dictEntry.antonyms.join(", ")}</div>`;
+  }
+
+  // Etymology
+  if (dictEntry.etymology) {
+    html += `<div class="card-etymology"><strong>Etimologia:</strong> ${dictEntry.etymology}</div>`;
+  }
+
+  // Register & Frequency
+  if (dictEntry.register || dictEntry.frequency) {
+    html += `<div class="card-meta">`;
+    if (dictEntry.register) html += `<span class="badge-register">${dictEntry.register}</span>`;
+    if (dictEntry.frequency) html += `<span class="badge-frequency">${dictEntry.frequency}</span>`;
+    html += `</div>`;
+  }
+
+  advancedSection.innerHTML = html;
 }
 
 function closeWordCard() {
@@ -199,7 +542,7 @@ function activateTeacherMode() {
   container.innerHTML = `
     <div class="teacher-section">
       <h4>📝 Resumo</h4>
-      <p>${data.summary || "Resumo do texto sendo gerado pela IA..."}</p>
+      <p>${data.summary || "Resumo do texto sendo gerado..."}</p>
     </div>
 
     <div class="teacher-section">
@@ -231,12 +574,24 @@ function saveCurrentWord() {
   if (lastClickedWord && !savedWords.includes(lastClickedWord)) {
     savedWords.push(lastClickedWord);
     localStorage.setItem("readingSavedWords", JSON.stringify(savedWords));
+    alert(`"${lastClickedWord}" salvo no seu Vocabulário!`);
   }
 }
 
 function translateType(type) {
-  const types = { verb: "Verbo", noun: "Substantivo", adj: "Adjetivo", adv: "Advérbio", prep: "Preposição" };
+  const types = {
+    verb: "Verbo",
+    noun: "Substantivo",
+    adj: "Adjetivo",
+    adv: "Advérbio",
+    prep: "Preposição",
+    phrase: "Expressão"
+  };
   return types[type] || "Palavra";
 }
 
-document.addEventListener("DOMContentLoaded", () => loadReadingLevel("A1"));
+// Initialize on page load
+document.addEventListener("DOMContentLoaded", () => {
+  loadEmilyStories();
+  loadReadingLevel("A1");
+});
