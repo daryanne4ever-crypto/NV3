@@ -20,7 +20,7 @@
       <a class="nav-link" href="vocabulary.html">Vocabulary</a>
       <a class="nav-link" href="listening.html">Listening</a>
       <a class="nav-link" href="speaking.html">Speaking</a>
-      <a class="nav-link" href="reading.html">Reading</a>
+      <a class="nav-link" href="reading.html" class="active">Reading</a>
       <a class="nav-link" href="writing.html">Writing</a>
       <a class="nav-link" href="professor.html">Professor</a>
       <a class="nav-link" href="unit1.html">Unit 1</a>
@@ -31,14 +31,14 @@
     <header class="hero">
       <div>
         <span class="eyebrow">NLE Level 3</span>
-        <h1>Reading</h1>
-        <p>Melhore sua compreensão de leitura com textos nível B1, perguntas de interpretação e análise crítica.</p>
+        <h1>Reading Library</h1>
+        <p>Acompanhe as aventuras de Emily de A1 até C1. Leia histórias contínuas, expanda vocabulário e melhore sua compreensão.</p>
       </div>
-      <button class="btn btn-primary" data-xp="25">Ganhar 25 XP</button>
+      <button class="btn btn-primary" id="xp-button" data-xp="25" onclick="addXpReading()">+25 XP</button>
     </header>
     <section class="content-grid">
       <article class="card reading-hub">
-        <h2>📚 Reading Library</h2>
+        <h2>📚 Emily's Continuous Reading Journey</h2>
 
         <div class="read-controls" id="read-level-controls">
           <button onclick="loadReadingLevel('A1')" data-level="A1" class="active-btn">A1</button>
@@ -50,18 +50,29 @@
 
         <div class="reading-container">
           <div class="reading-header">
-            <h3 id="r-title">Título do Texto</h3>
+            <div>
+              <h3 id="r-title">Carregando...</h3>
+              <p id="r-story-description" class="story-description">Acompanhe a história de Emily...</p>
+            </div>
             <div class="reading-meta">
               <span id="r-level-badge" class="level-badge">⭐ A1</span>
-              <button class="btn-read-all" onclick="playFullText()">▶ Ouvir Tudo</button>
+              <span id="r-word-count" class="word-count">~500 palavras</span>
+              <button class="btn-read-all" onclick="playFullText()" title="Ler o texto em voz alta">▶ Ouvir Tudo</button>
             </div>
           </div>
 
-          <div id="r-text-area" class="interactive-text-area"></div>
+          <div id="r-text-area" class="interactive-text-area">
+            <p style="color: #999;">Clique em uma palavra para ver sua definição, tradução, pronunciação e exemplos.</p>
+          </div>
 
-          <button id="btn-teacher-mode" class="btn-teacher" onclick="activateTeacherMode()" style="display: none;">
-            🎓 Ativar Professor Mode
-          </button>
+          <div class="reading-actions">
+            <button id="btn-teacher-mode" class="btn-teacher" onclick="activateTeacherMode()" style="display: none;">
+              🎓 Teacher's Review
+            </button>
+            <button class="btn-save-word" onclick="startSpacedRepetition()" style="display: block;">
+              📚 Estudar Vocabulário Salvo
+            </button>
+          </div>
 
           <div id="teacher-mode-container" class="teacher-container" style="display: none;">
             <button class="close-card" onclick="closeTeacherMode()">✖</button>
@@ -74,32 +85,69 @@
           <div class="word-card-content">
             <button class="close-card" onclick="closeWordCard()">✖</button>
             <div class="word-header">
-              <h3 id="card-word">walked</h3>
-              <button class="btn-audio-word" onclick="playWordAudio()">🔊</button>
+              <h3 id="card-word">word</h3>
+              <button class="btn-audio-word" onclick="playWordAudio()" title="Pronunciar palavra">🔊</button>
             </div>
-            <p id="card-ipa" class="ipa-text">/wɔːkt/</p>
-            <span id="card-type" class="grammar-badge">Verbo</span>
+            <p id="card-ipa" class="ipa-text">/wɜːd/</p>
+            <span id="card-type" class="grammar-badge">Substantivo</span>
 
             <div class="card-translation">
-              <strong>Tradução Contextual:</strong>
-              <p id="card-pt">andou / caminhou</p>
+              <strong>Tradução:</strong>
+              <p id="card-pt">palavra</p>
             </div>
 
             <div class="card-examples">
               <strong>Exemplo:</strong>
-              <p id="card-ex-en">He walked very fast.</p>
-              <p id="card-ex-pt" class="ex-pt">Ele andou muito rápido.</p>
+              <p id="card-ex-en">Every word brings you closer to your dreams.</p>
+              <p id="card-ex-pt" class="ex-pt">Cada palavra te aproxima de seus sonhos.</p>
             </div>
 
-            <button class="btn-save-word" onclick="saveCurrentWord()">⭐ Salvar no Vocabulário</button>
+            <button class="btn-save-word" onclick="saveCurrentWord()">⭐ Salvar Palavra</button>
           </div>
         </div>
       </article>
-      <aside class="card"><span class="eyebrow">Feedback</span><h2>Status</h2><div class="badge-list"><span class="badge success">Certo</span><span class="badge warning">Progresso</span></div></aside>
+      
+      <aside class="card reading-sidebar">
+        <span class="eyebrow">Progresso</span>
+        <h2>Seu Avanço</h2>
+        <div class="progress-section">
+          <div class="progress-item">
+            <label>Histórias Completadas</label>
+            <div class="progress">
+              <span id="progress-stories" style="width: 0%"></span>
+            </div>
+            <small id="progress-stories-text">0/5</small>
+          </div>
+          <div class="progress-item">
+            <label>Palavras Salvas</label>
+            <small id="progress-words-text">0 palavras</small>
+          </div>
+          <div class="progress-item">
+            <label>XP Total</label>
+            <strong id="progress-xp" style="color: #ffd600;">0 XP</strong>
+          </div>
+        </div>
+        
+        <div class="badge-list" style="margin-top: 1.5rem;">
+          <span class="badge success">📖 Leitor</span>
+          <span class="badge accent">🎯 Ambicioso</span>
+        </div>
+      </aside>
     </section>
+
+    <!-- Spaced Repetition Modal -->
+    <div id="srs-modal" class="srs-modal" style="display: none;">
+      <div class="srs-container">
+        <button class="close-card" onclick="closeSRSModal()">✖</button>
+        <h2>📚 Revisar Vocabulário</h2>
+        <div id="srs-content"></div>
+      </div>
+    </div>
   </main>
+
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/data/emilyStories.js"></script>
   <script src="reading.js"></script>
 </body>
 </html>
