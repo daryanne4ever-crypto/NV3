@@ -50,6 +50,22 @@
 
         <div id="speaking-practice-container" class="speaking-practice-area">
           <div class="speak-phrase-card">
+            <div class="mode-badge" id="s-mode-badge">Echo Challenge</div>
+            <span class="progress-badge" id="s-progress">Atividade 1</span>
+
+            <div id="s-roleplay-scenario" style="display: none;" class="scenario-box">
+              <h4>Cenário:</h4>
+              <p id="s-scenario-text"></p>
+            </div>
+
+            <div id="s-dialogue-context" style="display: none;" class="dialogue-box">
+              <span class="speaker-name" id="s-speaker-name"></span>
+            </div>
+
+            <h3 id="s-english-text">I live in a big house.</h3>
+            <p id="s-portuguese-text" class="structural-translation">Eu moro em uma casa grande.</p>
+
+            <div class="audio-playback-controls" id="s-audio-controls">
             <span class="progress-badge" id="s-progress">Frase 1</span>
             <h3 id="s-english-text">I live in a big house.</h3>
             <p id="s-portuguese-text" class="structural-translation">Eu moro em uma casa grande.</p>
@@ -61,6 +77,15 @@
           </div>
 
           <div class="recording-area">
+            <button id="btn-record-toggle" class="btn-record" onclick="toggleRecording()">🎙️ Gravar</button>
+            <p id="recording-status" class="status-text">Tempo: <span id="s-timer">0.0s</span></p>
+          </div>
+
+          <div id="feedback-area" class="feedback-container" style="display: none;">
+            <h4>Análise da IA:</h4>
+            <p id="s-user-speech" class="user-speech-result"></p>
+            <div id="s-pedagogical-tip" class="tip-box"></div>
+            <button class="btn-next-phrase" onclick="nextSpeakingPhrase()">Próxima Etapa ➔</button>
             <button id="btn-record-toggle" class="btn-record" onclick="toggleRecording()">
               🎙️ Gravar
             </button>
