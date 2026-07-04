@@ -1,0 +1,213 @@
+/* Área Central do Speaking */
+.speaking-practice-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.speak-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin: 1rem 0 1.4rem;
+}
+
+.speak-controls button {
+  background: #1a1a2e;
+  border: 1px solid #4e44ce;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: 0.2s;
+}
+
+.speak-controls button:hover,
+.speak-controls button.active-btn {
+  background: #c77dff;
+  border-color: #c77dff;
+}
+
+.speak-phrase-card {
+  background: rgba(33, 25, 54, 0.8);
+  border: 1px solid #c77dff;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.speak-phrase-card h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.structural-translation {
+  color: #aaa;
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.progress-badge {
+  background: #4e44ce;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Controles de Áudio (Professor) */
+.audio-playback-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-play-normal,
+.btn-play-slow {
+  background: #1a1a2e;
+  border: 1px solid #c77dff;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-play-normal:hover,
+.btn-play-slow:hover {
+  background: #4e44ce;
+}
+
+/* Botão de Gravação (Aluno) */
+.recording-area {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.btn-record {
+  background: #4e44ce;
+  color: #fff;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(78, 68, 206, 0.4);
+}
+
+.btn-record.recording {
+  background: #e74c3c;
+  animation: pulse 1.5s infinite;
+  box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+}
+
+.status-text {
+  color: #aaa;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Análise de Texto (Feedback) */
+.feedback-container {
+  background: #1a1a2e;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid #00b4d8;
+}
+
+.user-speech-result {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #fff;
+}
+
+.word-correct {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.word-wrong {
+  color: #e74c3c;
+  text-decoration: underline;
+}
+
+.tip-box {
+  background: rgba(199, 125, 255, 0.1);
+  padding: 10px;
+  border-radius: 6px;
+  margin-top: 15px;
+  color: #c77dff;
+  font-size: 0.95rem;
+  border: 1px dashed #c77dff;
+}
+
+.btn-next-phrase {
+  margin-top: 20px;
+  width: 100%;
+  background: #c77dff;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Novos Estilos para Speaking Avançado */
+.mode-badge {
+  display: inline-block;
+  background: #ff006e;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scenario-box {
+  background: rgba(0, 180, 216, 0.1);
+  border-left: 4px solid #00b4d8;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.scenario-box h4 {
+  color: #00b4d8;
+  margin-top: 0;
+}
+
+.dialogue-box {
+  margin-bottom: 10px;
+}
+
+.speaker-name {
+  background: #3a0ca3;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.keyword-match {
+  color: #fca311;
+  font-weight: bold;
+}
