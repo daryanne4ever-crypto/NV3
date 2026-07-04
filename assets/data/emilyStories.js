@@ -597,6 +597,11 @@ She saw them as evidence that she was still growing.`,
       { word: "teamwork", type: "noun", pt: "trabalho em equipe" },
       { word: "responsibility", type: "noun", pt: "responsabilidade" },
       { word: "opportunity", type: "noun", pt: "oportunidade" },
+      { word: "pressure", type: "noun", pt: "pressão" },
+      { word: "candidate", type: "noun", pt: "candidato" },
+      { word: "résumé", type: "noun", pt: "currículo" },
+      { word: "feedback", type: "noun", pt: "retorno, avaliação" },
+      { word: "motivation", type: "noun", pt: "motivação" },
       { word: "professional development", type: "phrase", pt: "desenvolvimento profissional" }
     ]
   },

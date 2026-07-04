@@ -145,6 +145,163 @@ const advancedDictionary = {
       ]
     }
   },
+  B2: {
+    career: {
+      ipa: "/kəˈrɪr/",
+      type: "noun",
+      pt: "carreira",
+      definition: "The work or profession that someone does for a significant period of their life.",
+      register: "neutral",
+      frequency: "very-high",
+      collocations: [
+        { phrase: "build a career", meaning: "construir uma carreira" },
+        { phrase: "pursue a career", meaning: "seguir uma carreira" },
+        { phrase: "career path", meaning: "trajetória profissional" }
+      ],
+      synonyms: [
+        { word: "profession", intensity: "medium" },
+        { word: "occupation", intensity: "medium" },
+        { word: "vocation", intensity: "strong" }
+      ],
+      antonyms: ["unemployment"],
+      examples: [
+        {
+          en: "Emily began thinking seriously about her career after graduation.",
+          pt: "Emily começou a pensar seriamente sobre sua carreira depois da formatura.",
+          context: "professional"
+        }
+      ]
+    },
+    leadership: {
+      ipa: "/ˈliːdərʃɪp/",
+      type: "noun",
+      pt: "liderança",
+      definition: "The ability to guide, influence, or organize people toward a shared goal.",
+      register: "professional",
+      frequency: "high",
+      collocations: [
+        { phrase: "show leadership", meaning: "demonstrar liderança" },
+        { phrase: "leadership skills", meaning: "habilidades de liderança" },
+        { phrase: "strong leadership", meaning: "liderança forte" }
+      ],
+      synonyms: [
+        { word: "guidance", intensity: "medium" },
+        { word: "management", intensity: "medium" },
+        { word: "direction", intensity: "low" }
+      ],
+      antonyms: ["followership", "mismanagement"],
+      examples: [
+        {
+          en: "They discussed teamwork, problem-solving, leadership, communication, and future goals.",
+          pt: "Eles discutiram trabalho em equipe, resolução de problemas, liderança, comunicação e objetivos futuros.",
+          context: "interview"
+        }
+      ]
+    },
+    communication: {
+      ipa: "/kəˌmjuːnɪˈkeɪʃən/",
+      type: "noun",
+      pt: "comunicação",
+      definition: "The process of sharing information, ideas, or feelings clearly with others.",
+      register: "neutral",
+      frequency: "very-high",
+      collocations: [
+        { phrase: "clear communication", meaning: "comunicação clara" },
+        { phrase: "communication skills", meaning: "habilidades de comunicação" },
+        { phrase: "effective communication", meaning: "comunicação eficaz" }
+      ],
+      synonyms: [
+        { word: "interaction", intensity: "medium" },
+        { word: "exchange", intensity: "medium" },
+        { word: "dialogue", intensity: "medium" }
+      ],
+      antonyms: ["silence", "miscommunication"],
+      examples: [
+        {
+          en: "Her ability to communicate clearly mattered just as much as grammar.",
+          pt: "Sua capacidade de se comunicar claramente importava tanto quanto a gramática.",
+          context: "professional"
+        }
+      ]
+    },
+    teamwork: {
+      ipa: "/ˈtiːmwɜːrk/",
+      type: "noun",
+      pt: "trabalho em equipe",
+      definition: "The ability of a group to work together effectively toward a common objective.",
+      register: "professional",
+      frequency: "high",
+      collocations: [
+        { phrase: "promote teamwork", meaning: "promover trabalho em equipe" },
+        { phrase: "teamwork skills", meaning: "habilidades de trabalho em equipe" },
+        { phrase: "effective teamwork", meaning: "trabalho em equipe eficaz" }
+      ],
+      synonyms: [
+        { word: "collaboration", intensity: "medium" },
+        { word: "cooperation", intensity: "medium" }
+      ],
+      antonyms: ["isolation", "individualism"],
+      examples: [
+        {
+          en: "The interviewer wanted examples of teamwork under pressure.",
+          pt: "O entrevistador queria exemplos de trabalho em equipe sob pressão.",
+          context: "interview"
+        }
+      ]
+    },
+    opportunity: {
+      ipa: "/ˌɑːpərˈtuːnəti/",
+      type: "noun",
+      pt: "oportunidade",
+      definition: "A situation that makes it possible to do something useful, important, or desirable.",
+      register: "neutral",
+      frequency: "very-high",
+      collocations: [
+        { phrase: "career opportunity", meaning: "oportunidade de carreira" },
+        { phrase: "training opportunity", meaning: "oportunidade de treinamento" },
+        { phrase: "take an opportunity", meaning: "aproveitar uma oportunidade" }
+      ],
+      synonyms: [
+        { word: "chance", intensity: "low" },
+        { word: "opening", intensity: "medium" },
+        { word: "possibility", intensity: "medium" }
+      ],
+      antonyms: ["obstacle", "setback"],
+      examples: [
+        {
+          en: "An interview is also your opportunity to evaluate the company.",
+          pt: "Uma entrevista também é sua oportunidade de avaliar a empresa.",
+          context: "professional"
+        }
+      ]
+    },
+    pressure: {
+      ipa: "/ˈpreʃər/",
+      type: "noun",
+      pt: "pressão",
+      definition: "A stressful demand or difficult situation that requires calm action or a quick response.",
+      register: "neutral",
+      frequency: "high",
+      collocations: [
+        { phrase: "under pressure", meaning: "sob pressão" },
+        { phrase: "handle pressure", meaning: "lidar com pressão" },
+        { phrase: "time pressure", meaning: "pressão de tempo" }
+      ],
+      synonyms: [
+        { word: "stress", intensity: "medium" },
+        { word: "strain", intensity: "medium" },
+        { word: "tension", intensity: "medium" }
+      ],
+      antonyms: ["ease", "relief"],
+      examples: [
+        {
+          en: "Her calm attitude under pressure impressed the company.",
+          pt: "Sua atitude calma sob pressão impressionou a empresa.",
+          context: "professional"
+        }
+      ]
+    }
+  },
   C1: {
     infrastructure: {
       ipa: "/ˈɪnfrəstrʌktʃər/",
@@ -404,6 +561,8 @@ function renderInteractiveText(rawText, dictionary, level) {
 function openWordCard(cleanWord, dictEntry, originalText, level) {
   const card = document.getElementById("smart-word-card");
   const isAdvanced = level && ["B1", "B2", "C1"].includes(level);
+  const advancedSection = card.querySelector(".advanced-word-data");
+  if (advancedSection) advancedSection.remove();
 
   if (!dictEntry) {
     document.getElementById("card-word").innerText = originalText;
