@@ -82,6 +82,7 @@
   font-size: 1.4rem;
   line-height: 2;
   color: #e0e0e0;
+  word-wrap: break-word;
 }
 
 .clickable-word {
@@ -103,6 +104,7 @@
 .grammar-adj { color: #c77dff; }
 .grammar-adv { color: #fa709a; }
 .grammar-prep { color: #9e9e9e; }
+.grammar-phrase { color: #ffd60a; }
 .grammar-default { color: #e0e0e0; }
 
 /* Efeito Kindle: Destaque da palavra atual */
@@ -111,6 +113,7 @@
   color: #1a1a2e;
   border-radius: 4px;
   transition: background-color 0.1s ease;
+  font-weight: 800;
 }
 
 /* Smart Word Card (Estilo App) */
@@ -125,18 +128,40 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  overflow-y: auto;
+  padding: 2rem 1rem;
 }
 
-.word-card-content,
-.teacher-container {
+.word-card-content {
   background: #1a1a2e;
   border: 2px solid #c77dff;
   border-radius: 12px;
   width: 90%;
-  max-width: 420px;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 25px;
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Custom scrollbar para o card */
+.word-card-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.word-card-content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.word-card-content::-webkit-scrollbar-thumb {
+  background: #c77dff;
+  border-radius: 10px;
+}
+
+.word-card-content::-webkit-scrollbar-thumb:hover {
+  background: #9d4edd;
 }
 
 .close-card {
@@ -148,6 +173,13 @@
   color: #aaa;
   font-size: 1.2rem;
   cursor: pointer;
+  transition: 0.2s;
+  z-index: 10;
+}
+
+.close-card:hover {
+  color: #c77dff;
+  transform: scale(1.2);
 }
 
 .word-header {
@@ -161,6 +193,7 @@
   font-size: 2rem;
   color: #fff;
   margin: 0;
+  word-break: break-word;
 }
 
 .btn-audio-word {
@@ -168,22 +201,37 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
+  transition: 0.2s;
+  min-width: 2rem;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-audio-word:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 4px #c77dff);
 }
 
 .ipa-text {
   color: #00b4d8;
-  font-family: monospace;
+  font-family: 'Courier New', monospace;
   font-size: 1.1rem;
   margin: 0 0 15px;
+  font-weight: 600;
 }
 
 .grammar-badge {
   background: #3a0ca3;
   color: white;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 4px;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
+  font-weight: 800;
+  display: inline-block;
+  margin-right: 0.5rem;
 }
 
 .card-translation {
@@ -192,28 +240,219 @@
   padding-left: 10px;
 }
 
+.card-translation strong {
+  color: #c77dff;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .card-translation p {
   font-size: 1.2rem;
   color: #fff;
-  margin: 5px 0 0;
+  margin: 8px 0 0;
 }
 
 .card-examples {
   background: rgba(255, 255, 255, 0.05);
-  padding: 10px;
+  padding: 12px;
   border-radius: 6px;
   margin-bottom: 20px;
+  border: 1px solid rgba(199, 125, 255, 0.1);
+}
+
+.card-examples strong {
+  color: #c77dff;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
 }
 
 .card-examples p {
   margin: 5px 0 0;
   font-size: 0.95rem;
+  color: #e0e0e0;
 }
 
 .ex-pt {
-  color: #aaa;
+  color: #b9acd0;
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* ==========================================
+   ADVANCED WORD DATA (B1+)
+   ========================================== */
+
+.advanced-word-data {
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(199, 125, 255, 0.2);
+  padding-top: 1.5rem;
+}
+
+.card-definition {
+  background: rgba(157, 78, 221, 0.1);
+  border-left: 3px solid #9d4edd;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.card-definition strong {
+  color: #c77dff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.card-definition p {
+  margin: 8px 0 0;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.card-collocations {
+  margin-bottom: 1rem;
+}
+
+.card-collocations strong {
+  color: #ffd60a;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-collocations ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.card-collocations li {
+  background: rgba(255, 214, 0, 0.08);
+  border-left: 2px solid #ffd600;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+
+.card-collocations em {
+  color: #ffd600;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.card-collocations li::after {
+  content: " ↓ ";
+  color: #666;
+  margin: 0 0.5rem;
+}
+
+.card-synonyms,
+.card-antonyms {
+  margin-bottom: 1rem;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.card-synonyms {
+  background: rgba(67, 233, 123, 0.08);
+  border-left: 2px solid #43e97b;
+}
+
+.card-synonyms strong {
+  color: #43e97b;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.card-antonyms {
+  background: rgba(255, 23, 68, 0.08);
+  border-left: 2px solid #ff1744;
+}
+
+.card-antonyms strong {
+  color: #ff1744;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+
+.card-synonyms,
+.card-antonyms {
+  color: #e0e0e0;
+}
+
+.card-etymolog {
+  background: rgba(0, 180, 216, 0.08);
+  border-left: 3px solid #00b4d8;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.card-etymology strong {
+  color: #00b4d8;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.card-etymology {
+  font-size: 0.9rem;
+  color: #b9acd0;
   font-style: italic;
 }
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 1rem;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+}
+
+.badge-register,
+.badge-frequency {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-register {
+  background: rgba(157, 78, 221, 0.3);
+  border: 1px solid #9d4edd;
+  color: #c77dff;
+}
+
+.badge-frequency {
+  background: rgba(199, 125, 255, 0.2);
+  border: 1px solid #c77dff;
+  color: #ffd60a;
+}
+
+/* ==========================================
+   BOTÕES DE AÇÃO
+   ========================================== */
 
 .btn-save-word,
 .btn-teacher {
@@ -221,25 +460,50 @@
   background: transparent;
   border: 1px solid #ffbe0b;
   color: #ffbe0b;
-  padding: 10px;
+  padding: 12px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
   transition: 0.3s;
-}
-
-.btn-teacher {
-  margin-top: 1.4rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
 }
 
 .btn-save-word:hover,
 .btn-teacher:hover {
   background: #ffbe0b;
-  color: #000;
+  color: #1a1a2e;
+  box-shadow: 0 0 12px rgba(255, 190, 11, 0.3);
+  transform: translateY(-2px);
 }
 
+.btn-teacher {
+  margin-top: 1.4rem;
+  border-color: #c77dff;
+  color: #c77dff;
+}
+
+.btn-teacher:hover {
+  background: #c77dff;
+  color: #1a1a2e;
+  box-shadow: 0 0 12px rgba(199, 125, 255, 0.4);
+}
+
+/* ==========================================
+   TEACHER CONTAINER
+   ========================================== */
+
 .teacher-container {
+  background: #1a1a2e;
+  border: 2px solid #c77dff;
+  border-radius: 12px;
+  width: 90%;
   max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   margin-top: 1.2rem;
 }
 
@@ -254,10 +518,23 @@
 .teacher-section h4 {
   color: #c77dff;
   margin-bottom: 0.6rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .teacher-section ul {
   margin-left: 1.2rem;
+  color: #e0e0e0;
+}
+
+.teacher-section li {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.teacher-section strong {
+  color: #ffd60a;
 }
 
 .btn-opt {
@@ -265,14 +542,73 @@
   border: 1px solid #4e44ce;
   color: #fff;
   margin: 0.35rem 0.35rem 0 0;
-  padding: 0.55rem 0.8rem;
+  padding: 0.75rem 1rem;
   border-radius: 6px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: 0.2s;
+  font-size: 0.9rem;
 }
 
+.btn-opt:hover,
+.btn-opt:focus {
+  background: #c77dff;
+  border-color: #c77dff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(199, 125, 255, 0.3);
+}
+
+/* ==========================================
+   RESPONSIVO
+   ========================================== */
+
 @media (max-width: 720px) {
-  .reading-header,
-  .reading-meta {
-    align-items: flex-start;
+  .reading-header {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reading-meta {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .word-card-content,
+  .teacher-container {
+    max-width: 95%;
+    padding: 20px;
+  }
+
+  .word-header h3 {
+    font-size: 1.6rem;
+  }
+
+  .interactive-text-area {
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+}
+
+@media (max-width: 480px) {
+  .read-controls {
+    gap: 0.5rem;
+  }
+
+  .read-controls button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .reading-container {
+    padding: 20px;
+  }
+
+  .word-card-content {
+    max-width: 100%;
+  }
+
+  .interactive-text-area {
+    font-size: 1rem;
+    line-height: 1.6;
   }
 }
