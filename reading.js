@@ -435,6 +435,53 @@ const advancedDictionary = {
   }
 };
 
+
+// Percentual pedagógico de palavras com tradução visível por nível.
+// As palavras mais básicas são ocultadas primeiro em níveis avançados.
+const translationCoverageByLevel = { A1: 1, A2: 0.85, B1: 0.75, B2: 0.6, C1: 0.5 };
+
+const commonWordRank = [
+  "the", "be", "to", "of", "and", "a", "in", "that", "have", "i", "it", "for", "not", "on", "with",
+  "he", "as", "you", "do", "at", "this", "but", "his", "by", "from", "they", "we", "say", "her", "she",
+  "or", "an", "will", "my", "one", "all", "would", "there", "their", "what", "so", "up", "out", "if",
+  "about", "who", "get", "which", "go", "me", "when", "make", "can", "like", "time", "no", "just", "him",
+  "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other", "than",
+  "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "after", "use", "two",
+  "how", "our", "work", "first", "well", "way", "even", "new", "want", "because", "any", "these", "give",
+  "day", "most", "us", "is", "are", "was", "were", "am", "has", "had", "did", "does"
+];
+const commonWordScore = new Map(commonWordRank.map((word, index) => [word, index]));
+
+const contextualTranslations = {
+  m: "sou, estou", s: "possessivo / é", already: "já", animals: "animais", another: "outro", beautiful: "bonito", ben: "Ben", board: "quadro", break: "intervalo", brushes: "escova", confident: "confiante", dancing: "dançar", drawing: "desenhar", dressed: "vestido", eat: "comer", eggs: "ovos", end: "fim", finishes: "termina", friendly: "amigável", gets: "fica, pega", goes: "vai", going: "indo", introduces: "apresenta", invites: "convida", laughing: "rindo", leaves: "folhas", luck: "sorte", mom: "mãe", monday: "segunda-feira", more: "mais", mrs: "Sra.", much: "muito", my: "meu, minha", old: "velho", others: "outros", our: "nosso", plays: "brinca", sandwich: "sanduíche", sit: "sentar", town: "cidade pequena", twelve: "doze", up: "para cima", wakes: "acorda", want: "querer", welcome: "bem-vindo", what: "o que", years: "anos", your: "seu, sua",
+  a: "um, uma", about: "sobre", after: "depois", again: "novamente", airport: "aeroporto", all: "todos", almost: "quase", also: "também", always: "sempre", an: "um, uma", and: "e", answers: "responde", apple: "maçã", are: "são, estão", arrives: "chega", at: "em", back: "de volta", be: "ser, estar", became: "tornou-se", because: "porque", become: "tornar-se", before: "antes", began: "começou", believe: "acreditar", better: "melhor", big: "grande", book: "livro", books: "livros", boy: "menino", bread: "pão", breakfast: "café da manhã", brother: "irmão", brown: "Brown", but: "mas", buys: "compra", by: "por", can: "pode", changed: "mudou", city: "cidade", class: "aula, turma", classroom: "sala de aula", cloudy: "nublado", colder: "mais frio", comfortable: "confortável", completely: "completamente", conversation: "conversa", could: "poderia", day: "dia", decided: "decidiu", did: "fez", difficult: "difícil", do: "fazer", dog: "cachorro", door: "porta", down: "para baixo", dream: "sonho", drives: "dirige", during: "durante", eats: "come", egg: "ovo", emily: "Emily", english: "inglês", enjoys: "gosta", evening: "noite", every: "todo", excited: "animada", face: "rosto", family: "família", favorite: "favorito", feels: "sente", finally: "finalmente", first: "primeiro", flowers: "flores", for: "para", friend: "amigo", friends: "amigos", from: "de", garden: "jardim", girl: "menina", go: "ir", good: "bom", great: "ótimo", green: "verde", had: "tinha", hand: "mão", happy: "feliz", has: "tem", have: "ter", he: "ele", her: "dela", here: "aqui", hi: "oi", hobbies: "hobbies", home: "casa", homework: "dever de casa", how: "como", i: "eu", in: "em", is: "é, está", it: "isso", juice: "suco", knows: "sabe", laughs: "ri", learn: "aprender", lesson: "aula", like: "gostar", likes: "gosta", lily: "Lily", little: "pequeno", lives: "mora", london: "Londres", look: "olhar", looks: "olha", loves: "ama", lunch: "almoço", make: "fazer", many: "muitos", max: "Max", me: "me, mim", meet: "conhecer", morning: "manhã", mother: "mãe", music: "música", name: "nome", nervous: "nervosa", new: "novo", next: "próximo", nice: "prazeroso", no: "não", notebook: "caderno", of: "de", on: "em", one: "um", opens: "abre", or: "ou", orange: "laranja", other: "outro", outside: "fora", parents: "pais", pencil: "lápis", pink: "rosa", plant: "planta", plants: "plantas", play: "brincar, tocar", playing: "brincando", quietly: "baixinho", raises: "levanta", read: "ler", reading: "leitura", runs: "corre", says: "diz", school: "escola", science: "ciências", sees: "vê", setting: "se pondo", she: "ela", shows: "mostra", sits: "senta", sky: "céu", sleep: "dormir", small: "pequeno", smile: "sorriso", smiles: "sorri", so: "então", some: "alguns", soon: "logo", starts: "começa", student: "aluno", students: "alunos", sun: "sol", talk: "conversar", talking: "conversando", teacher: "professor", teeth: "dentes", thank: "obrigado", that: "que", the: "o, a, os, as", their: "deles", them: "eles", then: "então", there: "lá", they: "eles", think: "achar", this: "este", to: "para", today: "hoje", together: "juntos", tomorrow: "amanhã", too: "também", trip: "viagem", very: "muito", walks: "caminha", wanted: "queria", washes: "lava", was: "era, estava", week: "semana", when: "quando", with: "com", words: "palavras", world: "mundo", writes: "escreve", yes: "sim", you: "você"
+};
+
+function getTextWords(rawText) {
+  return [...new Set(rawText.toLowerCase().match(/[a-z]+/g) || [])];
+}
+
+function getWordDifficulty(word, targetWords) {
+  const commonRank = commonWordScore.has(word) ? commonWordScore.get(word) : commonWordRank.length + 25;
+  const commonPenalty = commonWordRank.length - Math.min(commonRank, commonWordRank.length);
+  const lengthBonus = Math.min(word.length, 14) * 4;
+  const targetBonus = targetWords.has(word) ? 160 : 0;
+  return targetBonus + lengthBonus - commonPenalty;
+}
+
+function getWordLevel(word, targetWords, storyLevel) {
+  if (targetWords.has(word)) return storyLevel;
+  if (commonWordScore.has(word) && commonWordScore.get(word) < 80) return "A1";
+  if (word.length <= 4) return "A1";
+  if (word.length <= 7) return "A2";
+  if (word.length <= 10) return "B1";
+  return "B2";
+}
+
+function getIpaFallback(word) {
+  return `/${word}/`;
+}
+
 // ==========================================
 // BANCO DE DADOS DE LEITURA (A1 → C1)
 // Integrado com emilyStories.js
@@ -460,7 +507,7 @@ function loadEmilyStories() {
           question: `Qual é o tema principal de "${story.title}"?`,
           options: story.keyThemes
         },
-        dictionary: buildDictionary(story.coreVocabulary, level),
+        dictionary: buildDictionary(story.coreVocabulary, level, story.text),
         level: level,
         estimatedWords: story.estimatedWords
       };
@@ -469,16 +516,29 @@ function loadEmilyStories() {
 }
 
 // Constrói dicionário com dados contextuais
-function buildDictionary(vocabArray, level) {
+function buildDictionary(vocabArray, level, rawText = "") {
   const dict = {};
+  const targetWords = new Set(vocabArray.map(v => v.word.toLowerCase()));
+  const uniqueWords = getTextWords(rawText);
+  const coverage = translationCoverageByLevel[level] || 1;
+  const visibleCount = Math.ceil(uniqueWords.length * coverage);
+  const visibleWords = new Set(
+    [...uniqueWords]
+      .sort((a, b) => getWordDifficulty(b, targetWords) - getWordDifficulty(a, targetWords))
+      .slice(0, visibleCount)
+  );
+
   vocabArray.forEach(v => {
     const key = v.word.toLowerCase();
     const advanced = advancedDictionary[level]?.[key];
-    
+    visibleWords.add(key);
+
     dict[key] = {
-      ipa: advanced?.ipa || `/${v.word}/`,
+      ipa: advanced?.ipa || getIpaFallback(v.word),
       type: v.type,
       pt: v.pt,
+      wordLevel: level,
+      showTranslation: true,
       ex: advanced?.examples?.[0]?.en || "Exemplo não disponível.",
       ex_pt: advanced?.examples?.[0]?.pt || "Exemplo não disponível.",
       ...(advanced && {
@@ -492,6 +552,25 @@ function buildDictionary(vocabArray, level) {
       })
     };
   });
+
+  uniqueWords.forEach(word => {
+    if (dict[word]) {
+      dict[word].showTranslation = visibleWords.has(word);
+      return;
+    }
+
+    const inferredLevel = getWordLevel(word, targetWords, level);
+    dict[word] = {
+      ipa: getIpaFallback(word),
+      type: "word",
+      pt: contextualTranslations[word] || "tradução contextual em revisão",
+      wordLevel: inferredLevel,
+      showTranslation: visibleWords.has(word),
+      ex: "Exemplo contextual disponível no texto acima.",
+      ex_pt: "Use o contexto da frase para revisar esta palavra."
+    };
+  });
+
   return dict;
 }
 
@@ -504,6 +583,12 @@ let textContentArray = [];
 // ==========================================
 
 function loadReadingLevel(level) {
+  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+  readingAudioState.playing = false;
+  readingAudioState.paused = false;
+  readingAudioState.startIndex = 0;
+  updateReadingPlayer("▶ Ouvir", 0);
+
   if (!readingData[level]) {
     currentRLevel = "";
     document.getElementById("r-title").innerText = "Nível em desenvolvimento";
@@ -575,7 +660,12 @@ function openWordCard(cleanWord, dictEntry, originalText, level) {
     document.getElementById("card-word").innerText = originalText;
     document.getElementById("card-ipa").innerText = dictEntry.ipa;
     document.getElementById("card-type").innerText = translateType(dictEntry.type);
-    document.getElementById("card-pt").innerText = dictEntry.pt;
+    const translationElement = document.getElementById("card-pt");
+    if (dictEntry.showTranslation === false) {
+      translationElement.innerHTML = `<span class="translation-hidden">Tradução oculta no nível ${level}. Tente deduzir pelo contexto!</span>`;
+    } else {
+      translationElement.innerText = dictEntry.pt;
+    }
     document.getElementById("card-ex-en").innerText = dictEntry.ex;
     document.getElementById("card-ex-pt").innerText = dictEntry.ex_pt;
 
@@ -659,29 +749,103 @@ function getWordIndexAtChar(charIndex) {
   return textContentArray.findIndex((item) => charIndex >= item.start && charIndex < item.end);
 }
 
-function playFullText() {
+let currentReadingUtterance = null;
+let readingAudioState = { playing: false, paused: false, slow: false, startIndex: 0 };
+
+function updateReadingPlayer(playText = "▶ Ouvir", progress = null) {
+  const btnPlay = document.getElementById("btn-reading-play");
+  const btnSpeed = document.getElementById("btn-reading-speed");
+  const progressBar = document.getElementById("reading-progress");
+  if (btnPlay) btnPlay.innerText = playText;
+  if (btnSpeed) btnSpeed.innerText = readingAudioState.slow ? "0.75x" : "1x";
+  if (progressBar && progress !== null) progressBar.value = String(Math.max(0, Math.min(100, progress)));
+}
+
+function toggleReadingAudio() {
+  if (!("speechSynthesis" in window)) {
+    document.getElementById("btn-teacher-mode").style.display = "block";
+    return;
+  }
+
+  if (readingAudioState.playing && !readingAudioState.paused) {
+    window.speechSynthesis.pause();
+    readingAudioState.paused = true;
+    updateReadingPlayer("▶ Continuar");
+    return;
+  }
+
+  if (readingAudioState.playing && readingAudioState.paused) {
+    window.speechSynthesis.resume();
+    readingAudioState.paused = false;
+    updateReadingPlayer("⏸ Pausar");
+    return;
+  }
+
+  playFullText(readingAudioState.startIndex || 0);
+}
+
+function toggleReadingSpeed() {
+  readingAudioState.slow = !readingAudioState.slow;
+  if (readingAudioState.playing) {
+    const currentIndex = readingAudioState.startIndex || 0;
+    window.speechSynthesis.cancel();
+    playFullText(currentIndex);
+  } else {
+    updateReadingPlayer("▶ Ouvir");
+  }
+}
+
+function bindReadingProgress() {
+  const progressBar = document.getElementById("reading-progress");
+  if (!progressBar) return;
+  progressBar.addEventListener("input", () => {
+    if (!readingData[currentRLevel]) return;
+    const wordElements = document.querySelectorAll(".clickable-word");
+    const nextIndex = Math.floor((Number(progressBar.value) / 100) * Math.max(wordElements.length - 1, 0));
+    readingAudioState.startIndex = nextIndex;
+    if (readingAudioState.playing) {
+      window.speechSynthesis.cancel();
+      playFullText(nextIndex);
+    }
+  });
+}
+
+function playFullText(startIndex = 0) {
   if (!readingData[currentRLevel]) return;
 
   if ("speechSynthesis" in window) {
     window.speechSynthesis.cancel();
 
     const text = readingData[currentRLevel].text;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "en-US";
-    utterance.rate = 0.9;
-
     const wordElements = document.querySelectorAll(".clickable-word");
+    const startChar = textContentArray[startIndex]?.start || 0;
+    const utterance = new SpeechSynthesisUtterance(text.slice(startChar));
+    utterance.lang = "en-US";
+    utterance.rate = readingAudioState.slow ? 0.75 : 0.95;
+    currentReadingUtterance = utterance;
+    readingAudioState.playing = true;
+    readingAudioState.paused = false;
+    readingAudioState.startIndex = startIndex;
+    updateReadingPlayer("⏸ Pausar", wordElements.length ? (startIndex / wordElements.length) * 100 : 0);
 
     utterance.onboundary = (event) => {
       if (event.name === "word") {
         clearReadingHighlights();
-        const index = getWordIndexAtChar(event.charIndex);
-        if (wordElements[index]) wordElements[index].classList.add("highlight-word");
+        const index = getWordIndexAtChar(startChar + event.charIndex);
+        if (index >= 0) {
+          readingAudioState.startIndex = index;
+          if (wordElements[index]) wordElements[index].classList.add("highlight-word");
+          updateReadingPlayer("⏸ Pausar", wordElements.length ? (index / wordElements.length) * 100 : 0);
+        }
       }
     };
 
     utterance.onend = () => {
       clearReadingHighlights();
+      readingAudioState.playing = false;
+      readingAudioState.paused = false;
+      readingAudioState.startIndex = 0;
+      updateReadingPlayer("▶ Ouvir", 100);
       document.getElementById("btn-teacher-mode").style.display = "block";
     };
 
@@ -752,5 +916,6 @@ function translateType(type) {
 // Initialize on page load
 document.addEventListener("DOMContentLoaded", () => {
   loadEmilyStories();
+  bindReadingProgress();
   loadReadingLevel("A1");
 });
