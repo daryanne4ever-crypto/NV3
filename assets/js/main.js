@@ -61,21 +61,25 @@ function initializeGrammarMenu() {
   if (!grammarLink || grammarLink.dataset.grammarReady === 'true') return;
 
   grammarLink.dataset.grammarReady = 'true';
-  grammarLink.setAttribute('aria-expanded', currentPage === 'grammar.html' ? 'true' : 'false');
+  grammarLink.setAttribute('aria-expanded', 'false');
+  grammarLink.setAttribute('aria-controls', 'grammar-dropdown-content');
   grammarLink.classList.add('grammar-nav-toggle');
 
   const submenu = document.createElement('div');
-  submenu.className = 'grammar-submenu';
+  submenu.id = 'grammar-dropdown-content';
+  submenu.className = 'grammar-submenu grammar-dropdown-content';
   submenu.setAttribute('aria-label', 'Grammar topics');
-  submenu.hidden = currentPage !== 'grammar.html';
+  submenu.hidden = true;
   submenu.innerHTML = grammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
   grammarLink.insertAdjacentElement('afterend', submenu);
 
   grammarLink.addEventListener('click', (event) => {
     event.preventDefault();
     const isExpanded = grammarLink.getAttribute('aria-expanded') === 'true';
-    grammarLink.setAttribute('aria-expanded', String(!isExpanded));
-    submenu.hidden = isExpanded;
+    const shouldShow = !isExpanded;
+    grammarLink.setAttribute('aria-expanded', String(shouldShow));
+    submenu.hidden = !shouldShow;
+    submenu.classList.toggle('show', shouldShow);
   });
 }
 
@@ -143,7 +147,12 @@ function initializeMobileMenu() {
     toggle.setAttribute('aria-expanded', String(willOpen));
   });
   backdrop.addEventListener('click', closeMenu);
-  sidebar.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+  sidebar.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (link.classList.contains('grammar-nav-toggle')) return;
+      closeMenu();
+    });
+  });
 }
 
 function saveStudentName() {
