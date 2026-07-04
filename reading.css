@@ -1,0 +1,278 @@
+/* Container Principal de Leitura */
+.read-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0 1.4rem;
+}
+
+.read-controls button {
+  background: #1a1a2e;
+  border: 1px solid #4e44ce;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 800;
+  transition: 0.2s;
+}
+
+.read-controls button:hover,
+.read-controls button.active-btn {
+  background: #c77dff;
+  border-color: #c77dff;
+}
+
+.reading-container {
+  background: rgba(33, 25, 54, 0.8);
+  border: 1px solid #c77dff;
+  border-radius: 12px;
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.reading-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(199, 125, 255, 0.3);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.reading-header h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin: 0;
+}
+
+.reading-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.level-badge {
+  background: #ff006e;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.btn-read-all {
+  background: #4e44ce;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.btn-read-all:hover {
+  background: #3a0ca3;
+}
+
+/* O Texto Interativo */
+.interactive-text-area {
+  font-size: 1.4rem;
+  line-height: 2;
+  color: #e0e0e0;
+}
+
+.clickable-word {
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: 0.2s;
+  display: inline-block;
+}
+
+.clickable-word:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* Cores das Classes Gramaticais */
+.grammar-verb { color: #4facfe; }
+.grammar-noun { color: #43e97b; }
+.grammar-adj { color: #c77dff; }
+.grammar-adv { color: #fa709a; }
+.grammar-prep { color: #9e9e9e; }
+.grammar-default { color: #e0e0e0; }
+
+/* Efeito Kindle: Destaque da palavra atual */
+.highlight-word {
+  background-color: #ffbe0b;
+  color: #1a1a2e;
+  border-radius: 4px;
+  transition: background-color 0.1s ease;
+}
+
+/* Smart Word Card (Estilo App) */
+.word-card-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.word-card-content,
+.teacher-container {
+  background: #1a1a2e;
+  border: 2px solid #c77dff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.close-card {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.word-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.word-header h3 {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0;
+}
+
+.btn-audio-word {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.ipa-text {
+  color: #00b4d8;
+  font-family: monospace;
+  font-size: 1.1rem;
+  margin: 0 0 15px;
+}
+
+.grammar-badge {
+  background: #3a0ca3;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.card-translation {
+  margin: 20px 0;
+  border-left: 3px solid #c77dff;
+  padding-left: 10px;
+}
+
+.card-translation p {
+  font-size: 1.2rem;
+  color: #fff;
+  margin: 5px 0 0;
+}
+
+.card-examples {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.card-examples p {
+  margin: 5px 0 0;
+  font-size: 0.95rem;
+}
+
+.ex-pt {
+  color: #aaa;
+  font-style: italic;
+}
+
+.btn-save-word,
+.btn-teacher {
+  width: 100%;
+  background: transparent;
+  border: 1px solid #ffbe0b;
+  color: #ffbe0b;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-teacher {
+  margin-top: 1.4rem;
+}
+
+.btn-save-word:hover,
+.btn-teacher:hover {
+  background: #ffbe0b;
+  color: #000;
+}
+
+.teacher-container {
+  max-width: 760px;
+  margin-top: 1.2rem;
+}
+
+.teacher-section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(199, 125, 255, 0.18);
+  border-radius: 10px;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.teacher-section h4 {
+  color: #c77dff;
+  margin-bottom: 0.6rem;
+}
+
+.teacher-section ul {
+  margin-left: 1.2rem;
+}
+
+.btn-opt {
+  background: #1a1a2e;
+  border: 1px solid #4e44ce;
+  color: #fff;
+  margin: 0.35rem 0.35rem 0 0;
+  padding: 0.55rem 0.8rem;
+  border-radius: 6px;
+}
+
+@media (max-width: 720px) {
+  .reading-header,
+  .reading-meta {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

@@ -168,6 +168,23 @@
   100% { transform: scale(1); }
 }
 
+/* Novos Estilos para Speaking Avançado */
+.mode-badge {
+  display: inline-block;
+  background: #ff006e;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.scenario-box {
+  background: rgba(0, 180, 216, 0.1);
+  border-left: 4px solid #00b4d8;
 /* Novos Estilosrder-left: 4px solid #00b4d8;
   padding: 15px;
   margin-bottom: 20px;
