@@ -57,7 +57,11 @@
             <div class="reading-meta">
               <span id="r-level-badge" class="level-badge">⭐ A1</span>
               <span id="r-word-count" class="word-count">~500 palavras</span>
-              <button class="btn-read-all" onclick="playFullText()" title="Ler o texto em voz alta">▶ Ouvir Tudo</button>
+              <div class="reading-player" aria-label="Controles de áudio da leitura">
+                <button class="btn-read-all" id="btn-reading-play" onclick="toggleReadingAudio()" title="Ler ou pausar o texto">▶ Ouvir</button>
+                <button class="btn-read-all btn-reading-speed" id="btn-reading-speed" onclick="toggleReadingSpeed()" title="Alternar velocidade de leitura">1x</button>
+                <input type="range" id="reading-progress" class="reading-progress" value="0" min="0" max="100" aria-label="Progresso do áudio" />
+              </div>
             </div>
           </div>
 

@@ -77,6 +77,34 @@
   background: #3a0ca3;
 }
 
+.reading-player {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(26, 26, 46, 0.72);
+  border: 1px solid rgba(199, 125, 255, 0.28);
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.btn-reading-speed {
+  background: #1a1a2e;
+  border: 1px solid #4e44ce;
+  color: #c77dff;
+  min-width: 58px;
+}
+
+.reading-progress {
+  accent-color: #c77dff;
+  cursor: pointer;
+  width: 130px;
+}
+
+.translation-hidden {
+  color: #c77dff;
+  font-style: italic;
+}
+
 /* O Texto Interativo */
 .interactive-text-area {
   font-size: 1.4rem;
