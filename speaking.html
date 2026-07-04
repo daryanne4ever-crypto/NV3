@@ -66,6 +66,11 @@
             <p id="s-portuguese-text" class="structural-translation">Eu moro em uma casa grande.</p>
 
             <div class="audio-playback-controls" id="s-audio-controls">
+            <span class="progress-badge" id="s-progress">Frase 1</span>
+            <h3 id="s-english-text">I live in a big house.</h3>
+            <p id="s-portuguese-text" class="structural-translation">Eu moro em uma casa grande.</p>
+
+            <div class="audio-playback-controls">
               <button class="btn-play-normal" onclick="playBaseAudio(1)" title="Ouvir em velocidade natural">🔊 Normal</button>
               <button class="btn-play-slow" onclick="playBaseAudio(0.7)" title="Ouvir devagar para entender os fonemas">🐢 Lento</button>
             </div>
@@ -81,6 +86,17 @@
             <p id="s-user-speech" class="user-speech-result"></p>
             <div id="s-pedagogical-tip" class="tip-box"></div>
             <button class="btn-next-phrase" onclick="nextSpeakingPhrase()">Próxima Etapa ➔</button>
+            <button id="btn-record-toggle" class="btn-record" onclick="toggleRecording()">
+              🎙️ Gravar
+            </button>
+            <p id="recording-status" class="status-text">Clique para falar</p>
+          </div>
+
+          <div id="feedback-area" class="feedback-container" style="display: none;">
+            <h4>Análise da sua pronúncia:</h4>
+            <p id="s-user-speech" class="user-speech-result"></p>
+            <div id="s-pedagogical-tip" class="tip-box"></div>
+            <button class="btn-next-phrase" onclick="nextSpeakingPhrase()">Próxima Frase ➔</button>
           </div>
         </div>
       </article>
