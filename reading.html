@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="reading.css" />
 </head>
 <body>
   <aside class="sidebar" aria-label="Menu principal">
@@ -36,14 +37,69 @@
       <button class="btn btn-primary" data-xp="25">Ganhar 25 XP</button>
     </header>
     <section class="content-grid">
-      <article class="card large-card">
-        <div class="section-heading"><div><span class="eyebrow">Atividades</span><h2>Primeira trilha</h2></div><a href="index.html">Dashboard</a></div>
-        <p>Conteúdo base preparado para expansão com textos autênticos, exercícios de compreensão e vocabulário contextualizado.</p>
+      <article class="card reading-hub">
+        <h2>📚 Reading Library</h2>
+
+        <div class="read-controls" id="read-level-controls">
+          <button onclick="loadReadingLevel('A1')" data-level="A1" class="active-btn">A1</button>
+          <button onclick="loadReadingLevel('A2')" data-level="A2">A2</button>
+          <button onclick="loadReadingLevel('B1')" data-level="B1">B1</button>
+          <button onclick="loadReadingLevel('B2')" data-level="B2">B2</button>
+          <button onclick="loadReadingLevel('C1')" data-level="C1">C1</button>
+        </div>
+
+        <div class="reading-container">
+          <div class="reading-header">
+            <h3 id="r-title">Título do Texto</h3>
+            <div class="reading-meta">
+              <span id="r-level-badge" class="level-badge">⭐ A1</span>
+              <button class="btn-read-all" onclick="playFullText()">▶ Ouvir Tudo</button>
+            </div>
+          </div>
+
+          <div id="r-text-area" class="interactive-text-area"></div>
+
+          <button id="btn-teacher-mode" class="btn-teacher" onclick="activateTeacherMode()" style="display: none;">
+            🎓 Ativar Professor Mode
+          </button>
+
+          <div id="teacher-mode-container" class="teacher-container" style="display: none;">
+            <button class="close-card" onclick="closeTeacherMode()">✖</button>
+            <h2>👩‍🏫 Teacher Anny's Review</h2>
+            <div class="teacher-content" id="teacher-content-area"></div>
+          </div>
+        </div>
+
+        <div id="smart-word-card" class="word-card-overlay" style="display: none;">
+          <div class="word-card-content">
+            <button class="close-card" onclick="closeWordCard()">✖</button>
+            <div class="word-header">
+              <h3 id="card-word">walked</h3>
+              <button class="btn-audio-word" onclick="playWordAudio()">🔊</button>
+            </div>
+            <p id="card-ipa" class="ipa-text">/wɔːkt/</p>
+            <span id="card-type" class="grammar-badge">Verbo</span>
+
+            <div class="card-translation">
+              <strong>Tradução Contextual:</strong>
+              <p id="card-pt">andou / caminhou</p>
+            </div>
+
+            <div class="card-examples">
+              <strong>Exemplo:</strong>
+              <p id="card-ex-en">He walked very fast.</p>
+              <p id="card-ex-pt" class="ex-pt">Ele andou muito rápido.</p>
+            </div>
+
+            <button class="btn-save-word" onclick="saveCurrentWord()">⭐ Salvar no Vocabulário</button>
+          </div>
+        </div>
       </article>
       <aside class="card"><span class="eyebrow">Feedback</span><h2>Status</h2><div class="badge-list"><span class="badge success">Certo</span><span class="badge warning">Progresso</span></div></aside>
     </section>
   </main>
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="reading.js"></script>
 </body>
 </html>
