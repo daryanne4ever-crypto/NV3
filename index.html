@@ -1,37 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulary Master - NV3</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NLE Level 3 | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-    <section class="card vocabulary-hub">
-        <h2>Vocabulary Master</h2>
-        
-        <!-- Botões de Nível -->
-        <div class="vocab-controls" id="vocab-controls">
-            <button onclick="renderVocab('A1')">A1</button>
-            <button onclick="renderVocab('A2')">A2</button>
-            <button onclick="renderVocab('B1')">B1</button>
-            <button onclick="renderVocab('B2')">B2</button>
-            <button onclick="renderVocab('C1')">C1</button>
-        </div>
-        
-        <!-- Tela 1: Lista de Vocabulário -->
-        <div id="vocab-display" class="vocab-grid"></div>
-        <div id="vocab-footer" class="vocab-actions" style="display:none; margin-top: 20px;">
-            <button class="btn-quiz" onclick="startQuiz()">Iniciar Quiz (+XP)</button>
-            <button class="btn-teacher" onclick="window.open('https://wa.me/seu-numero')">Ask Teacher</button>
-        </div>
+  <aside class="sidebar" aria-label="Menu principal">
+    <a class="brand" href="index.html"><span class="brand__mark">NV3</span><span><strong>NLE Level 3</strong><small>English B1 Platform</small></span></a>
+    <nav class="nav-list">
+      <a class="nav-link" href="index.html">Dashboard</a>
+      <a class="nav-link" href="revision.html">Revision</a>
+      <a class="nav-link" href="grammar.html">Grammar</a>
+      <a class="nav-link" href="vocabulary.html">Vocabulary</a>
+      <a class="nav-link" href="listening.html">Listening</a>
+      <a class="nav-link" href="speaking.html">Speaking</a>
+      <a class="nav-link" href="reading.html">Reading</a>
+      <a class="nav-link" href="writing.html">Writing</a>
+      <a class="nav-link" href="professor.html">Professor</a>
+      <a class="nav-link" href="unit1.html">Unit 1</a>
+    </nav>
+    <div class="sidebar-card"><span class="eyebrow">NV3</span><strong>Modo estudo</strong><small>Aprenda, pratique e acompanhe seu progresso.</small></div>
+  </aside>
 
-        <!-- Tela 2: O Quiz (Inicia escondido) -->
-        <div id="quiz-display" style="display: none;">
-            <!-- O JS vai injetar os cards do quiz aqui -->
-        </div>
+  <main class="app-shell">
+    <header class="hero dashboard-hero">
+      <div>
+        <span class="eyebrow">Dashboard do aluno</span>
+        <h1>Welcome, <span id="studentName">Student</span>!</h1>
+        <p>Salve como você prefere ser chamado e continue exatamente de onde parou.</p>
+      </div>
+      <div class="dashboard-actions">
+        <input id="studentNameInput" class="compact-input" type="text" placeholder="Como quer ser chamado?" autocomplete="name" />
+        <button id="saveStudentNameBtn" class="btn btn-primary" type="button">Salvar nome</button>
+        <button id="startPracticeBtn" class="btn btn-secondary" type="button">Continuar</button>
+      </div>
+    </header>
+
+    <section class="stats-grid dashboard-stats" aria-label="Resumo do progresso">
+      <article class="stat-card success">
+        <span class="eyebrow">Concluído</span>
+        <strong id="activitiesCompleted">0</strong>
+        <small>atividades finalizadas</small>
+      </article>
+      <article class="stat-card accent">
+        <span class="eyebrow">Nível atual</span>
+        <strong id="currentLevel">Beginner</strong>
+        <small>calculado pelo progresso salvo</small>
+      </article>
+      <article class="stat-card warning">
+        <span class="eyebrow">Último acesso</span>
+        <strong id="lastAccess" style="font-size: 1.15rem; line-height: 1.25;">Ainda não acessado</strong>
+        <small>registro local neste dispositivo</small>
+      </article>
+      <article class="stat-card danger">
+        <span class="eyebrow">Próximo passo</span>
+        <a id="lastActivityLink" class="continue-card" href="reading.html"><strong>Começar Reading</strong><small>Nenhuma atividade iniciada ainda.</small></a>
+      </article>
     </section>
 
-    <script src="script.js"></script>
+    <section class="content-grid">
+      <article class="card">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">Onde parei</span>
+            <h2>Atividades recentes</h2>
+          </div>
+        </div>
+        <div id="dashboardReviews" class="review-list">
+          <p class="empty-review">Nenhuma atividade registrada ainda.</p>
+        </div>
+      </article>
+
+      <aside class="card">
+        <span class="eyebrow">Acesso rápido</span>
+        <h2>Módulos</h2>
+        <div class="badge-list">
+          <a class="badge accent" href="reading.html">📚 Reading</a>
+          <a class="badge success" href="listening.html">🎧 Listening</a>
+          <a class="badge warning" href="speaking.html">🎙️ Speaking</a>
+          <a class="badge accent" href="vocabulary.html">🧠 Vocabulary</a>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

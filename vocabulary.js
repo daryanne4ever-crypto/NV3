@@ -197,7 +197,6 @@ function checkAnswer(btn, selectedOption, correctOption, questionIndex, totalQue
 
     if (selectedOption === correctOption) {
         btn.classList.add('correct'); // Fica verde
-        window.NV3Storage?.addXp(10); // Adiciona 10 XP por acerto
     } else {
         btn.classList.add('wrong'); // Fica vermelho
         // Mostra qual era a correta em verde
