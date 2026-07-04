@@ -3,29 +3,14 @@ const NV3_STORAGE_KEY = 'nv3:student-state';
 
 const defaultStudentState = {
   studentName: 'Student',
-  xp: 0,
+  lastActivity: null,
   level: 'Beginner',
   units: {
     revision: { progress: 0 },
     grammar: { progress: 0 },
     unit1: { progress: 0 },
   },
-  activities: {
-    unit1_activity2: {
-      id: 'unit1_activity2',
-      name: 'Activity 2: Polite Requests & Transport',
-      url: 'unit1.html#activity2',
-      percentage: 0,
-      status: 'Urgent Review',
-    },
-    unit1_activity3: {
-      id: 'unit1_activity3',
-      name: 'Activity 3: Check-in & Reservations',
-      url: 'unit1.html#activity3',
-      percentage: 0,
-      status: 'Urgent Review',
-    },
-  },
+  activities: {},
 };
 
 function cloneState(state) {
@@ -77,23 +62,34 @@ function getStatusFromPercentage(percentage) {
 function saveActivityResult(activity) {
   return updateState((state) => {
     const percentage = Math.max(0, Math.min(100, Math.round(Number(activity.percentage) || 0)));
-    state.activities[activity.id] = {
+    const nextActivity = {
       ...state.activities[activity.id],
       ...activity,
       percentage,
       status: activity.status || getStatusFromPercentage(percentage),
       completedAt: new Date().toISOString(),
+      lastAccessedAt: new Date().toISOString(),
     };
+    state.activities[activity.id] = nextActivity;
+    state.lastActivity = nextActivity;
     return state;
   });
 }
 
-function addXp(amount) {
-  return updateState((state) => ({ ...state, xp: Math.max(0, Number(state.xp || 0) + Number(amount || 0)) }));
+function saveLastActivity(activity) {
+  return updateState((state) => {
+    const nextActivity = {
+      ...activity,
+      lastAccessedAt: activity.lastAccessedAt || new Date().toISOString(),
+    };
+    state.activities[nextActivity.id] = { ...state.activities[nextActivity.id], ...nextActivity };
+    state.lastActivity = nextActivity;
+    return state;
+  });
 }
 
 function setStudentName(studentName) {
   return updateState((state) => ({ ...state, studentName: studentName?.trim() || 'Student' }));
 }
 
-window.NV3Storage = { readState, writeState, updateState, getActivities, getStatusFromPercentage, saveActivityResult, addXp, setStudentName };
+window.NV3Storage = { readState, writeState, updateState, getActivities, getStatusFromPercentage, saveActivityResult, saveLastActivity, setStudentName };

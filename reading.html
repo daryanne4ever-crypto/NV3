@@ -20,7 +20,7 @@
       <a class="nav-link" href="vocabulary.html">Vocabulary</a>
       <a class="nav-link" href="listening.html">Listening</a>
       <a class="nav-link" href="speaking.html">Speaking</a>
-      <a class="nav-link" href="reading.html" class="active">Reading</a>
+      <a class="nav-link active" href="reading.html">Reading</a>
       <a class="nav-link" href="writing.html">Writing</a>
       <a class="nav-link" href="professor.html">Professor</a>
       <a class="nav-link" href="unit1.html">Unit 1</a>
@@ -34,7 +34,6 @@
         <h1>Reading Library</h1>
         <p>Acompanhe as aventuras de Emily de A1 até C1. Leia histórias contínuas, expanda vocabulário e melhore sua compreensão.</p>
       </div>
-      <button class="btn btn-primary" id="xp-button" data-xp="25" onclick="addXpReading()">+25 XP</button>
     </header>
     <section class="content-grid">
       <article class="card reading-hub">
@@ -57,7 +56,11 @@
             <div class="reading-meta">
               <span id="r-level-badge" class="level-badge">⭐ A1</span>
               <span id="r-word-count" class="word-count">~500 palavras</span>
-              <button class="btn-read-all" onclick="playFullText()" title="Ler o texto em voz alta">▶ Ouvir Tudo</button>
+              <div class="reading-player" aria-label="Controles de áudio da leitura">
+                <button class="btn-read-all" id="btn-reading-play" onclick="toggleReadingAudio()" title="Ler ou pausar o texto">▶ Ouvir</button>
+                <button class="btn-read-all btn-reading-speed" id="btn-reading-speed" onclick="toggleReadingSpeed()" title="Alternar velocidade de leitura">1x</button>
+                <input type="range" id="reading-progress" class="reading-progress" value="0" min="0" max="100" aria-label="Progresso do áudio" />
+              </div>
             </div>
           </div>
 
@@ -121,10 +124,6 @@
           <div class="progress-item">
             <label>Palavras Salvas</label>
             <small id="progress-words-text">0 palavras</small>
-          </div>
-          <div class="progress-item">
-            <label>XP Total</label>
-            <strong id="progress-xp" style="color: #ffd600;">0 XP</strong>
           </div>
         </div>
         
