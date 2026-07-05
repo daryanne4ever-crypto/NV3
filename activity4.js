@@ -39,11 +39,11 @@ function renderFeedback(transcript) {
   document.getElementById('scoreMessage').textContent = score >= 80 ? 'Great pronunciation!' : score >= 40 ? 'Good effort. Review the highlighted words.' : 'Keep practicing. Focus on each word slowly.';
 
   const errorsContainer = document.getElementById('errorsContainer');
-  errorsContainer.innerHTML = mistakes.length ? mistakes.map((item) => `<p>O sistema ouviu "${item.heard || 'nothing'}" em vez de "${item.word}".</p>`).join('') : '<p>No pronunciation issues detected.</p>';
+  errorsContainer.innerHTML = mistakes.length ? mistakes.map((item) => `<p>O sistema ouviu "${item.heard || 'nothing'}" em vez de "${item.word}".</p>`).join('') : '<p>No pronunciation issues detected!</p>';
   document.getElementById('errorAnalysisSection').style.display = 'block';
 
   const tipsContainer = document.getElementById('tipsContainer');
-  tipsContainer.innerHTML = mistakes.map((item) => phrase.tips[item.word] ? `<p><strong>Dica para '${item.word}':</strong> ${phrase.tips[item.word].tip} Transcrição fonética: ${phrase.tips[item.word].ipa}</p>` : `<p><strong>Dica para '${item.word}':</strong> Speak this word slowly and clearly.</p>`).join('') || '<p>No extra tips needed.</p>';
+  tipsContainer.innerHTML = mistakes.map((item) => phrase.tips[item.word] ? `<p><strong>Dica para '${item.word}':</strong> ${phrase.tips[item.word].tip} Transcrição fonética: ${phrase.tips[item.word].ipa}</p>` : '').filter(Boolean).join('');
   document.getElementById('pronunciationTipsSection').style.display = 'block';
   document.getElementById('submitActivityBtn').disabled = false;
   localStorage.setItem('nv3_activity4_last_score', String(score));
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('microphoneBtn').addEventListener('click', () => isRecording ? stopRecording() : startRecording());
   document.getElementById('submitActivityBtn').addEventListener('click', () => {
     const score = Number(localStorage.getItem('nv3_activity4_last_score') || 0);
-    localStorage.setItem('nv3_activity_activity4_speaking', JSON.stringify({ id: 'activity4_speaking', name: 'Activity 4: Speaking Practice', url: 'activity4.html', percentage: score, status: status(score), completedAt: new Date().toISOString() }));
+    localStorage.setItem('nv3_activity_activity4_speaking', JSON.stringify({ id: 'activity4_speaking', name: 'Activity 4: Speaking Practice', url: 'activity4.html', percentage: score, status: status(score) }));
     alert(`Activity 4 saved with ${score}% (${status(score)}).`);
   });
 });
