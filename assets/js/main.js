@@ -61,13 +61,26 @@ function initializeGrammarMenu() {
   if (!grammarLink || grammarLink.dataset.grammarReady === 'true') return;
 
   grammarLink.dataset.grammarReady = 'true';
-  grammarLink.setAttribute('aria-label', 'Abrir Grammar Hub no conteúdo principal');
+  grammarLink.setAttribute('aria-expanded', 'false');
+  grammarLink.setAttribute('aria-controls', 'grammar-dropdown-content');
+  grammarLink.classList.add('grammar-nav-toggle');
+
+  const submenu = document.createElement('div');
+  submenu.id = 'grammar-dropdown-content';
+  submenu.className = 'grammar-submenu grammar-dropdown-content';
+  submenu.setAttribute('aria-label', 'Grammar topics');
+  submenu.hidden = true;
+  submenu.innerHTML = grammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
+  grammarLink.insertAdjacentElement('afterend', submenu);
 
   grammarLink.addEventListener('click', (event) => {
     if (currentPage !== 'grammar.html') return;
     event.preventDefault();
-    window.loadGrammarHub?.();
-    document.querySelector('#main-content-area')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const isExpanded = grammarLink.getAttribute('aria-expanded') === 'true';
+    const shouldShow = !isExpanded;
+    grammarLink.setAttribute('aria-expanded', String(shouldShow));
+    submenu.hidden = !shouldShow;
+    submenu.classList.toggle('show', shouldShow);
   });
 }
 
@@ -141,6 +154,7 @@ function initializeMobileMenu() {
   backdrop.addEventListener('click', closeMenu);
   sidebar.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
+      if (link.classList.contains('grammar-nav-toggle')) return;
       closeMenu();
     });
   });
