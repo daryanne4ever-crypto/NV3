@@ -1,0 +1,428 @@
+<div id="ipa-module-container" class="module-container">
+  <!-- Header -->
+  <div class="module-header">
+    <h2>🎯 Pronunciation (IPA Básico)</h2>
+    <p class="module-subtitle">Master the basic phonetic symbols of English pronunciation</p>
+  </div>
+
+  <!-- IPA Table -->
+  <section class="ipa-table-section">
+    <h3 class="section-title">Phonetic Symbols Reference</h3>
+    
+    <div class="table-responsive">
+      <table class="ipa-table">
+        <thead>
+          <tr>
+            <th>IPA Symbol</th>
+            <th>Common Letters</th>
+            <th>Sound Description</th>
+            <th>Example (Click to hear)</th>
+          </tr>
+        </thead>
+        <tbody id="ipa-table-body">
+          <!-- Dynamically populated -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- IPA Quiz -->
+  <section class="ipa-quiz-section">
+    <div class="quiz-card">
+      <h3 class="section-title">🎧 IPA Symbol Quiz</h3>
+      <p class="quiz-description">Which word contains the sound below?</p>
+
+      <div class="ipa-quiz-display">
+        <div id="ipa-quiz-symbol" class="huge-ipa">/æ/</div>
+        <button onclick="playQuizSound()" class="btn-play-sound">
+          <span>▶</span> Play Sound
+        </button>
+      </div>
+
+      <div id="ipa-quiz-options" class="quiz-options">
+        <!-- Dynamically populated -->
+      </div>
+
+      <p id="ipa-quiz-feedback" class="quiz-feedback"></p>
+    </div>
+  </section>
+</div>
+
+<style>
+/* ============================================
+   IPA MODULE STYLES
+   ============================================ */
+
+.ipa-table-section {
+  margin-bottom: 3rem;
+}
+
+/* TABLE RESPONSIVE WRAPPER */
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 0.8rem;
+  background: rgba(12, 10, 18, 0.5);
+  border: 1px solid rgba(199, 125, 255, 0.2);
+}
+
+/* IPA TABLE STYLING */
+.ipa-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.ipa-table thead {
+  background: rgba(157, 78, 221, 0.2);
+}
+
+.ipa-table th {
+  padding: 1.2rem;
+  text-align: left;
+  color: var(--color-accent-soft, #c97dff);
+  font-weight: 700;
+  border-bottom: 2px solid rgba(199, 125, 255, 0.3);
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.ipa-table td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(199, 125, 255, 0.15);
+  color: var(--color-text, #ffffff);
+}
+
+/* Alternate row colors (Zebra striping) */
+.ipa-table tbody tr:nth-child(odd) {
+  background: rgba(157, 78, 221, 0.05);
+}
+
+.ipa-table tbody tr:nth-child(even) {
+  background: transparent;
+}
+
+.ipa-table tbody tr:hover {
+  background: rgba(199, 125, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+/* IPA Symbol Cell */
+.ipa-symbol {
+  font-family: 'Courier New', monospace;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-accent-soft, #c97dff);
+}
+
+/* Clickable Word */
+.clickable-word {
+  cursor: pointer;
+  color: var(--color-text, #ffffff);
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.clickable-word:hover {
+  background: rgba(199, 125, 255, 0.2);
+  color: var(--color-accent-soft, #c97dff);
+  transform: scale(1.05);
+}
+
+.clickable-word:active {
+  transform: scale(0.98);
+}
+
+/* QUIZ SECTION */
+.ipa-quiz-section {
+  margin-top: 3rem;
+}
+
+.ipa-quiz-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.huge-ipa {
+  font-size: 4rem;
+  font-family: 'Courier New', monospace;
+  color: var(--color-accent-soft, #c97dff);
+  font-weight: 700;
+  text-shadow: 0 4px 12px rgba(199, 125, 255, 0.3);
+}
+
+.btn-play-sound {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  background: linear-gradient(135deg, #00e676, #00b857);
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 230, 118, 0.3);
+}
+
+.btn-play-sound:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 230, 118, 0.4);
+}
+
+.btn-play-sound:active {
+  transform: translateY(0);
+}
+
+.btn-play-sound span {
+  font-size: 1.2rem;
+}
+
+/* QUIZ OPTIONS */
+.ipa-quiz-section .quiz-options {
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  margin-bottom: 1.5rem;
+}
+
+.ipa-quiz-option {
+  padding: 1.2rem;
+  background: rgba(157, 78, 221, 0.1);
+  border: 2px solid rgba(199, 125, 255, 0.3);
+  border-radius: 0.6rem;
+  color: var(--color-text, #ffffff);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  word-break: break-word;
+}
+
+.ipa-quiz-option:hover {
+  border-color: var(--color-accent-soft, #c97dff);
+  background: rgba(199, 125, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.ipa-quiz-option.correct {
+  background: rgba(0, 230, 118, 0.2);
+  border-color: #00e676;
+  color: #00e676;
+  animation: pulse 0.6s ease;
+}
+
+.ipa-quiz-option.incorrect {
+  background: rgba(255, 23, 68, 0.2);
+  border-color: #ff1744;
+  color: #ff1744;
+  animation: shake 0.4s ease;
+}
+
+.ipa-quiz-option:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .ipa-table th,
+  .ipa-table td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .huge-ipa {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .module-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .ipa-table {
+    font-size: 0.85rem;
+  }
+
+  .ipa-table th,
+  .ipa-table td {
+    padding: 0.6rem;
+  }
+
+  .ipa-symbol {
+    font-size: 1.1rem;
+  }
+
+  .huge-ipa {
+    font-size: 2.5rem;
+  }
+
+  .ipa-quiz-section .quiz-options {
+    grid-template-columns: 1fr;
+  }
+
+  .ipa-quiz-option {
+    padding: 1rem;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+</style>
+
+<script>
+// ============================================
+// IPA MODULE JAVASCRIPT
+// ============================================
+
+// IPA Data
+const ipaData = [
+  {"symbol": "/æ/", "letters": "a", "sound": "Open vowel, between 'a' and 'e'", "example": "cat"},
+  {"symbol": "/ɪ/", "letters": "i", "sound": "Short vowel, between 'i' and 'e'", "example": "sit"},
+  {"symbol": "/iː/", "letters": "ee, ea", "sound": "Long 'i', with a smile", "example": "see"},
+  {"symbol": "/ʊ/", "letters": "u, oo", "sound": "Short 'u', relaxed", "example": "book"},
+  {"symbol": "/uː/", "letters": "oo, ue", "sound": "Long 'u', with rounded lips", "example": "blue"},
+  {"symbol": "/ə/", "letters": "any vowel", "sound": "Schwa - weak, neutral sound", "example": "about"},
+  {"symbol": "/θ/", "letters": "th", "sound": "Tongue between teeth (voiceless)", "example": "think"},
+  {"symbol": "/ð/", "letters": "th", "sound": "Tongue between teeth (voiced)", "example": "this"},
+  {"symbol": "/ʃ/", "letters": "sh, ti", "sound": "Hissing sound (shhhh)", "example": "shoe"},
+  {"symbol": "/tʃ/", "letters": "ch, tch", "sound": "'TCH' sound (like tchau)", "example": "chair"},
+  {"symbol": "/dʒ/", "letters": "j, ge", "sound": "'DJ' sound", "example": "jump"},
+  {"symbol": "/ŋ/", "letters": "ng", "sound": "Nasal sound in the throat", "example": "sing"}
+];
+
+let currentQuizSymbol = '';
+let currentQuizExample = '';
+
+// Render IPA Table
+function renderIPATable() {
+  const tbody = document.getElementById('ipa-table-body');
+  if (!tbody) return;
+
+  tbody.innerHTML = '';
+  ipaData.forEach(item => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td class="ipa-symbol">${item.symbol}</td>
+      <td>${item.letters}</td>
+      <td>${item.sound}</td>
+      <td><span class="clickable-word" onclick="speakWord('${item.example}')">${item.example}</span></td>
+    `;
+    tbody.appendChild(row);
+  });
+}
+
+// Speak Word Function
+function speakWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.9;
+  utterance.pitch = 1.0;
+  window.speechSynthesis.speak(utterance);
+}
+
+// Generate Random IPA Quiz
+function generateIPAQuiz() {
+  const randomObj = ipaData[Math.floor(Math.random() * ipaData.length)];
+  currentQuizSymbol = randomObj.symbol;
+  currentQuizExample = randomObj.example;
+
+  // Update display
+  const symbolDisplay = document.getElementById('ipa-quiz-symbol');
+  if (symbolDisplay) {
+    symbolDisplay.textContent = currentQuizSymbol;
+  }
+
+  // Clear feedback
+  const feedback = document.getElementById('ipa-quiz-feedback');
+  if (feedback) {
+    feedback.textContent = '';
+    feedback.className = 'quiz-feedback';
+  }
+
+  // Generate quiz options
+  generateIPAQuizOptions(currentQuizExample);
+}
+
+// Generate Quiz Options
+function generateIPAQuizOptions(correctExample) {
+  const optionsContainer = document.getElementById('ipa-quiz-options');
+  if (!optionsContainer) return;
+
+  // Get 2 random wrong examples
+  let wrongExamples = ipaData
+    .filter(item => item.example !== correctExample)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 2)
+    .map(item => item.example);
+
+  // Create options array
+  let options = [
+    { example: correctExample, isCorrect: true },
+    ...wrongExamples.map(ex => ({ example: ex, isCorrect: false }))
+  ];
+
+  // Shuffle
+  options = options.sort(() => Math.random() - 0.5);
+
+  // Render buttons
+  optionsContainer.innerHTML = '';
+  options.forEach(option => {
+    const btn = document.createElement('button');
+    btn.className = 'ipa-quiz-option';
+    btn.textContent = option.example;
+    btn.onclick = () => checkIPAQuizAnswer(option.example, option.isCorrect, btn);
+    optionsContainer.appendChild(btn);
+  });
+}
+
+// Check Quiz Answer
+function checkIPAQuizAnswer(example, isCorrect, buttonElement) {
+  const feedback = document.getElementById('ipa-quiz-feedback');
+  const allButtons = document.querySelectorAll('.ipa-quiz-option');
+
+  // Disable all buttons
+  allButtons.forEach(btn => btn.disabled = true);
+
+  if (isCorrect) {
+    buttonElement.classList.add('correct');
+    feedback.textContent = '✅ Correct! Well done!';
+    feedback.className = 'quiz-feedback success';
+  } else {
+    buttonElement.classList.add('incorrect');
+    feedback.textContent = `❌ Incorrect! The answer was ${currentQuizExample}`;
+    feedback.className = 'quiz-feedback error';
+  }
+
+  // Re-enable after 2 seconds
+  setTimeout(() => {
+    allButtons.forEach(btn => btn.disabled = false);
+  }, 2000);
+}
+
+// Play Quiz Sound
+function playQuizSound() {
+  speakWord(currentQuizExample);
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  renderIPATable();
+  generateIPAQuiz();
+});
+</script>
