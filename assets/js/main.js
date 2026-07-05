@@ -14,24 +14,30 @@ const pageTitles = {
   'unit1.html': 'Unit 1'
 };
 
-const grammarTopics = [
-  ['simple-present', 'Simple Present'],
-  ['present-continuous', 'Present Continuous'],
-  ['present-perfect', 'Present Perfect'],
-  ['present-perfect-continuous', 'Present Perfect Continuous'],
-  ['simple-past', 'Simple Past'],
-  ['past-continuous', 'Past Continuous'],
-  ['past-perfect', 'Past Perfect'],
-  ['past-perfect-continuous', 'Past Perfect Continuous'],
-  ['simple-future', 'Simple Future'],
-  ['future-continuous', 'Future Continuous'],
-  ['future-perfect', 'Future Perfect'],
-  ['future-perfect-continuous', 'Future Perfect Continuous'],
-  ['active-voice', 'Active Voice'],
-  ['passive-voice', 'Passive Voice'],
-  ['comparatives-superlatives', 'Comparatives & Superlatives'],
-  ['affixes', 'Affixes, Prefixes & Suffixes'],
-];
+
+// Motor de Áudio Nativo - Teacher Anny
+function speakWord(element) {
+  const text = element?.innerText || element?.textContent || String(element || '');
+
+  if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance(text.trim());
+    utterance.lang = 'en-US';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.0;
+
+    window.speechSynthesis.speak(utterance);
+
+    if (element?.style) {
+      element.style.opacity = '0.5';
+      setTimeout(() => { element.style.opacity = '1'; }, 200);
+    }
+  } else {
+    alert('Desculpe, seu navegador não suporta a leitura de texto em áudio.');
+  }
+}
+
+window.speakWord = speakWord;
+
 
 function calculateLevel(activities) {
   const completed = activities.filter((activity) => activity.status === 'Completed');
