@@ -3,6 +3,19 @@ function getGrammarData() {
   return typeof grammarData !== 'undefined' ? grammarData : { phases: [], lessons: {} };
 }
 
+function getGrammarTeachingModules() {
+  return typeof grammarTeachingModules !== 'undefined' ? grammarTeachingModules : {};
+}
+
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function speakGrammarText(text) {
   if (!('speechSynthesis' in window) || !text) return;
   window.speechSynthesis.cancel();
@@ -248,6 +261,12 @@ function initializeGrammarHub() {
 
     if (event.target.closest('[data-load-grammar-hub]')) {
       loadGrammarHub();
+      return;
+    }
+
+    const grammarQuizOption = event.target.closest('.grammar-quiz-option');
+    if (grammarQuizOption) {
+      checkGrammarModuleAnswer(grammarQuizOption);
       return;
     }
 
