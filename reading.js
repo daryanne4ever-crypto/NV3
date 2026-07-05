@@ -631,7 +631,7 @@ function renderInteractiveText(rawText, dictionary, level) {
       span.dataset.start = tokenIndex;
       span.dataset.end = tokenIndex + item.length;
       span.dataset.level = level;
-      span.onclick = () => openWordCard(cleanWord, dictEntry, item, level);
+      span.onclick = (event) => handleWordClick(event, cleanWord, dictEntry, item, level);
       textArea.appendChild(span);
       textContentArray.push({ start: tokenIndex, end: tokenIndex + item.length, element: span });
     } else {
@@ -641,6 +641,20 @@ function renderInteractiveText(rawText, dictionary, level) {
     cursor = tokenIndex + item.length;
     textArea.appendChild(document.createTextNode(" "));
   });
+}
+
+function handleWordClick(event, cleanWord, dictEntry, originalText, level) {
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(originalText);
+    utterance.lang = "en-US";
+    utterance.rate = 0.85;
+    window.speechSynthesis.speak(utterance);
+  }
+
+  document.querySelectorAll(".clickable-word").forEach((element) => element.classList.remove("highlight-word"));
+  event.currentTarget.classList.add("highlight-word");
+  openWordCard(cleanWord, dictEntry, originalText, level);
 }
 
 function openWordCard(cleanWord, dictEntry, originalText, level) {

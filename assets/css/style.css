@@ -51,13 +51,13 @@ a:focus-visible {
   position: fixed;
   inset: 0 auto 0 0;
   width: var(--sidebar-width);
-  padding: 1.5rem;
+  padding: 1.15rem;
   background: rgba(22, 18, 36, 0.92);
   border-right: 1px solid rgba(199, 125, 255, 0.14);
   backdrop-filter: blur(18px);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.15rem;
   z-index: 10;
 }
 
@@ -90,11 +90,11 @@ a:focus-visible {
 
 .nav-list {
   display: grid;
-  gap: 0.6rem;
+  gap: 0.35rem;
 }
 
 .nav-link {
-  padding: 0.9rem 1rem;
+  padding: 0.72rem 0.85rem;
   border-radius: 999px;
   color: var(--color-muted);
   font-weight: 700;
@@ -307,7 +307,7 @@ a:focus-visible {
   }
 
   .sidebar {
-    padding: 1rem;
+    padding: 0.85rem;
   }
 }
 
@@ -824,16 +824,24 @@ a:focus-visible {
   margin-top: 1rem;
 }
 
-.grammar-submenu {
-  display: grid;
-  gap: 0.45rem;
-  padding: 0.25rem 0 0.45rem 1rem;
+.grammar-submenu,
+.grammar-dropdown-content {
+  display: none;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.2rem 0 0.3rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.grammar-submenu.show,
+.grammar-dropdown-content.show {
+  display: flex;
 }
 
 .grammar-topic-btn {
   display: block;
   width: 100%;
-  padding: 0.65rem 0.8rem;
+  padding: 0.5rem 0.65rem;
   border: 1px solid rgba(199, 125, 255, 0.16);
   border-radius: 0.9rem;
   background: rgba(12, 10, 18, 0.38);
@@ -1156,4 +1164,171 @@ body[data-theme="light"] .compact-input { background: #ffffff; color: #171225; }
   .dashboard-actions { justify-content: flex-start; }
 
   .compact-input { max-width: 100%; width: 100%; }
+}
+
+/* ========================================================================
+   NLE Platform refinement layer: theme aliases, Grammar Hub phases,
+   lesson accordion and Kindle-style reading highlights.
+   ======================================================================== */
+:root {
+  --bg-main: var(--color-bg);
+  --bg-card: var(--color-surface);
+  --bg-sidebar: var(--color-surface);
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-muted);
+  --accent-purple: var(--color-accent);
+  --accent-hover: var(--color-accent-soft);
+  --accent-yellow: var(--color-warning);
+  --border-color: rgba(199, 125, 255, 0.18);
+}
+
+body.light-mode,
+body[data-theme="light"] {
+  --bg-main: #f4f5f8;
+  --bg-card: #ffffff;
+  --bg-sidebar: #e8e9f0;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a6a;
+  --accent-purple: #6c2bd9;
+  --accent-hover: #5b21b6;
+  --border-color: #d1d5db;
+}
+
+body.light-mode {
+  background: #f4f5f8;
+  color: var(--text-primary);
+}
+
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  padding: 30px;
+}
+
+.phase-container {
+  margin-bottom: 40px;
+  padding: 1.25rem;
+}
+
+.phase-title {
+  color: var(--accent-purple);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  font-size: 1.3rem;
+}
+
+.grammar-phases {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.grammar-topic-btn {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.grammar-topic-btn:hover,
+.grammar-topic-btn:focus-visible {
+  border-color: var(--accent-purple);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.15);
+}
+
+.grammar-lesson-shell {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.mastery-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: rgba(138, 43, 226, 0.12);
+  color: var(--text-secondary);
+}
+
+.lesson-section-accordion {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  width: 100%;
+  padding: 15px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border: 0;
+  color: var(--text-primary);
+  font: inherit;
+  font-weight: bold;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.accordion-content {
+  display: none;
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.lesson-section-accordion.active .accordion-content {
+  display: block;
+}
+
+.timeline-callout {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+.auntie-tip {
+  border-left: 4px solid var(--accent-yellow);
+  padding-left: 10px;
+}
+
+.clickable-word:hover,
+.highlight-word {
+  background-color: var(--accent-yellow);
+  color: #1a1a2e !important;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0 !important;
+    padding: 15px !important;
+  }
 }
