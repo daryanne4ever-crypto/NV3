@@ -824,6 +824,51 @@ a:focus-visible {
   margin-top: 1rem;
 }
 
+.grammar-submenu,
+.grammar-dropdown-content {
+  display: none;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding: 0.2rem 0 0.3rem 0.85rem;
+  font-size: 0.85rem;
+}
+
+.grammar-submenu.show,
+.grammar-dropdown-content.show {
+  display: flex;
+}
+
+.grammar-topic-btn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid rgba(199, 125, 255, 0.16);
+  border-radius: 0.9rem;
+  background: rgba(12, 10, 18, 0.38);
+  color: var(--color-muted);
+  font-size: 0.83rem;
+  font-weight: 800;
+  line-height: 1.25;
+  transition: 180ms ease;
+}
+
+.grammar-topic-btn:hover,
+.grammar-topic-btn:focus-visible {
+  background: rgba(157, 78, 221, 0.22);
+  color: var(--color-text);
+  transform: translateX(3px);
+}
+
+.grammar-nav-toggle::after {
+  content: '▾';
+  float: right;
+  transition: transform 180ms ease;
+}
+
+.grammar-nav-toggle[aria-expanded="false"]::after {
+  transform: rotate(-90deg);
+}
+
 .grammar-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1285,227 +1330,5 @@ body.light-mode {
   .main-content {
     margin-left: 0 !important;
     padding: 15px !important;
-  }
-}
-
-/* ========================================================================
-   Premium Grammar fixes: foundations grid, topic button, practice list,
-   mastery dashboard, irregular verbs and pedagogical dialogs.
-   ======================================================================== */
-:root {
-  --infinitive-color: #4facfe;
-  --past-color: #ff6b6b;
-  --participle-color: #43e97b;
-  --bg-light: #f8f9fa;
-  --text-dark: #2c3e50;
-}
-
-.grammar-block-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  align-items: stretch;
-}
-
-.grammar-hub-section > .btn,
-.grammar-topic > .btn,
-.btn-block[href="#grammar-topics"] {
-  display: inline-flex;
-  justify-content: center;
-  width: auto;
-  max-width: 250px;
-  min-height: auto;
-  margin: 1rem auto 0;
-  padding: 10px 20px;
-  border-radius: 8px;
-}
-
-.grammar-grid,
-.grammar-phases .grammar-grid {
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 15px;
-  align-items: start;
-}
-
-.phrase-practice ol {
-  display: grid;
-  gap: 10px;
-  margin-left: 1.2rem;
-}
-
-.phrase-practice li {
-  margin-bottom: 10px;
-  line-height: 1.5;
-  color: var(--color-text);
-  background: transparent;
-}
-
-.listen-link {
-  width: 100%;
-  border: 1px solid rgba(199, 125, 255, 0.2);
-  border-radius: 10px;
-  background: rgba(12, 10, 18, 0.38);
-  color: var(--color-text);
-  padding: 0.75rem 0.9rem;
-  text-align: left;
-  line-height: 1.5;
-  cursor: pointer;
-}
-
-.mastery-dashboard {
-  background: var(--bg-card, var(--color-surface));
-  color: var(--text-primary, var(--color-text));
-  padding: 20px;
-  border: 1px solid var(--border-color, rgba(199, 125, 255, 0.18));
-  border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
-  margin-bottom: 30px;
-}
-
-.progress-item {
-  margin-bottom: 15px;
-}
-
-.progress-item label {
-  display: block;
-  margin-bottom: 0.4rem;
-  color: var(--text-secondary, var(--color-muted));
-  font-weight: 700;
-}
-
-.progress-bar-bg {
-  background-color: rgba(224, 224, 224, 0.22);
-  border-radius: 8px;
-  height: 20px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.progress-fill {
-  background-color: #2ecc71;
-  height: 100%;
-  border-radius: 8px;
-  text-align: right;
-  padding-right: 10px;
-  color: white;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 20px;
-}
-
-.progress-fill.warning {
-  background-color: #f39c12;
-}
-
-.verb-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: var(--bg-card, var(--color-surface));
-  color: var(--text-primary, var(--color-text));
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.14);
-}
-
-.verb-table th,
-.verb-table td {
-  padding: 15px;
-  text-align: left;
-  border-bottom: 1px solid var(--border-color, rgba(199, 125, 255, 0.18));
-}
-
-.verb-table th {
-  background-color: #34495e;
-  color: white;
-  font-weight: 600;
-}
-
-.verb-table tr:hover {
-  background-color: rgba(79, 172, 254, 0.08);
-}
-
-.c-infinitive { color: var(--infinitive-color); }
-.c-past { color: var(--past-color); }
-.c-participle { color: var(--participle-color); }
-
-.dialog-box {
-  background: var(--bg-card, var(--color-surface));
-  color: var(--text-primary, var(--color-text));
-  border-left: 4px solid #f39c12;
-  padding: 15px;
-  margin: 20px 0;
-  border-radius: 0 8px 8px 0;
-}
-
-/* Grammar cleanup: centered lesson container and compact activity hub. */
-.grammar-lesson-shell {
-  max-width: 900px;
-  width: min(100%, 900px);
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.grammar-lesson-shell #accordion-container {
-  display: grid;
-  gap: 0.75rem;
-}
-
-.activity-hub {
-  margin-top: 1.5rem;
-  padding: 1rem;
-  border: 1px solid var(--border-color, rgba(199, 125, 255, 0.18));
-  border-radius: 16px;
-  background: rgba(157, 78, 221, 0.08);
-}
-
-.activity-hub-actions {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin: 1rem 0;
-}
-
-.activity-hub-btn {
-  border: 1px solid rgba(199, 125, 255, 0.24);
-  border-radius: 12px;
-  background: rgba(12, 10, 18, 0.42);
-  color: var(--color-text);
-  cursor: pointer;
-  font-weight: 800;
-  padding: 0.85rem 1rem;
-  transition: 180ms ease;
-}
-
-.activity-hub-btn:hover,
-.activity-hub-btn:focus-visible,
-.activity-hub-btn.active {
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-soft));
-  border-color: transparent;
-  transform: translateY(-2px);
-}
-
-.activity-hub-panel {
-  border: 1px solid rgba(199, 125, 255, 0.16);
-  border-radius: 14px;
-  background: var(--bg-card, var(--color-surface));
-  color: var(--text-primary, var(--color-text));
-  line-height: 1.6;
-  padding: 1rem;
-}
-
-.boss-quiz-list {
-  display: grid;
-  gap: 0.55rem;
-  padding-left: 1.2rem;
-}
-
-@media (max-width: 768px) {
-  .grammar-lesson-shell {
-    max-width: 100%;
-    padding: 15px;
-  }
-
-  .activity-hub-actions {
-    grid-template-columns: 1fr;
   }
 }

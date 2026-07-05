@@ -46,49 +46,6 @@ function loadGrammarHub() {
   });
 }
 
-
-function getLessonActivities(topic) {
-  return topic.activities || {
-    writing: 'Escreva 5 frases afirmativas, 5 negativas e 5 interrogativas usando o tópico desta aula.',
-    listening: 'Clique nas frases em inglês da aula, repita em voz alta e faça shadowing com ritmo natural.',
-    quiz: 'Complete o quiz rápido do módulo e revise os erros antes de avançar.'
-  };
-}
-
-function renderActivityHub(topic, topicId) {
-  const activities = getLessonActivities(topic);
-  return `
-    <section class="activity-hub" data-topic-id="${topicId}" aria-label="Atividades do módulo">
-      <div class="section-heading"><div><span class="eyebrow">Practice hub</span><h2>Atividades</h2></div></div>
-      <div class="activity-hub-actions" role="tablist" aria-label="Tipos de atividades">
-        <button class="activity-hub-btn active" type="button" data-activity-tab="writing">✍️ Prática Escrita</button>
-        <button class="activity-hub-btn" type="button" data-activity-tab="listening">🎧 Listening & Shadowing</button>
-        <button class="activity-hub-btn" type="button" data-activity-tab="quiz">🎮 Quiz Interativo</button>
-      </div>
-      <div class="activity-hub-panel" data-activity-panel>
-        <h3>✍️ Prática Escrita</h3>
-        <p>${activities.writing}</p>
-      </div>
-    </section>
-  `;
-}
-
-function showActivityPanel(button) {
-  const hub = button.closest('.activity-hub');
-  if (!hub) return;
-  const topic = getGrammarData().lessons[hub.dataset.topicId];
-  if (!topic) return;
-  const activities = getLessonActivities(topic);
-  const labels = {
-    writing: '✍️ Prática Escrita',
-    listening: '🎧 Listening & Shadowing',
-    quiz: '🎮 Quiz Interativo'
-  };
-  const activityType = button.dataset.activityTab;
-  hub.querySelectorAll('.activity-hub-btn').forEach((item) => item.classList.toggle('active', item === button));
-  hub.querySelector('[data-activity-panel]').innerHTML = `<h3>${labels[activityType]}</h3><p>${activities[activityType]}</p>`;
-}
-
 function openLessonModule(topicId) {
   const data = getGrammarData();
   const topic = data.lessons[topicId];
@@ -122,7 +79,6 @@ function openLessonModule(topicId) {
           </article>
         `).join('')}
       </div>
-      ${renderActivityHub(topic, topicId)}
     </section>
   `;
 }
@@ -143,12 +99,6 @@ function initializeGrammarHub() {
 
     if (event.target.closest('[data-load-grammar-hub]')) {
       loadGrammarHub();
-      return;
-    }
-
-    const activityButton = event.target.closest('[data-activity-tab]');
-    if (activityButton) {
-      showActivityPanel(activityButton);
       return;
     }
 
