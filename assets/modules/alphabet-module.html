@@ -1,0 +1,457 @@
+<div id="alphabet-module-container" class="module-container">
+  <!-- Header -->
+  <div class="module-header">
+    <h2>🔤 The Alphabet</h2>
+    <p class="module-subtitle">Learn to pronounce each letter of the English alphabet and practice spelling</p>
+  </div>
+
+  <!-- Alphabet Grid -->
+  <section class="alphabet-section">
+    <h3 class="section-title">Letter Pronunciation</h3>
+    <div class="alphabet-grid" id="alphabet-grid">
+      <!-- Dynamically populated -->
+    </div>
+  </section>
+
+  <!-- Notes Section -->
+  <section class="alphabet-notes-section">
+    <div class="info-box">
+      <h4>📌 Pronunciation Tips</h4>
+      <p>Each letter has its own unique sound in English. Click on any letter to hear it pronounced by a native speaker. Pay attention to how your mouth moves!</p>
+    </div>
+  </section>
+
+  <!-- Alphabet Quiz -->
+  <section class="alphabet-quiz-section">
+    <div class="quiz-card">
+      <h3 class="section-title">🎧 Alphabet Quiz</h3>
+      <p class="quiz-description">Listen to a letter and choose the correct option!</p>
+      
+      <div class="quiz-controls">
+        <button onclick="playRandomLetter()" class="btn-quiz-play">
+          <span class="icon">▶</span> Play Random Letter
+        </button>
+      </div>
+
+      <div id="quiz-options" class="quiz-options">
+        <!-- Dynamically populated -->
+      </div>
+
+      <p id="quiz-feedback" class="quiz-feedback"></p>
+    </div>
+  </section>
+</div>
+
+<style>
+/* ============================================
+   ALPHABET MODULE STYLES
+   ============================================ */
+
+.module-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.module-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.module-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-accent-soft, #c97dff);
+}
+
+.module-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary, #a0a0a0);
+  margin: 0;
+}
+
+/* SECTION TITLE */
+.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-accent-soft, #c97dff);
+  border-bottom: 2px solid rgba(199, 125, 255, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+/* ALPHABET GRID */
+.alphabet-section {
+  margin-bottom: 3rem;
+}
+
+.alphabet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.letter-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border: 2px solid rgba(199, 125, 255, 0.3);
+  border-radius: 0.8rem;
+  background: rgba(12, 10, 18, 0.5);
+  color: var(--color-text, #ffffff);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Courier New', monospace;
+  position: relative;
+  overflow: hidden;
+}
+
+.letter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(199, 125, 255, 0.2), transparent);
+  transition: left 0.5s;
+  z-index: 1;
+}
+
+.letter-btn:hover::before {
+  left: 100%;
+}
+
+.letter-btn:hover {
+  border-color: var(--color-accent-soft, #c97dff);
+  background: rgba(157, 78, 221, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(199, 125, 255, 0.2);
+}
+
+.letter-btn:active {
+  transform: translateY(-2px);
+}
+
+.letter-btn strong {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  z-index: 2;
+}
+
+.letter-btn span {
+  font-size: 0.85rem;
+  color: var(--color-accent-soft, #c97dff);
+  z-index: 2;
+}
+
+/* INFO BOX */
+.alphabet-notes-section {
+  margin-bottom: 3rem;
+}
+
+.info-box {
+  background: rgba(157, 78, 221, 0.1);
+  border-left: 4px solid var(--color-accent-soft, #c97dff);
+  padding: 1.5rem;
+  border-radius: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.info-box h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--color-accent-soft, #c97dff);
+}
+
+.info-box p {
+  margin: 0;
+  color: var(--color-text, #ffffff);
+  line-height: 1.6;
+}
+
+/* QUIZ SECTION */
+.alphabet-quiz-section {
+  margin-top: 3rem;
+}
+
+.quiz-card {
+  background: rgba(12, 10, 18, 0.6);
+  border: 2px solid rgba(199, 125, 255, 0.2);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.quiz-description {
+  color: var(--color-text-secondary, #a0a0a0);
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.quiz-controls {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.btn-quiz-play {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #c97dff, #9d4efd);
+  color: white;
+  border: none;
+  border-radius: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(199, 125, 255, 0.3);
+}
+
+.btn-quiz-play:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(199, 125, 255, 0.4);
+}
+
+.btn-quiz-play:active {
+  transform: translateY(0);
+}
+
+.btn-quiz-play .icon {
+  font-size: 1.3rem;
+}
+
+/* QUIZ OPTIONS */
+.quiz-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  min-height: 60px;
+}
+
+.quiz-option-btn {
+  padding: 1rem;
+  background: rgba(157, 78, 221, 0.1);
+  border: 2px solid rgba(199, 125, 255, 0.3);
+  border-radius: 0.6rem;
+  color: var(--color-text, #ffffff);
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quiz-option-btn:hover {
+  border-color: var(--color-accent-soft, #c97dff);
+  background: rgba(199, 125, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.quiz-option-btn.correct {
+  background: rgba(0, 230, 118, 0.2);
+  border-color: #00e676;
+  color: #00e676;
+  animation: pulse 0.6s ease;
+}
+
+.quiz-option-btn.incorrect {
+  background: rgba(255, 23, 68, 0.2);
+  border-color: #ff1744;
+  color: #ff1744;
+  animation: shake 0.4s ease;
+}
+
+.quiz-option-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* FEEDBACK */
+.quiz-feedback {
+  text-align: center;
+  min-height: 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quiz-feedback.success {
+  color: #00e676;
+}
+
+.quiz-feedback.error {
+  color: #ff1744;
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .module-header h2 {
+    font-size: 2rem;
+  }
+
+  .alphabet-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .letter-btn {
+    padding: 1rem;
+  }
+
+  .letter-btn strong {
+    font-size: 1.5rem;
+  }
+
+  .letter-btn span {
+    font-size: 0.75rem;
+  }
+
+  .quiz-card {
+    padding: 1.5rem;
+  }
+
+  .quiz-options {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+</style>
+
+<script>
+// ============================================
+// ALPHABET MODULE JAVASCRIPT
+// ============================================
+
+// Alphabet Data
+const alphabetData = [
+  {"letter": "A", "ipa": "/eɪ/"}, {"letter": "B", "ipa": "/biː/"}, {"letter": "C", "ipa": "/siː/"},
+  {"letter": "D", "ipa": "/diː/"}, {"letter": "E", "ipa": "/iː/"}, {"letter": "F", "ipa": "/ɛf/"},
+  {"letter": "G", "ipa": "/dʒiː/"}, {"letter": "H", "ipa": "/eɪtʃ/"}, {"letter": "I", "ipa": "/aɪ/"},
+  {"letter": "J", "ipa": "/dʒeɪ/"}, {"letter": "K", "ipa": "/keɪ/"}, {"letter": "L", "ipa": "/ɛl/"},
+  {"letter": "M", "ipa": "/ɛm/"}, {"letter": "N", "ipa": "/ɛn/"}, {"letter": "O", "ipa": "/oʊ/"},
+  {"letter": "P", "ipa": "/piː/"}, {"letter": "Q", "ipa": "/kjuː/"}, {"letter": "R", "ipa": "/ɑːr/"},
+  {"letter": "S", "ipa": "/ɛs/"}, {"letter": "T", "ipa": "/tiː/"}, {"letter": "U", "ipa": "/juː/"},
+  {"letter": "V", "ipa": "/viː/"}, {"letter": "W", "ipa": "/ˈdʌbəl.juː/"}, {"letter": "X", "ipa": "/ɛks/"},
+  {"letter": "Y", "ipa": "/waɪ/"}, {"letter": "Z", "ipa": "/ziː/"}
+];
+
+let currentCorrectLetter = '';
+
+// Render Alphabet Grid
+function renderAlphabet() {
+  const grid = document.getElementById('alphabet-grid');
+  if (!grid) return;
+
+  grid.innerHTML = '';
+  alphabetData.forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'letter-btn';
+    btn.innerHTML = `<strong>${item.letter}</strong><span>${item.ipa}</span>`;
+    btn.onclick = () => speakLetter(item.letter);
+    btn.title = `Click to hear ${item.letter} (${item.ipa})`;
+    grid.appendChild(btn);
+  });
+}
+
+// Speak Letter Function
+function speakLetter(letter) {
+  const utterance = new SpeechSynthesisUtterance(letter);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.8;
+  utterance.pitch = 1.0;
+  window.speechSynthesis.speak(utterance);
+}
+
+// Play Random Letter for Quiz
+function playRandomLetter() {
+  const randomObj = alphabetData[Math.floor(Math.random() * alphabetData.length)];
+  currentCorrectLetter = randomObj.letter;
+  
+  // Clear previous feedback
+  const feedback = document.getElementById('quiz-feedback');
+  feedback.textContent = '';
+  feedback.className = 'quiz-feedback';
+  
+  // Speak the letter
+  speakLetter(currentCorrectLetter);
+  
+  // Generate quiz options
+  generateQuizOptions(currentCorrectLetter);
+}
+
+// Generate Quiz Options
+function generateQuizOptions(correct) {
+  const optionsContainer = document.getElementById('quiz-options');
+  if (!optionsContainer) return;
+
+  // Get 2 random wrong letters
+  let wrongLetters = alphabetData
+    .filter(item => item.letter !== correct)
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 2);
+
+  // Create options array with correct + wrong
+  let options = [
+    { letter: correct, isCorrect: true },
+    ...wrongLetters.map(item => ({ letter: item.letter, isCorrect: false }))
+  ];
+
+  // Shuffle options
+  options = options.sort(() => Math.random() - 0.5);
+
+  // Render buttons
+  optionsContainer.innerHTML = '';
+  options.forEach(option => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-option-btn';
+    btn.textContent = option.letter;
+    btn.onclick = () => checkQuizAnswer(option.letter, option.isCorrect, btn);
+    optionsContainer.appendChild(btn);
+  });
+}
+
+// Check Quiz Answer
+function checkQuizAnswer(letter, isCorrect, buttonElement) {
+  const feedback = document.getElementById('quiz-feedback');
+  const allButtons = document.querySelectorAll('.quiz-option-btn');
+
+  // Disable all buttons
+  allButtons.forEach(btn => btn.disabled = true);
+
+  if (isCorrect) {
+    buttonElement.classList.add('correct');
+    feedback.textContent = '✅ Correct! Great job!';
+    feedback.className = 'quiz-feedback success';
+  } else {
+    buttonElement.classList.add('incorrect');
+    feedback.textContent = `❌ Incorrect! The answer was ${currentCorrectLetter}`;
+    feedback.className = 'quiz-feedback error';
+  }
+
+  // Re-enable after 2 seconds
+  setTimeout(() => {
+    allButtons.forEach(btn => btn.disabled = false);
+  }, 2000);
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', renderAlphabet);
+</script>
