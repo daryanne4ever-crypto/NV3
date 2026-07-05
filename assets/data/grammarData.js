@@ -98,6 +98,60 @@ const grammarData = {
     }
   ],
   lessons: {
+    alphabet: {
+      title: 'The Alphabet',
+      customContent: `
+        <section id="alphabet-section" class="alphabet-module fase-1-module">
+          <h2>The Alphabet</h2>
+          <p class="module-intro">Clique na letra para ouvir o nome em inglês americano ou use o botão de pronúncia para revisar o IPA.</p>
+          <div class="alphabet-grid" id="alphabet-grid" aria-label="English alphabet letter cards"></div>
+
+          <div class="alphabet-notes">
+            <h3>Notas de Pronúncia</h3>
+            <p>As letras em inglês podem mudar de som dependendo da palavra, mas o som isolado de cada uma é a base para soletrar (spelling).</p>
+          </div>
+
+          <div class="alphabet-quiz">
+            <h3>🎧 Alphabet Quiz</h3>
+            <p>Ouça a letra e escolha a opção correta!</p>
+            <button onclick="playRandomLetter()" class="btn-play" type="button">▶ Tocar Som Aleatório</button>
+            <div id="quiz-options" class="quiz-options" aria-live="polite"></div>
+            <p id="quiz-feedback" class="quiz-feedback" aria-live="polite"></p>
+          </div>
+        </section>
+      `
+    },
+    pronunciation_basic: {
+      title: 'Pronunciation (IPA Básico)',
+      customContent: `
+        <section id="ipa-section" class="ipa-module fase-1-module">
+          <h2>Pronunciation (IPA Básico)</h2>
+          <p class="module-intro">Clique nas palavras de exemplo para ouvir a pronúncia pela Web Speech API.</p>
+          <div class="table-responsive">
+            <table class="ipa-table">
+              <thead>
+                <tr>
+                  <th>Símbolo IPA</th>
+                  <th>Letras Comuns</th>
+                  <th>Som Aproximado</th>
+                  <th>Exemplo (Clique para ouvir)</th>
+                </tr>
+              </thead>
+              <tbody id="ipa-table-body"></tbody>
+            </table>
+          </div>
+
+          <div class="ipa-quiz">
+            <h3>🎯 IPA Quiz</h3>
+            <p>Qual palavra contém o som abaixo?</p>
+            <div id="ipa-quiz-symbol" class="huge-ipa">/θ/</div>
+            <div id="ipa-quiz-options" class="quiz-options" aria-live="polite"></div>
+            <button onclick="generateIpaQuiz()" class="btn-play" type="button">↻ Novo símbolo</button>
+            <p id="ipa-quiz-feedback" class="quiz-feedback" aria-live="polite"></p>
+          </div>
+        </section>
+      `
+    },
     simple_present: {
       title: 'Simple Present — O Alicerce do Inglês',
       sections: [
