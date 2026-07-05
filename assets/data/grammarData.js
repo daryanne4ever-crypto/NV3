@@ -257,10 +257,6 @@ const grammarData = {
     }
   ],
   lessons: {
-    verb_to_be: { title: 'Verb To Be', moduleId: 'verb_to_be' },
-    personal_pronouns: { title: 'Personal Pronouns', moduleId: 'personal_pronouns' },
-    articles: { title: 'Articles (A/An/The)', moduleId: 'articles' },
-    plural: { title: 'Plural Rules', moduleId: 'plural_rules' },
     alphabet: {
       title: 'The Alphabet',
       customContent: `
