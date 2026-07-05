@@ -74,6 +74,7 @@ function initializeGrammarMenu() {
   grammarLink.insertAdjacentElement('afterend', submenu);
 
   grammarLink.addEventListener('click', (event) => {
+    if (currentPage !== 'grammar.html') return;
     event.preventDefault();
     const isExpanded = grammarLink.getAttribute('aria-expanded') === 'true';
     const shouldShow = !isExpanded;
@@ -97,22 +98,26 @@ function persistCurrentPageAccess() {
 }
 
 function initializeTheme() {
-  const savedTheme = localStorage.getItem('nle-theme') || 'dark';
-  document.body.dataset.theme = savedTheme;
+  const savedTheme = localStorage.getItem('nle_theme') || localStorage.getItem('nle-theme') || 'dark';
+  const isLight = savedTheme === 'light';
+  document.body.dataset.theme = isLight ? 'light' : 'dark';
+  document.body.classList.toggle('light-mode', isLight);
 
   const toggle = document.createElement('button');
   toggle.type = 'button';
-  toggle.id = 'theme-toggle-btn';
+  toggle.id = 'theme-toggle';
   toggle.className = 'theme-toggle-btn';
-  toggle.setAttribute('aria-label', 'Alternar modo claro e noturno');
-  toggle.textContent = savedTheme === 'light' ? '🌙 Modo noturno' : '☀️ Modo dia';
+  toggle.setAttribute('aria-label', 'Alternar modo diurno e noturno');
+  toggle.innerHTML = isLight ? '☀️ Modo Diurno' : '🌙 Modo Noturno';
   document.body.appendChild(toggle);
 
   toggle.addEventListener('click', () => {
-    const nextTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
-    document.body.dataset.theme = nextTheme;
-    localStorage.setItem('nle-theme', nextTheme);
-    toggle.textContent = nextTheme === 'light' ? '🌙 Modo noturno' : '☀️ Modo dia';
+    const nextIsLight = !document.body.classList.contains('light-mode');
+    document.body.classList.toggle('light-mode', nextIsLight);
+    document.body.dataset.theme = nextIsLight ? 'light' : 'dark';
+    localStorage.setItem('nle_theme', nextIsLight ? 'light' : 'dark');
+    localStorage.setItem('nle-theme', nextIsLight ? 'light' : 'dark');
+    toggle.innerHTML = nextIsLight ? '☀️ Modo Diurno' : '🌙 Modo Noturno';
   });
 }
 
