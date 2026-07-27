@@ -31,15 +31,79 @@ let currentSLevel = 'A1';
 let currentSPhraseIndex = 0;
 let isRecording = false;
 let recognition;
+let mediaRecorder;
+let recordedChunks = [];
+let recordedAudioUrl = '';
 let recordStartTime = 0;
 let timerInterval;
 
-if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+if (!isIOSSafari() && ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window)) {
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   recognition = new SpeechRecognition();
   recognition.lang = 'en-US';
   recognition.interimResults = false;
   recognition.maxAlternatives = 1;
+}
+
+
+function isIOSSafari() {
+  return /iP(ad|hone|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+}
+
+function getSupportedAudioOptions() {
+  if (typeof MediaRecorder === 'undefined' || typeof MediaRecorder.isTypeSupported !== 'function') return {};
+  const mimeTypes = ['audio/mp4', 'audio/aac', 'audio/webm;codecs=opus', 'audio/webm'];
+  const supportedType = mimeTypes.find((type) => MediaRecorder.isTypeSupported(type));
+  return supportedType ? { mimeType: supportedType } : {};
+}
+
+function showRecordedAudio(duration) {
+  const status = document.getElementById('recording-status');
+  const iosMessage = isIOSSafari()
+    ? 'Reconhecimento de voz indisponível no Safari do iPhone. Sua gravação foi salva para você ouvir e comparar.'
+    : 'Reconhecimento de voz indisponível. Sua gravação foi salva para você ouvir e comparar.';
+  status.innerHTML = `${iosMessage}<br>⏱️ Tempo: ${duration}s<br><audio controls src="${recordedAudioUrl}" class="recorded-audio-player"></audio>`;
+
+  document.getElementById('s-user-speech').innerHTML = 'Áudio gravado disponível no reprodutor acima.';
+  document.getElementById('s-pedagogical-tip').innerHTML = 'Ouça sua gravação, compare com o áudio modelo e tente novamente para melhorar ritmo, clareza e entonação.';
+  document.getElementById('feedback-area').style.display = 'block';
+}
+
+async function startAudioFallbackRecording() {
+  if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder === 'undefined') {
+    document.getElementById('recording-status').innerHTML = 'Gravação de áudio não suportada neste navegador. Tempo: <span id="s-timer">0.0s</span>';
+    return;
+  }
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recordedChunks = [];
+    const options = getSupportedAudioOptions();
+    mediaRecorder = new MediaRecorder(stream, options);
+    mediaRecorder.ondataavailable = (event) => {
+      if (event.data.size > 0) recordedChunks.push(event.data);
+    };
+    mediaRecorder.onstop = () => {
+      const duration = stopTimer();
+      const mimeType = mediaRecorder.mimeType || options.mimeType || (isIOSSafari() ? 'audio/mp4' : 'audio/webm');
+      const blob = new Blob(recordedChunks, { type: mimeType });
+      if (recordedAudioUrl) URL.revokeObjectURL(recordedAudioUrl);
+      recordedAudioUrl = URL.createObjectURL(blob);
+      mediaRecorder.stream.getTracks().forEach((track) => track.stop());
+      showRecordedAudio(duration);
+      resetRecordingUI(false);
+    };
+
+    mediaRecorder.start();
+    isRecording = true;
+    document.getElementById('btn-record-toggle').innerText = '⏹️ Parar';
+    document.getElementById('btn-record-toggle').classList.add('recording');
+    document.getElementById('recording-status').innerHTML = 'Gravando áudio... Tempo: <span id="s-timer">0.0s</span>';
+    document.getElementById('feedback-area').style.display = 'none';
+    startTimer();
+  } catch (err) {
+    document.getElementById('recording-status').innerHTML = 'Acesso ao microfone negado ou não suportado no iOS Safari. Verifique as permissões do navegador. Tempo: <span id="s-timer">0.0s</span>';
+  }
 }
 
 function getCurrentSpeakingItem() {
@@ -119,17 +183,21 @@ function stopTimer() {
   return ((Date.now() - recordStartTime) / 1000).toFixed(1);
 }
 
-function resetRecordingUI() {
+function resetRecordingUI(resetStatus = true) {
   clearInterval(timerInterval);
   isRecording = false;
   document.getElementById('btn-record-toggle').innerText = '🎙️ Gravar';
   document.getElementById('btn-record-toggle').classList.remove('recording');
-  document.getElementById('recording-status').innerHTML = 'Tempo: <span id="s-timer">0.0s</span>';
+  if (resetStatus) document.getElementById('recording-status').innerHTML = 'Tempo: <span id="s-timer">0.0s</span>';
 }
 
 function toggleRecording() {
   if (!recognition) {
-    document.getElementById('recording-status').innerHTML = 'Reconhecimento de voz indisponível. Use Chrome ou Edge. Tempo: <span id="s-timer">0.0s</span>';
+    if (isRecording && mediaRecorder) {
+      mediaRecorder.stop();
+      return;
+    }
+    startAudioFallbackRecording();
     return;
   }
 
