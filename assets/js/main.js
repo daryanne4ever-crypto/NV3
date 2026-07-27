@@ -149,9 +149,9 @@ function initializeMobileMenu() {
   const toggle = document.createElement('button');
   toggle.type = 'button';
   toggle.className = 'mobile-menu-toggle';
-  toggle.setAttribute('aria-label', 'Abrir menu');
+  toggle.setAttribute('aria-label', 'Abrir menu de navegação');
   toggle.setAttribute('aria-expanded', 'false');
-  toggle.textContent = '☰ Menu';
+  toggle.textContent = '▼ Menu NLE';
   document.body.appendChild(toggle);
 
   const backdrop = document.createElement('button');
@@ -164,6 +164,8 @@ function initializeMobileMenu() {
     sidebar.classList.remove('mobile-open');
     backdrop.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menu de navegação');
+    toggle.textContent = '▼ Menu NLE';
   };
 
   toggle.addEventListener('click', () => {
@@ -171,6 +173,8 @@ function initializeMobileMenu() {
     sidebar.classList.toggle('mobile-open', willOpen);
     backdrop.classList.toggle('active', willOpen);
     toggle.setAttribute('aria-expanded', String(willOpen));
+    toggle.setAttribute('aria-label', willOpen ? 'Ocultar menu de navegação' : 'Abrir menu de navegação');
+    toggle.textContent = willOpen ? '▲ Ocultar Menu' : '▼ Menu NLE';
   });
   backdrop.addEventListener('click', closeMenu);
   sidebar.querySelectorAll('a').forEach((link) => {
