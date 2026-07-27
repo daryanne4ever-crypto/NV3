@@ -315,6 +315,7 @@ const grammarData = {
         { id: 'articles', name: 'Articles (A/An/The)' },
         { id: 'plural-rules', name: 'Plural Rules' },
         { id: 'possessive-adjectives', name: 'Possessive Adjectives' },
+        { id: 'possessive_adjectives', name: 'Possessive Adjectives' },
         { id: 'demonstratives', name: 'Demonstratives (This/That)' },
         { id: 'there-is-there-are', name: 'There is / There are' },
         { id: 'imperatives', name: 'Imperatives' },

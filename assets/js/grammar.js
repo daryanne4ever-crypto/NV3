@@ -243,6 +243,8 @@ function renderModuleTab(module, activeTab) {
     <section class="module-panel module-question-list">
       <h2>Leia a frase em voz alta e avalie sua pronúncia:</h2>
       <p class="module-help">Use o botão de gravação para ativar o SpeechRecognition em inglês. A plataforma transcreve sua fala e compara com a frase esperada.</p>
+      <h2>Leia e grave a sua voz pronunciando as frases:</h2>
+      <p class="module-help">Use o botão REC para iniciar/parar a gravação. Ao finalizar, um player do áudio gravado será exibido.</p>
       ${module.game3Speaking.map((q) => `
         <article class="module-question-card" data-speaking-question="${q.id}">
           <p class="module-speaking-sentence">“${escapeHtml(q.sentence)}”</p>
@@ -252,6 +254,10 @@ function renderModuleTab(module, activeTab) {
             <span class="module-record-status">Pronto para avaliar</span>
           </div>
           <div class="module-pronunciation-result" aria-live="polite"></div>
+            <button class="module-rec-btn" type="button" data-record-question="${q.id}">🎙️ Gravar Pronúncia</button>
+            <span class="module-record-status">Pronto para gravar</span>
+          </div>
+          <div class="module-audio-playback"></div>
         </article>
       `).join('')}
     </section>
@@ -398,6 +404,11 @@ function setPronunciationResult(questionId, message, state, accuracy, transcript
     ${typeof accuracy === 'number' ? `<span>Precisão: ${accuracy}%</span>` : ''}
     ${transcript ? `<small>Sua voz capturada: “${escapeHtml(transcript)}”</small>` : ''}
   `;
+}
+
+    button.textContent = state === 'recording' ? '⏹️ Parar Gravação' : '🎙️ Gravar Pronúncia';
+    button.classList.toggle('recording', state === 'recording');
+  }
 }
 
 function shuffleItems(items) {
@@ -557,6 +568,11 @@ function initializeGrammarHub() {
     const recognitionButton = event.target.closest('[data-recognize-question]');
     if (recognitionButton) {
       startModuleSpeechRecognition(Number(recognitionButton.dataset.recognizeQuestion), recognitionButton.dataset.expectedSentence);
+    const recordButton = event.target.closest('[data-record-question]');
+    if (recordButton) {
+      toggleModuleRecording(Number(recordButton.dataset.recordQuestion)).catch(() => {
+        setRecordingStatus(Number(recordButton.dataset.recordQuestion), 'Não foi possível acessar o microfone.', 'error');
+      });
       return;
     }
 

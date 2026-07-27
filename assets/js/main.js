@@ -78,6 +78,7 @@ function initializeGrammarMenu() {
       ['demonstratives', 'Demonstratives (This/That)'],
       ['there-is-there-are', 'There is / There are'],
       ['imperatives', 'Imperatives']
+      ['plural-rules', 'Plural Rules']
     ];
 
   grammarLink.dataset.grammarReady = 'true';
