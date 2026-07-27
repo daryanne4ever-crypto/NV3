@@ -1516,3 +1516,194 @@ body.light-mode {
   color: var(--color-text, #f7f3ff);
   font-weight: 800;
 }
+
+/* Phase 1 dedicated module page (Articles / Plural Rules) */
+.module-page-shell {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.module-page-hero {
+  border: 1px solid rgba(199, 125, 255, 0.18);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.3rem, 3vw, 2.1rem);
+  background:
+    linear-gradient(135deg, rgba(88, 28, 135, 0.6), rgba(49, 46, 129, 0.36)),
+    rgba(15, 10, 28, 0.94);
+  box-shadow: var(--shadow-glow);
+}
+
+.module-page-hero h1 {
+  margin: 0.35rem 0 0.55rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+}
+
+.module-page-hero p,
+.module-summary,
+.module-help {
+  color: var(--color-muted);
+}
+
+.module-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(157, 78, 221, 0.34);
+}
+
+.module-tab {
+  border: 1px solid rgba(199, 125, 255, 0.18);
+  border-radius: 1rem;
+  padding: 0.8rem 1rem;
+  background: rgba(59, 7, 100, 0.28);
+  color: var(--color-accent-soft);
+  cursor: pointer;
+  font-weight: 800;
+  transition: 180ms ease;
+}
+
+.module-tab:hover,
+.module-tab:focus-visible,
+.module-tab.active {
+  background: linear-gradient(135deg, var(--color-accent), #6d28d9);
+  color: var(--color-text);
+  box-shadow: 0 16px 36px rgba(157, 78, 221, 0.24);
+  transform: translateY(-2px);
+}
+
+.module-panel {
+  display: grid;
+  gap: 1rem;
+  max-width: 980px;
+}
+
+.module-rule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.module-rule-card,
+.module-question-card {
+  border: 1px solid rgba(126, 34, 206, 0.42);
+  border-radius: 1rem;
+  background: rgba(59, 7, 100, 0.2);
+  padding: 1rem;
+}
+
+.module-rule-card h3 {
+  color: var(--color-accent-soft);
+  margin-bottom: 0.4rem;
+}
+
+.module-rule-card p {
+  color: #ddd6fe;
+  margin-bottom: 0.8rem;
+}
+
+.module-rule-card small {
+  display: block;
+  border-radius: 0.75rem;
+  padding: 0.65rem;
+  background: rgba(88, 28, 135, 0.42);
+  color: #e9d5ff;
+}
+
+.module-question-list {
+  max-width: 860px;
+}
+
+.module-question-prompt,
+.module-recording-row {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.module-question-prompt {
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.module-answer-input {
+  width: 100%;
+  border: 1px solid rgba(199, 125, 255, 0.4);
+  border-radius: 0.85rem;
+  padding: 0.8rem 0.9rem;
+  background: rgba(88, 28, 135, 0.32);
+  color: var(--color-text);
+  font: inherit;
+  outline: none;
+}
+
+.module-answer-input:focus {
+  border-color: var(--color-accent-soft);
+  box-shadow: 0 0 0 4px rgba(157, 78, 221, 0.16);
+}
+
+.module-answer-input.correct { border-color: var(--color-success); }
+.module-answer-input.incorrect { border-color: var(--color-danger); }
+
+.module-feedback-slot {
+  min-height: 1.5rem;
+  margin-top: 0.45rem;
+}
+
+.module-answer-feedback {
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.module-answer-feedback.muted { color: var(--color-muted); }
+.module-answer-feedback.success { color: var(--color-success); }
+.module-answer-feedback.error { color: var(--color-danger); }
+
+.module-audio-btn {
+  padding: 0.7rem 1rem;
+}
+
+.module-speaking-sentence {
+  color: #e9d5ff;
+  font-size: 1.08rem;
+  font-weight: 800;
+  margin-bottom: 0.85rem;
+}
+
+.module-rec-btn {
+  border: 0;
+  border-radius: 0.85rem;
+  padding: 0.75rem 1rem;
+  background: #7e22ce;
+  color: var(--color-text);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.module-rec-btn.recording {
+  background: var(--color-danger);
+  animation: recPulse 1s infinite;
+}
+
+.module-record-status {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.module-record-status.recording { color: var(--color-danger); }
+.module-record-status.success { color: var(--color-success); }
+.module-record-status.error { color: var(--color-warning); }
+
+.module-audio-playback audio {
+  width: 100%;
+  margin-top: 0.8rem;
+}
+
+@keyframes recPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.45); }
+  50% { box-shadow: 0 0 0 10px rgba(255, 23, 68, 0); }
+}
