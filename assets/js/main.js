@@ -73,6 +73,11 @@ function initializeGrammarMenu() {
       ['verb_to_be', 'Verb To Be'],
       ['personal_pronouns', 'Personal Pronouns'],
       ['articles', 'Articles (A/An/The)'],
+      ['plural-rules', 'Plural Rules'],
+      ['possessive-adjectives', 'Possessive Adjectives'],
+      ['demonstratives', 'Demonstratives (This/That)'],
+      ['there-is-there-are', 'There is / There are'],
+      ['imperatives', 'Imperatives']
       ['plural-rules', 'Plural Rules']
     ];
 

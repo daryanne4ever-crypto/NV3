@@ -61,6 +61,7 @@ let currentIpaExample = '';
 let moduleRecorder = null;
 let moduleRecordingQuestionId = null;
 let moduleAudioChunks = [];
+let moduleSpeechRecognition = null;
 
 function loadGrammarHub() {
   const mainContainer = document.getElementById('main-content-area');
@@ -193,6 +194,7 @@ function renderModuleTab(module, activeTab) {
     return `
       <section class="module-panel">
         <p class="module-summary">${escapeHtml(module.theory.summary)}</p>
+        ${module.theory.detailedExplanation ? `<p class="module-detailed-explanation">${escapeHtml(module.theory.detailedExplanation)}</p>` : ''}
         <div class="module-rule-grid">
           ${module.theory.rules.map((rule) => `
             <article class="module-rule-card">
@@ -202,6 +204,14 @@ function renderModuleTab(module, activeTab) {
             </article>
           `).join('')}
         </div>
+        ${module.theory.commonMistakes?.length ? `
+          <article class="module-mistakes-card">
+            <h3>⚠️ Erros comuns para evitar</h3>
+            <ul>
+              ${module.theory.commonMistakes.map((mistake) => `<li>${escapeHtml(mistake)}</li>`).join('')}
+            </ul>
+          </article>
+        ` : ''}
       </section>
     `;
   }
@@ -231,12 +241,19 @@ function renderModuleTab(module, activeTab) {
 
   return `
     <section class="module-panel module-question-list">
+      <h2>Leia a frase em voz alta e avalie sua pronúncia:</h2>
+      <p class="module-help">Use o botão de gravação para ativar o SpeechRecognition em inglês. A plataforma transcreve sua fala e compara com a frase esperada.</p>
       <h2>Leia e grave a sua voz pronunciando as frases:</h2>
       <p class="module-help">Use o botão REC para iniciar/parar a gravação. Ao finalizar, um player do áudio gravado será exibido.</p>
       ${module.game3Speaking.map((q) => `
         <article class="module-question-card" data-speaking-question="${q.id}">
           <p class="module-speaking-sentence">“${escapeHtml(q.sentence)}”</p>
           <div class="module-recording-row">
+            <button class="module-rec-btn" type="button" data-recognize-question="${q.id}" data-expected-sentence="${escapeHtml(q.answer || q.sentence)}">🎙️ Gravar e Avaliar Pronúncia</button>
+            <button class="btn btn-secondary module-model-btn" type="button" data-speak-text="${escapeHtml(q.sentence)}">🔊 Escutar Modelo Nativo</button>
+            <span class="module-record-status">Pronto para avaliar</span>
+          </div>
+          <div class="module-pronunciation-result" aria-live="polite"></div>
             <button class="module-rec-btn" type="button" data-record-question="${q.id}">🎙️ Gravar Pronúncia</button>
             <span class="module-record-status">Pronto para gravar</span>
           </div>
@@ -258,6 +275,72 @@ function updateModulePanel(moduleId, activeTab) {
 
 function playModuleAudio(text) {
   speakGrammarText(text);
+}
+
+function getSpeechRecognitionConstructor() {
+  return window.SpeechRecognition || window.webkitSpeechRecognition;
+}
+
+function cleanPronunciationText(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function calculatePronunciationAccuracy(recognized, expected) {
+  const cleanRecognized = cleanPronunciationText(recognized);
+  const cleanExpected = cleanPronunciationText(expected);
+  if (!cleanExpected) return 0;
+  if (cleanRecognized === cleanExpected) return 100;
+
+  const expectedWords = cleanExpected.split(' ');
+  const recognizedWords = cleanRecognized.split(' ');
+  const matchedWords = expectedWords.filter((word) => recognizedWords.includes(word)).length;
+  return Math.min(Math.round((matchedWords / expectedWords.length) * 100), 100);
+}
+
+function getPronunciationMessage(accuracy, transcript) {
+  if (accuracy === 100) return '✨ Pronúncia Perfeita! (100%)';
+  if (accuracy >= 70) return `👍 Boa Pronúncia! Continue assim. (${accuracy}%)`;
+  return `⚠️ Tente novamente. Texto reconhecido: ${transcript || 'não identificado'} (${accuracy}%)`;
+}
+
+function startModuleSpeechRecognition(questionId, expectedSentence) {
+  stopModuleRecording();
+  if (moduleSpeechRecognition) moduleSpeechRecognition.abort();
+
+  const SpeechRecognition = getSpeechRecognitionConstructor();
+  if (!SpeechRecognition) {
+    setPronunciationResult(questionId, 'Reconhecimento de voz indisponível neste navegador. Use Chrome ou Edge para avaliar a pronúncia.', 'error');
+    return;
+  }
+
+  moduleSpeechRecognition = new SpeechRecognition();
+  moduleSpeechRecognition.lang = 'en-US';
+  moduleSpeechRecognition.interimResults = false;
+  moduleSpeechRecognition.maxAlternatives = 1;
+  setRecordingStatus(questionId, '● Escutando pronúncia...', 'recording');
+  setPronunciationResult(questionId, 'Fale a frase completa em inglês...', 'listening');
+
+  moduleSpeechRecognition.onresult = (event) => {
+    const transcript = event.results?.[0]?.[0]?.transcript || '';
+    const accuracy = calculatePronunciationAccuracy(transcript, expectedSentence);
+    const message = getPronunciationMessage(accuracy, transcript);
+    setPronunciationResult(questionId, message, accuracy === 100 ? 'perfect' : accuracy >= 70 ? 'success' : 'error', accuracy, transcript);
+  };
+
+  moduleSpeechRecognition.onerror = () => {
+    setPronunciationResult(questionId, 'Não foi possível capturar seu áudio com clareza. Tente novamente.', 'error');
+  };
+
+  moduleSpeechRecognition.onend = () => {
+    setRecordingStatus(questionId, 'Pronto para avaliar', 'ready');
+    moduleSpeechRecognition = null;
+  };
+
+  moduleSpeechRecognition.start();
 }
 
 async function toggleModuleRecording(questionId) {
@@ -291,6 +374,10 @@ async function toggleModuleRecording(questionId) {
 
 function stopModuleRecording() {
   if (moduleRecorder?.state === 'recording') moduleRecorder.stop();
+  if (moduleSpeechRecognition) {
+    moduleSpeechRecognition.abort();
+    moduleSpeechRecognition = null;
+  }
 }
 
 function setRecordingStatus(questionId, text, state) {
@@ -302,6 +389,23 @@ function setRecordingStatus(questionId, text, state) {
     status.className = `module-record-status ${state}`;
   }
   if (button) {
+    button.textContent = state === 'recording' ? '🎙️ Escutando pronúncia...' : '🎙️ Gravar e Avaliar Pronúncia';
+    button.classList.toggle('recording', state === 'recording');
+    button.disabled = state === 'recording';
+  }
+}
+
+function setPronunciationResult(questionId, message, state, accuracy, transcript) {
+  const result = document.querySelector(`[data-speaking-question="${questionId}"] .module-pronunciation-result`);
+  if (!result) return;
+  result.className = `module-pronunciation-result ${state}`;
+  result.innerHTML = `
+    <strong>${escapeHtml(message)}</strong>
+    ${typeof accuracy === 'number' ? `<span>Precisão: ${accuracy}%</span>` : ''}
+    ${transcript ? `<small>Sua voz capturada: “${escapeHtml(transcript)}”</small>` : ''}
+  `;
+}
+
     button.textContent = state === 'recording' ? '⏹️ Parar Gravação' : '🎙️ Gravar Pronúncia';
     button.classList.toggle('recording', state === 'recording');
   }
@@ -461,6 +565,9 @@ function initializeGrammarHub() {
       return;
     }
 
+    const recognitionButton = event.target.closest('[data-recognize-question]');
+    if (recognitionButton) {
+      startModuleSpeechRecognition(Number(recognitionButton.dataset.recognizeQuestion), recognitionButton.dataset.expectedSentence);
     const recordButton = event.target.closest('[data-record-question]');
     if (recordButton) {
       toggleModuleRecording(Number(recordButton.dataset.recordQuestion)).catch(() => {
