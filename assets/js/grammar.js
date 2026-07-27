@@ -7,6 +7,10 @@ function getGrammarTeachingModules() {
   return typeof grammarTeachingModules !== 'undefined' ? grammarTeachingModules : {};
 }
 
+function getPhaseOneModulesData() {
+  return typeof phaseOneModulesData !== 'undefined' ? phaseOneModulesData : {};
+}
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -54,6 +58,10 @@ const ipaData = [
 
 let currentCorrectLetter = '';
 let currentIpaExample = '';
+let moduleRecorder = null;
+let moduleRecordingQuestionId = null;
+let moduleAudioChunks = [];
+let moduleSpeechRecognition = null;
 
 function loadGrammarHub() {
   const mainContainer = document.getElementById('main-content-area');
@@ -90,6 +98,12 @@ function loadGrammarHub() {
 }
 
 function openLessonModule(topicId) {
+  const phaseOneModule = getPhaseOneModulesData()[topicId];
+  if (phaseOneModule) {
+    openPhaseOneModule(topicId);
+    return;
+  }
+
   const data = getGrammarData();
   const topic = data.lessons[topicId];
   if (!topic) {
@@ -127,6 +141,263 @@ function openLessonModule(topicId) {
 
   if (topicId === 'alphabet') renderAlphabet();
   if (topicId === 'pronunciation_basic') renderIpaModule();
+}
+
+function isCorrectModuleAnswer(value, answer) {
+  return value.trim().toLowerCase() === String(answer).trim().toLowerCase();
+}
+
+function getModuleAnswerKey(game, questionId) {
+  return `${game}-${questionId}`;
+}
+
+function renderAnswerFeedback(value, answer) {
+  if (!value) return '<span class="module-answer-feedback muted">Digite para validar em tempo real.</span>';
+  return isCorrectModuleAnswer(value, answer)
+    ? '<span class="module-answer-feedback success">✓ Correto</span>'
+    : '<span class="module-answer-feedback error">Tente novamente</span>';
+}
+
+function openPhaseOneModule(moduleId, activeTab = 'theory') {
+  stopModuleRecording();
+  const module = getPhaseOneModulesData()[moduleId];
+  const mainContainer = document.getElementById('main-content-area');
+  if (!module || !mainContainer) return;
+
+  mainContainer.innerHTML = `
+    <button type="button" class="btn btn-secondary btn-back" data-load-grammar-hub>← Voltar aos Módulos</button>
+    <section class="module-page-shell">
+      <header class="module-page-hero">
+        <span class="eyebrow">FASE 1 — Módulos Básicos (A1)</span>
+        <h1>${escapeHtml(module.title)}</h1>
+        <p>Escolha uma aba abaixo para estudar a teoria ou praticar com escrita, escuta e gravação.</p>
+      </header>
+      <nav class="module-tabs" aria-label="Abas do módulo">
+        ${[
+          ['theory', '📖 Conteúdo Explicativo'],
+          ['game1', '✍️ Game 1 — Escrita'],
+          ['game2', '🎧 Game 2 — Escuta (Áudio)'],
+          ['game3', '🎙️ Game 3 — Gravação (Speaking)']
+        ].map(([tab, label]) => `
+          <button type="button" class="module-tab ${activeTab === tab ? 'active' : ''}" data-module-tab="${tab}" data-module-id="${moduleId}">
+            ${label}
+          </button>
+        `).join('')}
+      </nav>
+      <div id="module-tab-panel">${renderModuleTab(module, activeTab)}</div>
+    </section>
+  `;
+}
+
+function renderModuleTab(module, activeTab) {
+  if (activeTab === 'theory') {
+    return `
+      <section class="module-panel">
+        <p class="module-summary">${escapeHtml(module.theory.summary)}</p>
+        ${module.theory.detailedExplanation ? `<p class="module-detailed-explanation">${escapeHtml(module.theory.detailedExplanation)}</p>` : ''}
+        <div class="module-rule-grid">
+          ${module.theory.rules.map((rule) => `
+            <article class="module-rule-card">
+              <h3>${escapeHtml(rule.title)}</h3>
+              <p>${escapeHtml(rule.text)}</p>
+              <small><strong>Exemplo:</strong> ${escapeHtml(rule.example)}</small>
+            </article>
+          `).join('')}
+        </div>
+        ${module.theory.commonMistakes?.length ? `
+          <article class="module-mistakes-card">
+            <h3>⚠️ Erros comuns para evitar</h3>
+            <ul>
+              ${module.theory.commonMistakes.map((mistake) => `<li>${escapeHtml(mistake)}</li>`).join('')}
+            </ul>
+          </article>
+        ` : ''}
+      </section>
+    `;
+  }
+
+  if (activeTab === 'game1' || activeTab === 'game2') {
+    const gameKey = activeTab === 'game1' ? 'game1Written' : 'game2Audio';
+    const title = activeTab === 'game1' ? 'Complete as frases com a resposta correta:' : 'Ouça o áudio e responda cada questão:';
+    return `
+      <section class="module-panel module-question-list">
+        <h2>${title}</h2>
+        ${module[gameKey].map((q) => {
+          const answerKey = getModuleAnswerKey(activeTab, q.id);
+          return `
+            <article class="module-question-card">
+              <div class="module-question-prompt">
+                ${activeTab === 'game2' ? `<button class="btn btn-primary module-audio-btn" type="button" data-speak-text="${escapeHtml(q.audioText || '')}">🔊 Ouvir Áudio</button>` : ''}
+                <strong>${q.id}. ${escapeHtml(q.sentence)}</strong>
+              </div>
+              <input class="module-answer-input" type="text" placeholder="${activeTab === 'game2' ? 'Digite o que ouviu...' : 'Sua resposta'}" data-answer-key="${answerKey}" data-answer="${escapeHtml(q.answer)}" autocomplete="off" />
+              <div class="module-feedback-slot">${renderAnswerFeedback('', q.answer)}</div>
+            </article>
+          `;
+        }).join('')}
+      </section>
+    `;
+  }
+
+  return `
+    <section class="module-panel module-question-list">
+      <h2>Leia a frase em voz alta e avalie sua pronúncia:</h2>
+      <p class="module-help">Use o botão de gravação para ativar o SpeechRecognition em inglês. A plataforma transcreve sua fala e compara com a frase esperada.</p>
+      ${module.game3Speaking.map((q) => `
+        <article class="module-question-card" data-speaking-question="${q.id}">
+          <p class="module-speaking-sentence">“${escapeHtml(q.sentence)}”</p>
+          <div class="module-recording-row">
+            <button class="module-rec-btn" type="button" data-recognize-question="${q.id}" data-expected-sentence="${escapeHtml(q.answer || q.sentence)}">🎙️ Gravar e Avaliar Pronúncia</button>
+            <button class="btn btn-secondary module-model-btn" type="button" data-speak-text="${escapeHtml(q.sentence)}">🔊 Escutar Modelo Nativo</button>
+            <span class="module-record-status">Pronto para avaliar</span>
+          </div>
+          <div class="module-pronunciation-result" aria-live="polite"></div>
+        </article>
+      `).join('')}
+    </section>
+  `;
+}
+
+function updateModulePanel(moduleId, activeTab) {
+  const module = getPhaseOneModulesData()[moduleId];
+  const panel = document.getElementById('module-tab-panel');
+  if (!module || !panel) return;
+  stopModuleRecording();
+  document.querySelectorAll('.module-tab').forEach((button) => button.classList.toggle('active', button.dataset.moduleTab === activeTab));
+  panel.innerHTML = renderModuleTab(module, activeTab);
+}
+
+function playModuleAudio(text) {
+  speakGrammarText(text);
+}
+
+function getSpeechRecognitionConstructor() {
+  return window.SpeechRecognition || window.webkitSpeechRecognition;
+}
+
+function cleanPronunciationText(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/[.,/#!$%^&*;:{}=\-_`~()?'"]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function calculatePronunciationAccuracy(recognized, expected) {
+  const cleanRecognized = cleanPronunciationText(recognized);
+  const cleanExpected = cleanPronunciationText(expected);
+  if (!cleanExpected) return 0;
+  if (cleanRecognized === cleanExpected) return 100;
+
+  const expectedWords = cleanExpected.split(' ');
+  const recognizedWords = cleanRecognized.split(' ');
+  const matchedWords = expectedWords.filter((word) => recognizedWords.includes(word)).length;
+  return Math.min(Math.round((matchedWords / expectedWords.length) * 100), 100);
+}
+
+function getPronunciationMessage(accuracy, transcript) {
+  if (accuracy === 100) return '✨ Pronúncia Perfeita! (100%)';
+  if (accuracy >= 70) return `👍 Boa Pronúncia! Continue assim. (${accuracy}%)`;
+  return `⚠️ Tente novamente. Texto reconhecido: ${transcript || 'não identificado'} (${accuracy}%)`;
+}
+
+function startModuleSpeechRecognition(questionId, expectedSentence) {
+  stopModuleRecording();
+  if (moduleSpeechRecognition) moduleSpeechRecognition.abort();
+
+  const SpeechRecognition = getSpeechRecognitionConstructor();
+  if (!SpeechRecognition) {
+    setPronunciationResult(questionId, 'Reconhecimento de voz indisponível neste navegador. Use Chrome ou Edge para avaliar a pronúncia.', 'error');
+    return;
+  }
+
+  moduleSpeechRecognition = new SpeechRecognition();
+  moduleSpeechRecognition.lang = 'en-US';
+  moduleSpeechRecognition.interimResults = false;
+  moduleSpeechRecognition.maxAlternatives = 1;
+  setRecordingStatus(questionId, '● Escutando pronúncia...', 'recording');
+  setPronunciationResult(questionId, 'Fale a frase completa em inglês...', 'listening');
+
+  moduleSpeechRecognition.onresult = (event) => {
+    const transcript = event.results?.[0]?.[0]?.transcript || '';
+    const accuracy = calculatePronunciationAccuracy(transcript, expectedSentence);
+    const message = getPronunciationMessage(accuracy, transcript);
+    setPronunciationResult(questionId, message, accuracy === 100 ? 'perfect' : accuracy >= 70 ? 'success' : 'error', accuracy, transcript);
+  };
+
+  moduleSpeechRecognition.onerror = () => {
+    setPronunciationResult(questionId, 'Não foi possível capturar seu áudio com clareza. Tente novamente.', 'error');
+  };
+
+  moduleSpeechRecognition.onend = () => {
+    setRecordingStatus(questionId, 'Pronto para avaliar', 'ready');
+    moduleSpeechRecognition = null;
+  };
+
+  moduleSpeechRecognition.start();
+}
+
+async function toggleModuleRecording(questionId) {
+  if (moduleRecordingQuestionId === questionId && moduleRecorder?.state === 'recording') {
+    moduleRecorder.stop();
+    return;
+  }
+  stopModuleRecording();
+  if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
+    setRecordingStatus(questionId, 'MediaRecorder não disponível neste navegador.', 'error');
+    return;
+  }
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  moduleAudioChunks = [];
+  moduleRecordingQuestionId = questionId;
+  moduleRecorder = new MediaRecorder(stream);
+  moduleRecorder.ondataavailable = (event) => {
+    if (event.data.size > 0) moduleAudioChunks.push(event.data);
+  };
+  moduleRecorder.onstop = () => {
+    const audioUrl = URL.createObjectURL(new Blob(moduleAudioChunks, { type: 'audio/webm' }));
+    const card = document.querySelector(`[data-speaking-question="${questionId}"]`);
+    card?.querySelector('.module-audio-playback')?.replaceChildren(Object.assign(document.createElement('audio'), { controls: true, src: audioUrl }));
+    setRecordingStatus(questionId, '✓ Áudio gravado com sucesso!', 'success');
+    stream.getTracks().forEach((track) => track.stop());
+    moduleRecordingQuestionId = null;
+  };
+  moduleRecorder.start();
+  setRecordingStatus(questionId, '● Gravando... indicador de áudio ativo', 'recording');
+}
+
+function stopModuleRecording() {
+  if (moduleRecorder?.state === 'recording') moduleRecorder.stop();
+  if (moduleSpeechRecognition) {
+    moduleSpeechRecognition.abort();
+    moduleSpeechRecognition = null;
+  }
+}
+
+function setRecordingStatus(questionId, text, state) {
+  const card = document.querySelector(`[data-speaking-question="${questionId}"]`);
+  const status = card?.querySelector('.module-record-status');
+  const button = card?.querySelector('.module-rec-btn');
+  if (status) {
+    status.textContent = text;
+    status.className = `module-record-status ${state}`;
+  }
+  if (button) {
+    button.textContent = state === 'recording' ? '🎙️ Escutando pronúncia...' : '🎙️ Gravar e Avaliar Pronúncia';
+    button.classList.toggle('recording', state === 'recording');
+    button.disabled = state === 'recording';
+  }
+}
+
+function setPronunciationResult(questionId, message, state, accuracy, transcript) {
+  const result = document.querySelector(`[data-speaking-question="${questionId}"] .module-pronunciation-result`);
+  if (!result) return;
+  result.className = `module-pronunciation-result ${state}`;
+  result.innerHTML = `
+    <strong>${escapeHtml(message)}</strong>
+    ${typeof accuracy === 'number' ? `<span>Precisão: ${accuracy}%</span>` : ''}
+    ${transcript ? `<small>Sua voz capturada: “${escapeHtml(transcript)}”</small>` : ''}
+  `;
 }
 
 function shuffleItems(items) {
@@ -250,17 +521,42 @@ function toggleAccordion(headerElement) {
 }
 
 function initializeGrammarHub() {
-  loadGrammarHub();
+  const initialTopicId = window.location.hash.replace('#', '');
+  if (initialTopicId) {
+    openLessonModule(initialTopicId);
+  } else {
+    loadGrammarHub();
+  }
 
   document.addEventListener('click', (event) => {
     const lessonButton = event.target.closest('[data-open-lesson]');
     if (lessonButton) {
+      window.history.replaceState(null, '', `#${lessonButton.dataset.openLesson}`);
       openLessonModule(lessonButton.dataset.openLesson);
       return;
     }
 
     if (event.target.closest('[data-load-grammar-hub]')) {
+      window.history.replaceState(null, '', window.location.pathname);
       loadGrammarHub();
+      return;
+    }
+
+    const moduleTab = event.target.closest('[data-module-tab]');
+    if (moduleTab) {
+      updateModulePanel(moduleTab.dataset.moduleId, moduleTab.dataset.moduleTab);
+      return;
+    }
+
+    const moduleAudioButton = event.target.closest('[data-speak-text]');
+    if (moduleAudioButton) {
+      playModuleAudio(moduleAudioButton.dataset.speakText);
+      return;
+    }
+
+    const recognitionButton = event.target.closest('[data-recognize-question]');
+    if (recognitionButton) {
+      startModuleSpeechRecognition(Number(recognitionButton.dataset.recognizeQuestion), recognitionButton.dataset.expectedSentence);
       return;
     }
 
@@ -273,10 +569,20 @@ function initializeGrammarHub() {
     const accordionHeader = event.target.closest('[data-toggle-accordion]');
     if (accordionHeader) toggleAccordion(accordionHeader);
   });
+
+  document.addEventListener('input', (event) => {
+    const answerInput = event.target.closest('.module-answer-input');
+    if (!answerInput) return;
+    answerInput.classList.toggle('correct', isCorrectModuleAnswer(answerInput.value, answerInput.dataset.answer));
+    answerInput.classList.toggle('incorrect', answerInput.value.trim() !== '' && !isCorrectModuleAnswer(answerInput.value, answerInput.dataset.answer));
+    const feedback = answerInput.closest('.module-question-card')?.querySelector('.module-feedback-slot');
+    if (feedback) feedback.innerHTML = renderAnswerFeedback(answerInput.value, answerInput.dataset.answer);
+  });
 }
 
 window.loadGrammarHub = loadGrammarHub;
 window.openLessonModule = openLessonModule;
+window.openPhaseOneModule = openPhaseOneModule;
 window.toggleAccordion = toggleAccordion;
 window.speakGrammarText = speakGrammarText;
 window.speakLetter = speakLetter;

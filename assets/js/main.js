@@ -65,6 +65,20 @@ function setActiveNavigation() {
 function initializeGrammarMenu() {
   const grammarLink = document.querySelector('.nav-link[href="grammar.html"]');
   if (!grammarLink || grammarLink.dataset.grammarReady === 'true') return;
+  const availableGrammarTopics = typeof grammarTopics !== 'undefined'
+    ? grammarTopics
+    : [
+      ['alphabet', 'Alphabet'],
+      ['pronunciation_basic', 'Pronunciation (IPA básico)'],
+      ['verb_to_be', 'Verb To Be'],
+      ['personal_pronouns', 'Personal Pronouns'],
+      ['articles', 'Articles (A/An/The)'],
+      ['plural-rules', 'Plural Rules'],
+      ['possessive-adjectives', 'Possessive Adjectives'],
+      ['demonstratives', 'Demonstratives (This/That)'],
+      ['there-is-there-are', 'There is / There are'],
+      ['imperatives', 'Imperatives']
+    ];
 
   grammarLink.dataset.grammarReady = 'true';
   grammarLink.setAttribute('aria-expanded', 'false');
@@ -76,7 +90,7 @@ function initializeGrammarMenu() {
   submenu.className = 'grammar-submenu grammar-dropdown-content';
   submenu.setAttribute('aria-label', 'Grammar topics');
   submenu.hidden = true;
-  submenu.innerHTML = grammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
+  submenu.innerHTML = availableGrammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
   grammarLink.insertAdjacentElement('afterend', submenu);
 
   grammarLink.addEventListener('click', (event) => {
