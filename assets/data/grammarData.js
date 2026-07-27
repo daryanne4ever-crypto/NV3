@@ -157,6 +157,80 @@ const grammarTeachingModules = {
   }
 };
 
+
+const phaseOneModulesData = {
+  articles: {
+    id: 'articles',
+    title: 'Articles (A / An / The)',
+    theory: {
+      summary: 'Os artigos em inglês são divididos em Indefinidos (A / An) e Definidos (The).',
+      rules: [
+        { title: "Artigo 'A'", text: 'Usado antes de sons consonantais no singular.', example: "a book, a European city (som de 'y')." },
+        { title: "Artigo 'An'", text: 'Usado antes de sons vocálicos no singular.', example: 'an apple, an hour (H mudo).' },
+        { title: "Artigo 'The'", text: 'Usado para coisas específicas no singular ou plural.', example: 'The sun, the students in my class.' }
+      ]
+    },
+    game1Written: [
+      { id: 1, sentence: 'She bought ___ new car yesterday.', answer: 'a' },
+      { id: 2, sentence: 'I ate ___ apple for breakfast.', answer: 'an' },
+      { id: 3, sentence: '___ sun is shining bright today.', answer: 'the' },
+      { id: 4, sentence: 'He is ___ university student.', answer: 'a' },
+      { id: 5, sentence: 'It took me ___ hour to arrive.', answer: 'an' },
+      { id: 6, sentence: 'Pass me ___ salt, please.', answer: 'the' },
+      { id: 7, sentence: 'They live in ___ old house.', answer: 'an' },
+      { id: 8, sentence: 'Can you play ___ guitar?', answer: 'the' },
+      { id: 9, sentence: 'She has ___ European friend.', answer: 'a' },
+      { id: 10, sentence: 'Look at ___ moon tonight!', answer: 'the' }
+    ],
+    game2Audio: [
+      { id: 1, audioText: 'I saw an elephant at the zoo.', sentence: 'Escute e digite o artigo correto da frase:', answer: 'an' },
+      { id: 2, audioText: 'She has a dog and a cat.', sentence: 'Escute e digite o primeiro artigo ouvido:', answer: 'a' },
+      { id: 3, audioText: 'The ocean is very deep.', sentence: 'Escute e digite o artigo usado antes de ocean:', answer: 'the' },
+      { id: 4, audioText: 'He is an honest man.', sentence: 'Escute e digite o artigo usado antes de honest:', answer: 'an' },
+      { id: 5, audioText: 'We stayed at a hotel near the beach.', sentence: 'Escute e digite o artigo que vem antes de hotel:', answer: 'a' },
+      { id: 6, audioText: 'The Earth goes around the Sun.', sentence: 'Escute e digite o artigo inicial da frase:', answer: 'the' },
+      { id: 7, audioText: 'Do you have an umbrella?', sentence: 'Escute e digite o artigo antes de umbrella:', answer: 'an' },
+      { id: 8, audioText: 'Give me a minute.', sentence: 'Escute e digite o artigo antes de minute:', answer: 'a' },
+      { id: 9, audioText: 'She played the piano beautifully.', sentence: 'Escute e digite o artigo usado para o instrumento:', answer: 'the' },
+      { id: 10, audioText: 'He needs an answer now.', sentence: 'Escute e digite o artigo usado antes de answer:', answer: 'an' }
+    ],
+    game3Speaking: [
+      { id: 1, sentence: 'An apple a day keeps the doctor away.', answer: 'An apple a day keeps the doctor away.' },
+      { id: 2, sentence: 'He is a doctor and she is an engineer.', answer: 'He is a doctor and she is an engineer.' },
+      { id: 3, sentence: 'The sun rises in the east.', answer: 'The sun rises in the east.' },
+      { id: 4, sentence: 'We waited for an hour in the rain.', answer: 'We waited for an hour in the rain.' },
+      { id: 5, sentence: 'Can you pass me the book on the table?', answer: 'Can you pass me the book on the table?' },
+      { id: 6, sentence: 'It was a wonderful day.', answer: 'It was a wonderful day.' },
+      { id: 7, sentence: 'She goes to the gym twice a week.', answer: 'She goes to the gym twice a week.' },
+      { id: 8, sentence: 'Look at the stars in the sky.', answer: 'Look at the stars in the sky.' },
+      { id: 9, sentence: 'Is there an airport near here?', answer: 'Is there an airport near here?' },
+      { id: 10, sentence: 'They have a house in the mountains.', answer: 'They have a house in the mountains.' }
+    ]
+  },
+  'plural-rules': {
+    id: 'plural-rules',
+    title: 'Plural Rules',
+    theory: {
+      summary: 'Regras de formação do plural em inglês (regulares e irregulares).',
+      rules: [
+        { title: 'Regra Geral (+S)', text: 'Adiciona-se S na maioria dos substantivos.', example: 'cat -> cats, dog -> dogs' },
+        { title: 'Terminados em -CH, -SH, -S, -X, -Z (+ES)', text: 'Adiciona-se ES ao final.', example: 'bus -> buses, box -> boxes' },
+        { title: 'Consoante + Y (-IES)', text: 'Troca-se o Y por IES.', example: 'city -> cities, baby -> babies' },
+        { title: 'Irregulares', text: 'Mudam a forma completamente.', example: 'man -> men, child -> children, foot -> feet' }
+      ]
+    },
+    game1Written: [
+      { id: 1, sentence: 'One cat, two ___', answer: 'cats' }, { id: 2, sentence: 'One box, three ___', answer: 'boxes' }, { id: 3, sentence: 'One baby, two ___', answer: 'babies' }, { id: 4, sentence: 'One child, four ___', answer: 'children' }, { id: 5, sentence: 'One man, two ___', answer: 'men' }, { id: 6, sentence: 'One watch, two ___', answer: 'watches' }, { id: 7, sentence: 'One knife, three ___', answer: 'knives' }, { id: 8, sentence: 'One city, many ___', answer: 'cities' }, { id: 9, sentence: 'One foot, two ___', answer: 'feet' }, { id: 10, sentence: 'One tomato, five ___', answer: 'tomatoes' }
+    ],
+    game2Audio: [
+      { id: 1, audioText: 'The children are playing outside.', sentence: 'Escute e digite a palavra no plural ouvida:', answer: 'children' }, { id: 2, audioText: 'I have two boxes in my room.', sentence: 'Escute e digite o plural de box falado:', answer: 'boxes' }, { id: 3, audioText: 'Three women arrived early.', sentence: 'Escute e digite o plural de woman falado:', answer: 'women' }, { id: 4, audioText: 'Wash your hands and feet.', sentence: 'Escute e digite o plural de foot ouvido:', answer: 'feet' }, { id: 5, audioText: 'The buses arrive every ten minutes.', sentence: 'Escute e digite o plural de bus ouvido:', answer: 'buses' }, { id: 6, audioText: 'She bought three new watches.', sentence: 'Escute e digite o plural de watch ouvido:', answer: 'watches' }, { id: 7, audioText: 'Look at those cute puppies.', sentence: 'Escute e digite o plural de puppy ouvido:', answer: 'puppies' }, { id: 8, audioText: 'Put all the knives in the drawer.', sentence: 'Escute e digite o plural de knife ouvido:', answer: 'knives' }, { id: 9, audioText: 'Brush your teeth before bed.', sentence: 'Escute e digite o plural de tooth ouvido:', answer: 'teeth' }, { id: 10, audioText: 'The leaves are falling from the trees.', sentence: 'Escute e digite o plural de leaf ouvido:', answer: 'leaves' }
+    ],
+    game3Speaking: [
+      { id: 1, sentence: 'Three men and four women attended the party.', answer: 'Three men and four women attended the party.' }, { id: 2, sentence: 'The children packed their lunch boxes.', answer: 'The children packed their lunch boxes.' }, { id: 3, sentence: 'Brush your teeth twice every day.', answer: 'Brush your teeth twice every day.' }, { id: 4, sentence: 'These watches are very expensive.', answer: 'These watches are very expensive.' }, { id: 5, sentence: 'She takes care of three babies at the nursery.', answer: 'She takes care of three babies at the nursery.' }, { id: 6, sentence: 'Two buses arrived at the station together.', answer: 'Two buses arrived at the station together.' }, { id: 7, sentence: 'The leaves fall from the trees in autumn.', answer: 'The leaves fall from the trees in autumn.' }, { id: 8, sentence: 'Put the forks and knives on the dining table.', answer: 'Put the forks and knives on the dining table.' }, { id: 9, sentence: 'My feet hurt after walking all day.', answer: 'My feet hurt after walking all day.' }, { id: 10, sentence: 'We bought fresh tomatoes at the market.', answer: 'We bought fresh tomatoes at the market.' }
+    ]
+  }
+};
+
 const grammarData = {
   phases: [
     {
@@ -167,7 +241,7 @@ const grammarData = {
         { id: 'verb_to_be', name: 'Verb To Be' },
         { id: 'personal_pronouns', name: 'Personal Pronouns' },
         { id: 'articles', name: 'Articles (A/An/The)' },
-        { id: 'plural', name: 'Plural Rules' },
+        { id: 'plural-rules', name: 'Plural Rules' },
         { id: 'possessive_adjectives', name: 'Possessive Adjectives' },
         { id: 'demonstratives', name: 'Demonstratives (This/That)' },
         { id: 'there_is_are', name: 'There is / There are' },

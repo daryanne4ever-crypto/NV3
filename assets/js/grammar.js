@@ -7,6 +7,10 @@ function getGrammarTeachingModules() {
   return typeof grammarTeachingModules !== 'undefined' ? grammarTeachingModules : {};
 }
 
+function getPhaseOneModulesData() {
+  return typeof phaseOneModulesData !== 'undefined' ? phaseOneModulesData : {};
+}
+
 function escapeHtml(value) {
   return String(value ?? '')
     .replace(/&/g, '&amp;')
@@ -54,6 +58,9 @@ const ipaData = [
 
 let currentCorrectLetter = '';
 let currentIpaExample = '';
+let moduleRecorder = null;
+let moduleRecordingQuestionId = null;
+let moduleAudioChunks = [];
 
 function loadGrammarHub() {
   const mainContainer = document.getElementById('main-content-area');
@@ -90,6 +97,12 @@ function loadGrammarHub() {
 }
 
 function openLessonModule(topicId) {
+  const phaseOneModule = getPhaseOneModulesData()[topicId];
+  if (phaseOneModule) {
+    openPhaseOneModule(topicId);
+    return;
+  }
+
   const data = getGrammarData();
   const topic = data.lessons[topicId];
   if (!topic) {
@@ -127,6 +140,171 @@ function openLessonModule(topicId) {
 
   if (topicId === 'alphabet') renderAlphabet();
   if (topicId === 'pronunciation_basic') renderIpaModule();
+}
+
+function isCorrectModuleAnswer(value, answer) {
+  return value.trim().toLowerCase() === String(answer).trim().toLowerCase();
+}
+
+function getModuleAnswerKey(game, questionId) {
+  return `${game}-${questionId}`;
+}
+
+function renderAnswerFeedback(value, answer) {
+  if (!value) return '<span class="module-answer-feedback muted">Digite para validar em tempo real.</span>';
+  return isCorrectModuleAnswer(value, answer)
+    ? '<span class="module-answer-feedback success">✓ Correto</span>'
+    : '<span class="module-answer-feedback error">Tente novamente</span>';
+}
+
+function openPhaseOneModule(moduleId, activeTab = 'theory') {
+  stopModuleRecording();
+  const module = getPhaseOneModulesData()[moduleId];
+  const mainContainer = document.getElementById('main-content-area');
+  if (!module || !mainContainer) return;
+
+  mainContainer.innerHTML = `
+    <button type="button" class="btn btn-secondary btn-back" data-load-grammar-hub>← Voltar aos Módulos</button>
+    <section class="module-page-shell">
+      <header class="module-page-hero">
+        <span class="eyebrow">FASE 1 — Módulos Básicos (A1)</span>
+        <h1>${escapeHtml(module.title)}</h1>
+        <p>Escolha uma aba abaixo para estudar a teoria ou praticar com escrita, escuta e gravação.</p>
+      </header>
+      <nav class="module-tabs" aria-label="Abas do módulo">
+        ${[
+          ['theory', '📖 Conteúdo Explicativo'],
+          ['game1', '✍️ Game 1 — Escrita'],
+          ['game2', '🎧 Game 2 — Escuta (Áudio)'],
+          ['game3', '🎙️ Game 3 — Gravação (Speaking)']
+        ].map(([tab, label]) => `
+          <button type="button" class="module-tab ${activeTab === tab ? 'active' : ''}" data-module-tab="${tab}" data-module-id="${moduleId}">
+            ${label}
+          </button>
+        `).join('')}
+      </nav>
+      <div id="module-tab-panel">${renderModuleTab(module, activeTab)}</div>
+    </section>
+  `;
+}
+
+function renderModuleTab(module, activeTab) {
+  if (activeTab === 'theory') {
+    return `
+      <section class="module-panel">
+        <p class="module-summary">${escapeHtml(module.theory.summary)}</p>
+        <div class="module-rule-grid">
+          ${module.theory.rules.map((rule) => `
+            <article class="module-rule-card">
+              <h3>${escapeHtml(rule.title)}</h3>
+              <p>${escapeHtml(rule.text)}</p>
+              <small><strong>Exemplo:</strong> ${escapeHtml(rule.example)}</small>
+            </article>
+          `).join('')}
+        </div>
+      </section>
+    `;
+  }
+
+  if (activeTab === 'game1' || activeTab === 'game2') {
+    const gameKey = activeTab === 'game1' ? 'game1Written' : 'game2Audio';
+    const title = activeTab === 'game1' ? 'Complete as frases com a resposta correta:' : 'Ouça o áudio e responda cada questão:';
+    return `
+      <section class="module-panel module-question-list">
+        <h2>${title}</h2>
+        ${module[gameKey].map((q) => {
+          const answerKey = getModuleAnswerKey(activeTab, q.id);
+          return `
+            <article class="module-question-card">
+              <div class="module-question-prompt">
+                ${activeTab === 'game2' ? `<button class="btn btn-primary module-audio-btn" type="button" data-speak-text="${escapeHtml(q.audioText || '')}">🔊 Ouvir Áudio</button>` : ''}
+                <strong>${q.id}. ${escapeHtml(q.sentence)}</strong>
+              </div>
+              <input class="module-answer-input" type="text" placeholder="${activeTab === 'game2' ? 'Digite o que ouviu...' : 'Sua resposta'}" data-answer-key="${answerKey}" data-answer="${escapeHtml(q.answer)}" autocomplete="off" />
+              <div class="module-feedback-slot">${renderAnswerFeedback('', q.answer)}</div>
+            </article>
+          `;
+        }).join('')}
+      </section>
+    `;
+  }
+
+  return `
+    <section class="module-panel module-question-list">
+      <h2>Leia e grave a sua voz pronunciando as frases:</h2>
+      <p class="module-help">Use o botão REC para iniciar/parar a gravação. Ao finalizar, um player do áudio gravado será exibido.</p>
+      ${module.game3Speaking.map((q) => `
+        <article class="module-question-card" data-speaking-question="${q.id}">
+          <p class="module-speaking-sentence">“${escapeHtml(q.sentence)}”</p>
+          <div class="module-recording-row">
+            <button class="module-rec-btn" type="button" data-record-question="${q.id}">🎙️ Gravar Pronúncia</button>
+            <span class="module-record-status">Pronto para gravar</span>
+          </div>
+          <div class="module-audio-playback"></div>
+        </article>
+      `).join('')}
+    </section>
+  `;
+}
+
+function updateModulePanel(moduleId, activeTab) {
+  const module = getPhaseOneModulesData()[moduleId];
+  const panel = document.getElementById('module-tab-panel');
+  if (!module || !panel) return;
+  stopModuleRecording();
+  document.querySelectorAll('.module-tab').forEach((button) => button.classList.toggle('active', button.dataset.moduleTab === activeTab));
+  panel.innerHTML = renderModuleTab(module, activeTab);
+}
+
+function playModuleAudio(text) {
+  speakGrammarText(text);
+}
+
+async function toggleModuleRecording(questionId) {
+  if (moduleRecordingQuestionId === questionId && moduleRecorder?.state === 'recording') {
+    moduleRecorder.stop();
+    return;
+  }
+  stopModuleRecording();
+  if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
+    setRecordingStatus(questionId, 'MediaRecorder não disponível neste navegador.', 'error');
+    return;
+  }
+  const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  moduleAudioChunks = [];
+  moduleRecordingQuestionId = questionId;
+  moduleRecorder = new MediaRecorder(stream);
+  moduleRecorder.ondataavailable = (event) => {
+    if (event.data.size > 0) moduleAudioChunks.push(event.data);
+  };
+  moduleRecorder.onstop = () => {
+    const audioUrl = URL.createObjectURL(new Blob(moduleAudioChunks, { type: 'audio/webm' }));
+    const card = document.querySelector(`[data-speaking-question="${questionId}"]`);
+    card?.querySelector('.module-audio-playback')?.replaceChildren(Object.assign(document.createElement('audio'), { controls: true, src: audioUrl }));
+    setRecordingStatus(questionId, '✓ Áudio gravado com sucesso!', 'success');
+    stream.getTracks().forEach((track) => track.stop());
+    moduleRecordingQuestionId = null;
+  };
+  moduleRecorder.start();
+  setRecordingStatus(questionId, '● Gravando... indicador de áudio ativo', 'recording');
+}
+
+function stopModuleRecording() {
+  if (moduleRecorder?.state === 'recording') moduleRecorder.stop();
+}
+
+function setRecordingStatus(questionId, text, state) {
+  const card = document.querySelector(`[data-speaking-question="${questionId}"]`);
+  const status = card?.querySelector('.module-record-status');
+  const button = card?.querySelector('.module-rec-btn');
+  if (status) {
+    status.textContent = text;
+    status.className = `module-record-status ${state}`;
+  }
+  if (button) {
+    button.textContent = state === 'recording' ? '⏹️ Parar Gravação' : '🎙️ Gravar Pronúncia';
+    button.classList.toggle('recording', state === 'recording');
+  }
 }
 
 function shuffleItems(items) {
@@ -250,17 +428,44 @@ function toggleAccordion(headerElement) {
 }
 
 function initializeGrammarHub() {
-  loadGrammarHub();
+  const initialTopicId = window.location.hash.replace('#', '');
+  if (initialTopicId) {
+    openLessonModule(initialTopicId);
+  } else {
+    loadGrammarHub();
+  }
 
   document.addEventListener('click', (event) => {
     const lessonButton = event.target.closest('[data-open-lesson]');
     if (lessonButton) {
+      window.history.replaceState(null, '', `#${lessonButton.dataset.openLesson}`);
       openLessonModule(lessonButton.dataset.openLesson);
       return;
     }
 
     if (event.target.closest('[data-load-grammar-hub]')) {
+      window.history.replaceState(null, '', window.location.pathname);
       loadGrammarHub();
+      return;
+    }
+
+    const moduleTab = event.target.closest('[data-module-tab]');
+    if (moduleTab) {
+      updateModulePanel(moduleTab.dataset.moduleId, moduleTab.dataset.moduleTab);
+      return;
+    }
+
+    const moduleAudioButton = event.target.closest('[data-speak-text]');
+    if (moduleAudioButton) {
+      playModuleAudio(moduleAudioButton.dataset.speakText);
+      return;
+    }
+
+    const recordButton = event.target.closest('[data-record-question]');
+    if (recordButton) {
+      toggleModuleRecording(Number(recordButton.dataset.recordQuestion)).catch(() => {
+        setRecordingStatus(Number(recordButton.dataset.recordQuestion), 'Não foi possível acessar o microfone.', 'error');
+      });
       return;
     }
 
@@ -273,10 +478,20 @@ function initializeGrammarHub() {
     const accordionHeader = event.target.closest('[data-toggle-accordion]');
     if (accordionHeader) toggleAccordion(accordionHeader);
   });
+
+  document.addEventListener('input', (event) => {
+    const answerInput = event.target.closest('.module-answer-input');
+    if (!answerInput) return;
+    answerInput.classList.toggle('correct', isCorrectModuleAnswer(answerInput.value, answerInput.dataset.answer));
+    answerInput.classList.toggle('incorrect', answerInput.value.trim() !== '' && !isCorrectModuleAnswer(answerInput.value, answerInput.dataset.answer));
+    const feedback = answerInput.closest('.module-question-card')?.querySelector('.module-feedback-slot');
+    if (feedback) feedback.innerHTML = renderAnswerFeedback(answerInput.value, answerInput.dataset.answer);
+  });
 }
 
 window.loadGrammarHub = loadGrammarHub;
 window.openLessonModule = openLessonModule;
+window.openPhaseOneModule = openPhaseOneModule;
 window.toggleAccordion = toggleAccordion;
 window.speakGrammarText = speakGrammarText;
 window.speakLetter = speakLetter;
