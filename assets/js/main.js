@@ -18,15 +18,12 @@ const pageTitles = {
 // Motor de Áudio Nativo - Teacher Anny
 function speakWord(element) {
   const text = element?.innerText || element?.textContent || String(element || '');
-
   if ('speechSynthesis' in window) {
     const utterance = new SpeechSynthesisUtterance(text.trim());
     utterance.lang = 'en-US';
     utterance.rate = 0.9;
     utterance.pitch = 1.0;
-
     window.speechSynthesis.speak(utterance);
-
     if (element?.style) {
       element.style.opacity = '0.5';
       setTimeout(() => { element.style.opacity = '1'; }, 200);
@@ -78,7 +75,6 @@ function initializeGrammarMenu() {
       ['demonstratives', 'Demonstratives (This/That)'],
       ['there-is-there-are', 'There is / There are'],
       ['imperatives', 'Imperatives']
-      ['plural-rules', 'Plural Rules']
     ];
 
   grammarLink.dataset.grammarReady = 'true';
@@ -94,8 +90,8 @@ function initializeGrammarMenu() {
   submenu.innerHTML = availableGrammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
   grammarLink.insertAdjacentElement('afterend', submenu);
 
+  // Permitir toggle do submenu ao clicar, de qualquer página
   grammarLink.addEventListener('click', (event) => {
-    if (currentPage !== 'grammar.html') return;
     event.preventDefault();
     const isExpanded = grammarLink.getAttribute('aria-expanded') === 'true';
     const shouldShow = !isExpanded;
