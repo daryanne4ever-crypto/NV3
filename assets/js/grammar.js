@@ -125,8 +125,7 @@ function openLessonModule(topicId) {
         <span>0–100% reservado para a próxima camada de progresso.</span>
       </div>
       <div id="accordion-container">
-        ${topic.moduleId ? renderGrammarTeachingModule(topic.moduleId) : topic.customContent || topic.sections.map((sec, index) => `
-        ${topic.customContent || topic.sections.map((sec, index) => `
+        ${topic.moduleId ? renderGrammarTeachingModule(topic.moduleId) : (topic.customContent || topic.sections.map((sec, index) => `
           <article class="lesson-section-accordion ${index === 0 ? 'active' : ''}">
             <button type="button" class="accordion-header" data-toggle-accordion>
               <span>${sec.num}. ${sec.title}</span>
@@ -136,7 +135,7 @@ function openLessonModule(topicId) {
               ${sec.content}
             </div>
           </article>
-        `).join('')}
+        `).join(''))}
       </div>
     </section>
   `;
@@ -174,6 +173,8 @@ function renderGrammarTeachingModule(moduleId) {
         </div>
         <div id="${escapeHtml(moduleId)}-quiz" class="grammar-quiz-list"></div>
       </section>
+    </section>
+  `;
 }
 
 function isCorrectModuleAnswer(value, answer) {
@@ -344,6 +345,8 @@ function updateGrammarQuizScore(moduleId) {
   scoreElement.textContent = answeredCount === moduleData.quiz.length
     ? `Final Score: ${correctCount}/${moduleData.quiz.length}`
     : `Score: ${correctCount}/${moduleData.quiz.length}`;
+}
+
 function renderModuleTab(module, activeTab) {
   if (activeTab === 'theory') {
     return `
@@ -409,9 +412,6 @@ function renderModuleTab(module, activeTab) {
             <span class="module-record-status">Pronto para avaliar</span>
           </div>
           <div class="module-pronunciation-result" aria-live="polite"></div>
-            <button class="module-rec-btn" type="button" data-record-question="${q.id}">🎙️ Gravar Pronúncia</button>
-            <span class="module-record-status">Pronto para gravar</span>
-          </div>
           <div class="module-audio-playback"></div>
         </article>
       `).join('')}
