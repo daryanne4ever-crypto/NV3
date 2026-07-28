@@ -406,11 +406,6 @@ function setPronunciationResult(questionId, message, state, accuracy, transcript
   `;
 }
 
-    button.textContent = state === 'recording' ? '⏹️ Parar Gravação' : '🎙️ Gravar Pronúncia';
-    button.classList.toggle('recording', state === 'recording');
-  }
-}
-
 function shuffleItems(items) {
   return [...items].sort(() => Math.random() - 0.5);
 }
@@ -568,6 +563,9 @@ function initializeGrammarHub() {
     const recognitionButton = event.target.closest('[data-recognize-question]');
     if (recognitionButton) {
       startModuleSpeechRecognition(Number(recognitionButton.dataset.recognizeQuestion), recognitionButton.dataset.expectedSentence);
+      return;
+    }
+
     const recordButton = event.target.closest('[data-record-question]');
     if (recordButton) {
       toggleModuleRecording(Number(recordButton.dataset.recordQuestion)).catch(() => {
