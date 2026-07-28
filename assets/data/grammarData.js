@@ -360,6 +360,7 @@ const grammarTeachingModules = {
       { q: 'I ___ forget my passwords. (10%)', options: ['rarely', 'usually', 'always'], answer: 'rarely' },
       { q: 'He is ___ tired after work. (90%)', options: ['usually', 'never', 'rarely'], answer: 'usually' },
       { q: 'You should ___ wear a seatbelt. (100%)', options: ['always', 'sometimes', 'never'], answer: 'always' }
+    ]
   }
 };
 
