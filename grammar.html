@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NLE Level 3 | Grammar Hub</title>
+  <title>NLE Level 3 | Grammar Building Blocks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -24,13 +24,112 @@
       <a class="nav-link" href="professor.html">Professor</a>
       <a class="nav-link" href="unit1.html">Unit 1</a>
     </nav>
-    <div class="sidebar-card"><span class="eyebrow">Grammar</span><strong>Building Blocks</strong><small>Escolha um bloco, escute frases e pratique pronúncia.</small></div>
+    <div class="sidebar-card"><span class="eyebrow">Grammar</span><strong>Building Blocks</strong><small>Escolha um bloco sem depender de JSON externo.</small></div>
   </aside>
 
-  <main class="app-shell main-content" id="main-content-area" aria-live="polite"></main>
+  <main class="app-shell grammar-static-page" id="main-content-area">
+    <header class="hero grammar-static-hero">
+      <div>
+        <span class="eyebrow">Grammar Hub</span>
+        <h1>Building Blocks</h1>
+        <p>Selecione um módulo abaixo para explorar a estrutura, pronúncia e exercícios sem poluir o menu lateral.</p>
+      </div>
+    </header>
+
+    <section class="grammar-static-phase card">
+      <h2 class="phase-title">FASE 1 — Módulos Básicos (A1)</h2>
+      <div class="grammar-static-grid">
+          <button class="grammar-static-card" type="button">Alphabet</button>
+          <button class="grammar-static-card" type="button">Pronunciation (IPA básico)</button>
+          <button class="grammar-static-card" type="button">Verb To Be</button>
+          <button class="grammar-static-card" type="button">Personal Pronouns</button>
+          <button class="grammar-static-card" type="button">Articles (A/An/The)</button>
+          <button class="grammar-static-card" type="button">Plural Rules</button>
+          <button class="grammar-static-card" type="button">Possessive Adjectives</button>
+          <button class="grammar-static-card" type="button">Demonstratives (This/That)</button>
+          <button class="grammar-static-card" type="button">There is / There are</button>
+          <button class="grammar-static-card" type="button">Imperatives</button>
+          <button class="grammar-static-card" type="button">Simple Present ★</button>
+          <button class="grammar-static-card" type="button">Adverbs of Frequency</button>
+          <button class="grammar-static-card" type="button">Prepositions (In/On/At)</button>
+          <button class="grammar-static-card" type="button">Question Words (Wh-)</button>
+          <button class="grammar-static-card" type="button">Basic Vocabulary</button>
+          <button class="grammar-static-card" type="button">Mini Review A1</button>
+          <button class="grammar-static-card" type="button">💎 Boss Battle A1</button>
+      </div>
+    </section>
+
+    <section class="grammar-static-phase card">
+      <h2 class="phase-title">FASE 2 — Construindo Frases (A2)</h2>
+      <div class="grammar-static-grid">
+          <button class="grammar-static-card" type="button">Present Continuous</button>
+          <button class="grammar-static-card" type="button">Simple Past</button>
+          <button class="grammar-static-card" type="button">Past Continuous</button>
+          <button class="grammar-static-card" type="button">Countable × Uncountable</button>
+          <button class="grammar-static-card" type="button">Quantifiers</button>
+          <button class="grammar-static-card" type="button">Comparatives</button>
+          <button class="grammar-static-card" type="button">Superlatives</button>
+          <button class="grammar-static-card" type="button">Future (Will)</button>
+          <button class="grammar-static-card" type="button">Going To</button>
+          <button class="grammar-static-card" type="button">Modal Can</button>
+          <button class="grammar-static-card" type="button">Should</button>
+          <button class="grammar-static-card" type="button">Object Pronouns</button>
+          <button class="grammar-static-card" type="button">Mini Review A2</button>
+          <button class="grammar-static-card" type="button">💎 Boss Battle A2</button>
+      </div>
+    </section>
+
+    <section class="grammar-static-phase card">
+      <h2 class="phase-title">FASE 3 — Consolidação e Intermediário (B1.1)</h2>
+      <div class="grammar-static-grid">
+          <button class="grammar-static-card" type="button">Present Perfect</button>
+          <button class="grammar-static-card" type="button">Present Perfect vs Simple Past</button>
+          <button class="grammar-static-card" type="button">Relative Clauses (Who/Which/That)</button>
+          <button class="grammar-static-card" type="button">Passive Voice (Basic)</button>
+          <button class="grammar-static-card" type="button">Modal Verbs (Must/Have to)</button>
+          <button class="grammar-static-card" type="button">Modal Verbs (May/Might)</button>
+          <button class="grammar-static-card" type="button">First Conditional</button>
+          <button class="grammar-static-card" type="button">Second Conditional</button>
+          <button class="grammar-static-card" type="button">Used to</button>
+          <button class="grammar-static-card" type="button">Reflexive Pronouns</button>
+          <button class="grammar-static-card" type="button">Mini Review B1.1</button>
+          <button class="grammar-static-card" type="button">💎 Boss Battle B1.1</button>
+      </div>
+    </section>
+
+    <section class="grammar-static-phase card">
+      <h2 class="phase-title">FASE 4 — Fluência e Nuances (B1.2)</h2>
+      <div class="grammar-static-grid">
+          <button class="grammar-static-card" type="button">Third Conditional</button>
+          <button class="grammar-static-card" type="button">Mixed Conditionals</button>
+          <button class="grammar-static-card" type="button">Reported Speech</button>
+          <button class="grammar-static-card" type="button">Phrasal Verbs (Essential)</button>
+          <button class="grammar-static-card" type="button">Gerunds vs Infinitives</button>
+          <button class="grammar-static-card" type="button">Passive Voice (Advanced)</button>
+          <button class="grammar-static-card" type="button">Modals in the Past (Should have / Could have)</button>
+          <button class="grammar-static-card" type="button">Indirect Questions</button>
+          <button class="grammar-static-card" type="button">Advanced Connectors</button>
+          <button class="grammar-static-card" type="button">Mini Review B1.2</button>
+          <button class="grammar-static-card" type="button">💎 Boss Battle B1.2</button>
+      </div>
+    </section>
+
+    <section class="grammar-static-phase card">
+      <h2 class="phase-title">FASE 5 — Domínio B1+ / B2 (Mestrado)</h2>
+      <div class="grammar-static-grid">
+          <button class="grammar-static-card" type="button">Wish / If Only</button>
+          <button class="grammar-static-card" type="button">Advanced Phrasal Verbs</button>
+          <button class="grammar-static-card" type="button">Embedded Questions</button>
+          <button class="grammar-static-card" type="button">Inversion & Emphasis</button>
+          <button class="grammar-static-card" type="button">Complex Prepositions</button>
+          <button class="grammar-static-card" type="button">Academic & Business English</button>
+          <button class="grammar-static-card" type="button">Review Geral NLE</button>
+          <button class="grammar-static-card" type="button">🏆 Final Boss Battle B1/B2</button>
+      </div>
+    </section>
+  </main>
+
   <script src="assets/js/storage.js"></script>
   <script src="assets/js/main.js"></script>
-  <script src="assets/data/grammarData.js"></script>
-  <script src="assets/js/grammar.js"></script>
 </body>
 </html>

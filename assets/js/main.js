@@ -65,6 +65,21 @@ function setActiveNavigation() {
 function initializeGrammarMenu() {
   const grammarLink = document.querySelector('.nav-link[href="grammar.html"]');
   if (!grammarLink || grammarLink.dataset.grammarReady === 'true') return;
+  const availableGrammarTopics = typeof grammarTopics !== 'undefined'
+    ? grammarTopics
+    : [
+      ['alphabet', 'Alphabet'],
+      ['pronunciation_basic', 'Pronunciation (IPA básico)'],
+      ['verb_to_be', 'Verb To Be'],
+      ['personal_pronouns', 'Personal Pronouns'],
+      ['articles', 'Articles (A/An/The)'],
+      ['plural-rules', 'Plural Rules'],
+      ['possessive-adjectives', 'Possessive Adjectives'],
+      ['demonstratives', 'Demonstratives (This/That)'],
+      ['there-is-there-are', 'There is / There are'],
+      ['imperatives', 'Imperatives']
+      ['plural-rules', 'Plural Rules']
+    ];
 
   grammarLink.dataset.grammarReady = 'true';
   grammarLink.setAttribute('aria-expanded', 'false');
@@ -76,7 +91,7 @@ function initializeGrammarMenu() {
   submenu.className = 'grammar-submenu grammar-dropdown-content';
   submenu.setAttribute('aria-label', 'Grammar topics');
   submenu.hidden = true;
-  submenu.innerHTML = grammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
+  submenu.innerHTML = availableGrammarTopics.map(([id, label]) => `<a class="grammar-topic-btn" href="grammar.html#${id}">${label}</a>`).join('');
   grammarLink.insertAdjacentElement('afterend', submenu);
 
   grammarLink.addEventListener('click', (event) => {
@@ -134,9 +149,9 @@ function initializeMobileMenu() {
   const toggle = document.createElement('button');
   toggle.type = 'button';
   toggle.className = 'mobile-menu-toggle';
-  toggle.setAttribute('aria-label', 'Abrir menu');
+  toggle.setAttribute('aria-label', 'Abrir menu de navegação');
   toggle.setAttribute('aria-expanded', 'false');
-  toggle.textContent = '☰ Menu';
+  toggle.textContent = '▼ Menu NLE';
   document.body.appendChild(toggle);
 
   const backdrop = document.createElement('button');
@@ -149,6 +164,8 @@ function initializeMobileMenu() {
     sidebar.classList.remove('mobile-open');
     backdrop.classList.remove('active');
     toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menu de navegação');
+    toggle.textContent = '▼ Menu NLE';
   };
 
   toggle.addEventListener('click', () => {
@@ -156,6 +173,8 @@ function initializeMobileMenu() {
     sidebar.classList.toggle('mobile-open', willOpen);
     backdrop.classList.toggle('active', willOpen);
     toggle.setAttribute('aria-expanded', String(willOpen));
+    toggle.setAttribute('aria-label', willOpen ? 'Ocultar menu de navegação' : 'Abrir menu de navegação');
+    toggle.textContent = willOpen ? '▲ Ocultar Menu' : '▼ Menu NLE';
   });
   backdrop.addEventListener('click', closeMenu);
   sidebar.querySelectorAll('a').forEach((link) => {
