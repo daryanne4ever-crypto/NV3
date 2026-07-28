@@ -105,7 +105,8 @@ function openLessonModule(topicId) {
   }
 
   const data = getGrammarData();
-  const topic = data.lessons[topicId];
+  const teachingModules = getGrammarTeachingModules();
+  const topic = teachingModules[topicId] ? { title: teachingModules[topicId].title, moduleId: topicId } : data.lessons[topicId];
   if (!topic) {
     alert('Módulo em desenvolvimento pela Teacher Anny!');
     return;
@@ -124,6 +125,7 @@ function openLessonModule(topicId) {
         <span>0–100% reservado para a próxima camada de progresso.</span>
       </div>
       <div id="accordion-container">
+        ${topic.moduleId ? renderGrammarTeachingModule(topic.moduleId) : topic.customContent || topic.sections.map((sec, index) => `
         ${topic.customContent || topic.sections.map((sec, index) => `
           <article class="lesson-section-accordion ${index === 0 ? 'active' : ''}">
             <button type="button" class="accordion-header" data-toggle-accordion>
@@ -141,6 +143,37 @@ function openLessonModule(topicId) {
 
   if (topicId === 'alphabet') renderAlphabet();
   if (topicId === 'pronunciation_basic') renderIpaModule();
+  if (topic.moduleId) initializeGrammarQuiz(topic.moduleId);
+}
+
+function formatLabel(value) {
+  return String(value)
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function renderGrammarTeachingModule(moduleId) {
+  const moduleData = getGrammarTeachingModules()[moduleId];
+  if (!moduleData) return '<p>Módulo em desenvolvimento pela Teacher Anny!</p>';
+
+  return `
+    <section id="${escapeHtml(moduleId)}-section" class="grammar-teaching-module" data-grammar-module="${escapeHtml(moduleId)}">
+      <div class="module-explanation-card">
+        <h2>${escapeHtml(moduleData.title)}</h2>
+        <p>${escapeHtml(moduleData.explanation?.intro || '')}</p>
+      </div>
+      ${renderExplanationLists(moduleData.explanation)}
+      ${renderGrammarTables(moduleData)}
+      <section class="grammar-module-quiz" aria-labelledby="${escapeHtml(moduleId)}-quiz-title">
+        <div class="quiz-heading-row">
+          <div>
+            <h3 id="${escapeHtml(moduleId)}-quiz-title">🧠 Quiz — ${escapeHtml(moduleData.title)}</h3>
+            <p>Escolha uma resposta para cada pergunta. O sistema corrige na hora e atualiza o placar.</p>
+          </div>
+          <strong id="${escapeHtml(moduleId)}-score" class="quiz-score">Score: 0/${moduleData.quiz.length}</strong>
+        </div>
+        <div id="${escapeHtml(moduleId)}-quiz" class="grammar-quiz-list"></div>
+      </section>
 }
 
 function isCorrectModuleAnswer(value, answer) {
@@ -189,6 +222,128 @@ function openPhaseOneModule(moduleId, activeTab = 'theory') {
   `;
 }
 
+function renderExplanationLists(explanation = {}) {
+  const sections = [
+    { title: 'Quando usar', items: explanation.when_to_use },
+    { title: 'Quando não usar', items: explanation.when_not_to_use },
+    { title: 'Regras principais', items: explanation.rules },
+    { title: 'Regra de ouro', items: explanation.golden_rule ? [explanation.golden_rule] : null },
+    { title: 'Posição na frase', items: explanation.position_rules }
+  ].filter((section) => Array.isArray(section.items) && section.items.length);
+
+  if (!sections.length) return '';
+
+  return `
+    <div class="grammar-rule-grid">
+      ${sections.map((section) => `
+        <article class="grammar-rule-card">
+          <h3>${escapeHtml(section.title)}</h3>
+          <ul>
+            ${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}
+          </ul>
+        </article>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderGrammarTables(moduleData) {
+  if (moduleData.tables) {
+    return Object.entries(moduleData.tables).map(([tableName, rows]) => renderDataTable(formatLabel(tableName), rows)).join('');
+  }
+
+  if (moduleData.table) {
+    return renderDataTable(`${moduleData.title} Reference`, moduleData.table);
+  }
+
+  if (moduleData.explanation?.rules) {
+    const rows = moduleData.explanation.rules.map((rule, index) => ({ rule: `Rule ${index + 1}`, explanation: rule }));
+    return renderDataTable(`${moduleData.title} Rules`, rows);
+  }
+
+  return '';
+}
+
+function renderDataTable(title, rows = []) {
+  if (!rows.length) return '';
+
+  const headers = Object.keys(rows[0]);
+  return `
+    <section class="grammar-table-section">
+      <h3>${escapeHtml(title)}</h3>
+      <div class="grammar-table-responsive">
+        <table class="grammar-data-table">
+          <thead>
+            <tr>${headers.map((header) => `<th>${escapeHtml(formatLabel(header))}</th>`).join('')}</tr>
+          </thead>
+          <tbody>
+            ${rows.map((row) => `
+              <tr>${headers.map((header) => `<td>${escapeHtml(row[header])}</td>`).join('')}</tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+function initializeGrammarQuiz(moduleId) {
+  const moduleData = getGrammarTeachingModules()[moduleId];
+  const quizContainer = document.getElementById(`${moduleId}-quiz`);
+  if (!moduleData || !quizContainer) return;
+
+  quizContainer.innerHTML = moduleData.quiz.map((question, questionIndex) => `
+    <article class="grammar-quiz-question" data-question-index="${questionIndex}">
+      <h4>${questionIndex + 1}. ${escapeHtml(question.q)}</h4>
+      <div class="grammar-quiz-options">
+        ${question.options.map((option) => `
+          <button class="grammar-quiz-option" type="button" data-module-id="${escapeHtml(moduleId)}" data-question-index="${questionIndex}" data-answer="${escapeHtml(option)}">${escapeHtml(option)}</button>
+        `).join('')}
+      </div>
+      <p class="grammar-quiz-feedback" aria-live="polite"></p>
+    </article>
+  `).join('');
+
+  updateGrammarQuizScore(moduleId);
+}
+
+function checkGrammarModuleAnswer(button) {
+  const moduleId = button.dataset.moduleId;
+  const questionIndex = Number(button.dataset.questionIndex);
+  const moduleData = getGrammarTeachingModules()[moduleId];
+  const question = moduleData?.quiz[questionIndex];
+  if (!question) return;
+
+  const questionCard = button.closest('.grammar-quiz-question');
+  const feedback = questionCard?.querySelector('.grammar-quiz-feedback');
+  const buttons = questionCard?.querySelectorAll('.grammar-quiz-option') || [];
+  const isCorrect = button.dataset.answer === question.answer;
+
+  buttons.forEach((optionButton) => {
+    optionButton.disabled = true;
+    optionButton.classList.toggle('correct', optionButton.dataset.answer === question.answer);
+    optionButton.classList.toggle('incorrect', optionButton === button && !isCorrect);
+  });
+
+  if (questionCard) questionCard.dataset.correct = String(isCorrect);
+  if (feedback) {
+    feedback.textContent = isCorrect ? '✅ Correto!' : `❌ Revise: a resposta correta é ${question.answer}.`;
+    feedback.className = `grammar-quiz-feedback ${isCorrect ? 'success' : 'error'}`;
+  }
+
+  updateGrammarQuizScore(moduleId);
+}
+
+function updateGrammarQuizScore(moduleId) {
+  const moduleData = getGrammarTeachingModules()[moduleId];
+  const scoreElement = document.getElementById(`${moduleId}-score`);
+  if (!moduleData || !scoreElement) return;
+
+  const correctCount = document.querySelectorAll(`[data-grammar-module="${moduleId}"] .grammar-quiz-question[data-correct="true"]`).length;
+  const answeredCount = document.querySelectorAll(`[data-grammar-module="${moduleId}"] .grammar-quiz-question[data-correct]`).length;
+  scoreElement.textContent = answeredCount === moduleData.quiz.length
+    ? `Final Score: ${correctCount}/${moduleData.quiz.length}`
+    : `Score: ${correctCount}/${moduleData.quiz.length}`;
 function renderModuleTab(module, activeTab) {
   if (activeTab === 'theory') {
     return `
@@ -606,5 +761,7 @@ window.generateQuizOptions = generateQuizOptions;
 window.checkAlphabetQuiz = checkAlphabetQuiz;
 window.generateIpaQuiz = generateIpaQuiz;
 window.checkIpaQuiz = checkIpaQuiz;
+window.initializeGrammarQuiz = initializeGrammarQuiz;
+window.checkGrammarModuleAnswer = checkGrammarModuleAnswer;
 
 document.addEventListener('DOMContentLoaded', initializeGrammarHub);
