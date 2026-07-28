@@ -3,133 +3,470 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NLE Level 3 | Grammar Building Blocks</title>
+  <title>NLE Level 3 | Grammar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
-<body>
-  <aside class="sidebar" aria-label="Menu principal">
-    <a class="brand" href="index.html"><span class="brand__mark">NV3</span><span><strong>NLE Level 3</strong><small>English B1 Platform</small></span></a>
-    <nav class="nav-list">
-      <a class="nav-link" href="index.html">Dashboard</a>
-      <a class="nav-link" href="revision.html">Revision</a>
-      <a class="nav-link" href="grammar.html">Grammar</a>
-      <a class="nav-link" href="vocabulary.html">Vocabulary</a>
-      <a class="nav-link" href="listening.html">Listening</a>
-      <a class="nav-link" href="speaking.html">Speaking</a>
-      <a class="nav-link" href="reading.html">Reading</a>
-      <a class="nav-link" href="writing.html">Writing</a>
-      <a class="nav-link" href="professor.html">Professor</a>
-      <a class="nav-link" href="unit1.html">Unit 1</a>
+<body class="min-h-screen bg-[#080611] text-purple-50" style="font-family: Inter, system-ui, sans-serif;">
+  <aside class="fixed inset-y-0 left-0 z-30 hidden w-64 border-r border-purple-500/20 bg-[#0f0a1f]/95 p-5 lg:block" aria-label="Menu principal">
+    <a class="mb-8 flex items-center gap-3 rounded-2xl border border-purple-500/20 bg-purple-950/30 p-3 text-purple-100" href="index.html">
+      <span class="grid h-11 w-11 place-items-center rounded-xl bg-purple-600 font-extrabold">NV3</span>
+      <span><strong class="block">NLE Level 3</strong><small class="text-purple-300">English B1 Platform</small></span>
+    </a>
+    <nav class="space-y-2">
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="index.html">Dashboard</a>
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="revision.html">Revision</a>
+      <a class="block rounded-xl border border-purple-400/40 bg-purple-700/40 px-4 py-3 text-sm font-semibold text-white" href="grammar.html">Grammar</a>
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="vocabulary.html">Vocabulary</a>
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="listening.html">Listening</a>
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="speaking.html">Speaking</a>
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="reading.html">Reading</a>
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="writing.html">Writing</a>
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="professor.html">Professor</a>
+      <a class="block rounded-xl px-4 py-3 text-sm font-semibold text-purple-200 hover:bg-purple-900/40" href="unit1.html">Unit 1</a>
     </nav>
-    <div class="sidebar-card"><span class="eyebrow">Grammar</span><strong>Building Blocks</strong><small>Escolha um bloco sem depender de JSON externo.</small></div>
   </aside>
 
-  <main class="app-shell grammar-static-page" id="main-content-area">
-    <header class="hero grammar-static-hero">
-      <div>
-        <span class="eyebrow">Grammar Hub</span>
-        <h1>Building Blocks</h1>
-        <p>Selecione um módulo abaixo para explorar a estrutura, pronúncia e exercícios sem poluir o menu lateral.</p>
-      </div>
+  <main class="lg:ml-64 min-h-screen p-4 sm:p-6 lg:p-8">
+    <header class="mb-8 rounded-3xl border border-purple-500/20 bg-gradient-to-br from-[#22113f] to-[#10091f] p-6 shadow-2xl shadow-purple-950/30">
+      <span class="text-xs font-bold uppercase tracking-[0.35em] text-purple-300">Grammar Hub</span>
+      <h1 class="mt-3 text-3xl font-extrabold text-white sm:text-5xl">Building Blocks</h1>
+      <p class="mt-3 max-w-3xl text-sm leading-6 text-purple-200 sm:text-base">Escolha um módulo para abrir o conteúdo em modal. A navegação lateral permanece limpa e contém apenas as áreas principais do sistema.</p>
     </header>
 
-    <section class="grammar-static-phase card">
-      <h2 class="phase-title">FASE 1 — Módulos Básicos (A1)</h2>
-      <div class="grammar-static-grid">
-          <button class="grammar-static-card" type="button">Alphabet</button>
-          <button class="grammar-static-card" type="button">Pronunciation (IPA básico)</button>
-          <button class="grammar-static-card" type="button">Verb To Be</button>
-          <button class="grammar-static-card" type="button">Personal Pronouns</button>
-          <button class="grammar-static-card" type="button">Articles (A/An/The)</button>
-          <button class="grammar-static-card" type="button">Plural Rules</button>
-          <button class="grammar-static-card" type="button">Possessive Adjectives</button>
-          <button class="grammar-static-card" type="button">Demonstratives (This/That)</button>
-          <button class="grammar-static-card" type="button">There is / There are</button>
-          <button class="grammar-static-card" type="button">Imperatives</button>
-          <button class="grammar-static-card" type="button">Simple Present ★</button>
-          <button class="grammar-static-card" type="button">Adverbs of Frequency</button>
-          <button class="grammar-static-card" type="button">Prepositions (In/On/At)</button>
-          <button class="grammar-static-card" type="button">Question Words (Wh-)</button>
-          <button class="grammar-static-card" type="button">Basic Vocabulary</button>
-          <button class="grammar-static-card" type="button">Mini Review A1</button>
-          <button class="grammar-static-card" type="button">💎 Boss Battle A1</button>
+    <section class="mb-7 rounded-3xl border border-purple-500/20 bg-white/5 p-5">
+      <h2 class="mb-4 text-xl font-extrabold text-white">Nível 1 – Módulos Básicos (A1)</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        <button onclick="openGrammarModal('alphabet')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Alphabet</button>
+        <button onclick="openGrammarModal('pronunciation_ipa_basico')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Pronunciation (IPA básico)</button>
+        <button onclick="openGrammarModal('verb_to_be')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Verb To Be</button>
+        <button onclick="openGrammarModal('personal_pronouns')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Personal Pronouns</button>
+        <button onclick="openGrammarModal('articles')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Articles (A/An/The)</button>
+        <button onclick="openGrammarModal('plural_rules')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Plural Rules</button>
+        <button onclick="openGrammarModal('possessive_adjectives')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Possessive Adjectives</button>
+        <button onclick="openGrammarModal('demonstratives')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Demonstratives (This/That)</button>
+        <button onclick="openGrammarModal('there_is_are')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">There is / There are</button>
+        <button onclick="openGrammarModal('imperatives')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Imperatives</button>
+        <button onclick="openGrammarModal('simple_present')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Simple Present</button>
+        <button onclick="openGrammarModal('adverbs_of_frequency')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Adverbs of Frequency</button>
+        <button onclick="openGrammarModal('prepositions_in_on_at')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Prepositions (In/On/At)</button>
+        <button onclick="openGrammarModal('question_words')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Question Words (Wh-)</button>
+        <button onclick="openGrammarModal('basic_vocabulary')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Basic Vocabulary</button>
+        <button onclick="openGrammarModal('review_a1')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Review</button>
       </div>
     </section>
 
-    <section class="grammar-static-phase card">
-      <h2 class="phase-title">FASE 2 — Construindo Frases (A2)</h2>
-      <div class="grammar-static-grid">
-          <button class="grammar-static-card" type="button">Present Continuous</button>
-          <button class="grammar-static-card" type="button">Simple Past</button>
-          <button class="grammar-static-card" type="button">Past Continuous</button>
-          <button class="grammar-static-card" type="button">Countable × Uncountable</button>
-          <button class="grammar-static-card" type="button">Quantifiers</button>
-          <button class="grammar-static-card" type="button">Comparatives</button>
-          <button class="grammar-static-card" type="button">Superlatives</button>
-          <button class="grammar-static-card" type="button">Future (Will)</button>
-          <button class="grammar-static-card" type="button">Going To</button>
-          <button class="grammar-static-card" type="button">Modal Can</button>
-          <button class="grammar-static-card" type="button">Should</button>
-          <button class="grammar-static-card" type="button">Object Pronouns</button>
-          <button class="grammar-static-card" type="button">Mini Review A2</button>
-          <button class="grammar-static-card" type="button">💎 Boss Battle A2</button>
+    <section class="mb-7 rounded-3xl border border-purple-500/20 bg-white/5 p-5">
+      <h2 class="mb-4 text-xl font-extrabold text-white">Nível 2 – Construindo Frases (A2)</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        <button onclick="openGrammarModal('present_continuous')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Present Continuous</button>
+        <button onclick="openGrammarModal('simple_past')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Simple Past</button>
+        <button onclick="openGrammarModal('past_continuous')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Past Continuous</button>
+        <button onclick="openGrammarModal('countable_uncountable')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Countable × Uncountable</button>
+        <button onclick="openGrammarModal('quantifiers')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Quantifiers</button>
+        <button onclick="openGrammarModal('comparatives')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Comparatives</button>
+        <button onclick="openGrammarModal('superlatives')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Superlatives</button>
+        <button onclick="openGrammarModal('future_will')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Future (Will)</button>
+        <button onclick="openGrammarModal('going_to')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Going To</button>
+        <button onclick="openGrammarModal('modal_can')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Modal Can</button>
+        <button onclick="openGrammarModal('should')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Should</button>
+        <button onclick="openGrammarModal('object_pronouns')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Object Pronouns</button>
+        <button onclick="openGrammarModal('reflexive_pronouns')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Reflexive Pronouns</button>
+        <button onclick="openGrammarModal('linking_words')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Linking Words</button>
+        <button onclick="openGrammarModal('review_a2')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Review</button>
       </div>
     </section>
 
-    <section class="grammar-static-phase card">
-      <h2 class="phase-title">FASE 3 — Consolidação e Intermediário (B1.1)</h2>
-      <div class="grammar-static-grid">
-          <button class="grammar-static-card" type="button">Present Perfect</button>
-          <button class="grammar-static-card" type="button">Present Perfect vs Simple Past</button>
-          <button class="grammar-static-card" type="button">Relative Clauses (Who/Which/That)</button>
-          <button class="grammar-static-card" type="button">Passive Voice (Basic)</button>
-          <button class="grammar-static-card" type="button">Modal Verbs (Must/Have to)</button>
-          <button class="grammar-static-card" type="button">Modal Verbs (May/Might)</button>
-          <button class="grammar-static-card" type="button">First Conditional</button>
-          <button class="grammar-static-card" type="button">Second Conditional</button>
-          <button class="grammar-static-card" type="button">Used to</button>
-          <button class="grammar-static-card" type="button">Reflexive Pronouns</button>
-          <button class="grammar-static-card" type="button">Mini Review B1.1</button>
-          <button class="grammar-static-card" type="button">💎 Boss Battle B1.1</button>
+    <section class="mb-7 rounded-3xl border border-purple-500/20 bg-white/5 p-5">
+      <h2 class="mb-4 text-xl font-extrabold text-white">Nível 3 – O Inglês Real (B1)</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        <button onclick="openGrammarModal('present_perfect')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Present Perfect</button>
+        <button onclick="openGrammarModal('present_perfect_continuous')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Present Perfect Continuous</button>
+        <button onclick="openGrammarModal('past_perfect')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Past Perfect</button>
+        <button onclick="openGrammarModal('future_continuous')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Future Continuous</button>
+        <button onclick="openGrammarModal('passive_voice_intro')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Passive Voice (Introdução)</button>
+        <button onclick="openGrammarModal('first_conditional')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">First Conditional</button>
+        <button onclick="openGrammarModal('zero_conditional')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Zero Conditional</button>
+        <button onclick="openGrammarModal('relative_clauses')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Relative Clauses</button>
+        <button onclick="openGrammarModal('reported_speech')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Reported Speech</button>
+        <button onclick="openGrammarModal('modals_must_might_could')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Modals (Must, Might, Could)</button>
+        <button onclick="openGrammarModal('phrasal_verbs')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Phrasal Verbs</button>
+        <button onclick="openGrammarModal('collocations')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Collocations</button>
+        <button onclick="openGrammarModal('review_b1')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Review</button>
       </div>
     </section>
 
-    <section class="grammar-static-phase card">
-      <h2 class="phase-title">FASE 4 — Fluência e Nuances (B1.2)</h2>
-      <div class="grammar-static-grid">
-          <button class="grammar-static-card" type="button">Third Conditional</button>
-          <button class="grammar-static-card" type="button">Mixed Conditionals</button>
-          <button class="grammar-static-card" type="button">Reported Speech</button>
-          <button class="grammar-static-card" type="button">Phrasal Verbs (Essential)</button>
-          <button class="grammar-static-card" type="button">Gerunds vs Infinitives</button>
-          <button class="grammar-static-card" type="button">Passive Voice (Advanced)</button>
-          <button class="grammar-static-card" type="button">Modals in the Past (Should have / Could have)</button>
-          <button class="grammar-static-card" type="button">Indirect Questions</button>
-          <button class="grammar-static-card" type="button">Advanced Connectors</button>
-          <button class="grammar-static-card" type="button">Mini Review B1.2</button>
-          <button class="grammar-static-card" type="button">💎 Boss Battle B1.2</button>
-      </div>
-    </section>
-
-    <section class="grammar-static-phase card">
-      <h2 class="phase-title">FASE 5 — Domínio B1+ / B2 (Mestrado)</h2>
-      <div class="grammar-static-grid">
-          <button class="grammar-static-card" type="button">Wish / If Only</button>
-          <button class="grammar-static-card" type="button">Advanced Phrasal Verbs</button>
-          <button class="grammar-static-card" type="button">Embedded Questions</button>
-          <button class="grammar-static-card" type="button">Inversion & Emphasis</button>
-          <button class="grammar-static-card" type="button">Complex Prepositions</button>
-          <button class="grammar-static-card" type="button">Academic & Business English</button>
-          <button class="grammar-static-card" type="button">Review Geral NLE</button>
-          <button class="grammar-static-card" type="button">🏆 Final Boss Battle B1/B2</button>
+    <section class="rounded-3xl border border-purple-500/20 bg-white/5 p-5">
+      <h2 class="mb-4 text-xl font-extrabold text-white">Nível 4 – Intermediário Avançado & Avançado (B2/C1)</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+        <button onclick="openGrammarModal('future_perfect')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Future Perfect</button>
+        <button onclick="openGrammarModal('future_perfect_continuous')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Future Perfect Continuous</button>
+        <button onclick="openGrammarModal('second_conditional')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Second Conditional</button>
+        <button onclick="openGrammarModal('third_conditional')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Third Conditional</button>
+        <button onclick="openGrammarModal('mixed_conditionals')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Mixed Conditionals</button>
+        <button onclick="openGrammarModal('passive_voice_advanced')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Passive Voice (Avançada)</button>
+        <button onclick="openGrammarModal('causative_have')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Causative Have</button>
+        <button onclick="openGrammarModal('wish_clauses')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Wish Clauses</button>
+        <button onclick="openGrammarModal('used_to_accustomed_to')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Used To / Accustomed To</button>
+        <button onclick="openGrammarModal('would_rather_prefer')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Would Rather / Prefer</button>
+        <button onclick="openGrammarModal('inversion_intro')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Inversion (Introdução)</button>
+        <button onclick="openGrammarModal('cleft_sentences')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Cleft Sentences</button>
+        <button onclick="openGrammarModal('advanced_passive')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Advanced Passive</button>
+        <button onclick="openGrammarModal('advanced_reported_speech')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Advanced Reported Speech</button>
+        <button onclick="openGrammarModal('advanced_conditionals')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Advanced Conditionals</button>
+        <button onclick="openGrammarModal('hedging')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Hedging (Linguagem Cautelosa)</button>
+        <button onclick="openGrammarModal('nominalisation')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Nominalisation</button>
+        <button onclick="openGrammarModal('advanced_linking_words')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Advanced Linking Words</button>
+        <button onclick="openGrammarModal('formal_business_english')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Formal & Business English</button>
+        <button onclick="openGrammarModal('academic_english')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Academic English</button>
+        <button onclick="openGrammarModal('full_inversion_structure')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Full Inversion Structure</button>
+        <button onclick="openGrammarModal('review_b2_c1')" class="bg-[#1a102f] hover:bg-purple-900/50 border border-purple-500/30 text-purple-100 rounded-xl p-3 text-xs font-semibold text-left transition cursor-pointer w-full">Review</button>
       </div>
     </section>
   </main>
 
-  <script src="assets/js/storage.js"></script>
-  <script src="assets/js/main.js"></script>
+  <div id="grammarModal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/80 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="grammarModalTitle">
+    <div class="mx-auto my-6 max-w-5xl rounded-3xl border border-purple-400/30 bg-[#10091f] shadow-2xl shadow-purple-950/50">
+      <div class="sticky top-0 z-10 flex items-center justify-between gap-4 rounded-t-3xl border-b border-purple-500/20 bg-[#10091f]/95 p-5 backdrop-blur">
+        <h2 id="grammarModalTitle" class="text-2xl font-extrabold text-white">Grammar Module</h2>
+        <button type="button" onclick="closeGrammarModal()" class="rounded-xl border border-purple-400/30 px-4 py-2 text-sm font-bold text-purple-100 hover:bg-purple-900/50">Fechar</button>
+      </div>
+      <div id="grammarModalBody" class="prose prose-invert max-w-none p-6 text-purple-100 prose-head3:text-white prose-strong:text-white"></div>
+    </div>
+  </div>
+
+  <script>
+    const grammarData = {
+      possessive_adjectives: {
+        title: 'Possessive Adjectives',
+        html: `<div class="space-y-6 leading-7">
+          <p><strong>Possessive adjectives</strong> mostram posse, relação ou pertencimento. Eles sempre aparecem antes de um substantivo e concordam com o dono, não com a coisa possuída.</p>
+          <div class="rounded-2xl bg-purple-950/40 p-4"><h3 class="mb-2 text-lg font-bold">Mapa principal</h3><ul class="list-disc pl-5"><li>I → <strong>my</strong>: my book, my teacher.</li><li>You → <strong>your</strong>: your phone, your idea.</li><li>He → <strong>his</strong>: his car, his brother.</li><li>She → <strong>her</strong>: her bag, her mother.</li><li>It → <strong>its</strong>: its color, its name.</li><li>We → <strong>our</strong>: our house, our class.</li><li>They → <strong>their</strong>: their friends, their city.</li></ul></div>
+          <p>Em português dizemos “meu/minha”, “seu/sua”, “dele/dela”. Em inglês, o adjetivo possessivo não muda por causa do substantivo: <strong>my book</strong> e <strong>my books</strong>; <strong>her car</strong> e <strong>her cars</strong>.</p>
+          <p>Erro comum: usar <em>the</em> junto com possessivo. Não diga <strong>the my book</strong>. Diga apenas <strong>my book</strong>. Outro erro comum é confundir <strong>its</strong> com <strong>it's</strong>. <strong>Its</strong> indica posse; <strong>it's</strong> significa <em>it is</em>.</p>
+          <div class="grid gap-3 md:grid-cols-2"><div class="rounded-2xl border border-green-400/30 bg-green-950/20 p-4"><strong>Correto</strong><p>This is my book. Her name is Ana. Their apartment is near here.</p></div><div class="rounded-2xl border border-red-400/30 bg-red-950/20 p-4"><strong>Evite</strong><p>This is the my book. She name is Ana. They apartment is near here.</p></div></div>
+          <h3>Frases de prática com autocorreção</h3><div class="space-y-3">${practiceButton('This is my book')}${practiceButton('Their teacher is very patient')}${practiceButton('Our class starts at eight')}</div>
+        </div>`
+      },
+      demonstratives: {
+        title: 'Demonstratives (This/That/These/Those)',
+        html: `<div class="space-y-6 leading-7"><p><strong>Demonstratives</strong> apontam pessoas, objetos ou ideias. Eles respondem à pergunta “qual?” e dependem de duas informações: distância e número.</p>
+          <div class="rounded-2xl bg-purple-950/40 p-4"><h3 class="mb-2 text-lg font-bold">Tabela de decisão</h3><ul class="list-disc pl-5"><li><strong>This</strong>: singular e perto — This chair is comfortable.</li><li><strong>That</strong>: singular e longe — That building is old.</li><li><strong>These</strong>: plural e perto — These keys are mine.</li><li><strong>Those</strong>: plural e longe — Those mountains are beautiful.</li></ul></div>
+          <p>Use <strong>this</strong> para apresentar alguém perto de você: <em>This is my friend Bruno</em>. Use <strong>that</strong> para apontar algo distante fisicamente ou em uma conversa: <em>That was a great idea</em>.</p>
+          <p>Na fala natural, a entonação ajuda muito: <strong>this</strong> aproxima a informação do aluno; <strong>that</strong> cria distância. Em reuniões, você pode dizer <em>This report explains the numbers</em> enquanto segura o documento, ou <em>That report from last month was incomplete</em> para algo já mencionado.</p>
+          <div class="grid gap-3 md:grid-cols-2"><div class="rounded-2xl border border-green-400/30 bg-green-950/20 p-4"><strong>Correto</strong><p>This is my phone. Those are expensive shoes.</p></div><div class="rounded-2xl border border-red-400/30 bg-red-950/20 p-4"><strong>Evite</strong><p>These is my phone. That are expensive shoes.</p></div></div>
+          <h3>Frases de prática com autocorreção</h3><div class="space-y-3">${practiceButton('This is my book')}${practiceButton('Those are my friends')}${practiceButton('These keys are on the table')}</div>
+        </div>`
+      },
+      there_is_are: {
+        title: 'There is / There are',
+        html: `<div class="space-y-6 leading-7"><p><strong>There is</strong> e <strong>there are</strong> servem para dizer que algo existe ou está presente em algum lugar. A estrutura não começa pela coisa principal; começa por <em>there</em>, que funciona como introdução de existência.</p>
+          <div class="rounded-2xl bg-purple-950/40 p-4"><h3 class="mb-2 text-lg font-bold">Formas essenciais</h3><ul class="list-disc pl-5"><li>Singular: <strong>There is a book on the desk.</strong></li><li>Plural: <strong>There are three books on the desk.</strong></li><li>Negativa singular: <strong>There isn't a problem.</strong></li><li>Negativa plural: <strong>There aren't any problems.</strong></li><li>Pergunta: <strong>Is there a bank near here?</strong> / <strong>Are there any questions?</strong></li></ul></div>
+          <p>Use <strong>there is</strong> com substantivos singulares e incontáveis: <em>There is water in the bottle</em>. Use <strong>there are</strong> com substantivos plurais: <em>There are students in the room</em>.</p>
+          <p>Em inglês real, essa estrutura é muito usada para descrever ambientes, cidades, problemas, oportunidades e recursos: <em>There is a new restaurant downtown</em>; <em>There are many ways to improve your pronunciation</em>.</p>
+          <div class="grid gap-3 md:grid-cols-2"><div class="rounded-2xl border border-green-400/30 bg-green-950/20 p-4"><strong>Correto</strong><p>There is a cat in the garden. There are two chairs here.</p></div><div class="rounded-2xl border border-red-400/30 bg-red-950/20 p-4"><strong>Evite</strong><p>Have a cat in the garden. There is two chairs here.</p></div></div>
+          <h3>Frases de prática com autocorreção</h3><div class="space-y-3">${practiceButton('There is a book on the table')}${practiceButton('There are three students in the room')}${practiceButton('Is there a pharmacy near here')}</div>
+        </div>`
+      },
+      imperatives: {
+        title: 'Imperatives',
+        html: `<div class="space-y-6 leading-7"><p><strong>Imperatives</strong> são usados para dar instruções, comandos, conselhos, avisos, convites e direções. A forma básica usa o verbo no infinitivo sem <em>to</em> e normalmente não mostra o sujeito <em>you</em>.</p>
+          <div class="rounded-2xl bg-purple-950/40 p-4"><h3 class="mb-2 text-lg font-bold">Estruturas principais</h3><ul class="list-disc pl-5"><li>Afirmativo: <strong>Open the door.</strong></li><li>Negativo: <strong>Don't open the door.</strong></li><li>Polido: <strong>Please sit down.</strong></li><li>Convite com let’s: <strong>Let's practice English.</strong></li><li>Aviso: <strong>Be careful.</strong></li></ul></div>
+          <p>O imperativo pode parecer forte se usado sem contexto. Para suavizar, adicione <strong>please</strong>, uma justificativa ou uma entonação amigável: <em>Please repeat the sentence</em>; <em>Turn off your phone, please</em>.</p>
+          <p>Em sala de aula e no trabalho, imperatives aparecem em instruções: <em>Click the button</em>, <em>Read the paragraph</em>, <em>Send me the file</em>. Para proibição ou conselho negativo, use <strong>don't</strong>: <em>Don't worry</em>, <em>Don't be late</em>.</p>
+          <div class="grid gap-3 md:grid-cols-2"><div class="rounded-2xl border border-green-400/30 bg-green-950/20 p-4"><strong>Correto</strong><p>Listen carefully. Please write your name. Don't touch that cable.</p></div><div class="rounded-2xl border border-red-400/30 bg-red-950/20 p-4"><strong>Evite</strong><p>You listen carefully now. To write your name. Not touch that cable.</p></div></div>
+          <h3>Frases de prática com autocorreção</h3><div class="space-y-3">${practiceButton('Open the door')}${practiceButton('Please listen carefully')}${practiceButton('Do not be late')}</div>
+        </div>`
+      }
+    };
+
+    grammarData.simple_present = `
+<div class="space-y-8 text-sm text-purple-200 leading-relaxed">
+  <div class="bg-purple-900/20 p-5 rounded-xl border border-purple-500/30">
+    <h3 class="text-xl font-black text-white mb-3">📖 O que é o Simple Present?</h3>
+    <p class="mb-3">Se eu tivesse que resumir o Simple Present em uma única frase, seria:</p>
+    <p class="text-lg font-bold text-purple-400 text-center bg-black/30 py-3 rounded-lg border border-purple-500/20 mb-3">É o tempo verbal da vida normal.</p>
+    <p>É o tempo que usamos para falar daquilo que acontece sempre, da nossa rotina, dos nossos costumes e das coisas que são verdade.</p>
+    <p class="mt-4 font-semibold text-white">Por exemplo...</p>
+    <ul class="list-disc list-inside space-y-2 mt-2">
+      <li>Você acorda todos os dias? (Provavelmente sim, ou pelo menos tenta 😂). Então: <strong class="text-white">I wake up at 6 a.m.</strong></li>
+      <li>Você escova os dentes? (Espero que sim... 😅): <strong class="text-white">I brush my teeth every day.</strong></li>
+      <li>Você toma café?: <strong class="text-white">I drink coffee every morning.</strong></li>
+    </ul>
+    <p class="mt-4">Percebeu uma coisa? Nada disso está acontecendo exatamente agora. São coisas que fazem parte da sua rotina. Pense assim: se alguém pergunta "Como é sua vida?", você não responde "Agora eu estou escovando os dentes". Você diz "Eu acordo cedo, trabalho muito, tomo muito café". <strong>Tudo isso é Simple Present.</strong></p>
+  </div>
+
+  <div>
+    <h3 class="text-xl font-black text-white mb-4">🎯 Quando usamos?</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="bg-[#1a102f] p-4 rounded-xl border border-purple-500/20">
+        <h4 class="font-bold text-purple-400 mb-2">1. Rotina & Hábitos</h4>
+        <p class="text-xs mb-2">Aquilo que você faz com frequência. Nem precisa ser todo dia.</p>
+        <ul class="space-y-1 text-xs">
+          <li><span class="text-white">I wake up late on Sundays.</span> (Eu acordo tarde aos domingos)</li>
+          <li><span class="text-white">I drink coffee every morning.</span> (Porque brasileiro funciona à base de café 😂)</li>
+          <li><span class="text-white">My father complains about gasoline prices.</span> (Rotina nacional!)</li>
+        </ul>
+      </div>
+      <div class="bg-[#1a102f] p-4 rounded-xl border border-purple-500/20">
+        <h4 class="font-bold text-purple-400 mb-2">2. Verdades Universais</h4>
+        <p class="text-xs mb-2">Fatos que simplesmente são verdade. Ninguém acorda e pensa "Hoje acho que a Terra não vai girar".</p>
+        <ul class="space-y-1 text-xs">
+          <li><span class="text-white">Water boils at 100°C.</span></li>
+          <li><span class="text-white">The Earth goes around the Sun.</span></li>
+          <li><span class="text-white">Dogs bark. Cats meow.</span></li>
+        </ul>
+      </div>
+      <div class="bg-[#1a102f] p-4 rounded-xl border border-purple-500/20">
+        <h4 class="font-bold text-purple-400 mb-2">3. Gostos & Sentimentos</h4>
+        <ul class="space-y-1 text-xs mt-2">
+          <li><span class="text-white">I like pizza.</span></li>
+          <li><span class="text-white">I hate Mondays.</span> (Quem nunca? 😂)</li>
+          <li><span class="text-white">I love sleeping.</span></li>
+          <li><span class="text-white">We believe you.</span></li>
+        </ul>
+      </div>
+      <div class="bg-[#1a102f] p-4 rounded-xl border border-purple-500/20">
+        <h4 class="font-bold text-purple-400 mb-2">4. Horários (Ônibus, filmes, aulas)</h4>
+        <ul class="space-y-1 text-xs mt-2">
+          <li><span class="text-white">The bus leaves at 7.</span></li>
+          <li><span class="text-white">School starts at 7:30.</span></li>
+          <li><span class="text-white">The movie begins at 8.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-gradient-to-r from-red-900/20 to-purple-900/20 p-5 rounded-xl border border-red-500/30">
+    <h3 class="text-xl font-black text-white mb-3">🚨 O famoso problema do HE, SHE e IT</h3>
+    <p>Montar frase é fácil: <em>Pessoa + verbo + complemento</em> (I eat pizza). Tudo lindo. Até aparecer o <strong>He, She e It</strong> e estragar a festa. 😂</p>
+    <p class="mt-2">O verbo ganha um "S". O "S" é como um crachá. Ele avisa: <em>"Ei! Aqui quem está fazendo a ação é o He, She ou It."</em></p>
+    <div class="mt-4 space-y-4">
+      <div class="bg-black/40 p-3 rounded-lg border border-purple-500/20">
+        <h4 class="font-bold text-green-400 mb-1">👕 Regra 1: Apenas acrescenta S (90% dos verbos)</h4>
+        <p class="text-xs">play ➔ plays | eat ➔ eats | drink ➔ drinks</p>
+        <p class="text-xs text-white mt-1">Ex: The dog sleeps all afternoon. (Vida boa, né?)</p>
+      </div>
+      <div class="bg-black/40 p-3 rounded-lg border border-purple-500/20">
+        <h4 class="font-bold text-yellow-400 mb-1">🧥 Regra 2: Verbos que gostam de ES</h4>
+        <p class="text-xs">Para não dar um nó na língua. Termina em S, SS, SH, CH, X, Z, O ➔ ganha ES.</p>
+        <p class="text-xs">watch ➔ watches | wash ➔ washes | go ➔ goes</p>
+        <p class="text-xs text-white mt-1">Ex: She watches Netflix every night.</p>
+      </div>
+      <div class="bg-black/40 p-3 rounded-lg border border-purple-500/20">
+        <h4 class="font-bold text-blue-400 mb-1">🎭 Regra 3: O famoso Y</h4>
+        <p class="text-xs">Consoante + Y ➔ O "Y" tira férias e entra <strong>IES</strong> (study ➔ studies, cry ➔ cries).</p>
+        <p class="text-xs">Vogal + Y ➔ Fica normal, só ganha <strong>S</strong> (play ➔ plays, buy ➔ buys).</p>
+      </div>
+      <div class="bg-black/40 p-3 rounded-lg border border-red-500/30">
+        <h4 class="font-bold text-red-400 mb-1">😱 A Exceção Absoluta: HAVE</h4>
+        <p class="text-xs">O verbo <strong>Have</strong> não vira "haves". Ele muda completamente e vira <strong>HAS</strong>.</p>
+        <p class="text-xs text-white mt-1">Ex: He has a new car.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-purple-900/20 p-5 rounded-xl border border-purple-500/30">
+    <h3 class="text-xl font-black text-white mb-3">👮‍♂️ O Policial DO e DOES</h3>
+    <p>Imagine que o <strong>DO</strong> é um policial. Em perguntas, ele chega primeiro. <em>(Do you like pizza?)</em></p>
+    <p class="mt-2">Quando é He, She ou It, o policial troca de roupa e vira <strong>DOES</strong>. <em>(Does she work here?)</em></p>
+    <div class="bg-red-900/30 p-3 mt-3 rounded border border-red-500/40 text-center">
+      <p class="font-bold text-white text-lg">💡 Dica que salva vidas!</p>
+      <p class="text-xs mt-1">Se você enxergar DO, DON'T, DOES ou DOESN'T... o verbo principal perde o "S". Pense num revezamento: o "S" já foi parar no Does.</p>
+      <p class="text-xs mt-2 text-red-300">❌ Does he works?</p>
+      <p class="text-xs text-green-300">✔️ Does he work?</p>
+    </div>
+  </div>
+
+  <hr class="border-purple-800/50 my-8">
+  <h2 class="text-2xl font-black text-white text-center mb-6">Let's Practice! 🚀</h2>
+
+  <div class="bg-[#130b21] p-5 rounded-2xl border border-purple-500/30 mb-6">
+    <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">✍️ 1. Formar Frases (Traduza para o inglês)</h3>
+    <div class="space-y-3">
+      ${[
+        "Eu acordo às 6 da manhã.",
+        "Ela assiste TV todas as noites.",
+        "Nós estudamos inglês.",
+        "Ele não gosta de café.",
+        "Você joga videogame?",
+        "A água ferve a 100 graus.",
+        "Meu cachorro late muito.",
+        "Ela não trabalha aqui.",
+        "Onde você mora?",
+        "Ele tem um carro novo."
+      ].map((frase, index) => `
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 bg-black/20 p-3 rounded-lg border border-purple-500/10">
+          <span class="text-purple-400 font-bold w-6 text-right">${index + 1}.</span>
+          <span class="flex-1 text-sm font-medium text-white">${frase}</span>
+          <input type="text" placeholder="Escreva em inglês..." class="flex-1 bg-[#1a102f] border border-purple-500/30 rounded px-3 py-1.5 text-xs text-white focus:outline-none focus:border-purple-400 w-full sm:w-auto">
+        </div>
+      `).join('')}
+    </div>
+  </div>
+
+  <div class="bg-[#130b21] p-5 rounded-2xl border border-purple-500/30 mb-6">
+    <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🎧 2. Ouça e Repita (Listening)</h3>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      ${[
+        "I always forget my password.",
+        "She usually arrives late.",
+        "My mother watches soap operas every night.",
+        "Do they play soccer on weekends?",
+        "He doesn't study English on Sundays.",
+        "The bus leaves at 7 a.m.",
+        "Birds fly and fish swim.",
+        "Does she work here?",
+        "We sometimes order pizza.",
+        "I go to work by bus."
+      ].map((frase) => `
+        <div class="flex items-center gap-3 bg-black/20 p-3 rounded-lg border border-purple-500/10">
+          <button onclick="speakText('${frase.replace(/'/g, "\\'")}')" class="shrink-0 bg-purple-600 hover:bg-purple-500 text-white w-8 h-8 rounded-full flex items-center justify-center transition shadow-lg">▶</button>
+          <span class="text-sm font-medium text-purple-100">${frase}</span>
+        </div>
+      `).join('')}
+    </div>
+  </div>
+
+  <div class="bg-[#130b21] p-5 rounded-2xl border border-purple-500/30">
+    <h3 class="text-lg font-bold text-purple-300 mb-4 flex items-center gap-2">🎙️ 3. Pronúncia (Leia em voz alta)</h3>
+    <div class="space-y-3">
+      ${[
+        "I drink coffee every morning.",
+        "She loves chocolate.",
+        "He fixes the computer.",
+        "The baby cries every night.",
+        "Does your dog bite?",
+        "I do not like mosquitoes.",
+        "Water boils at one hundred degrees.",
+        "They watch Netflix.",
+        "She does her homework.",
+        "He goes to school."
+      ].map((frase, index) => `
+        <div class="flex flex-col sm:flex-row items-center gap-3 bg-black/20 p-3 rounded-lg border border-purple-500/10">
+          <span class="text-sm font-medium text-white flex-1 text-center sm:text-left">${frase}</span>
+          <button onclick="checkPronunciation('${frase.replace(/'/g, "\\'")}', 'result-sp-${index}')" class="shrink-0 bg-red-600 hover:bg-red-500 text-white px-4 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-2 shadow-lg">🎙️ Gravar</button>
+          <span id="result-sp-${index}" class="text-xs font-bold min-w-[80px] text-center"></span>
+        </div>
+      `).join('')}
+    </div>
+  </div>
+</div>
+`;
+
+    function practiceButton(target) {
+      return `<div class="rounded-2xl border border-purple-400/20 bg-[#1a102f] p-4"><p class="mb-3 text-sm text-purple-200">Fale: <strong class="text-white">${target}</strong></p><button type="button" onclick="startSpeechPractice('${target.replace(/'/g, "&#39;")}', this)" class="rounded-xl bg-purple-600 px-4 py-2 text-sm font-bold text-white hover:bg-purple-500">🎙️ Gravar e corrigir</button><p class="mt-3 min-h-6 text-sm font-bold" data-feedback></p></div>`;
+    }
+
+    function openGrammarModal(key) {
+      const modal = document.getElementById('grammarModal');
+      const title = document.getElementById('grammarModalTitle');
+      const body = document.getElementById('grammarModalBody');
+      const content = grammarData[key] || {
+        title: key.replaceAll('_', ' ').replace(/\b\w/g, letter => letter.toUpperCase()),
+        html: '<p class="rounded-2xl border border-purple-400/20 bg-[#1a102f] p-5">Conteúdo detalhado em desenvolvimento. Este módulo já está conectado ao modal e pronto para receber a aula completa.</p>'
+      };
+      const modalTitle = typeof content === 'string' ? key.replaceAll('_', ' ').replace(/\b\w/g, letter => letter.toUpperCase()) : content.title;
+      const modalHtml = typeof content === 'string' ? content : content.html;
+      title.textContent = modalTitle;
+      body.innerHTML = modalHtml;
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeGrammarModal() {
+      document.getElementById('grammarModal').classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    function normalizeSpeech(text) {
+      return text.toLowerCase().replace(/[^a-z0-9\s]/g, '').replace(/\s+/g, ' ').trim();
+    }
+
+    function startSpeechPractice(targetPhrase, button) {
+      const feedback = button.parentElement.querySelector('[data-feedback]');
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        feedback.className = 'mt-3 min-h-6 text-sm font-bold text-red-300';
+        feedback.textContent = 'Seu navegador não suporta Web Speech API. Tente usar Chrome ou Edge.';
+        return;
+      }
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+      feedback.className = 'mt-3 min-h-6 text-sm font-bold text-purple-200';
+      feedback.textContent = 'Ouvindo... fale a frase em inglês.';
+      recognition.onresult = event => {
+        const transcript = event.results[0][0].transcript;
+        const expected = normalizeSpeech(targetPhrase);
+        const spoken = normalizeSpeech(transcript);
+        if (spoken === expected) {
+          feedback.className = 'mt-3 min-h-6 text-sm font-bold text-green-300';
+          feedback.textContent = `Correto! Você disse: "${transcript}".`;
+        } else {
+          feedback.className = 'mt-3 min-h-6 text-sm font-bold text-red-300';
+          feedback.textContent = `Tente novamente. Você disse: "${transcript}". Esperado: "${targetPhrase.trim()}".`;
+        }
+      };
+      recognition.onerror = () => {
+        feedback.className = 'mt-3 min-h-6 text-sm font-bold text-red-300';
+        feedback.textContent = 'Não consegui capturar o áudio. Verifique a permissão do microfone e tente novamente.';
+      };
+      recognition.start();
+    }
+
+    function speakText(text) {
+      const synth = window.speechSynthesis;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      synth.speak(utterance);
+    }
+
+    function checkPronunciation(targetText, resultElementId) {
+      const resultSpan = document.getElementById(resultElementId);
+      resultSpan.textContent = 'Gravando...';
+      resultSpan.className = 'text-xs font-bold min-w-[80px] text-center text-yellow-400';
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) {
+        resultSpan.textContent = 'Áudio não suportado';
+        resultSpan.className = 'text-xs font-bold min-w-[80px] text-center text-red-500';
+        return;
+      }
+
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+
+      recognition.onresult = event => {
+        const spokenText = event.results[0][0].transcript.toLowerCase().replace(/[.,?!]/g, '').trim();
+        const cleanTarget = targetText.toLowerCase().replace(/[.,?!]/g, '').trim();
+
+        if (spokenText === cleanTarget) {
+          resultSpan.textContent = '✔️ Perfect!';
+          resultSpan.className = 'text-xs font-bold min-w-[80px] text-center text-green-400';
+        } else {
+          resultSpan.textContent = '❌ Try again';
+          resultSpan.className = 'text-xs font-bold min-w-[80px] text-center text-red-400';
+          console.log(`Você disse: ${spokenText} | Esperado: ${cleanTarget}`);
+        }
+      };
+
+      recognition.onerror = () => {
+        resultSpan.textContent = 'Erro no mic';
+        resultSpan.className = 'text-xs font-bold min-w-[80px] text-center text-red-500';
+      };
+
+      recognition.start();
+    }
+
+    document.getElementById('grammarModal').addEventListener('click', event => {
+      if (event.target.id === 'grammarModal') closeGrammarModal();
+    });
+  </script>
 </body>
 </html>
